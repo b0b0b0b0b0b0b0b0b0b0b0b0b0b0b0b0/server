@@ -137,8 +137,7 @@ export const en = {
           pluginCount: '❌ Plugin count',
           virtualCpu: '❌ Virtual CPU',
         },
-        buttons: {
-          findHost: 'Find a better host',
+        buttons: {
           learnMore: 'Learn More',
           updateAikarsFlags: "Update Aikar's Flags",
           useAikarsFlags: "Use Aikar's Flags",
@@ -162,9 +161,9 @@ export const en = {
         },
         patterns: {
           outdatedVersion: 'You are using `{current}`. Update to `{latest}`.',
-          threadCount: 'You only have {count} thread(s).',
-          timingcost: 'Your timingcost is {cost}. Your cpu is overloaded and/or slow.',
-          timingcostUrgent: 'Your timingcost is {cost}. This value would be at most 200 on a reasonable server. Your cpu is critically overloaded and/or slow. Hiding {hidden} comparitively negligible suggestions until you resolve this fundamental problem.',
+          threadCount: 'You only have {count} thread(s). Look for better hosting.',
+          timingcost: 'Your timingcost is {cost}. Your cpu is overloaded and/or slow. Look for better hosting.',
+          timingcostUrgent: 'Your timingcost is {cost}. This value would be at most 200 on a reasonable server. Your cpu is critically overloaded and/or slow. Hiding {hidden} comparitively negligible suggestions until you resolve this fundamental problem. Look for better hosting.',
           msptSpikes: 'With {players} players, MSPT p95 is {p95}ms and max spike is {max}ms. TPS can look fine while players still feel lag.',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Values above 50ms are feelable; TPS can still show 20.',
           msptSpikesDetail: 'Peak tick took {max}ms with p95 at {p95}ms. Players feel micro-freezes even when average TPS looks fine.',
@@ -175,7 +174,7 @@ export const en = {
           groundItems: '{count} item entities are loaded. Clear ground drops and tune item merge/despawn settings.',
           heavyPlugins: 'Detected {count} performance-heavy plugins: {plugins}. This stack is a common TPS killer even with good configs.',
           pluginCount: '{count} plugins loaded. Large plugin counts increase tick work and update surface.',
-          virtualCpu: 'CPU is {model} with {threads} thread(s). Minecraft wants fast single-thread performance, not a cheap VPS.',
+          virtualCpu: 'CPU is {model} with {threads} thread(s). Minecraft wants fast single-thread performance, not a cheap VPS. Look for better hosting.',
           tickHealth: 'Average TPS is {tps} with {players} players. No obvious tick issues in this profile.',
           decreaseRecommended: 'Decrease this in {file}.\nRecommended: {value}.',
           increaseRecommended: 'Increase this in {file}.\nRecommended: {value}.',

@@ -12,6 +12,8 @@ import '@/styles/analyze-page.css';
 import '@/styles/home-page.css';
 import '@/styles/transitions.css';
 import '@/styles/workspace.css';
+import '@/styles/locale-fonts.css';
+import '@/styles/rtl.css';
 import './globals.css';
 import { buildRootMetadata } from '@/lib/seo/metadata';
 import SiteJsonLd from '@/app/components/SiteJsonLd';
@@ -20,6 +22,7 @@ import WorkspaceProvider from '@/app/components/WorkspaceProvider';
 import SiteHeader from '@/app/components/SiteHeader';
 import PageTransition from '@/app/components/PageTransition';
 import { resolveServerLocale } from '@/lib/core/detectLocale';
+import { resolveDocumentDirection } from '@/lib/core/localeDirection';
 import { resolveServerTheme } from '@/lib/core/ThemeStore';
 
 const inter = Inter({
@@ -34,9 +37,15 @@ export default async function RootLayout({ children }) {
   const headerStore = await headers();
   const locale = resolveServerLocale(cookieStore, headerStore.get('accept-language'));
   const theme = resolveServerTheme(cookieStore);
+  const direction = resolveDocumentDirection(locale);
 
   return (
-    <html lang={locale} className={theme === 'dark' ? 'dark' : undefined} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={direction}
+      className={theme === 'dark' ? 'dark' : undefined}
+      suppressHydrationWarning
+    >
       <head>
         <SiteJsonLd />
       </head>

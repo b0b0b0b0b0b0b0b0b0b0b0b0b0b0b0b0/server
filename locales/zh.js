@@ -137,8 +137,7 @@ export const zh = {
           pluginCount: '❌ 插件数量',
           virtualCpu: '❌ 虚拟 CPU',
         },
-        buttons: {
-          findHost: '寻找更好的主机',
+        buttons: {
           learnMore: '了解更多',
           updateAikarsFlags: "更新 Aikar's Flags",
           useAikarsFlags: "使用 Aikar's Flags",
@@ -162,9 +161,9 @@ export const zh = {
         },
         patterns: {
           outdatedVersion: '你正在使用 `{current}`。请更新到 `{latest}`。',
-          threadCount: '你只有 {count} 个线程。',
-          timingcost: '你的 timingcost 为 {cost}。CPU 过载或性能不足。',
-          timingcostUrgent: '你的 timingcost 为 {cost}。正常服务器此值最多约 200。CPU 严重过载或性能不足。在解决此根本问题前，已隐藏 {hidden} 条相对次要的建议。',
+          threadCount: '你只有 {count} 个线程。. 建议寻找更好的主机。',
+          timingcost: '你的 timingcost 为 {cost}。CPU 过载或性能不足。. 建议寻找更好的主机。',
+          timingcostUrgent: '你的 timingcost 为 {cost}。正常服务器此值最多约 200。CPU 严重过载或性能不足。在解决此根本问题前，已隐藏 {hidden} 条相对次要的建议。. 建议寻找更好的主机。',
           msptSpikes: '{players} 名玩家时，MSPT p95 为 {p95}ms，最大峰值为 {max}ms。TPS 可能看起来正常，但玩家仍会感到卡顿。',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}。超过 50ms 可感知；TPS 仍可能显示 20。',
           msptSpikesDetail: '峰值刻耗时 {max}ms，p95 为 {p95}ms。即使平均 TPS 正常，玩家仍会感到微卡顿。',
@@ -175,7 +174,7 @@ export const zh = {
           groundItems: '已加载 {count} 个物品实体。清理地面掉落物并调整物品合并/消失设置。',
           heavyPlugins: '检测到 {count} 个性能重型插件：{plugins}。即使配置良好，此类组合也常见地拖垮 TPS。',
           pluginCount: '已加载 {count} 个插件。插件数量越多，刻负载和更新面越大。',
-          virtualCpu: 'CPU 为 {model}，{threads} 个线程。Minecraft 需要快速的单线程性能，而非廉价 VPS。',
+          virtualCpu: 'CPU 为 {model}，{threads} 个线程。Minecraft 需要快速的单线程性能，而非廉价 VPS。. 建议寻找更好的主机。',
           tickHealth: '平均 TPS 为 {tps}，{players} 名玩家。此配置文件中无明显刻问题。',
           decreaseRecommended: '在 {file} 中减小此值。\n推荐：{value}。',
           increaseRecommended: '在 {file} 中增大此值。\n推荐：{value}。',

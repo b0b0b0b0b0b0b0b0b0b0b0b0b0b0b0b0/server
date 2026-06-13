@@ -137,8 +137,7 @@ export const ja = {
           pluginCount: '❌ プラグイン数',
           virtualCpu: '❌ 仮想 CPU',
         },
-        buttons: {
-          findHost: 'より良いホストを探す',
+        buttons: {
           learnMore: '詳しく見る',
           updateAikarsFlags: "Aikar's Flags を更新",
           useAikarsFlags: "Aikar's Flags を使う",
@@ -162,9 +161,9 @@ export const ja = {
         },
         patterns: {
           outdatedVersion: '現在 `{current}` を使用中です。`{latest}` に更新してください。',
-          threadCount: 'スレッドが {count} 個しかありません。',
-          timingcost: 'timingcost は {cost} です。CPU が過負荷または遅い状態です。',
-          timingcostUrgent: 'timingcost は {cost} です。正常なサーバーなら最大 200 程度です。CPU が致命的に過負荷または遅い状態です。この根本的な問題を解決するまで、比較的軽微な提案 {hidden} 件を非表示にしています。',
+          threadCount: 'スレッドが {count} 個しかありません。. より良いホスティングを探してください。',
+          timingcost: 'timingcost は {cost} です。CPU が過負荷または遅い状態です。. より良いホスティングを探してください。',
+          timingcostUrgent: 'timingcost は {cost} です。正常なサーバーなら最大 200 程度です。CPU が致命的に過負荷または遅い状態です。この根本的な問題を解決するまで、比較的軽微な提案 {hidden} 件を非表示にしています。. より良いホスティングを探してください。',
           msptSpikes: '{players} 人のプレイヤーで MSPT p95 は {p95}ms、最大スパイクは {max}ms です。TPS は正常でもラグを感じることがあります。',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}。50ms 超は体感できます。TPS は 20 のままのこともあります。',
           msptSpikesDetail: 'ピークティックは {max}ms、p95 は {p95}ms です。平均 TPS が正常でもマイクロフリーズを感じます。',
@@ -175,7 +174,7 @@ export const ja = {
           groundItems: '{count} 個のアイテムエンティティが読み込まれています。地面のドロップを片付け、アイテムマージ・デスポーン設定を調整してください。',
           heavyPlugins: 'パフォーマンスに重いプラグインが {count} 個検出されました：{plugins}。設定が良くても TPS を落とす典型的な構成です。',
           pluginCount: '{count} 個のプラグインが読み込まれています。数が多いほどティック負荷と更新面が増えます。',
-          virtualCpu: 'CPU は {model}、スレッド {threads} 個です。Minecraft は安い VPS より高速なシングルスレッド性能を求めます。',
+          virtualCpu: 'CPU は {model}、スレッド {threads} 個です。Minecraft は安い VPS より高速なシングルスレッド性能を求めます。. より良いホスティングを探してください。',
           tickHealth: '平均 TPS は {tps}、プレイヤー {players} 人です。このプロファイルに明らかなティック問題はありません。',
           decreaseRecommended: '{file} でこれを減らしてください。\n推奨: {value}。',
           increaseRecommended: '{file} でこれを増やしてください。\n推奨: {value}。',

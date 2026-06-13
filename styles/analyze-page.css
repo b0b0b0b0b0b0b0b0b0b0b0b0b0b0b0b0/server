@@ -157,7 +157,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 4px;
-  margin-left: auto;
+  margin-inline-start: auto;
   min-width: 0;
   padding: 8px 12px;
   border: none;
@@ -404,7 +404,7 @@
 
 @media (max-width: 640px) {
   .analyze-report-id {
-    margin-left: 0;
+    margin-inline-start: 0;
     width: 100%;
   }
 }

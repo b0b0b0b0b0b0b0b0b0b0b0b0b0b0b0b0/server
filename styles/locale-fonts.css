@@ -1,0 +1,26 @@
+html[lang='ar'] body,
+html[lang='fa'] body,
+html[lang='he'] body {
+  font-family: 'Segoe UI', 'Noto Sans Arabic', 'Geeza Pro', 'Tahoma', sans-serif;
+}
+
+html[lang='hi'] body {
+  font-family: 'Nirmala UI', 'Noto Sans Devanagari', 'Mangal', sans-serif;
+}
+
+html[lang='ko'] body {
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+html[lang='ja'] body {
+  font-family: 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', 'Noto Sans JP', sans-serif;
+}
+
+html[lang='zh'] body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+}
+
+html[lang='vi'] body,
+html[lang='tr'] body {
+  font-family: var(--font-sans, 'Inter'), 'Segoe UI', system-ui, sans-serif;
+}

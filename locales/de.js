@@ -137,8 +137,7 @@ export const de = {
           pluginCount: '❌ Plugin-Anzahl',
           virtualCpu: '❌ Virtuelle CPU',
         },
-        buttons: {
-          findHost: 'Besseren Host finden',
+        buttons: {
           learnMore: 'Mehr erfahren',
           updateAikarsFlags: 'Aikars Flags aktualisieren',
           useAikarsFlags: 'Aikars Flags nutzen',
@@ -162,9 +161,9 @@ export const de = {
         },
         patterns: {
           outdatedVersion: 'Du nutzt `{current}`. Aktualisiere auf `{latest}`.',
-          threadCount: 'Du hast nur {count} Thread(s).',
-          timingcost: 'Dein timingcost ist {cost}. CPU ist überlastet und/oder langsam.',
-          timingcostUrgent: 'Dein timingcost ist {cost}. Auf einem vernünftigen Server wäre das höchstens 200. CPU ist kritisch überlastet. {hidden} weniger wichtige Hinweise ausgeblendet, bis du das Grundproblem löst.',
+          threadCount: 'Du hast nur {count} Thread(s). Suche einen besseren Host.',
+          timingcost: 'Dein timingcost ist {cost}. CPU ist überlastet und/oder langsam. Suche einen besseren Host.',
+          timingcostUrgent: 'Dein timingcost ist {cost}. Auf einem vernünftigen Server wäre das höchstens 200. CPU ist kritisch überlastet. {hidden} weniger wichtige Hinweise ausgeblendet, bis du das Grundproblem löst. Suche einen besseren Host.',
           msptSpikes: 'Bei {players} Spielern: MSPT p95 {p95}ms, Spitze {max}ms. TPS kann gut aussehen, Spieler spüren trotzdem Lag.',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Über 50ms spürbar; TPS kann trotzdem 20 zeigen.',
           msptSpikesDetail: 'Spitzentick {max}ms, p95 {p95}ms. Mikro-Freezes auch bei gutem Durchschnitts-TPS.',
@@ -175,7 +174,7 @@ export const de = {
           groundItems: '{count} Item-Entities geladen. Boden-Drops räumen und Merge/Despawn einstellen.',
           heavyPlugins: '{count} performance-schwere Plugins erkannt: {plugins}. Dieser Stack killt oft TPS trotz guter Configs.',
           pluginCount: '{count} Plugins geladen. Viele Plugins erhöhen Tick-Last und Update-Oberfläche.',
-          virtualCpu: 'CPU: {model}, {threads} Thread(s). Minecraft braucht schnellen Single-Thread, keinen billigen VPS.',
+          virtualCpu: 'CPU: {model}, {threads} Thread(s). Minecraft braucht schnellen Single-Thread, keinen billigen VPS. Suche einen besseren Host.',
           tickHealth: 'Durchschnittliche TPS {tps} bei {players} Spielern. Keine offensichtlichen Tick-Probleme in diesem Profil.',
           decreaseRecommended: 'Verringere in {file}.\nEmpfohlen: {value}.',
           increaseRecommended: 'Erhöhe in {file}.\nEmpfohlen: {value}.',

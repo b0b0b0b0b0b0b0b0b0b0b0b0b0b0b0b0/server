@@ -5,6 +5,7 @@ import { I18n } from '@/lib/core/I18n';
 import { SettingsStore } from '@/lib/core/SettingsStore';
 import { ThemeStore } from '@/lib/core/ThemeStore';
 import { writePrefCookie } from '@/lib/core/prefCookies';
+import { applyDocumentLocale } from '@/lib/core/localeDirection';
 import { catalog } from '@/locales/index';
 import { DEFAULT_LOCALE, DEFAULT_THEME, LOCALES, STORAGE_KEYS } from '@/lib/config/constants';
 
@@ -57,7 +58,7 @@ export default function AppProviders({
     setLocaleState(resolvedLocale);
     setThemeState(resolvedTheme);
     themeStore.apply(resolvedTheme);
-    document.documentElement.lang = resolvedLocale;
+    applyDocumentLocale(resolvedLocale);
     writePrefCookie(STORAGE_KEYS.locale, resolvedLocale);
     writePrefCookie(STORAGE_KEYS.theme, resolvedTheme);
     setReady(true);
@@ -74,7 +75,7 @@ export default function AppProviders({
     const settings = new SettingsStore(window.localStorage);
     settings.write(STORAGE_KEYS.locale, next);
     setLocaleState(next);
-    document.documentElement.lang = next;
+    applyDocumentLocale(next);
     writePrefCookie(STORAGE_KEYS.locale, next);
   };
 

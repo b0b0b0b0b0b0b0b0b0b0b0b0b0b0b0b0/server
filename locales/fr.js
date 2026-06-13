@@ -137,8 +137,7 @@ export const fr = {
           pluginCount: '❌ Nombre de plugins',
           virtualCpu: '❌ CPU virtuelle',
         },
-        buttons: {
-          findHost: 'Trouver un meilleur hébergeur',
+        buttons: {
           learnMore: 'En savoir plus',
           updateAikarsFlags: 'Mettre à jour les flags Aikar',
           useAikarsFlags: 'Utiliser les flags Aikar',
@@ -162,9 +161,9 @@ export const fr = {
         },
         patterns: {
           outdatedVersion: 'Tu utilises `{current}`. Mets à jour vers `{latest}`.',
-          threadCount: 'Tu n’as que {count} thread(s).',
-          timingcost: 'Ton timingcost est {cost}. CPU surchargé et/ou lent.',
-          timingcostUrgent: 'Ton timingcost est {cost}. Sur un serveur correct ce serait au plus 200. CPU critique. {hidden} suggestions secondaires masquées jusqu’à résolution du problème principal.',
+          threadCount: 'Tu n’as que {count} thread(s). Cherche un meilleur hébergeur.',
+          timingcost: 'Ton timingcost est {cost}. CPU surchargé et/ou lent. Cherche un meilleur hébergeur.',
+          timingcostUrgent: 'Ton timingcost est {cost}. Sur un serveur correct ce serait au plus 200. CPU critique. {hidden} suggestions secondaires masquées jusqu’à résolution du problème principal. Cherche un meilleur hébergeur.',
           msptSpikes: 'Avec {players} joueurs, MSPT p95 {p95}ms, pic {max}ms. Le TPS peut sembler bon mais le lag se fait sentir.',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Au-dessus de 50ms c’est perceptible ; le TPS peut rester à 20.',
           msptSpikesDetail: 'Tick pic {max}ms, p95 {p95}ms. Micro-freezes même avec un TPS moyen correct.',
@@ -175,7 +174,7 @@ export const fr = {
           groundItems: '{count} entités item chargées. Nettoie les drops et règle merge/despawn.',
           heavyPlugins: '{count} plugins lourds détectés : {plugins}. Cette stack tue souvent le TPS malgré de bonnes configs.',
           pluginCount: '{count} plugins chargés. Un grand nombre augmente la charge des ticks.',
-          virtualCpu: 'CPU : {model}, {threads} thread(s). Minecraft veut un bon single-thread, pas un VPS cheap.',
+          virtualCpu: 'CPU : {model}, {threads} thread(s). Minecraft veut un bon single-thread, pas un VPS cheap. Cherche un meilleur hébergeur.',
           tickHealth: 'TPS moyen {tps} avec {players} joueurs. Pas de problème de tick évident dans ce profil.',
           decreaseRecommended: 'Diminue dans {file}.\nRecommandé : {value}.',
           increaseRecommended: 'Augmente dans {file}.\nRecommandé : {value}.',

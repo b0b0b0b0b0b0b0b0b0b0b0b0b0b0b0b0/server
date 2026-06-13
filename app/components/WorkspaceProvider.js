@@ -7,6 +7,7 @@ import { WorkspaceStore } from '@/lib/core/WorkspaceStore';
 const DEFAULT_SERVER_NAMES = {
   en: 'My Server',
   ru: 'Мой сервер',
+  kk: 'Менің серверім',
   de: 'Mein Server',
   fr: 'Mon serveur',
   es: 'Mi servidor',
@@ -14,6 +15,13 @@ const DEFAULT_SERVER_NAMES = {
   nl: 'Mijn server',
   ja: 'マイサーバー',
   zh: '我的服务器',
+  tr: 'Sunucum',
+  vi: 'Máy chủ của tôi',
+  ko: '내 서버',
+  hi: 'मेरा सर्वर',
+  ar: 'خادمي',
+  fa: 'سرور من',
+  he: 'השרת שלי',
 };
 
 function localizeDefaultServerNames(store, locale) {

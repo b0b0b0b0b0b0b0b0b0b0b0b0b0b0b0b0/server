@@ -137,8 +137,7 @@ export const nl = {
           pluginCount: '❌ Aantal plugins',
           virtualCpu: '❌ Virtuele CPU',
         },
-        buttons: {
-          findHost: 'Betere host zoeken',
+        buttons: {
           learnMore: 'Meer info',
           updateAikarsFlags: 'Aikars Flags bijwerken',
           useAikarsFlags: 'Aikars Flags gebruiken',
@@ -162,9 +161,9 @@ export const nl = {
         },
         patterns: {
           outdatedVersion: 'Je gebruikt `{current}`. Werk bij naar `{latest}`.',
-          threadCount: 'Je hebt maar {count} thread(s).',
-          timingcost: 'Je timingcost is {cost}. Je CPU is overbelast en/of traag.',
-          timingcostUrgent: 'Je timingcost is {cost}. Op een redelijke server zou deze waarde maximaal 200 zijn. Je CPU is kritisch overbelast en/of traag. {hidden} minder belangrijke suggesties verborgen totdat je dit fundamentele probleem oplost.',
+          threadCount: 'Je hebt maar {count} thread(s). Zoek betere hosting.',
+          timingcost: 'Je timingcost is {cost}. Je CPU is overbelast en/of traag. Zoek betere hosting.',
+          timingcostUrgent: 'Je timingcost is {cost}. Op een redelijke server zou deze waarde maximaal 200 zijn. Je CPU is kritisch overbelast en/of traag. {hidden} minder belangrijke suggesties verborgen totdat je dit fundamentele probleem oplost. Zoek betere hosting.',
           msptSpikes: 'Met {players} spelers is MSPT p95 {p95}ms en maximale piek {max}ms. TPS kan goed lijken terwijl spelers nog steeds lag voelen.',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Waarden boven 50ms zijn merkbaar; TPS kan nog steeds 20 tonen.',
           msptSpikesDetail: 'Piektick duurde {max}ms met p95 op {p95}ms. Spelers voelen micro-freezes zelfs wanneer gemiddelde TPS goed lijkt.',
@@ -175,7 +174,7 @@ export const nl = {
           groundItems: '{count} item-entities zijn geladen. Ruim gronddrops op en stel item merge/despawn in.',
           heavyPlugins: '{count} prestatie-zware plugins gedetecteerd: {plugins}. Deze stack is een veelvoorkomende TPS-killer, zelfs met goede configs.',
           pluginCount: '{count} plugins geladen. Grote aantallen plugins verhogen tick-werk en update-oppervlak.',
-          virtualCpu: 'CPU is {model} met {threads} thread(s). Minecraft wil snelle single-thread prestaties, geen goedkope VPS.',
+          virtualCpu: 'CPU is {model} met {threads} thread(s). Minecraft wil snelle single-thread prestaties, geen goedkope VPS. Zoek betere hosting.',
           tickHealth: 'Gemiddelde TPS is {tps} met {players} spelers. Geen duidelijke tick-problemen in dit profiel.',
           decreaseRecommended: 'Verlaag dit in {file}.\nAanbevolen: {value}.',
           increaseRecommended: 'Verhoog dit in {file}.\nAanbevolen: {value}.',

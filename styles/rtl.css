@@ -1,0 +1,33 @@
+[dir='rtl'] .site-header-nav {
+  margin-inline-start: auto;
+}
+
+[dir='rtl'] .site-header-locale .lum-dropdown-menu {
+  inset-inline-end: 0;
+  inset-inline-start: auto;
+}
+
+[dir='rtl'] .lum-dropdown-trigger-text,
+[dir='rtl'] .lum-dropdown-item {
+  text-align: start;
+}
+
+[dir='rtl'] .field-hint,
+[dir='rtl'] .tool-page-desc,
+[dir='rtl'] .analyze-finding-message {
+  text-align: start;
+}
+
+[dir='rtl'] .script-output-scroll {
+  direction: ltr;
+}
+
+[dir='rtl'] .script-output-line-num {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  text-align: end;
+}
+
+[dir='rtl'] .plugin-card-remove {
+  margin-inline-start: auto;
+}

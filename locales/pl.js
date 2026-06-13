@@ -137,8 +137,7 @@ export const pl = {
           pluginCount: '❌ Liczba pluginów',
           virtualCpu: '❌ Wirtualne CPU',
         },
-        buttons: {
-          findHost: 'Znajdź lepszy hosting',
+        buttons: {
           learnMore: 'Dowiedz się więcej',
           updateAikarsFlags: 'Zaktualizuj flagi Aikara',
           useAikarsFlags: 'Użyj flag Aikara',
@@ -162,9 +161,9 @@ export const pl = {
         },
         patterns: {
           outdatedVersion: 'Używasz `{current}`. Zaktualizuj do `{latest}`.',
-          threadCount: 'Masz tylko {count} wątek/wątki.',
-          timingcost: 'Twój timingcost to {cost}. CPU jest przeciążone i/lub wolne.',
-          timingcostUrgent: 'Twój timingcost to {cost}. Na rozsądnym serwerze wartość ta wynosiłaby co najwyżej 200. CPU jest krytycznie przeciążone i/lub wolne. Ukryto {hidden} mniej istotnych sugestii, dopóki nie rozwiążesz tego fundamentalnego problemu.',
+          threadCount: 'Masz tylko {count} wątek/wątki. Rozważ lepszy hosting.',
+          timingcost: 'Twój timingcost to {cost}. CPU jest przeciążone i/lub wolne. Rozważ lepszy hosting.',
+          timingcostUrgent: 'Twój timingcost to {cost}. Na rozsądnym serwerze wartość ta wynosiłaby co najwyżej 200. CPU jest krytycznie przeciążone i/lub wolne. Ukryto {hidden} mniej istotnych sugestii, dopóki nie rozwiążesz tego fundamentalnego problemu. Rozważ lepszy hosting.',
           msptSpikes: 'Przy {players} graczach MSPT p95 to {p95}ms, a maksymalny skok {max}ms. TPS może wyglądać dobrze, a gracze nadal odczuwają lag.',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Wartości powyżej 50ms są odczuwalne; TPS może nadal pokazywać 20.',
           msptSpikesDetail: 'Szczytowy tick trwał {max}ms przy p95 {p95}ms. Gracze odczuwają mikro-freeze nawet przy dobrym średnim TPS.',
@@ -175,7 +174,7 @@ export const pl = {
           groundItems: '{count} encji przedmiotów jest załadowanych. Wyczyść dropy i dostosuj merge/despawn przedmiotów.',
           heavyPlugins: 'Wykryto {count} pluginów obciążających wydajność: {plugins}. Ten stack często zabija TPS nawet przy dobrych configach.',
           pluginCount: '{count} pluginów załadowanych. Duża liczba pluginów zwiększa obciążenie ticka i powierzchnię aktualizacji.',
-          virtualCpu: 'CPU to {model} z {threads} wątkiem/wątkami. Minecraft potrzebuje szybkiego single-thread, a nie taniego VPS.',
+          virtualCpu: 'CPU to {model} z {threads} wątkiem/wątkami. Minecraft potrzebuje szybkiego single-thread, a nie taniego VPS. Rozważ lepszy hosting.',
           tickHealth: 'Średni TPS to {tps} przy {players} graczach. Brak oczywistych problemów z tickami w tym profilu.',
           decreaseRecommended: 'Zmniejsz to w {file}.\nZalecane: {value}.',
           increaseRecommended: 'Zwiększ to w {file}.\nZalecane: {value}.',

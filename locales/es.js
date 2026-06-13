@@ -137,8 +137,7 @@ export const es = {
           pluginCount: '❌ Cantidad de plugins',
           virtualCpu: '❌ CPU virtual',
         },
-        buttons: {
-          findHost: 'Buscar mejor hosting',
+        buttons: {
           learnMore: 'Saber más',
           updateAikarsFlags: 'Actualizar flags de Aikar',
           useAikarsFlags: 'Usar flags de Aikar',
@@ -162,9 +161,9 @@ export const es = {
         },
         patterns: {
           outdatedVersion: 'Estás usando `{current}`. Actualiza a `{latest}`.',
-          threadCount: 'Solo tienes {count} hilo(s).',
-          timingcost: 'Tu timingcost es {cost}. Tu CPU está sobrecargada y/o es lenta.',
-          timingcostUrgent: 'Tu timingcost es {cost}. En un servidor decente este valor sería como máximo 200. Tu CPU está críticamente sobrecargada y/o es lenta. Ocultamos {hidden} sugerencias menos importantes hasta que resuelvas este problema de fondo.',
+          threadCount: 'Solo tienes {count} hilo(s). Busca un mejor hosting.',
+          timingcost: 'Tu timingcost es {cost}. Tu CPU está sobrecargada y/o es lenta. Busca un mejor hosting.',
+          timingcostUrgent: 'Tu timingcost es {cost}. En un servidor decente este valor sería como máximo 200. Tu CPU está críticamente sobrecargada y/o es lenta. Ocultamos {hidden} sugerencias menos importantes hasta que resuelvas este problema de fondo. Busca un mejor hosting.',
           msptSpikes: 'Con {players} jugadores, MSPT p95 es {p95}ms y el pico máximo es {max}ms. El TPS puede verse bien mientras los jugadores siguen sintiendo lag.',
           msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Valores arriba de 50ms se sienten; el TPS puede seguir en 20.',
           msptSpikesDetail: 'El tick pico tomó {max}ms con p95 en {p95}ms. Los jugadores sienten micro-freezes aunque el TPS promedio se vea bien.',
@@ -175,7 +174,7 @@ export const es = {
           groundItems: '{count} entidades de items están cargadas. Limpia drops del suelo y ajusta merge/despawn de items.',
           heavyPlugins: 'Detectamos {count} plugins pesados en rendimiento: {plugins}. Este stack mata el TPS aunque tengas buenas configs.',
           pluginCount: '{count} plugins cargados. Muchos plugins aumentan el trabajo por tick y la superficie de actualizaciones.',
-          virtualCpu: 'La CPU es {model} con {threads} hilo(s). Minecraft necesita buen rendimiento en un solo hilo, no un VPS barato.',
+          virtualCpu: 'La CPU es {model} con {threads} hilo(s). Minecraft necesita buen rendimiento en un solo hilo, no un VPS barato. Busca un mejor hosting.',
           tickHealth: 'El TPS promedio es {tps} con {players} jugadores. No hay problemas obvios de tick en este perfil.',
           decreaseRecommended: 'Baja esto en {file}.\nRecomendado: {value}.',
           increaseRecommended: 'Sube esto en {file}.\nRecomendado: {value}.',
