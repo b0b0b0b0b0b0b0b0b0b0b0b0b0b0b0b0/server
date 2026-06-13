@@ -15,6 +15,7 @@ import { useLocale } from '@/app/components/AppProviders';
 import AddPluginModal from '@/app/components/plugins/AddPluginModal';
 import ImportJarsModal from '@/app/components/plugins/ImportJarsModal';
 import RelinkPluginModal from '@/app/components/plugins/RelinkPluginModal';
+import SetInstalledVersionModal from '@/app/components/plugins/SetInstalledVersionModal';
 import PluginCard from '@/app/components/plugins/PluginCard';
 import LumDropdown from '@/app/components/LumDropdown';
 import LumTooltip from '@/app/components/LumTooltip';
@@ -23,9 +24,11 @@ import { useWorkspace } from '@/app/components/WorkspaceProvider';
 import {
   PLUGIN_FILTERS,
   PLUGIN_SOFTWARE,
+  PLUGIN_BULK_CHECK_DELAY_MS,
   PLUGIN_SPIGOT_DOWNLOAD_LIMIT,
   PLUGIN_SPIGOT_DOWNLOAD_WINDOW_MS,
 } from '@/lib/config/plugins';
+import { delay, yieldToMain } from '@/lib/core/yieldToMain';
 import { parsePluginImportJson, pluginExportFilename } from '@/lib/tools/plugins/pluginBackup';
 import { refreshPlugin } from '@/lib/tools/plugins/PluginRegistry';
 import { downloadSpigotPlugin } from '@/lib/tools/plugins/SpigotPlugin';
@@ -45,8 +48,10 @@ export default function PluginsClient() {
   const [modalOpen, setModalOpen] = useState(false);
   const [jarModalOpen, setJarModalOpen] = useState(false);
   const [relinkIndex, setRelinkIndex] = useState(null);
+  const [versionIndex, setVersionIndex] = useState(null);
   const [loadingMap, setLoadingMap] = useState({});
   const [bulkLoading, setBulkLoading] = useState(null);
+  const [checkProgress, setCheckProgress] = useState(null);
   const [toast, setToast] = useState(null);
   const [spigotRateLimit] = useState({
     downloadCount: 0,
@@ -242,22 +247,40 @@ export default function PluginsClient() {
   };
 
   const handleCheckAll = async () => {
+    const checkable = plugins
+      .map((plugin, index) => ({ plugin, index }))
+      .filter(({ plugin }) => plugin.type !== 'misc');
+
+    if (!checkable.length) return;
+
     setBulkLoadingSafe('check');
+    setCheckProgress({ done: 0, total: checkable.length });
+
     try {
-      for (let index = 0; index < plugins.length; index += 1) {
-        const plugin = plugins[index];
-        if (plugin.type === 'misc') continue;
+      for (let step = 0; step < checkable.length; step += 1) {
+        const { plugin, index } = checkable[step];
+        const key = `plugin-${index}`;
+        setLoading(key, true);
+
+        await delay(PLUGIN_BULK_CHECK_DELAY_MS);
+        await yieldToMain();
+
         const updated = await refreshPlugin(plugin, software);
         if (!mountedRef.current) return;
         updated.updateDate = new Date();
         patch((store) => {
           store.updatePlugin(index, updated, activeServerId);
         });
+        setLoading(key, false);
+        setCheckProgress({ done: step + 1, total: checkable.length });
+        await yieldToMain();
       }
       notify('success', t('tools.plugins.checkedAll'));
     } catch (error) {
       notify('error', `${t('tools.plugins.refreshError')} ${error.message}`);
     } finally {
+      checkable.forEach(({ index }) => setLoading(`plugin-${index}`, false));
+      setCheckProgress(null);
       setBulkLoadingSafe(null);
     }
   };
@@ -270,10 +293,15 @@ export default function PluginsClient() {
       onRefresh={() => handleRefreshPlugin(index)}
       onDownload={() => handleDownloadPlugin(index)}
       onMarkUpdated={() => handleMarkUpdated(index)}
+      onSetVersion={() => setVersionIndex(index)}
       onRemove={() => handleRemovePlugin(index)}
       onRelink={() => setRelinkIndex(index)}
     />
   );
+
+  const checkProgressPercent = checkProgress?.total
+    ? Math.round((checkProgress.done / checkProgress.total) * 100)
+    : 0;
 
   if (!ready) return null;
 
@@ -368,18 +396,40 @@ export default function PluginsClient() {
         </div>
 
         {plugins.length > 0 && (
-          <div className="plugin-bulk-actions">
-            <LumTooltip content={t('tools.plugins.tooltips.checkAll')}>
-              <button
-                type="button"
-                className="lum-btn plugin-btn"
-                onClick={handleCheckAll}
-                disabled={bulkLoading === 'check'}
-              >
-                {bulkLoading === 'check' ? <Loader2 size={16} className="spin" /> : <RefreshCw size={16} />}
-                {t('tools.plugins.checkAll')}
-              </button>
-            </LumTooltip>
+          <div className={`plugin-bulk-actions${bulkLoading === 'check' ? ' is-checking' : ''}`}>
+            {bulkLoading === 'check' && checkProgress ? (
+              <div className="plugin-check-all">
+                <span className="plugin-check-all-icon" aria-hidden>
+                  <Loader2 size={18} className="spin" />
+                </span>
+                <div className="plugin-check-all-body">
+                  <p className="plugin-check-all-label">
+                    {t('tools.plugins.checkAllProgress', checkProgress)}
+                  </p>
+                  <div className="plugin-check-all-track">
+                    <div
+                      className="plugin-check-all-bar"
+                      role="progressbar"
+                      aria-valuenow={checkProgressPercent}
+                      aria-valuemin={0}
+                      aria-valuemax={100}
+                      style={{ width: `${checkProgressPercent}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <LumTooltip content={t('tools.plugins.tooltips.checkAll')}>
+                <button
+                  type="button"
+                  className="lum-btn plugin-btn"
+                  onClick={handleCheckAll}
+                >
+                  <RefreshCw size={16} />
+                  {t('tools.plugins.checkAll')}
+                </button>
+              </LumTooltip>
+            )}
             <LumTooltip content={t('tools.plugins.tooltips.removeAll')}>
               <button
                 type="button"
@@ -470,6 +520,22 @@ export default function PluginsClient() {
             store.updatePlugin(relinkIndex, next, activeServerId);
           });
           notify('success', t('tools.plugins.relinkSaved'));
+        }}
+        onNotify={notify}
+      />
+      )}
+
+      {versionIndex !== null && plugins[versionIndex] && (
+      <SetInstalledVersionModal
+        open
+        plugin={plugins[versionIndex]}
+        software={software}
+        onClose={() => setVersionIndex(null)}
+        onSave={(next) => {
+          patch((store) => {
+            store.updatePlugin(versionIndex, next, activeServerId);
+          });
+          notify('success', t('tools.plugins.changeVersionSaved'));
         }}
         onNotify={notify}
       />

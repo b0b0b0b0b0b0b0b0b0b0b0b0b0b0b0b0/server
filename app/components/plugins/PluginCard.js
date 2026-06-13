@@ -6,9 +6,11 @@ import {
   ExternalLink,
   Link2,
   Loader2,
+  Package,
   RefreshCw,
   Trash2,
-} from 'lucide-react';import { useLocale } from '@/app/components/AppProviders';
+} from 'lucide-react';
+import { useLocale } from '@/app/components/AppProviders';
 import LumTooltip from '@/app/components/LumTooltip';
 import { ModrinthIcon, SpigotIcon } from '@/lib/ui/SourceIcons';
 import { formatPluginDate, getPluginPageUrl, getSafePluginIconUrl, isUpdateAvailable } from '@/lib/tools/plugins/pluginUtils';
@@ -19,6 +21,7 @@ export default function PluginCard({
   onRefresh,
   onDownload,
   onMarkUpdated,
+  onSetVersion,
   onRemove,
   onRelink,
 }) {
@@ -107,49 +110,66 @@ export default function PluginCard({
 
       <div className="plugin-card-actions">
         {plugin.type !== 'misc' && (
-          <LumTooltip content={t('tools.plugins.tooltips.checkUpdate')}>
+          <LumTooltip content={t('tools.plugins.checkUpdate')}>
             <button
               type="button"
-              className="lum-btn plugin-btn plugin-btn--compact"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact"
               onClick={onRefresh}
               disabled={loading}
+              aria-label={t('tools.plugins.checkUpdate')}
             >
               {loading ? <Loader2 size={16} className="spin" /> : <RefreshCw size={16} />}
-              {t('tools.plugins.checkUpdate')}
             </button>
           </LumTooltip>
         )}
         {updateAvailable && (plugin.file?.url || plugin.file?.externalUrl) && (
-          <LumTooltip content={t('tools.plugins.tooltips.download')}>
+          <LumTooltip content={t('tools.plugins.download')}>
             <button
               type="button"
-              className="lum-btn plugin-btn plugin-btn--compact plugin-btn--primary"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact plugin-btn--primary"
               onClick={onDownload}
               disabled={loading}
+              aria-label={t('tools.plugins.download')}
             >
               <Download size={16} />
-              {t('tools.plugins.download')}
+            </button>
+          </LumTooltip>
+        )}
+        {plugin.type !== 'misc' && (
+          <LumTooltip content={t('tools.plugins.changeVersion')}>
+            <button
+              type="button"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact"
+              onClick={onSetVersion}
+              disabled={loading}
+              aria-label={t('tools.plugins.changeVersion')}
+            >
+              <Package size={16} />
             </button>
           </LumTooltip>
         )}
         {pageUrl && (
-          <LumTooltip content={t('tools.plugins.tooltips.viewPlugin')}>
+          <LumTooltip content={t('tools.plugins.viewPlugin')}>
             <a
               href={pageUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="lum-btn plugin-btn plugin-btn--compact"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact"
+              aria-label={t('tools.plugins.viewPlugin')}
             >
               <ExternalLink size={16} />
-              {t('tools.plugins.viewPlugin')}
             </a>
           </LumTooltip>
         )}
         {updateAvailable && (
-          <LumTooltip content={t('tools.plugins.tooltips.markUpdated')}>
-            <button type="button" className="lum-btn plugin-btn plugin-btn--compact" onClick={onMarkUpdated}>
+          <LumTooltip content={t('tools.plugins.markUpdated')}>
+            <button
+              type="button"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact"
+              onClick={onMarkUpdated}
+              aria-label={t('tools.plugins.markUpdated')}
+            >
               <Check size={16} />
-              {t('tools.plugins.markUpdated')}
             </button>
           </LumTooltip>
         )}
