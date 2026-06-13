@@ -9,6 +9,7 @@ import {
   MemoryStick,
   Pause,
   RefreshCw,
+  ShieldOff,
   SquareTerminal,
 } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
@@ -84,6 +85,7 @@ export default function FlagsClient() {
 
   const state = engine?.snapshot() ?? FLAG_DEFAULTS;
   const showGuiToggle = FlagsSoftware.supportsGui(state.software);
+  const showIgnoreJavaToggle = FlagsSoftware.supportsIgnoreJavaVersion(state.software);
 
   const environmentOptions = useMemo(
     () => FLAG_ENVIRONMENTS.map((key) => {
@@ -266,6 +268,16 @@ export default function FlagsClient() {
                 hint={t('tools.flags.noGuiHint')}
                 checked={state.noGui}
                 onChange={(e) => persist({ noGui: e.target.checked })}
+              />
+            ) : null}
+            {showIgnoreJavaToggle ? (
+              <ToggleField
+                id="ignoreJavaVersion"
+                icon={<ShieldOff size={24} />}
+                label={t('tools.flags.ignoreJavaVersion')}
+                hint={t('tools.flags.ignoreJavaVersionHint')}
+                checked={state.ignoreJavaVersion}
+                onChange={(e) => persist({ ignoreJavaVersion: e.target.checked })}
               />
             ) : null}
             {CONFIG_TOGGLES.map((item) => {
