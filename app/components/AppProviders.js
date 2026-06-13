@@ -4,9 +4,9 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { I18n } from '@/lib/core/I18n';
 import { SettingsStore } from '@/lib/core/SettingsStore';
 import { ThemeStore } from '@/lib/core/ThemeStore';
-import { resolveLocale } from '@/lib/core/detectLocale';
+import { writePrefCookie } from '@/lib/core/prefCookies';
 import { catalog } from '@/locales/index';
-import { DEFAULT_LOCALE, DEFAULT_THEME, STORAGE_KEYS } from '@/lib/config/constants';
+import { DEFAULT_LOCALE, DEFAULT_THEME, LOCALES, STORAGE_KEYS } from '@/lib/config/constants';
 
 const LocaleContext = createContext(null);
 const ThemeContext = createContext(null);
@@ -27,34 +27,55 @@ export function useTheme() {
   return ctx;
 }
 
-export default function AppProviders({ children }) {
-  const [locale, setLocaleState] = useState(DEFAULT_LOCALE);
-  const [theme, setThemeState] = useState(DEFAULT_THEME);
-  const [themeReady, setThemeReady] = useState(false);
+export default function AppProviders({
+  children,
+  initialLocale = DEFAULT_LOCALE,
+  initialTheme = DEFAULT_THEME,
+}) {
+  const [locale, setLocaleState] = useState(initialLocale);
+  const [theme, setThemeState] = useState(initialTheme);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    const settings = new SettingsStore(window.localStorage);
     const themeStore = new ThemeStore(window.localStorage);
-    const resolvedLocale = resolveLocale(window.localStorage);
-    const savedTheme = themeStore.read(DEFAULT_THEME);
+    const storedLocale = settings.read(STORAGE_KEYS.locale, null);
+    const storedTheme = themeStore.read(null);
+
+    const resolvedLocale = storedLocale && LOCALES.includes(storedLocale)
+      ? storedLocale
+      : initialLocale;
+
+    const resolvedTheme = storedTheme === 'light' || storedTheme === 'dark'
+      ? storedTheme
+      : initialTheme;
+
+    if (!storedLocale && LOCALES.includes(resolvedLocale)) {
+      settings.write(STORAGE_KEYS.locale, resolvedLocale);
+    }
+
     setLocaleState(resolvedLocale);
-    setThemeState(savedTheme);
-    themeStore.apply(savedTheme);
+    setThemeState(resolvedTheme);
+    themeStore.apply(resolvedTheme);
     document.documentElement.lang = resolvedLocale;
-    setThemeReady(true);
-  }, []);
+    writePrefCookie(STORAGE_KEYS.locale, resolvedLocale);
+    writePrefCookie(STORAGE_KEYS.theme, resolvedTheme);
+    setReady(true);
+  }, [initialLocale, initialTheme]);
 
   const i18n = useMemo(() => new I18n(catalog, locale), [locale]);
 
   useEffect(() => {
-    if (!themeReady) return;
+    if (!ready) return;
     document.title = i18n.t('meta.documentTitle');
-  }, [i18n, locale, themeReady]);
+  }, [i18n, locale, ready]);
 
   const setLocale = (next) => {
     const settings = new SettingsStore(window.localStorage);
     settings.write(STORAGE_KEYS.locale, next);
     setLocaleState(next);
     document.documentElement.lang = next;
+    writePrefCookie(STORAGE_KEYS.locale, next);
   };
 
   const setTheme = (next) => {
@@ -62,11 +83,12 @@ export default function AppProviders({ children }) {
     themeStore.write(next);
     themeStore.apply(next);
     setThemeState(next);
+    writePrefCookie(STORAGE_KEYS.theme, next);
   };
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale, i18n, t: (key, params) => i18n.t(key, params) }}>
-      <ThemeContext.Provider value={{ theme, setTheme, ready: themeReady }}>
+      <ThemeContext.Provider value={{ theme, setTheme, ready }}>
         {children}
       </ThemeContext.Provider>
     </LocaleContext.Provider>

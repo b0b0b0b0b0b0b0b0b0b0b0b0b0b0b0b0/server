@@ -1,3 +1,4 @@
+import { cookies, headers } from 'next/headers';
 import { Inter } from 'next/font/google';
 import '@/styles/variables.css';
 import '@/styles/base.css';
@@ -17,8 +18,8 @@ import AppProviders from '@/app/components/AppProviders';
 import WorkspaceProvider from '@/app/components/WorkspaceProvider';
 import SiteHeader from '@/app/components/SiteHeader';
 import PageTransition from '@/app/components/PageTransition';
-import { STORAGE_KEYS, DEFAULT_THEME } from '@/lib/config/constants';
-import { buildLocaleBootScript } from '@/lib/core/detectLocale';
+import { resolveServerLocale } from '@/lib/core/detectLocale';
+import { resolveServerTheme } from '@/lib/core/ThemeStore';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -27,19 +28,19 @@ const inter = Inter({
 
 export const metadata = buildRootMetadata();
 
-const themeBoot = `try{var t=localStorage.getItem('${STORAGE_KEYS.theme}')||'${DEFAULT_THEME}';document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}`;
-const localeBoot = buildLocaleBootScript();
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const headerStore = await headers();
+  const locale = resolveServerLocale(cookieStore, headerStore.get('accept-language'));
+  const theme = resolveServerTheme(cookieStore);
 
-export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} className={theme === 'dark' ? 'dark' : undefined} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: localeBoot }} />
-        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
         <SiteJsonLd />
       </head>
       <body className={`${inter.className} min-h-screen antialiased`}>
-        <AppProviders>
+        <AppProviders initialLocale={locale} initialTheme={theme}>
           <WorkspaceProvider>
             <SiteHeader />
             <PageTransition>{children}</PageTransition>

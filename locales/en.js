@@ -5,7 +5,7 @@ export const en = {
   site: {
     name: 'MTools',
     abbrev: 'MST',
-    tagline: 'Free Minecraft server tools — JVM flags, startup scripts, and optimization on modrinth.black.',
+    tagline: 'Free Minecraft server tools — JVM flags, startup scripts, and optimization at mtools.modrinth.black.',
   },
   nav: { home: 'Home', theme: 'Theme', language: 'Language', tools: 'Tools' },
   sections: {
@@ -29,7 +29,7 @@ export const en = {
   },
   home: {
     heroSubtitle: 'JVM flags, Spark analysis, and plugin updates — free, no signup.',
-    heroBadge: 'Free · modrinth.black',
+    heroBadge: 'Free · mtools.modrinth.black',
     toolsHeading: 'Tools',
     open: 'Open',
   },

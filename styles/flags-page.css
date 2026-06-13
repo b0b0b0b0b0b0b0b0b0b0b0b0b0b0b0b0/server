@@ -188,7 +188,7 @@
   background-clip: padding-box;
 }
 
-.flags-page .script-output-gutter {
+.flags-page .script-output-line-num {
   background: var(--color-bg-elevated);
 }
 

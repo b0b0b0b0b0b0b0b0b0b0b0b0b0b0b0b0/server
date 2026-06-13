@@ -5,7 +5,7 @@ export const ru = {
   site: {
     name: 'MTools',
     abbrev: 'MST',
-    tagline: 'Бесплатные инструменты для Minecraft-серверов — JVM-флаги, стартовые скрипты и оптимизация на modrinth.black.',
+    tagline: 'Бесплатные инструменты для Minecraft-серверов — JVM-флаги, стартовые скрипты и оптимизация на mtools.modrinth.black.',
   },
   nav: { home: 'Главная', theme: 'Тема', language: 'Язык', tools: 'Инструменты' },
   sections: {
@@ -29,7 +29,7 @@ export const ru = {
   },
   home: {
     heroSubtitle: 'JVM-флаги, анализ Spark и трекер плагинов — бесплатно, без регистрации.',
-    heroBadge: 'Бесплатно · modrinth.black',
+    heroBadge: 'Бесплатно · mtools.modrinth.black',
     toolsHeading: 'Инструменты',
     open: 'Открыть',
   },

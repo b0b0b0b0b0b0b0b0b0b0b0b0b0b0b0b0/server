@@ -302,13 +302,19 @@
 }
 
 .script-output-scroll {
-  display: grid;
-  grid-template-columns: auto 1fr;
   min-height: 240px;
+  padding: 16px 148px 16px 0;
   overflow: auto;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--color-text-secondary) 38%, transparent) transparent;
+}
+
+.script-output-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0 10px;
 }
 
 .script-output-scroll::-webkit-scrollbar {
@@ -345,47 +351,35 @@
   box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-accent) 22%, transparent);
 }
 
-.script-output-gutter {
+.script-output-line-num {
   position: sticky;
   left: 0;
-  z-index: 2;
-  padding: 16px 10px 16px 16px;
+  z-index: 1;
+  min-width: 2.2rem;
+  min-height: 1.7em;
+  padding: 0 10px 0 16px;
   background: var(--color-bg-elevated);
   box-shadow: 4px 0 12px color-mix(in srgb, var(--color-bg) 55%, transparent);
-  user-select: none;
-  text-align: right;
-}
-
-.script-output-line-num {
-  display: block;
-  min-height: 1.7em;
   color: color-mix(in srgb, var(--color-text-secondary) 55%, transparent);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.8rem;
   line-height: 1.7;
-}
-
-.script-output-code {
-  margin: 0;
-  padding: 16px 148px 16px 16px;
-  overflow: visible;
-  background: transparent;
-  color: var(--color-text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.8rem;
-  line-height: 1.7;
-  tab-size: 2;
-  white-space: pre;
-}
-
-.script-output-code code {
-  display: block;
+  text-align: right;
+  user-select: none;
 }
 
 .script-output-line {
   display: block;
   min-height: 1.7em;
+  padding-right: 16px;
+  color: var(--color-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
   line-height: 1.7;
+  tab-size: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .script-output-sr-only {

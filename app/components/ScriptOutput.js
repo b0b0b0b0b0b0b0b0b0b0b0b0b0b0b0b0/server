@@ -107,24 +107,17 @@ export default function ScriptOutput({
             role="region"
             aria-label={title}
           >
-            <div className="script-output-gutter" aria-hidden>
-              {lines.map((_, index) => (
-                <span key={`line-num-${index}`} className="script-output-line-num">
+            {highlightedLines.map((lineHtml, index) => (
+              <div key={`line-${index}`} className="script-output-row">
+                <span className="script-output-line-num" aria-hidden>
                   {index + 1}
                 </span>
-              ))}
-            </div>
-            <pre className="script-output-code">
-              <code>
-                {highlightedLines.map((lineHtml, index) => (
-                  <span
-                    key={`line-${index}`}
-                    className="script-output-line"
-                    dangerouslySetInnerHTML={{ __html: lineHtml }}
-                  />
-                ))}
-              </code>
-            </pre>
+                <span
+                  className="script-output-line"
+                  dangerouslySetInnerHTML={{ __html: lineHtml }}
+                />
+              </div>
+            ))}
           </div>
           <span className="script-output-sr-only">{value}</span>
           <div className="script-output-actions">
