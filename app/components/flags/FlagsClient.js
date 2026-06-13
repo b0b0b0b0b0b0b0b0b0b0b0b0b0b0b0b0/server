@@ -26,6 +26,8 @@ import {
   FLAG_SOFTWARE,
   FLAG_PRESET_LINK_KEYS,
   FLAG_PRESET_LINKS,
+  FLAG_PROXY_MEMORY_DOC,
+  FLAG_PROXY_MEMORY_WARN_GIB,
   FLAG_SCRIPT_META,
 } from '@/lib/config/flags';
 import {
@@ -33,7 +35,7 @@ import {
   resolveScriptFilename,
   scriptExtensionKey,
 } from '@/lib/tools/flags/scriptFilename';
-import { MEMORY_MIN, MEMORY_MAX, MEMORY_STEP } from '@/lib/config/constants';
+import { MEMORY_MAX, MEMORY_STEP } from '@/lib/config/constants';
 import { formatGiB, memoryPercent } from '@/lib/ui/formatGiB';
 import { ENVIRONMENT_ICONS } from '@/lib/ui/EnvironmentIcons';
 import { SOFTWARE_ICONS } from '@/lib/ui/SoftwareIcons';
@@ -141,6 +143,10 @@ export default function FlagsClient() {
   const scriptFilename = resolveScriptFilename(state.environment, scriptBasenames);
   const filenameExtension = scriptExtension.startsWith('.') ? scriptExtension : '';
   const showWindowsPause = state.environment === 'windows';
+  const isLaunchCommand = state.environment === 'pterodactyl' || state.environment === 'command';
+  const showProxyMemoryWarning = FlagsSoftware.isProxy(state.software)
+    && state.memory > FLAG_PROXY_MEMORY_WARN_GIB;
+  const memoryMin = FlagsSoftware.memoryMin(state.software);
 
   const handleScriptBasenameChange = (basename) => {
     patch((store) => {
@@ -203,7 +209,7 @@ export default function FlagsClient() {
             </div>
             <div
               className="lum-range-track-wrap"
-              style={{ '--range-percent': `${memoryPercent(state.memory, MEMORY_MIN, MEMORY_MAX)}%` }}
+              style={{ '--range-percent': `${memoryPercent(state.memory, memoryMin, MEMORY_MAX)}%` }}
             >
               <div className="lum-range-track">
                 <div className="lum-range-fill" />
@@ -212,7 +218,7 @@ export default function FlagsClient() {
                 id="memory"
                 className="lum-range-input"
                 type="range"
-                min={MEMORY_MIN}
+                min={memoryMin}
                 max={MEMORY_MAX}
                 step={MEMORY_STEP}
                 value={state.memory}
@@ -220,6 +226,18 @@ export default function FlagsClient() {
               />
             </div>
             <p className="field-hint">{t('tools.flags.memoryHint')}</p>
+            {showProxyMemoryWarning && (
+              <p className="flags-proxy-memory-warning">
+                {t('tools.flags.proxyMemoryWarning')}{' '}
+                <a
+                  href={FLAG_PROXY_MEMORY_DOC}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('tools.flags.proxyMemoryWarningDoc')}
+                </a>
+              </p>
+            )}
           </div>
 
           <div className="toggle-group">
@@ -314,10 +332,11 @@ export default function FlagsClient() {
         title={t('tools.flags.script')}
         hint={t('tools.flags.scriptHint')}
         language={scriptMeta.language}
-        filename={scriptFilename}
-        filenameBasename={scriptBasename}
-        filenameExtension={filenameExtension}
-        onBasenameChange={handleScriptBasenameChange}
+        filename={isLaunchCommand ? undefined : scriptFilename}
+        filenameBasename={isLaunchCommand ? undefined : scriptBasename}
+        filenameExtension={isLaunchCommand ? '' : filenameExtension}
+        onBasenameChange={isLaunchCommand ? undefined : handleScriptBasenameChange}
+        allowDownload={!isLaunchCommand}
       />
     </section>
   );

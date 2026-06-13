@@ -40,6 +40,7 @@ export default function RelinkPluginModal({
   const [loading, setLoading] = useState(false);
   const onNotifyRef = useRef(onNotify);
   const tRef = useRef(t);
+  const suppressSearchRef = useRef(false);
 
   useEffect(() => {
     onNotifyRef.current = onNotify;
@@ -117,6 +118,11 @@ export default function RelinkPluginModal({
 
     let cancelled = false;
     const timer = setTimeout(async () => {
+      if (suppressSearchRef.current) {
+        suppressSearchRef.current = false;
+        return;
+      }
+
       const value = query.trim();
       const handled = await resolveFromUrl(value);
       if (cancelled || handled) return;
@@ -165,6 +171,7 @@ export default function RelinkPluginModal({
       await instance.fetch(software);
       setDraft(instance.toJSON());
       setSearchResults([]);
+      suppressSearchRef.current = true;
       setQuery(hit.name ?? '');
     } catch (error) {
       onNotify('error', `${t('tools.plugins.fetchError')} ${error.message}`);

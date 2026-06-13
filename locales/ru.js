@@ -71,6 +71,8 @@ export const ru = {
       softwareHint: 'Программное обеспечение, на котором будет работать сервер.',
       memory: 'Память',
       memoryHint: 'Объём оперативной памяти (RAM) для сервера.',
+      proxyMemoryWarning: 'Для Velocity и Waterfall столько RAM обычно не нужно. По документации Velocity: ~512 МБ heap на 500 игроков + 1 ГБ запас — на 1000 игроков хватает около 2 ГБ (-Xmx2G).',
+      proxyMemoryWarningDoc: 'документация Velocity',
       calculateOverhead: 'Рассчитать накладные расходы',
       calculateOverheadHint: 'Помогает избежать проблем с нехваткой памяти на сервере. Использованная формула: 11x ÷ 12 − 1200, где x — количество ОЗУ в MiB.',
       flags: 'Флаги',

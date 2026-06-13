@@ -71,6 +71,8 @@ export const en = {
       softwareHint: 'The software in which your Minecraft server will run on.',
       memory: 'Memory',
       memoryHint: 'The amount of memory (RAM) to allocate to your server.',
+      proxyMemoryWarning: 'Velocity and Waterfall rarely need this much RAM. Per Velocity docs: about 512 MB heap per 500 players plus 1 GB headroom — roughly 2 GB (-Xmx2G) for 1000 players.',
+      proxyMemoryWarningDoc: 'Velocity getting started',
       calculateOverhead: 'Calculate Overhead',
       calculateOverheadHint: 'Recommended to avoid out-of-memory issues on your server. The formula used is 11x ÷ 12 − 1200 where x is the amount of RAM in MiB.',
       flags: 'Flags',

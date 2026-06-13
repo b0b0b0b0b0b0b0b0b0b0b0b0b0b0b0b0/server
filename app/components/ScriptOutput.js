@@ -16,6 +16,7 @@ export default function ScriptOutput({
   filenameBasename,
   filenameExtension = '',
   onBasenameChange,
+  allowDownload = true,
 }) {
   const { t } = useLocale();
   const [copied, setCopied] = useState(false);
@@ -142,6 +143,7 @@ export default function ScriptOutput({
               </span>
             </button>
             </LumTooltip>
+            {allowDownload ? (
             <LumTooltip content={t('common.tooltips.download')} side="left">
               <button
                 type="button"
@@ -162,6 +164,7 @@ export default function ScriptOutput({
               </span>
             </button>
             </LumTooltip>
+            ) : null}
           </div>
           <span className="script-output-feedback" role="status" aria-live="polite">
             {copied ? t('common.copied') : saved ? t('common.downloaded') : ''}

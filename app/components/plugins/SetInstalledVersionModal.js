@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Loader2, Package, X } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
 import ModalPortal from '@/app/components/ModalPortal';
 import LumDropdown from '@/app/components/LumDropdown';
 import { refreshPlugin } from '@/lib/tools/plugins/PluginRegistry';
-import { formatPluginDate } from '@/lib/tools/plugins/pluginUtils';
+import { formatPluginDate, spigotVersionsNeedRefresh } from '@/lib/tools/plugins/pluginUtils';
 
 export default function SetInstalledVersionModal({
   open,
@@ -20,22 +20,34 @@ export default function SetInstalledVersionModal({
   const [loading, setLoading] = useState(false);
   const [draft, setDraft] = useState(null);
   const [selectedId, setSelectedId] = useState('');
+  const pluginRef = useRef(plugin);
+  pluginRef.current = plugin;
+
+  const pluginKey = plugin ? `${plugin.type}:${plugin.id}` : '';
 
   useEffect(() => {
-    if (!open || !plugin) return undefined;
+    if (!open) {
+      setDraft(null);
+      setSelectedId('');
+      setLoading(false);
+      return undefined;
+    }
+
+    const currentPlugin = pluginRef.current;
+    if (!currentPlugin) return undefined;
 
     let cancelled = false;
 
     const load = async () => {
-      if (plugin.versions?.length) {
-        setDraft(plugin);
-        setSelectedId(String(plugin.currentVersion?.id ?? plugin.versions[0]?.id ?? ''));
+      if (currentPlugin.versions?.length && !spigotVersionsNeedRefresh(currentPlugin)) {
+        setDraft(currentPlugin);
+        setSelectedId(String(currentPlugin.currentVersion?.id ?? currentPlugin.versions[0]?.id ?? ''));
         return;
       }
 
       setLoading(true);
       try {
-        const refreshed = await refreshPlugin(plugin, software);
+        const refreshed = await refreshPlugin(currentPlugin, software);
         if (cancelled) return;
         setDraft(refreshed);
         setSelectedId(String(refreshed.currentVersion?.id ?? refreshed.versions?.[0]?.id ?? ''));
@@ -53,11 +65,8 @@ export default function SetInstalledVersionModal({
 
     return () => {
       cancelled = true;
-      setDraft(null);
-      setSelectedId('');
-      setLoading(false);
     };
-  }, [open, plugin, software, onClose, onNotify, t]);
+  }, [open, pluginKey, software, onClose, onNotify, t]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -71,10 +80,13 @@ export default function SetInstalledVersionModal({
   const versionOptions = useMemo(() => {
     if (!draft?.versions?.length) return [];
 
-    const options = draft.versions.map((version) => ({
-      value: String(version.id),
-      label: `${version.name} (${formatPluginDate(version.releaseDate, locale)})`,
-    }));
+    const options = draft.versions.map((version) => {
+      const dateLabel = formatPluginDate(version.releaseDate, locale);
+      return {
+        value: String(version.id),
+        label: dateLabel ? `${version.name} (${dateLabel})` : version.name,
+      };
+    });
 
     const currentId = draft.currentVersion?.id;
     if (

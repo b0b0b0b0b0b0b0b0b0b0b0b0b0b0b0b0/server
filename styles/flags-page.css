@@ -222,3 +222,20 @@
 .flags-page .script-output-action:hover {
   box-shadow: 0 4px 14px color-mix(in srgb, var(--color-bg) 55%, transparent);
 }
+
+.flags-proxy-memory-warning {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--accent-yellow) 78%, var(--color-text-secondary));
+}
+
+.flags-proxy-memory-warning a {
+  color: color-mix(in srgb, var(--tool-accent) 82%, var(--color-text));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.flags-proxy-memory-warning a:hover {
+  color: var(--tool-accent);
+}
