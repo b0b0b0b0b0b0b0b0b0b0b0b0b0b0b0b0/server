@@ -361,7 +361,6 @@
   transform: scale(1);
 }
 
-/* Portaled to document.body — must override hidden default above */
 .lum-dropdown-menu.lum-dropdown-menu--floating {
   position: fixed;
   top: auto;
