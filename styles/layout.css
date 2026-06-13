@@ -1,0 +1,108 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(100% - 32px, var(--size-container));
+  margin: 0 auto;
+  padding: 14px 0;
+}
+
+.site-header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.site-header-brand {
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.site-header-abbrev {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: var(--accent-orange-bg);
+  color: var(--accent-orange);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.site-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--size-radius);
+  background: var(--color-surface-muted);
+}
+
+.site-header-select {
+  min-width: 104px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: calc(var(--size-radius-sm) - 2px);
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--size-font-sm);
+}
+
+.site-header-select:focus {
+  outline: none;
+  background: var(--color-surface);
+}
+
+.site-header-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: calc(var(--size-radius-sm) - 2px);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.site-header-btn:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+@media (max-width: 480px) {
+  .site-header-inner {
+    width: min(100% - 20px, var(--size-container));
+    padding: 12px 0;
+  }
+
+  .site-header-logo {
+    gap: 6px;
+  }
+
+  .site-header-brand {
+    font-size: 0.92rem;
+    max-width: 28vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .site-header-select {
+    min-width: 92px;
+    max-width: 110px;
+  }
+}
