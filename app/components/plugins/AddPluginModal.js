@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Blocks, Loader2, X } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
+import ModalPortal from '@/app/components/ModalPortal';
 import LumDropdown from '@/app/components/LumDropdown';
 import { PLUGIN_SOURCES, PLUGIN_URL_REGEX } from '@/lib/config/plugins';
 import { getPluginLoaders } from '@/lib/tools/plugins/PluginLoaders';
@@ -11,13 +12,13 @@ import {
   pluginFromSearchHit,
   searchPlugins,
 } from '@/lib/tools/plugins/PluginRegistry';
-import { ModrinthIcon, SOURCE_ICONS, SpigotIcon } from '@/lib/ui/SourceIcons';
+import PluginSearchResultRow from '@/app/components/plugins/PluginSearchResultRow';
+import { SOURCE_ICONS } from '@/lib/ui/SourceIcons';
 import { formatPluginDate } from '@/lib/tools/plugins/pluginUtils';
 
 const SOURCE_DESCRIPTION_KEYS = {
   modrinth: 'tools.plugins.sources.modrinthDesc',
   spigot: 'tools.plugins.sources.spigotDesc',
-  misc: 'tools.plugins.sources.miscDesc',
 };
 
 export default function AddPluginModal({
@@ -34,6 +35,13 @@ export default function AddPluginModal({
   const [searchResults, setSearchResults] = useState([]);
   const [draft, setDraft] = useState(null);
   const [loading, setLoading] = useState(false);
+  const onNotifyRef = useRef(onNotify);
+  const tRef = useRef(t);
+
+  useEffect(() => {
+    onNotifyRef.current = onNotify;
+    tRef.current = t;
+  }, [onNotify, t]);
 
   const loaders = useMemo(() => getPluginLoaders(software), [software]);
 
@@ -47,13 +55,14 @@ export default function AddPluginModal({
   }, [open, onClose]);
 
   useEffect(() => {
-    if (!open) {
+    if (!open) return undefined;
+    return () => {
       setSource('modrinth');
       setQuery('');
       setSearchResults([]);
       setDraft(null);
       setLoading(false);
-    }
+    };
   }, [open]);
 
   const sourceOptions = useMemo(
@@ -90,7 +99,7 @@ export default function AddPluginModal({
     if (!match) return false;
     const pluginId = source === 'spigot' ? match[2] : match[1];
     if (isDuplicate(pluginId, source)) {
-      onNotify('warn', t('tools.plugins.alreadyAdded'));
+      onNotifyRef.current('warn', tRef.current('tools.plugins.alreadyAdded'));
       return true;
     }
     setLoading(true);
@@ -100,7 +109,7 @@ export default function AddPluginModal({
       setDraft(instance.toJSON());
       setSearchResults([]);
     } catch (error) {
-      onNotify('error', `${t('tools.plugins.fetchError')} ${error.message}`);
+      onNotifyRef.current('error', `${tRef.current('tools.plugins.fetchError')} ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -108,10 +117,8 @@ export default function AddPluginModal({
   };
 
   useEffect(() => {
-    if (!open || source === 'misc' || !query.trim()) {
-      if (!query.trim()) {
-        setSearchResults([]);
-      }
+    if (!open || !query.trim()) {
+      setSearchResults([]);
       return undefined;
     }
 
@@ -126,7 +133,7 @@ export default function AddPluginModal({
         const hits = await searchPlugins(source, value, loaders);
         if (cancelled) return;
         if (!hits.length) {
-          onNotify('warn', t('tools.plugins.noResults', { query: value }));
+          onNotifyRef.current('warn', tRef.current('tools.plugins.noResults', { query: value }));
           setSearchResults([]);
           setDraft(null);
           return;
@@ -139,7 +146,7 @@ export default function AddPluginModal({
         );
         setDraft(null);
       } catch (error) {
-        if (!cancelled) onNotify('error', `${t('tools.plugins.searchError')} ${error.message}`);
+        if (!cancelled) onNotifyRef.current('error', `${tRef.current('tools.plugins.searchError')} ${error.message}`);
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -149,7 +156,7 @@ export default function AddPluginModal({
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [query, source, open, software, loaders, t, onNotify]);
+  }, [query, source, open, software, loaders]);
 
   const handleSelectResult = async (pluginId) => {
     const hit = searchResults.find((item) => String(item.id) === String(pluginId));
@@ -179,29 +186,7 @@ export default function AddPluginModal({
     setDraft({ ...draft, currentVersion: selected });
   };
 
-  const handleMiscChange = (field, value) => {
-    setDraft((current) => ({
-      id: current?.id ?? Math.random().toString(36).slice(2),
-      type: 'misc',
-      name: field === 'name' ? value : current?.name ?? '',
-      url: field === 'url' ? value : current?.url ?? '',
-      iconUrl: field === 'iconUrl' ? value : current?.iconUrl ?? '',
-      currentVersion: current?.currentVersion ?? {
-        id: 'manual',
-        name: t('tools.plugins.manualVersion'),
-        releaseDate: new Date(),
-      },
-      latestVersion: current?.latestVersion ?? {
-        id: 'manual',
-        name: t('tools.plugins.manualVersion'),
-        releaseDate: new Date(),
-      },
-    }));
-  };
-
-  const canAdd = source === 'misc'
-    ? Boolean(draft?.name?.trim())
-    : Boolean(draft?.currentVersion);
+  const canAdd = Boolean(draft?.currentVersion);
 
   const handleAdd = () => {
     if (!canAdd || !draft) return;
@@ -219,7 +204,8 @@ export default function AddPluginModal({
   if (!open) return null;
 
   return (
-    <div className="plugin-modal-backdrop" onClick={onClose} role="presentation">
+    <ModalPortal>
+      <div className="plugin-modal-backdrop" onClick={onClose} role="presentation">
       <div
         className="plugin-modal"
         role="dialog"
@@ -237,7 +223,7 @@ export default function AddPluginModal({
           </button>
         </div>
 
-        <div className="plugin-modal-body">
+        <div className="plugin-modal-body lum-scroll">
           <LumDropdown
             id="plugin-source"
             label={t('tools.plugins.pluginSource')}
@@ -251,85 +237,42 @@ export default function AddPluginModal({
           />
           <p className="field-hint">{t(SOURCE_DESCRIPTION_KEYS[source])}</p>
 
-          {source === 'misc' ? (
-            <div className="plugin-modal-fields">
-              <label className="field">
-                <span className="field-label">{t('tools.plugins.pluginName')}</span>
-                <input
-                  className="lum-input"
-                  value={draft?.name ?? ''}
-                  onChange={(event) => handleMiscChange('name', event.target.value)}
+          <label className="field">
+            <span className="field-label">{t('tools.plugins.searchLabel')}</span>
+            <input
+              className="lum-input"
+              value={query}
+              placeholder={t(`tools.plugins.searchPlaceholder.${source}`)}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </label>
+          {loading && (
+            <p className="plugin-modal-status">
+              <Loader2 size={16} className="spin" />
+              {t('tools.plugins.loading')}
+            </p>
+          )}
+          {searchResults.length > 0 && (
+            <div className="plugin-search-results">
+              <p className="field-label">{t('tools.plugins.searchResults')}</p>
+              {searchResults.map((item) => (
+                <PluginSearchResultRow
+                  key={`${source}-${item.id}`}
+                  source={source}
+                  item={item}
+                  onSelect={handleSelectResult}
                 />
-              </label>
-              <label className="field">
-                <span className="field-label">{t('tools.plugins.pluginLink')}</span>
-                <input
-                  className="lum-input"
-                  value={draft?.url ?? ''}
-                  onChange={(event) => handleMiscChange('url', event.target.value)}
-                />
-              </label>
-              <label className="field">
-                <span className="field-label">{t('tools.plugins.iconUrl')}</span>
-                <input
-                  className="lum-input"
-                  value={draft?.iconUrl ?? ''}
-                  onChange={(event) => handleMiscChange('iconUrl', event.target.value)}
-                />
-              </label>
+              ))}
             </div>
-          ) : (
-            <>
-              <label className="field">
-                <span className="field-label">{t('tools.plugins.searchLabel')}</span>
-                <input
-                  className="lum-input"
-                  value={query}
-                  placeholder={t(`tools.plugins.searchPlaceholder.${source}`)}
-                  onChange={(event) => setQuery(event.target.value)}
-                />
-              </label>
-              {loading && (
-                <p className="plugin-modal-status">
-                  <Loader2 size={16} className="spin" />
-                  {t('tools.plugins.loading')}
-                </p>
-              )}
-              {searchResults.length > 0 && (
-                <div className="plugin-search-results">
-                  <p className="field-label">{t('tools.plugins.searchResults')}</p>
-                  {searchResults.map((item) => (
-                    <button
-                      key={`${source}-${item.id}`}
-                      type="button"
-                      className="plugin-search-result"
-                      onClick={() => handleSelectResult(item.id)}
-                    >
-                      {item.iconUrl ? (
-                        <img src={item.iconUrl} alt="" width={32} height={32} />
-                      ) : source === 'modrinth' ? (
-                        <ModrinthIcon size={24} />
-                      ) : (
-                        <SpigotIcon size={24} />
-                      )}
-                      <span>
-                        <strong>{item.name}</strong>
-                        {item.description && <span>{item.description}</span>}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              )}
-              {draft?.versions?.length > 0 && (
-                <LumDropdown
-                  id="plugin-version"
-                  label={t('tools.plugins.currentVersionLabel')}
-                  value={draft.currentVersion ? String(draft.currentVersion.id) : ''}
-                  options={versionOptions}
-                  onChange={handleVersionChange}
-                />
-              )}
-            </>
+          )}
+          {draft?.versions?.length > 0 && (
+            <LumDropdown
+              id="plugin-version"
+              label={t('tools.plugins.currentVersionLabel')}
+              value={draft.currentVersion ? String(draft.currentVersion.id) : ''}
+              options={versionOptions}
+              onChange={handleVersionChange}
+            />
           )}
         </div>
 
@@ -342,5 +285,6 @@ export default function AddPluginModal({
         )}
       </div>
     </div>
+    </ModalPortal>
   );
 }

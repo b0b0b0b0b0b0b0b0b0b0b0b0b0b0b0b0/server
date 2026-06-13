@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { X } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
+import LumTooltip from '@/app/components/LumTooltip';
 import { useWorkspace } from '@/app/components/WorkspaceProvider';
 import { formatAnalysisLabel } from '@/lib/ui/analysisLabel';
 
@@ -24,15 +25,16 @@ export default function WorkspaceAnalyses() {
             <Link href={`/tools/analyze/${encodeURIComponent(entry.id)}`} className="workspace-analyses-link">
               {formatAnalysisLabel(entry, locale)}
             </Link>
-            <button
-              type="button"
-              className="workspace-analyses-remove lum-btn"
-              onClick={() => patch((store) => { store.removeAnalysis(entry.id, activeServerId); })}
-              title={t('workspace.removeAnalysis')}
-              aria-label={t('workspace.removeAnalysis')}
-            >
-              <X size={14} />
-            </button>
+            <LumTooltip content={t('workspace.tooltips.removeAnalysis')} side="bottom">
+              <button
+                type="button"
+                className="workspace-analyses-remove lum-btn"
+                onClick={() => patch((store) => { store.removeAnalysis(entry.id, activeServerId); })}
+                aria-label={t('workspace.removeAnalysis')}
+              >
+                <X size={14} />
+              </button>
+            </LumTooltip>
           </li>
         ))}
       </ul>

@@ -122,6 +122,46 @@
     0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
+.lum-scroll {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--scroll-accent, var(--color-accent)) 58%, transparent) transparent;
+}
+
+.lum-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.lum-scroll::-webkit-scrollbar-track {
+  margin: 10px 2px;
+  background: color-mix(in srgb, var(--scroll-accent, var(--color-accent)) 7%, var(--color-surface-muted));
+  border-radius: 999px;
+}
+
+.lum-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--scroll-accent, var(--color-accent)) 50%, var(--color-text-secondary) 22%);
+  background-clip: padding-box;
+}
+
+.lum-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--scroll-accent, var(--color-accent)) 66%, white 6%);
+  background-clip: padding-box;
+}
+
+.lum-scroll::-webkit-scrollbar-thumb:active {
+  background-color: color-mix(in srgb, var(--scroll-accent, var(--color-accent)) 74%, transparent);
+  background-clip: padding-box;
+}
+
+.lum-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 .lum-range {
   display: flex;
   flex-direction: column;
@@ -272,7 +312,8 @@
   max-height: 18rem;
   flex-direction: column;
   gap: 4px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 4px;
   border: 1px solid var(--glass-border);
   border-radius: var(--size-radius-sm);
@@ -284,18 +325,56 @@
   pointer-events: none;
   transform: scale(0.95);
   transition: opacity 0.15s ease, transform 0.15s ease;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-text-secondary) 38%, transparent) transparent;
 }
 
-.lum-dropdown-icon .lum-dropdown-menu {
-  right: 0;
-  left: auto;
-  min-width: 14rem;
+.lum-dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lum-dropdown-menu::-webkit-scrollbar-track {
+  margin: 6px 0;
+  background: transparent;
+}
+
+.lum-dropdown-menu::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text-secondary) 34%, transparent);
+  background-clip: padding-box;
+}
+
+.lum-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-text-secondary) 52%, transparent);
+  background-clip: padding-box;
+}
+
+.lum-dropdown-menu::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .lum-dropdown.is-open .lum-dropdown-menu {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
+}
+
+/* Portaled to document.body — must override hidden default above */
+.lum-dropdown-menu.lum-dropdown-menu--floating {
+  position: fixed;
+  top: auto;
+  right: auto;
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  transition: none;
+}
+
+.lum-dropdown-icon .lum-dropdown-menu {
+  min-width: 14rem;
 }
 
 .lum-dropdown-item {
@@ -349,4 +428,70 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.lum-tooltip {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.lum-tooltip-bubble {
+  position: absolute;
+  z-index: 400;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%) translateY(4px);
+  width: max-content;
+  max-width: min(260px, 72vw);
+  padding: 6px 9px;
+  border-radius: var(--size-radius-sm);
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-surface));
+  color: color-mix(in srgb, var(--color-text-secondary) 92%, transparent);
+  font-size: 0.7rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--color-bg) 45%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease,
+    visibility 0.14s ease;
+}
+
+.lum-tooltip-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: color-mix(in srgb, var(--color-bg-elevated) 94%, var(--color-surface));
+}
+
+.lum-tooltip[data-side='bottom'] .lum-tooltip-bubble {
+  bottom: auto;
+  top: calc(100% + 10px);
+  transform: translateX(-50%) translateY(-6px);
+}
+
+.lum-tooltip[data-side='bottom'] .lum-tooltip-bubble::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: color-mix(in srgb, var(--color-bg-elevated) 94%, var(--color-surface));
+}
+
+.lum-tooltip.is-visible .lum-tooltip-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.lum-tooltip[data-side='bottom'].is-visible .lum-tooltip-bubble {
+  transform: translateX(-50%) translateY(0);
 }

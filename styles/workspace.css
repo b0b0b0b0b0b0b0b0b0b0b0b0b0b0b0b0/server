@@ -7,7 +7,6 @@
   flex-wrap: wrap;
   gap: 6px;
   min-width: 0;
-  overflow-x: auto;
   padding: 6px;
   border: none;
   border-radius: var(--size-radius-lg);
@@ -15,7 +14,13 @@
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
-  scrollbar-width: thin;
+}
+
+.server-switcher-hint {
+  margin: 5px 8px 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--color-text-secondary) 62%, transparent);
 }
 
 .server-switcher .lum-btn:hover {

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useLocale, useTheme } from '@/app/components/AppProviders';
 import LumDropdown from '@/app/components/LumDropdown';
+import LumTooltip from '@/app/components/LumTooltip';
 import { labels } from '@/locales/index';
 import { LOCALES } from '@/lib/config/constants';
 
@@ -36,17 +37,20 @@ export default function SiteHeader() {
               id="header-locale"
               value={locale}
               options={localeOptions}
+              tooltip={t('nav.tooltips.locale')}
               onChange={setLocale}
             />
           </div>
-          <button
-            type="button"
-            className="site-header-btn"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label={t('nav.theme')}
-          >
-            {mounted && ready && (theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />)}
-          </button>
+          <LumTooltip content={t('nav.tooltips.theme')} side="bottom">
+            <button
+              type="button"
+              className="site-header-btn"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label={t('nav.theme')}
+            >
+              {mounted && ready && (theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />)}
+            </button>
+          </LumTooltip>
         </nav>
       </div>
     </header>

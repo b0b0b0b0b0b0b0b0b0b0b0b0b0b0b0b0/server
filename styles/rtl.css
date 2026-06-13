@@ -2,11 +2,6 @@
   margin-inline-start: auto;
 }
 
-[dir='rtl'] .site-header-locale .lum-dropdown-menu {
-  inset-inline-end: 0;
-  inset-inline-start: auto;
-}
-
 [dir='rtl'] .lum-dropdown-trigger-text,
 [dir='rtl'] .lum-dropdown-item {
   text-align: start;

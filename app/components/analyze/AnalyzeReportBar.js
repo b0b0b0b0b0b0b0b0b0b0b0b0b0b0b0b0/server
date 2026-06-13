@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Check, Copy } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
+import LumTooltip from '@/app/components/LumTooltip';
 import { pluralRu } from '@/lib/core/pluralRu';
 
 function issuesLabel(count, locale, t) {
@@ -50,13 +51,13 @@ export default function AnalyzeReportBar({ id, issueCount, okCount }) {
           <span className="analyze-report-stat-label">{passedLabel(okCount, locale, t)}</span>
         </div>
       )}
-      <button
-        type="button"
-        className={`analyze-report-id${copied ? ' is-copied' : ''}`}
-        onClick={copyLink}
-        title={t('tools.analyze.copyProfileLink')}
-        aria-label={t('tools.analyze.copyProfileLink')}
-      >
+      <LumTooltip content={t('tools.analyze.tooltips.copyLink')} side="bottom">
+        <button
+          type="button"
+          className={`analyze-report-id${copied ? ' is-copied' : ''}`}
+          onClick={copyLink}
+          aria-label={t('tools.analyze.copyProfileLink')}
+        >
         <span className="analyze-report-id-label">{t('tools.analyze.reportProfile')}</span>
         <span className="analyze-report-id-value">
           <code>{id}</code>
@@ -65,7 +66,8 @@ export default function AnalyzeReportBar({ id, issueCount, okCount }) {
           </span>
         </span>
         {copied ? <span className="analyze-report-id-hint">{t('common.copied')}</span> : null}
-      </button>
+        </button>
+      </LumTooltip>
     </div>
   );
 }

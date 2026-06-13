@@ -2,6 +2,7 @@
 
 import { Plus } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
+import LumTooltip from '@/app/components/LumTooltip';
 import { useWorkspace } from '@/app/components/WorkspaceProvider';
 
 function nextServerName(serverList, template) {
@@ -55,32 +56,34 @@ export default function ServerSwitcher({ className = '' }) {
                 event.preventDefault();
                 handleRename(server.id, server.name);
               }}
-              title={`${server.name} — ${t('workspace.renameHint')}`}
             >
               {server.name}
             </button>
-            <button
-              type="button"
-              className="server-switcher-tab-close"
-              onClick={(event) => {
-                event.stopPropagation();
-                handleDelete(server.id, server.name);
-              }}
-              aria-label={t('workspace.deleteServer')}
-              title={t('workspace.deleteServer')}
-            />
+            <LumTooltip content={t('workspace.tooltips.deleteServer')} side="bottom" delay={520}>
+              <button
+                type="button"
+                className="server-switcher-tab-close"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  handleDelete(server.id, server.name);
+                }}
+                aria-label={t('workspace.deleteServer')}
+              />
+            </LumTooltip>
           </div>
         ))}
-        <button
-          type="button"
-          className="lum-btn server-switcher-tab server-switcher-tab--add"
-          onClick={handleAdd}
-          title={t('workspace.addServer')}
-          aria-label={t('workspace.addServer')}
-        >
-          <Plus size={16} />
-        </button>
+        <LumTooltip content={t('workspace.tooltips.addServer')} side="bottom" delay={520}>
+          <button
+            type="button"
+            className="lum-btn server-switcher-tab server-switcher-tab--add"
+            onClick={handleAdd}
+            aria-label={t('workspace.addServer')}
+          >
+            <Plus size={16} />
+          </button>
+        </LumTooltip>
       </div>
+      <p className="server-switcher-hint">{t('workspace.renameHint')}</p>
     </div>
   );
 }

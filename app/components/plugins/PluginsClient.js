@@ -1,18 +1,23 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Blocks,
-  Copy,
+  Download,
   Filter,
   Loader2,
   Plus,
   RefreshCw,
+  Trash2,
+  Upload,
 } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
 import AddPluginModal from '@/app/components/plugins/AddPluginModal';
+import ImportJarsModal from '@/app/components/plugins/ImportJarsModal';
+import RelinkPluginModal from '@/app/components/plugins/RelinkPluginModal';
 import PluginCard from '@/app/components/plugins/PluginCard';
 import LumDropdown from '@/app/components/LumDropdown';
+import LumTooltip from '@/app/components/LumTooltip';
 import ServerSwitcher from '@/app/components/ServerSwitcher';
 import { useWorkspace } from '@/app/components/WorkspaceProvider';
 import {
@@ -21,19 +26,27 @@ import {
   PLUGIN_SPIGOT_DOWNLOAD_LIMIT,
   PLUGIN_SPIGOT_DOWNLOAD_WINDOW_MS,
 } from '@/lib/config/plugins';
+import { parsePluginImportJson, pluginExportFilename } from '@/lib/tools/plugins/pluginBackup';
 import { refreshPlugin } from '@/lib/tools/plugins/PluginRegistry';
 import { downloadSpigotPlugin } from '@/lib/tools/plugins/SpigotPlugin';
-import { isUpdateAvailable } from '@/lib/tools/plugins/pluginUtils';
+import { isUpdateAvailable, openPluginDownload } from '@/lib/tools/plugins/pluginUtils';
 import { PLUGIN_SOFTWARE_ICONS } from '@/lib/ui/PluginSoftwareIcons';
 import { ModrinthIcon, SOURCE_ICONS, SpigotIcon } from '@/lib/ui/SourceIcons';
+
+const IMPORT_REASON_KEYS = {
+  invalidJson: 'tools.plugins.importInvalidJson',
+  invalidFormat: 'tools.plugins.importInvalidFormat',
+  emptyList: 'tools.plugins.importEmptyList',
+};
 
 export default function PluginsClient() {
   const { t } = useLocale();
   const { ready, activeServerId, activeServer, pluginsFilter, patch } = useWorkspace();
   const [modalOpen, setModalOpen] = useState(false);
+  const [jarModalOpen, setJarModalOpen] = useState(false);
+  const [relinkIndex, setRelinkIndex] = useState(null);
   const [loadingMap, setLoadingMap] = useState({});
   const [bulkLoading, setBulkLoading] = useState(null);
-  const [importValue, setImportValue] = useState('');
   const [toast, setToast] = useState(null);
   const [spigotRateLimit] = useState({
     downloadCount: 0,
@@ -41,6 +54,15 @@ export default function PluginsClient() {
     limit: PLUGIN_SPIGOT_DOWNLOAD_LIMIT,
     windowMs: PLUGIN_SPIGOT_DOWNLOAD_WINDOW_MS,
   });
+  const mountedRef = useRef(false);
+  const importFileRef = useRef(null);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (!toast) return;
@@ -49,11 +71,13 @@ export default function PluginsClient() {
   }, [toast]);
 
   const notify = useCallback((type, message) => {
+    if (!mountedRef.current) return;
     setToast({ type, message });
   }, []);
 
   const software = activeServer?.plugins.software ?? 'paper';
   const plugins = activeServer?.plugins.list ?? [];
+  const serverName = activeServer?.name ?? t('workspace.defaultServerName');
 
   const softwareOptions = useMemo(
     () => PLUGIN_SOFTWARE.map((value) => {
@@ -82,46 +106,65 @@ export default function PluginsClient() {
     };
   }), [t]);
 
-  const visiblePlugins = useMemo(() => {
+  const pluginGroups = useMemo(() => {
     const filter = pluginsFilter ?? 'all';
-    return plugins
+    const filtered = plugins
       .map((plugin, index) => ({ plugin, index }))
       .filter(({ plugin }) => {
         if (filter === 'all') return true;
         if (filter === 'outdated') return isUpdateAvailable(plugin);
         return plugin.type === filter;
       });
+
+    return {
+      outdated: filtered.filter(({ plugin }) => isUpdateAvailable(plugin)),
+      current: filtered.filter(({ plugin }) => !isUpdateAvailable(plugin)),
+      total: filtered.length,
+    };
   }, [plugins, pluginsFilter]);
 
-  const outdatedCount = useMemo(
-    () => plugins.filter((plugin) => isUpdateAvailable(plugin)).length,
-    [plugins],
-  );
-
   const setLoading = (key, value) => {
+    if (!mountedRef.current) return;
     setLoadingMap((current) => ({ ...current, [key]: value }));
   };
 
-  const handleExport = async () => {
+  const setBulkLoadingSafe = (value) => {
+    if (!mountedRef.current) return;
+    setBulkLoading(value);
+  };
+
+  const handleExportFile = () => {
     try {
-      await navigator.clipboard.writeText(JSON.stringify(plugins, null, 2));
+      const blob = new Blob([JSON.stringify(plugins, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = pluginExportFilename(serverName);
+      link.click();
+      URL.revokeObjectURL(url);
       notify('success', t('tools.plugins.exported'));
     } catch (error) {
       notify('error', `${t('tools.plugins.exportFailed')} ${error.message}`);
     }
   };
 
-  const handleImport = () => {
-    if (!importValue.trim()) return;
+  const handleImportFile = async (file) => {
+    if (!file) return;
     try {
-      const parsed = JSON.parse(importValue);
+      const parsed = parsePluginImportJson(await file.text());
+      if (!parsed.ok) {
+        const key = IMPORT_REASON_KEYS[parsed.reason];
+        notify('error', key ? t(key) : t('tools.plugins.importFailed'));
+        return;
+      }
       patch((store) => {
-        store.importPlugins(parsed, activeServerId);
+        store.importPlugins(parsed.plugins, activeServerId);
       });
-      setImportValue('');
       notify('success', t('tools.plugins.imported'));
     } catch (error) {
       notify('error', `${t('tools.plugins.importFailed')} ${error.message}`);
+    } finally {
+      if (importFileRef.current) importFileRef.current.value = '';
     }
   };
 
@@ -132,6 +175,7 @@ export default function PluginsClient() {
     setLoading(key, true);
     try {
       const updated = await refreshPlugin(plugin, software);
+      if (!mountedRef.current) return;
       updated.updateDate = new Date();
       patch((store) => {
         store.updatePlugin(index, updated, activeServerId);
@@ -151,8 +195,8 @@ export default function PluginsClient() {
     try {
       if (plugin.type === 'spigot') {
         await downloadSpigotPlugin(plugin, spigotRateLimit);
-      } else if (plugin.file?.url) {
-        window.open(plugin.file.url, '_blank');
+      } else {
+        openPluginDownload(plugin);
       }
       patch((store) => {
         const list = store.getPluginList(activeServerId);
@@ -178,13 +222,33 @@ export default function PluginsClient() {
     });
   };
 
+  const handleRemovePlugin = (index) => {
+    const plugin = plugins[index];
+    if (!plugin) return;
+    if (!window.confirm(t('tools.plugins.confirmRemove', { name: plugin.name }))) return;
+    patch((store) => {
+      store.removePlugin(index, activeServerId);
+    });
+    notify('success', t('tools.plugins.removed', { name: plugin.name }));
+  };
+
+  const handleRemoveAll = () => {
+    if (!plugins.length) return;
+    if (!window.confirm(t('tools.plugins.confirmRemoveAll', { count: plugins.length }))) return;
+    patch((store) => {
+      store.clearPlugins(activeServerId);
+    });
+    notify('success', t('tools.plugins.removedAll'));
+  };
+
   const handleCheckAll = async () => {
-    setBulkLoading('check');
+    setBulkLoadingSafe('check');
     try {
       for (let index = 0; index < plugins.length; index += 1) {
         const plugin = plugins[index];
         if (plugin.type === 'misc') continue;
         const updated = await refreshPlugin(plugin, software);
+        if (!mountedRef.current) return;
         updated.updateDate = new Date();
         patch((store) => {
           store.updatePlugin(index, updated, activeServerId);
@@ -194,34 +258,22 @@ export default function PluginsClient() {
     } catch (error) {
       notify('error', `${t('tools.plugins.refreshError')} ${error.message}`);
     } finally {
-      setBulkLoading(null);
+      setBulkLoadingSafe(null);
     }
   };
 
-  const handleDownloadAll = async () => {
-    setBulkLoading('download');
-    try {
-      for (let index = 0; index < plugins.length; index += 1) {
-        const plugin = plugins[index];
-        if (!isUpdateAvailable(plugin)) continue;
-        if (plugin.type === 'spigot') {
-          await downloadSpigotPlugin(plugin, spigotRateLimit);
-        } else if (plugin.file?.url) {
-          window.open(plugin.file.url, '_blank');
-        }
-        patch((store) => {
-          const list = store.getPluginList(activeServerId);
-          const target = list[index];
-          if (target?.latestVersion) {
-            target.currentVersion = target.latestVersion;
-            target.updateDate = new Date();
-          }
-        });
-      }
-    } finally {
-      setBulkLoading(null);
-    }
-  };
+  const renderPluginCard = ({ plugin, index }) => (
+    <PluginCard
+      key={`${plugin.type}-${plugin.id}-${index}`}
+      plugin={plugin}
+      loading={loadingMap[`plugin-${index}`]}
+      onRefresh={() => handleRefreshPlugin(index)}
+      onDownload={() => handleDownloadPlugin(index)}
+      onMarkUpdated={() => handleMarkUpdated(index)}
+      onRemove={() => handleRemovePlugin(index)}
+      onRelink={() => setRelinkIndex(index)}
+    />
+  );
 
   if (!ready) return null;
 
@@ -250,10 +302,18 @@ export default function PluginsClient() {
       <>
         <div className="plugin-toolbar">
           <div className="plugin-toolbar-group">
-            <button type="button" className="lum-btn plugin-btn plugin-btn--accent" onClick={() => setModalOpen(true)}>
-              <Plus size={16} />
-              {t('tools.plugins.addPlugin')}
-            </button>
+            <LumTooltip content={t('tools.plugins.tooltips.importJars')}>
+              <button type="button" className="lum-btn plugin-btn plugin-btn--accent" onClick={() => setJarModalOpen(true)}>
+                <Upload size={16} />
+                {t('tools.plugins.importJars')}
+              </button>
+            </LumTooltip>
+            <LumTooltip content={t('tools.plugins.tooltips.addPlugin')}>
+              <button type="button" className="lum-btn plugin-btn" onClick={() => setModalOpen(true)}>
+                <Plus size={16} />
+                {t('tools.plugins.addPlugin')}
+              </button>
+            </LumTooltip>
           </div>
 
           <div className="plugin-toolbar-divider" aria-hidden />
@@ -264,83 +324,106 @@ export default function PluginsClient() {
               value={software}
               options={softwareOptions}
               iconOnly
+              tooltip={t('tools.plugins.tooltips.software')}
               onChange={(value) => patch((store) => { store.setPluginSoftware(value, activeServerId); })}
             />
             <LumDropdown
               id="plugin-filter"
               value={pluginsFilter ?? 'all'}
               options={filterOptions}
+              tooltip={t('tools.plugins.tooltips.filter')}
               onChange={(value) => patch((store) => { store.pluginsFilter = value; })}
             />
           </div>
+        </div>
 
-          <div className="plugin-toolbar-divider" aria-hidden />
-
-          <div className="plugin-toolbar-group plugin-toolbar-group--import">
-            <button type="button" className="lum-btn plugin-btn" onClick={handleExport}>
-              <Copy size={16} />
-              {t('tools.plugins.export')}
+        <div className="plugin-data-bar">
+          {plugins.length > 0 && (
+            <LumTooltip content={t('tools.plugins.tooltips.export')}>
+              <button type="button" className="plugin-data-action" onClick={handleExportFile}>
+                <Download size={14} />
+                {t('tools.plugins.export')}
+              </button>
+            </LumTooltip>
+          )}
+          <LumTooltip content={t('tools.plugins.tooltips.import')}>
+            <button
+              type="button"
+              className="plugin-data-action"
+              onClick={() => importFileRef.current?.click()}
+            >
+              <Upload size={14} />
+              {t('tools.plugins.importJson')}
             </button>
-            <input
-              className="lum-input plugin-import-input"
-              value={importValue}
-              placeholder={t('tools.plugins.importPlaceholder')}
-              onChange={(event) => setImportValue(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') handleImport();
-              }}
-            />
-          </div>
+          </LumTooltip>
+          <input
+            ref={importFileRef}
+            type="file"
+            accept=".json,application/json"
+            className="plugin-backup-input"
+            onChange={(event) => {
+              handleImportFile(event.target.files?.[0]);
+            }}
+          />
         </div>
 
         {plugins.length > 0 && (
           <div className="plugin-bulk-actions">
-            <button
-              type="button"
-              className="lum-btn plugin-btn"
-              onClick={handleCheckAll}
-              disabled={bulkLoading === 'check'}
-            >
-              {bulkLoading === 'check' ? <Loader2 size={16} className="spin" /> : <RefreshCw size={16} />}
-              {t('tools.plugins.checkAll')}
-            </button>
-            {outdatedCount > 0 && (
+            <LumTooltip content={t('tools.plugins.tooltips.checkAll')}>
               <button
                 type="button"
-                className="lum-btn plugin-btn plugin-btn--primary"
-                onClick={handleDownloadAll}
-                disabled={bulkLoading === 'download'}
+                className="lum-btn plugin-btn"
+                onClick={handleCheckAll}
+                disabled={bulkLoading === 'check'}
               >
-                {bulkLoading === 'download' ? <Loader2 size={16} className="spin" /> : <RefreshCw size={16} />}
-                {t('tools.plugins.downloadAll', { count: outdatedCount })}
+                {bulkLoading === 'check' ? <Loader2 size={16} className="spin" /> : <RefreshCw size={16} />}
+                {t('tools.plugins.checkAll')}
               </button>
-            )}
-            {outdatedCount > 10 && (
-              <p className="field-hint">{t('tools.plugins.spigotRateHint')}</p>
-            )}
+            </LumTooltip>
+            <LumTooltip content={t('tools.plugins.tooltips.removeAll')}>
+              <button
+                type="button"
+                className="lum-btn plugin-btn plugin-btn--danger plugin-btn--compact plugin-bulk-remove"
+                onClick={handleRemoveAll}
+                disabled={Boolean(bulkLoading)}
+              >
+                <Trash2 size={16} />
+                {t('tools.plugins.removeAll', { count: plugins.length })}
+              </button>
+            </LumTooltip>
           </div>
         )}
 
-        <div className="plugin-grid">
-          {visiblePlugins.length === 0 && (
-            <p className="plugin-empty-list">{t('tools.plugins.emptyList')}</p>
-          )}
-          {visiblePlugins.map(({ plugin, index }) => (
-            <PluginCard
-              key={`${plugin.type}-${plugin.id}-${index}`}
-              plugin={plugin}
-              loading={loadingMap[`plugin-${index}`]}
-              onRefresh={() => handleRefreshPlugin(index)}
-              onDownload={() => handleDownloadPlugin(index)}
-              onMarkUpdated={() => handleMarkUpdated(index)}
-              onRemove={() => patch((store) => { store.removePlugin(index, activeServerId); })}
-            />
-          ))}
-        </div>
+        {pluginGroups.total === 0 && (
+          <p className="plugin-empty-list">{t('tools.plugins.emptyList')}</p>
+        )}
+
+        {pluginGroups.outdated.length > 0 && (
+          <section className="plugin-section">
+            <h2 className="plugin-section-title plugin-section-title--outdated">
+              {t('tools.plugins.sections.outdated', { count: pluginGroups.outdated.length })}
+            </h2>
+            <div className="plugin-grid">
+              {pluginGroups.outdated.map(renderPluginCard)}
+            </div>
+          </section>
+        )}
+
+        {pluginGroups.current.length > 0 && (
+          <section className="plugin-section">
+            <h2 className="plugin-section-title">
+              {t('tools.plugins.sections.current', { count: pluginGroups.current.length })}
+            </h2>
+            <div className="plugin-grid">
+              {pluginGroups.current.map(renderPluginCard)}
+            </div>
+          </section>
+        )}
       </>
 
+      {modalOpen && (
       <AddPluginModal
-        open={modalOpen}
+        open
         software={software}
         existingPlugins={plugins}
         onClose={() => setModalOpen(false)}
@@ -353,6 +436,44 @@ export default function PluginsClient() {
         }}
         onNotify={notify}
       />
+      )}
+
+      {jarModalOpen && (
+      <ImportJarsModal
+        open
+        software={software}
+        existingPlugins={plugins}
+        onClose={() => setJarModalOpen(false)}
+        onImport={(items) => {
+          let added = 0;
+          patch((store) => {
+            items.forEach((plugin) => {
+              if (store.addPlugin(plugin, activeServerId)) added += 1;
+            });
+          });
+          return { added, skipped: items.length - added };
+        }}
+        onNotify={notify}
+      />
+      )}
+
+      {relinkIndex !== null && plugins[relinkIndex] && (
+      <RelinkPluginModal
+        open
+        plugin={plugins[relinkIndex]}
+        software={software}
+        existingPlugins={plugins}
+        excludeIndex={relinkIndex}
+        onClose={() => setRelinkIndex(null)}
+        onSave={(next) => {
+          patch((store) => {
+            store.updatePlugin(relinkIndex, next, activeServerId);
+          });
+          notify('success', t('tools.plugins.relinkSaved'));
+        }}
+        onNotify={notify}
+      />
+      )}
     </div>
   );
 }
