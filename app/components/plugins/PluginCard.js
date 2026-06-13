@@ -84,7 +84,7 @@ export default function PluginCard({
         {plugin.type !== 'misc' && (
           <button
             type="button"
-            className="lum-btn"
+            className="lum-btn plugin-btn plugin-btn--compact"
             onClick={onRefresh}
             disabled={loading}
           >
@@ -95,7 +95,7 @@ export default function PluginCard({
         {updateAvailable && plugin.file?.url && (
           <button
             type="button"
-            className="lum-btn lum-btn-primary"
+            className="lum-btn plugin-btn plugin-btn--compact plugin-btn--primary"
             onClick={onDownload}
             disabled={loading}
           >
@@ -108,23 +108,24 @@ export default function PluginCard({
             href={pageUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="lum-btn"
+            className="lum-btn plugin-btn plugin-btn--compact"
           >
             <ExternalLink size={16} />
             {t('tools.plugins.viewPlugin')}
           </a>
         )}
         {updateAvailable && (
-          <button type="button" className="lum-btn" onClick={onMarkUpdated}>
+          <button type="button" className="lum-btn plugin-btn plugin-btn--compact" onClick={onMarkUpdated}>
             <Check size={16} />
             {t('tools.plugins.markUpdated')}
           </button>
         )}
         <button
           type="button"
-          className="lum-btn plugin-card-remove"
+          className="lum-btn plugin-btn plugin-btn--compact plugin-btn--icon plugin-btn--danger plugin-card-remove"
           onClick={onRemove}
           title={t('tools.plugins.remove')}
+          aria-label={t('tools.plugins.remove')}
         >
           <Trash2 size={16} />
         </button>

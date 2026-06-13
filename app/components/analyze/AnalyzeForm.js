@@ -3,11 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLocale } from '@/app/components/AppProviders';
+import { useWorkspace } from '@/app/components/WorkspaceProvider';
 import { parseAnalyzeLink } from '@/lib/tools/analyze/parseAnalyzeLink';
+import { detectAnalysisKind } from '@/lib/ui/analysisLabel';
 
 export default function AnalyzeForm({ autoFocus = false }) {
   const { t } = useLocale();
   const router = useRouter();
+  const { patch, activeServerId } = useWorkspace();
   const [link, setLink] = useState('');
   const [error, setError] = useState('');
 
@@ -22,6 +25,13 @@ export default function AnalyzeForm({ autoFocus = false }) {
       return;
     }
     setError('');
+    patch((store) => {
+      store.saveAnalysis({
+        id: parsed.id,
+        link: link.trim(),
+        kind: detectAnalysisKind(link, parsed.id),
+      }, activeServerId);
+    });
     router.push(`/tools/analyze/${encodeURIComponent(parsed.id)}`);
   };
 

@@ -232,7 +232,7 @@ export default function AddPluginModal({
             <Blocks size={24} />
             {t('tools.plugins.addPlugin')}
           </h2>
-          <button type="button" className="lum-btn plugin-modal-close" onClick={onClose}>
+          <button type="button" className="lum-btn plugin-btn plugin-btn--icon plugin-modal-close" onClick={onClose}>
             <X size={18} />
           </button>
         </div>
@@ -335,7 +335,7 @@ export default function AddPluginModal({
 
         {canAdd && (
           <div className="plugin-modal-foot">
-            <button type="button" className="lum-btn lum-btn-primary" onClick={handleAdd}>
+            <button type="button" className="lum-btn plugin-btn plugin-btn--primary" onClick={handleAdd}>
               {t('tools.plugins.add')}
             </button>
           </div>

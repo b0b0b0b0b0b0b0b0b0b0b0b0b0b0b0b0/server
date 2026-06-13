@@ -1,0 +1,213 @@
+.flags-page {
+  --tool-accent: var(--accent-orange);
+  --tool-accent-bg: var(--accent-orange-bg);
+}
+
+.flags-page .tool-page-head {
+  margin-bottom: 22px;
+  padding: 22px 24px;
+  border: none;
+  border-radius: var(--size-radius-lg);
+  background: var(--glass-fill-strong);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+
+.flags-page .tool-page-title-icon {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--tool-accent-bg) 65%, transparent);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+.flags-page .tool-form-layout {
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.flags-page .tool-form-col {
+  gap: 16px;
+  padding: 20px;
+  border: none;
+  border-radius: var(--size-radius-lg);
+  background: var(--glass-fill);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+
+.flags-page .field-group-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.flags-page .lum-input,
+.flags-page .lum-btn {
+  border: none;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--glass-highlight) 50%, transparent);
+}
+
+.flags-page .lum-input:focus,
+.flags-page .lum-btn:hover {
+  border: none;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--glass-highlight) 65%, transparent),
+    0 0 0 2px color-mix(in srgb, var(--tool-accent) 18%, transparent);
+}
+
+.flags-page .lum-dropdown-menu {
+  border: none;
+  background: color-mix(in srgb, var(--color-bg-elevated) 96%, transparent);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+
+.flags-page .toggle-list,
+.flags-page .toggle-group {
+  gap: 6px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.flags-page .toggle-field {
+  border: none;
+  border-radius: var(--size-radius-sm);
+  background: color-mix(in srgb, var(--glass-fill) 45%, transparent);
+}
+
+.flags-page .toggle-item {
+  border: none;
+}
+
+.flags-page .toggle-item-icon {
+  color: color-mix(in srgb, var(--tool-accent) 70%, var(--color-text-secondary));
+}
+
+.flags-page .lum-toggle-track {
+  border: none;
+  background: color-mix(in srgb, var(--color-bg) 72%, var(--color-surface-muted));
+  box-shadow: inset 0 2px 5px color-mix(in srgb, var(--color-bg) 48%, transparent);
+}
+
+.flags-page .lum-toggle input:checked + .lum-toggle-track {
+  background: color-mix(in srgb, var(--tool-accent) 28%, var(--glass-fill));
+  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--color-bg) 25%, transparent);
+}
+
+.flags-page .lum-toggle input:checked + .lum-toggle-track::after {
+  background: var(--tool-accent);
+  transform: translate(18px, -50%);
+}
+
+.flags-page .lum-toggle input:focus-visible + .lum-toggle-track {
+  box-shadow:
+    inset 0 1px 2px color-mix(in srgb, var(--color-bg) 25%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--tool-accent) 20%, transparent);
+}
+
+.flags-page .lum-range-value {
+  border: none;
+  background: color-mix(in srgb, var(--glass-fill) 70%, transparent);
+  color: var(--tool-accent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--glass-highlight) 40%, transparent);
+}
+
+.flags-page .lum-range-track {
+  border: none;
+  background: color-mix(in srgb, var(--glass-fill) 50%, var(--color-input-bg));
+}
+
+.flags-page .lum-range-fill {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--tool-accent) 85%, transparent),
+    var(--tool-accent)
+  );
+}
+
+.flags-page .lum-range-input::-webkit-slider-thumb {
+  background: var(--tool-accent);
+  box-shadow: none;
+}
+
+.flags-page .lum-range-input::-moz-range-thumb {
+  background: var(--tool-accent);
+  box-shadow: none;
+}
+
+.flags-page .lum-range-input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tool-accent) 25%, transparent);
+}
+
+.flags-page .script-output-panel {
+  border: none;
+  background: var(--glass-fill);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+
+.flags-page .script-output-toolbar {
+  border-bottom: none;
+  background: color-mix(in srgb, var(--glass-fill-strong) 75%, transparent);
+}
+
+.flags-page .script-output-body {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--tool-accent) 5%, transparent) 0%,
+    transparent 72px
+  );
+}
+
+.flags-page .script-output-lang {
+  border: none;
+  background: color-mix(in srgb, var(--tool-accent) 12%, transparent);
+  color: var(--tool-accent);
+}
+
+.flags-page .script-output-scroll {
+  scrollbar-color: color-mix(in srgb, var(--tool-accent) 42%, transparent) transparent;
+}
+
+.flags-page .script-output-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--tool-accent) 38%, transparent);
+  background-clip: padding-box;
+}
+
+.flags-page .script-output-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--tool-accent) 58%, transparent);
+  background-clip: padding-box;
+}
+
+.flags-page .script-output-gutter {
+  background: var(--color-bg-elevated);
+}
+
+.flags-page .script-output-line .hl-flag {
+  color: color-mix(in srgb, var(--tool-accent) 82%, white);
+}
+
+.flags-page .script-output-line .hl-keyword {
+  color: color-mix(in srgb, var(--tool-accent) 55%, #8eb4ff);
+}
+
+.flags-page .script-output-filename-input:focus {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--tool-accent) 22%, transparent);
+}
+
+.flags-page .script-output-action {
+  border: none;
+}
+
+.flags-page .script-output-action:hover {
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-bg) 55%, transparent);
+}

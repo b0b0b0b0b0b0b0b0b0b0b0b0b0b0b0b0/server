@@ -2,6 +2,8 @@ import { Zap } from 'lucide-react';
 import AnalyzeForm from '@/app/components/analyze/AnalyzeForm';
 import AnalyzeFinding, { parseFinding } from '@/app/components/analyze/AnalyzeFinding';
 import AnalyzeReportBar from '@/app/components/analyze/AnalyzeReportBar';
+import ServerSwitcher from '@/app/components/ServerSwitcher';
+import WorkspaceAnalyses from '@/app/components/WorkspaceAnalyses';
 import { ANALYZE_GUIDE_URL, ANALYZE_SPARK_URL } from '@/lib/config/analyze';
 import { SITE_ORIGIN } from '@/lib/config/site';
 
@@ -37,7 +39,11 @@ export default function AnalyzeLanding({ t }) {
         </p>
       </div>
 
+      <ServerSwitcher />
+
       <AnalyzeForm />
+
+      <WorkspaceAnalyses />
 
       <p className="analyze-share">
         {t('tools.analyze.shareHint')}
@@ -70,6 +76,8 @@ export function AnalyzeResultsView({ t, id, results, showAnother = true }) {
           {t('tools.analyze.guideLink')}
         </a>
       </p>
+
+      <ServerSwitcher />
 
       <div className="analyze-report">
         <AnalyzeReportBar id={id} issueCount={issueCount} okCount={okCount} />

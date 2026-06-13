@@ -1,4 +1,7 @@
 export const en = {
+  meta: {
+    documentTitle: 'MTools — Free Minecraft Server Tools & JVM Flags Generator',
+  },
   site: {
     name: 'MTools',
     abbrev: 'MST',
@@ -11,7 +14,19 @@ export const en = {
       description: 'Utilities for Paper, Purpur, Velocity, and Waterfall — flags, performance analysis, and plugin updates.',
     },
   },
-  common: { comingSoon: 'Coming soon', copy: 'Copy', copied: 'Copied' },
+  common: { comingSoon: 'Coming soon', copy: 'Copy', copied: 'Copied', download: 'Download', downloaded: 'Saved' },
+  workspace: {
+    defaultServerName: 'My Server',
+    addServer: 'Add server',
+    renameServer: 'Rename server',
+    deleteServer: 'Delete server',
+    renamePrompt: 'Server name (optional)',
+    renameHint: 'Double-click to rename',
+    confirmDelete: 'Delete "{name}"? Flags, plugins, and saved analyses for this server will be removed.',
+    recentAnalyses: 'Recent for this server',
+    analysesHint: 'Saved automatically when you paste a link — no extra steps.',
+    removeAnalysis: 'Remove from history',
+  },
   home: {
     heroSubtitle: 'JVM flags, Spark analysis, and plugin updates — free, no signup.',
     heroBadge: 'Free · modrinth.black',
@@ -45,6 +60,9 @@ export const en = {
       useVariablesHint: 'Adds fileName and memory at the top of the script. Change those two lines instead of editing the long java command.',
       autoRestart: 'Auto-restart',
       autoRestartHint: 'Automatically restart after the server is stopped.',
+      windowsPause: 'Pause at end',
+      windowsPauseHint: 'Adds pause at the end of the .bat so the console stays open after the server stops.',
+      scriptFilename: 'Script filename',
       script: 'Script',
       scriptHint: 'Place this file next to your server jar, then execute it.',
       environments: { linux: 'Linux', windows: 'Windows', macos: 'macOS', pterodactyl: 'Pterodactyl', command: 'Command' },

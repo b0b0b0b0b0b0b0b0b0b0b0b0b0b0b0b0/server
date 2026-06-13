@@ -1,4 +1,7 @@
 export const ru = {
+  meta: {
+    documentTitle: 'MTools — бесплатные инструменты для Minecraft-сервера',
+  },
   site: {
     name: 'MTools',
     abbrev: 'MST',
@@ -11,7 +14,19 @@ export const ru = {
       description: 'Утилиты для Paper, Purpur, Velocity и Waterfall — флаги, анализ производительности и обновления плагинов.',
     },
   },
-  common: { comingSoon: 'Скоро', copy: 'Копировать', copied: 'Скопировано' },
+  common: { comingSoon: 'Скоро', copy: 'Копировать', copied: 'Скопировано', download: 'Скачать', downloaded: 'Сохранено' },
+  workspace: {
+    defaultServerName: 'Мой сервер',
+    addServer: 'Добавить сервер',
+    renameServer: 'Переименовать',
+    deleteServer: 'Удалить сервер',
+    renamePrompt: 'Название сервера (необязательно)',
+    renameHint: 'Двойной клик — переименовать',
+    confirmDelete: 'Удалить «{name}»? Флаги, плагины и сохранённые анализы этого сервера будут удалены.',
+    recentAnalyses: 'Недавние для этого сервера',
+    analysesHint: 'Сохраняются сами, когда вставляешь ссылку — ничего лишнего.',
+    removeAnalysis: 'Убрать из истории',
+  },
   home: {
     heroSubtitle: 'JVM-флаги, анализ Spark и трекер плагинов — бесплатно, без регистрации.',
     heroBadge: 'Бесплатно · modrinth.black',
@@ -45,6 +60,9 @@ export const ru = {
       useVariablesHint: 'В начале скрипта появятся fileName и memory — для смены jar или RAM правь только эти строки, а не всю команду java.',
       autoRestart: 'Авто-рестарт',
       autoRestartHint: 'Автоматически перезапускать сервер после остановки.',
+      windowsPause: 'Пауза в конце',
+      windowsPauseHint: 'Добавляет pause в конец .bat — консоль не закроется после остановки сервера.',
+      scriptFilename: 'Имя файла скрипта',
       script: 'Скрипт',
       scriptHint: 'Положите этот файл рядом с jar сервера и выполните его.',
       environments: { linux: 'Linux', windows: 'Windows', macos: 'macOS', pterodactyl: 'Pterodactyl', command: 'Команда' },

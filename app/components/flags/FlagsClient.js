@@ -7,14 +7,16 @@ import {
   Flag,
   Languages,
   MemoryStick,
+  Pause,
   RefreshCw,
   SquareTerminal,
 } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
 import LumDropdown from '@/app/components/LumDropdown';
 import ScriptOutput from '@/app/components/ScriptOutput';
+import ServerSwitcher from '@/app/components/ServerSwitcher';
 import ToggleField from '@/app/components/ToggleField';
-import { SettingsStore } from '@/lib/core/SettingsStore';
+import { useWorkspace } from '@/app/components/WorkspaceProvider';
 import { FlagsGenerator } from '@/lib/tools/flags/FlagsGenerator';
 import { FlagsSoftware } from '@/lib/tools/flags/FlagsSoftware';
 import {
@@ -25,6 +27,11 @@ import {
   FLAG_PRESET_LINKS,
   FLAG_SCRIPT_META,
 } from '@/lib/config/flags';
+import {
+  resolveScriptBasename,
+  resolveScriptFilename,
+  scriptExtensionKey,
+} from '@/lib/tools/flags/scriptFilename';
 import { MEMORY_MIN, MEMORY_MAX, MEMORY_STEP } from '@/lib/config/constants';
 import { formatGiB, memoryPercent } from '@/lib/ui/formatGiB';
 import { ENVIRONMENT_ICONS } from '@/lib/ui/EnvironmentIcons';
@@ -53,22 +60,26 @@ const CONFIG_TOGGLES = [
 
 export default function FlagsClient() {
   const { t } = useLocale();
+  const { ready, activeServerId, activeServer, patch, workspace } = useWorkspace();
   const [engine, setEngine] = useState(null);
   const [output, setOutput] = useState('');
 
   useEffect(() => {
-    const store = new SettingsStore(window.localStorage);
-    const instance = new FlagsGenerator(store.readTool('flags'));
+    if (!ready || !workspace) return;
+    const saved = workspace.getFlags(activeServerId);
+    const instance = new FlagsGenerator({ ...FLAG_DEFAULTS, ...saved });
     setEngine(instance);
     setOutput(instance.script());
-  }, []);
+  }, [ready, activeServerId]);
 
-  const persist = (patch) => {
-    const next = new FlagsGenerator({ ...engine.snapshot(), ...patch });
+  const persist = (patchValues) => {
+    if (!engine) return;
+    const next = new FlagsGenerator({ ...engine.snapshot(), ...patchValues });
     setEngine(next);
     setOutput(next.script());
-    const store = new SettingsStore(window.localStorage);
-    store.writeTool('flags', next.snapshot());
+    patch((store) => {
+      store.setFlags(activeServerId, next.snapshot());
+    });
   };
 
   const state = engine?.snapshot() ?? FLAG_DEFAULTS;
@@ -119,14 +130,24 @@ export default function FlagsClient() {
     persist(FlagsSoftware.patchForSoftwareChange(state, software));
   };
 
-  if (!engine) {
-    return null;
-  }
+  if (!ready || !engine) return null;
 
   const scriptMeta = FLAG_SCRIPT_META[state.environment] ?? FLAG_SCRIPT_META.linux;
+  const scriptBasenames = activeServer?.flags?.scriptBasenames ?? {};
+  const scriptExtension = scriptExtensionKey(state.environment);
+  const scriptBasename = resolveScriptBasename(state.environment, scriptBasenames);
+  const scriptFilename = resolveScriptFilename(state.environment, scriptBasenames);
+  const filenameExtension = scriptExtension.startsWith('.') ? scriptExtension : '';
+  const showWindowsPause = state.environment === 'windows';
+
+  const handleScriptBasenameChange = (basename) => {
+    patch((store) => {
+      store.setScriptBasename(activeServerId, state.environment, basename);
+    });
+  };
 
   return (
-    <section className="tool-page">
+    <section className="tool-page flags-page">
       <header className="tool-page-head">
         <h1 className="tool-page-title">
           <span className="tool-page-title-icon"><Flag size={20} /></span>
@@ -134,6 +155,8 @@ export default function FlagsClient() {
         </h1>
         <p className="tool-page-desc">{t('tools.flags.description')}</p>
       </header>
+
+      <ServerSwitcher />
 
       <div className="tool-form-layout">
         <div className="tool-form-col">
@@ -259,6 +282,16 @@ export default function FlagsClient() {
                 />
               );
             })}
+            {showWindowsPause ? (
+              <ToggleField
+                id="windowsPause"
+                icon={<Pause size={24} />}
+                label={t('tools.flags.windowsPause')}
+                hint={t('tools.flags.windowsPauseHint')}
+                checked={state.windowsPause}
+                onChange={(e) => persist({ windowsPause: e.target.checked })}
+              />
+            ) : null}
           </div>
         </div>
       </div>
@@ -269,7 +302,10 @@ export default function FlagsClient() {
         title={t('tools.flags.script')}
         hint={t('tools.flags.scriptHint')}
         language={scriptMeta.language}
-        filename={scriptMeta.filename}
+        filename={scriptFilename}
+        filenameBasename={scriptBasename}
+        filenameExtension={filenameExtension}
+        onBasenameChange={handleScriptBasenameChange}
       />
     </section>
   );
