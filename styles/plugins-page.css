@@ -219,6 +219,31 @@
   flex-shrink: 0;
 }
 
+.plugin-toolbar-dropdown-tip {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.plugin-toolbar-dropdown-tip--software {
+  min-width: 10.5rem;
+}
+
+.plugin-toolbar-dropdown-tip--filter {
+  min-width: 9.5rem;
+}
+
+.plugin-toolbar-dropdown-tip .lum-dropdown {
+  width: 100%;
+}
+
+.plugin-toolbar-dropdown-tip--software .lum-dropdown-trigger {
+  min-width: 10.5rem;
+}
+
+.plugin-toolbar-dropdown-tip--filter .lum-dropdown-trigger {
+  min-width: 9.5rem;
+}
+
 .plugins-page .lum-input,
 .plugins-page .lum-btn,
 .plugins-page .plugin-btn {

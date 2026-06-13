@@ -289,8 +289,43 @@
 }
 
 .lum-dropdown-trigger-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
   text-align: left;
+}
+
+.lum-dropdown-trigger-leading {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.lum-dropdown-trigger-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.lum-dropdown-tooltip-wrap {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+
+.lum-dropdown-tooltip-wrap > .lum-dropdown-trigger {
+  flex: 1;
+  min-width: 0;
+}
+
+.lum-dropdown-tooltip-root {
+  display: block;
+  width: 100%;
+  min-width: 0;
 }
 
 .lum-dropdown-chevron {

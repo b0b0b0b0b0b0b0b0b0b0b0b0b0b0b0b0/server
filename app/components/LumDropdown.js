@@ -28,6 +28,7 @@ export default function LumDropdown({
   icon,
   iconOnly = false,
   tooltip,
+  className = '',
 }) {
   const [open, setOpen] = useState(false);
   const [menuStyle, setMenuStyle] = useState(null);
@@ -35,7 +36,6 @@ export default function LumDropdown({
   const rootRef = useRef(null);
   const triggerRef = useRef(null);
   const menuRef = useRef(null);
-  const selected = options.find((option) => option.value === value);
 
   useEffect(() => {
     setMounted(true);
@@ -142,6 +142,10 @@ export default function LumDropdown({
     )
   ));
 
+  const selected = options.find((option) => option.value === value);
+  const selectedLabel = selected?.label ?? String(value ?? '');
+  const selectedIcon = selected?.icon ?? icon;
+
   const trigger = (
     <button
       ref={triggerRef}
@@ -152,11 +156,13 @@ export default function LumDropdown({
       onClick={toggleOpen}
       aria-expanded={open}
       aria-haspopup="listbox"
+      aria-label={tooltip ? selectedLabel : undefined}
     >
       <span className="lum-dropdown-trigger-text">
-        {iconOnly ? icon : (
-          <DropdownOptionContent icon={selected?.icon} label={selected?.label} />
-        )}
+        {selectedIcon ? (
+          <span className="lum-dropdown-trigger-leading">{selectedIcon}</span>
+        ) : null}
+        <span className="lum-dropdown-trigger-label">{selectedLabel}</span>
       </span>
       <ChevronDown size={16} className="lum-dropdown-chevron" />
     </button>
@@ -176,18 +182,22 @@ export default function LumDropdown({
     )
     : null;
 
-  return (
+  const dropdown = (
     <div
       ref={rootRef}
-      className={`lum-dropdown${open ? ' is-open' : ''}${iconOnly ? ' lum-dropdown-icon' : ''}`}
+      className={`lum-dropdown${open ? ' is-open' : ''}${iconOnly ? ' lum-dropdown-icon' : ''}${className ? ` ${className}` : ''}`}
     >
       {label ? <label htmlFor={id} className="field-label">{label}</label> : null}
-      {tooltip ? (
-        <LumTooltip content={tooltip} side="bottom">
-          {trigger}
-        </LumTooltip>
-      ) : trigger}
+      {trigger}
       {floatingMenu}
     </div>
+  );
+
+  if (!tooltip) return dropdown;
+
+  return (
+    <LumTooltip content={tooltip} side="bottom" className="lum-dropdown-tooltip-root">
+      {dropdown}
+    </LumTooltip>
   );
 }

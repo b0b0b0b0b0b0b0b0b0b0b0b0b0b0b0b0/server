@@ -347,21 +347,30 @@ export default function PluginsClient() {
           <div className="plugin-toolbar-divider" aria-hidden />
 
           <div className="plugin-toolbar-group plugin-toolbar-group--filters">
-            <LumDropdown
-              id="plugin-software"
-              value={software}
-              options={softwareOptions}
-              iconOnly
-              tooltip={t('tools.plugins.tooltips.software')}
-              onChange={(value) => patch((store) => { store.setPluginSoftware(value, activeServerId); })}
-            />
-            <LumDropdown
-              id="plugin-filter"
-              value={pluginsFilter ?? 'all'}
-              options={filterOptions}
-              tooltip={t('tools.plugins.tooltips.filter')}
-              onChange={(value) => patch((store) => { store.pluginsFilter = value; })}
-            />
+            <LumTooltip
+              content={t('tools.plugins.tooltips.software')}
+              side="bottom"
+              className="plugin-toolbar-dropdown-tip plugin-toolbar-dropdown-tip--software"
+            >
+              <LumDropdown
+                id="plugin-software"
+                value={software}
+                options={softwareOptions}
+                onChange={(value) => patch((store) => { store.setPluginSoftware(value, activeServerId); })}
+              />
+            </LumTooltip>
+            <LumTooltip
+              content={t('tools.plugins.tooltips.filter')}
+              side="bottom"
+              className="plugin-toolbar-dropdown-tip plugin-toolbar-dropdown-tip--filter"
+            >
+              <LumDropdown
+                id="plugin-filter"
+                value={pluginsFilter ?? 'all'}
+                options={filterOptions}
+                onChange={(value) => patch((store) => { store.pluginsFilter = value; })}
+              />
+            </LumTooltip>
           </div>
         </div>
 
