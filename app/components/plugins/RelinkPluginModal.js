@@ -14,6 +14,7 @@ import {
 } from '@/lib/tools/plugins/PluginRegistry';
 import { preserveVersionOnRelink, getPluginPageUrl } from '@/lib/tools/plugins/pluginUtils';
 import PluginSearchResultRow from '@/app/components/plugins/PluginSearchResultRow';
+import PluginModalNotice from '@/app/components/plugins/PluginModalNotice';
 import { SOURCE_ICONS } from '@/lib/ui/SourceIcons';
 
 const SOURCE_DESCRIPTION_KEYS = {
@@ -30,7 +31,6 @@ export default function RelinkPluginModal({
   mergePlugin,
   onClose,
   onSave,
-  onNotify,
 }) {
   const { t } = useLocale();
   const [source, setSource] = useState('modrinth');
@@ -38,14 +38,13 @@ export default function RelinkPluginModal({
   const [searchResults, setSearchResults] = useState([]);
   const [draft, setDraft] = useState(null);
   const [loading, setLoading] = useState(false);
-  const onNotifyRef = useRef(onNotify);
+  const [notice, setNotice] = useState(null);
   const tRef = useRef(t);
   const suppressSearchRef = useRef(false);
 
   useEffect(() => {
-    onNotifyRef.current = onNotify;
     tRef.current = t;
-  }, [onNotify, t]);
+  }, [t]);
 
   const loaders = useMemo(() => getPluginLoaders(software), [software]);
 
@@ -66,6 +65,7 @@ export default function RelinkPluginModal({
     setSearchResults([]);
     setDraft(null);
     setLoading(false);
+    setNotice(null);
     return undefined;
   }, [open, plugin]);
 
@@ -93,9 +93,10 @@ export default function RelinkPluginModal({
     if (!match) return false;
     const pluginId = source === 'spigot' ? match[2] : match[1];
     if (isDuplicate(pluginId, source)) {
-      onNotifyRef.current('warn', tRef.current('tools.plugins.alreadyAdded'));
+      setNotice({ type: 'warn', message: tRef.current('tools.plugins.alreadyAdded') });
       return true;
     }
+    setNotice(null);
     setLoading(true);
     try {
       const instance = createPlugin({ type: source, id: pluginId });
@@ -103,7 +104,7 @@ export default function RelinkPluginModal({
       setDraft(instance.toJSON());
       setSearchResults([]);
     } catch (error) {
-      onNotifyRef.current('error', `${tRef.current('tools.plugins.fetchError')} ${error.message}`);
+      setNotice({ type: 'error', message: `${tRef.current('tools.plugins.fetchError')} ${error.message}` });
     } finally {
       setLoading(false);
     }
@@ -113,6 +114,7 @@ export default function RelinkPluginModal({
   useEffect(() => {
     if (!open || !query.trim()) {
       setSearchResults([]);
+      setNotice(null);
       return undefined;
     }
 
@@ -128,10 +130,12 @@ export default function RelinkPluginModal({
       if (cancelled || handled) return;
 
       setLoading(true);
+      setNotice(null);
       try {
         const hits = await searchPlugins(source, value, loaders);
         if (cancelled) return;
         if (!hits.length) {
+          setNotice({ type: 'warn', message: tRef.current('tools.plugins.noResults', { query: value }) });
           setSearchResults([]);
           setDraft(null);
           return;
@@ -145,7 +149,7 @@ export default function RelinkPluginModal({
         setDraft(null);
       } catch (error) {
         if (!cancelled) {
-          onNotifyRef.current('error', `${tRef.current('tools.plugins.searchError')} ${error.message}`);
+          setNotice({ type: 'error', message: `${tRef.current('tools.plugins.searchError')} ${error.message}` });
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -162,9 +166,10 @@ export default function RelinkPluginModal({
     const hit = searchResults.find((item) => String(item.id) === String(pluginId));
     if (!hit) return;
     if (isDuplicate(hit.id, source)) {
-      onNotify('warn', t('tools.plugins.alreadyAdded'));
+      setNotice({ type: 'warn', message: t('tools.plugins.alreadyAdded') });
       return;
     }
+    setNotice(null);
     setLoading(true);
     try {
       const instance = createPlugin({ type: source, id: hit.id });
@@ -174,7 +179,7 @@ export default function RelinkPluginModal({
       suppressSearchRef.current = true;
       setQuery(hit.name ?? '');
     } catch (error) {
-      onNotify('error', `${t('tools.plugins.fetchError')} ${error.message}`);
+      setNotice({ type: 'error', message: `${t('tools.plugins.fetchError')} ${error.message}` });
     } finally {
       setLoading(false);
     }
@@ -185,7 +190,7 @@ export default function RelinkPluginModal({
   const handleSave = () => {
     if (!canSave || !draft || !plugin) return;
     if (isDuplicate(draft.id, draft.type)) {
-      onNotify('warn', t('tools.plugins.alreadyAdded'));
+      setNotice({ type: 'warn', message: t('tools.plugins.alreadyAdded') });
       return;
     }
     onSave((mergePlugin ?? preserveVersionOnRelink)(plugin, draft));
@@ -252,6 +257,7 @@ export default function RelinkPluginModal({
                 setSource(value);
                 setDraft(null);
                 setSearchResults([]);
+                setNotice(null);
               }}
             />
             <p className="field-hint">{t(SOURCE_DESCRIPTION_KEYS[source])}</p>
@@ -262,9 +268,13 @@ export default function RelinkPluginModal({
                 className="lum-input"
                 value={query}
                 placeholder={t(`tools.plugins.searchPlaceholder.${source}`)}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setNotice(null);
+                }}
               />
             </label>
+            <PluginModalNotice notice={notice} />
             {loading && (
               <p className="plugin-modal-status">
                 <Loader2 size={16} className="spin" />

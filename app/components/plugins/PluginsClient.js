@@ -493,7 +493,6 @@ export default function PluginsClient() {
           });
           return added;
         }}
-        onNotify={notify}
       />
       )}
 
@@ -530,7 +529,6 @@ export default function PluginsClient() {
           });
           notify('success', t('tools.plugins.relinkSaved'));
         }}
-        onNotify={notify}
       />
       )}
 
@@ -546,7 +544,6 @@ export default function PluginsClient() {
           });
           notify('success', t('tools.plugins.changeVersionSaved'));
         }}
-        onNotify={notify}
       />
       )}
     </div>

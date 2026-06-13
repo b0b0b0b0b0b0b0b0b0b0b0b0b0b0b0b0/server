@@ -5,6 +5,7 @@ import { Loader2, Package, X } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
 import ModalPortal from '@/app/components/ModalPortal';
 import LumDropdown from '@/app/components/LumDropdown';
+import PluginModalNotice from '@/app/components/plugins/PluginModalNotice';
 import { refreshPlugin } from '@/lib/tools/plugins/PluginRegistry';
 import { formatPluginDate, spigotVersionsNeedRefresh } from '@/lib/tools/plugins/pluginUtils';
 
@@ -14,10 +15,10 @@ export default function SetInstalledVersionModal({
   software,
   onClose,
   onSave,
-  onNotify,
 }) {
   const { t, locale } = useLocale();
   const [loading, setLoading] = useState(false);
+  const [notice, setNotice] = useState(null);
   const [draft, setDraft] = useState(null);
   const [selectedId, setSelectedId] = useState('');
   const pluginRef = useRef(plugin);
@@ -30,6 +31,7 @@ export default function SetInstalledVersionModal({
       setDraft(null);
       setSelectedId('');
       setLoading(false);
+      setNotice(null);
       return undefined;
     }
 
@@ -46,6 +48,7 @@ export default function SetInstalledVersionModal({
       }
 
       setLoading(true);
+      setNotice(null);
       try {
         const refreshed = await refreshPlugin(currentPlugin, software);
         if (cancelled) return;
@@ -53,8 +56,7 @@ export default function SetInstalledVersionModal({
         setSelectedId(String(refreshed.currentVersion?.id ?? refreshed.versions?.[0]?.id ?? ''));
       } catch (error) {
         if (!cancelled) {
-          onNotify('error', `${t('tools.plugins.fetchError')} ${error.message}`);
-          onClose();
+          setNotice({ type: 'error', message: `${t('tools.plugins.fetchError')} ${error.message}` });
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -66,7 +68,7 @@ export default function SetInstalledVersionModal({
     return () => {
       cancelled = true;
     };
-  }, [open, pluginKey, software, onClose, onNotify, t]);
+  }, [open, pluginKey, software, t]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -160,6 +162,8 @@ export default function SetInstalledVersionModal({
               )}
             </div>
 
+            <PluginModalNotice notice={notice} />
+
             {loading && (
               <p className="plugin-modal-status">
                 <Loader2 size={16} className="spin" />
@@ -177,7 +181,7 @@ export default function SetInstalledVersionModal({
               />
             )}
 
-            {!loading && draft && !versionOptions.length && (
+            {!loading && draft && !versionOptions.length && !notice && (
               <p className="plugin-modal-status">{t('tools.plugins.noVersions')}</p>
             )}
           </div>
