@@ -257,7 +257,7 @@ export const ru = {
       title: 'Обновления плагинов',
       description: 'Отслеживание обновлений плагинов без проверки каждой страницы.',
       homeDescription: 'Modrinth и Spigot — кто устарел, одним взглядом.',
-      experimental: 'experimental',
+      experimental: 'test build',
       warning: 'Инструмент экспериментальный. Перед установкой всегда проверяй обновления вручную. Возможны ложные «устарело».',
       addServer: 'Добавить сервер',
       addPlugin: 'Добавить плагин',

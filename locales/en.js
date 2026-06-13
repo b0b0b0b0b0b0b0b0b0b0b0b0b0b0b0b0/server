@@ -257,7 +257,7 @@ export const en = {
       title: 'Plugin Updates',
       description: 'Keep track of plugin updates without checking every plugin page for updates.',
       homeDescription: 'Modrinth and Spigot — see what is outdated at a glance.',
-      experimental: 'experimental',
+      experimental: 'test build',
       warning: 'This tool is experimental. Always double-check updates manually before installing. Wrong outdated flags can happen.',
       addServer: 'Add server',
       addPlugin: 'Add plugin',
