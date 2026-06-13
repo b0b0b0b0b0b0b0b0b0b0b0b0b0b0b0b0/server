@@ -24,40 +24,37 @@ export default function AnalyzeFinding({ field }) {
 
   return (
     <li className={`analyze-finding analyze-finding--${severity}`}>
-      <div className="analyze-finding-marker" aria-hidden />
-      <div className="analyze-finding-inner">
-        <header className="analyze-finding-head">
-          <span className="analyze-finding-icon">
-            <Icon size={18} strokeWidth={2.25} />
-          </span>
-          <div className="analyze-finding-titles">
-            <h3 className="analyze-finding-label">{label}</h3>
-            {path?.length > 0 && (
-              <ol className="analyze-finding-path">
-                {path.map((segment) => (
-                  <li key={segment}>{segment}</li>
-                ))}
-              </ol>
-            )}
-          </div>
-        </header>
-        <p className="analyze-finding-message">{field.value}</p>
-        {field.buttons?.length > 0 && (
-          <div className="analyze-finding-actions">
-            {field.buttons.map((button, index) => (
-              <a
-                key={`${button.text}-${index}`}
-                href={button.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="analyze-finding-btn"
-              >
-                {button.text}
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
+      <header className="analyze-finding-head">
+        <span className="analyze-finding-icon">
+          <Icon size={18} strokeWidth={2.25} />
+        </span>
+        <div className="analyze-finding-titles">
+          <h3 className="analyze-finding-label">{label}</h3>
+          {path?.length > 0 && (
+            <ol className="analyze-finding-path">
+              {path.map((segment) => (
+                <li key={segment}>{segment}</li>
+              ))}
+            </ol>
+          )}
+        </div>
+      </header>
+      <p className="analyze-finding-message">{field.value}</p>
+      {field.buttons?.length > 0 && (
+        <div className="analyze-finding-actions">
+          {field.buttons.map((button, index) => (
+            <a
+              key={`${button.text}-${index}`}
+              href={button.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="analyze-finding-btn"
+            >
+              {button.text}
+            </a>
+          ))}
+        </div>
+      )}
     </li>
   );
 }

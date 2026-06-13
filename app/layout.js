@@ -8,6 +8,7 @@ import '@/styles/forms.css';
 import '@/styles/tool-page.css';
 import '@/styles/flags-page.css';
 import '@/styles/plugins-page.css';
+import '@/styles/analyze-page.css';
 import '@/styles/home-page.css';
 import '@/styles/transitions.css';
 import '@/styles/workspace.css';
