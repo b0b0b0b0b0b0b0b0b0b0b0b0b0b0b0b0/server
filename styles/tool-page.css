@@ -550,3 +550,27 @@
   white-space: nowrap;
   border: 0;
 }
+
+@media (max-width: 640px) {
+  .script-output-scroll {
+    min-height: 0;
+    max-height: min(38vh, 280px);
+    padding: 12px 76px 12px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .script-output-line-num {
+    min-width: 1.75rem;
+    padding: 0 6px 0 10px;
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .script-output-line {
+    padding-right: 10px;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+}
