@@ -6,12 +6,15 @@ import '@/styles/cards.css';
 import '@/styles/forms.css';
 import '@/styles/tool-page.css';
 import '@/styles/plugins-page.css';
+import '@/styles/home-page.css';
+import '@/styles/transitions.css';
 import '@/styles/analyze-page.css';
 import './globals.css';
 import { buildRootMetadata } from '@/lib/seo/metadata';
 import SiteJsonLd from '@/app/components/SiteJsonLd';
 import AppProviders from '@/app/components/AppProviders';
 import SiteHeader from '@/app/components/SiteHeader';
+import PageTransition from '@/app/components/PageTransition';
 import { STORAGE_KEYS, DEFAULT_THEME } from '@/lib/config/constants';
 
 const inter = Inter({
@@ -33,7 +36,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} min-h-screen antialiased`}>
         <AppProviders>
           <SiteHeader />
-          <main className="page-shell">{children}</main>
+          <PageTransition>{children}</PageTransition>
         </AppProviders>
       </body>
     </html>

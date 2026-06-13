@@ -4,7 +4,7 @@ export const en = {
     abbrev: 'MST',
     tagline: 'Free Minecraft server tools — JVM flags, startup scripts, and optimization on modrinth.black.',
   },
-  nav: { home: 'Home', theme: 'Theme', language: 'Language' },
+  nav: { home: 'Home', theme: 'Theme', language: 'Language', tools: 'Tools' },
   sections: {
     serverTools: {
       title: 'Minecraft Server Tools',
@@ -12,10 +12,17 @@ export const en = {
     },
   },
   common: { comingSoon: 'Coming soon', copy: 'Copy', copied: 'Copied' },
+  home: {
+    heroSubtitle: 'JVM flags, Spark analysis, and plugin updates — free, no signup.',
+    heroBadge: 'Free · modrinth.black',
+    toolsHeading: 'Tools',
+    open: 'Open',
+  },
   tools: {
     flags: {
       title: 'Flags Generator',
       description: 'Generate Minecraft startup scripts with Aikar JVM flags for Paper, Purpur, Velocity, and Waterfall.',
+      homeDescription: 'Aikar JVM flags and a ready startup script in one click.',
       fileName: 'File Name',
       fileNameHint: 'The name of the file that will be used to start your server.',
       environment: 'Environment',
@@ -63,6 +70,7 @@ export const en = {
     analyze: {
       title: 'Analyze',
       description: 'Spark Profile and Paper Timings analyzer with optimization recommendations for your Minecraft server.',
+      homeDescription: 'Paste a Spark link — get config fixes and lag hotspots.',
       disclaimer: 'These are not magic values. Many settings affect server mechanics.',
       guideLink: 'this guide',
       stepInstall: 'Install Spark',
@@ -99,6 +107,9 @@ export const en = {
           allGood: '✅ All good',
           tickHealth: '✅ Tick health',
           msptSpikes: '❌ MSPT spikes',
+          mspt: 'MSPT',
+          profiler: 'Profiler',
+          threadWait: '⚠ Server thread wait',
           heapPressure: '❌ Heap pressure',
           gcPauses: '❌ GC pauses',
           groundItems: '❌ Ground items',
@@ -135,6 +146,10 @@ export const en = {
           timingcost: 'Your timingcost is {cost}. Your cpu is overloaded and/or slow.',
           timingcostUrgent: 'Your timingcost is {cost}. This value would be at most 200 on a reasonable server. Your cpu is critically overloaded and/or slow. Hiding {hidden} comparitively negligible suggestions until you resolve this fundamental problem.',
           msptSpikes: 'With {players} players, MSPT p95 is {p95}ms and max spike is {max}ms. TPS can look fine while players still feel lag.',
+          msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Values above 50ms are feelable; TPS can still show 20.',
+          msptSpikesDetail: 'Peak tick took {max}ms with p95 at {p95}ms. Players feel micro-freezes even when average TPS looks fine.',
+          profilerPlugin: '{share}% of Server thread samples in the worst 60s window (peak MSPT {mspt}ms). Heavy packet listeners or sync handlers — check what this plugin does on the main/Netty path.',
+          threadWait: '~{share}% of Server thread samples in the worst window are waiting (park/yield), not ticking. Often means the server is idle-waiting or thread scheduling is poor — check host CPU steal and single-thread headroom.',
           heapPressure: 'Heap is {used}MB / {max}MB ({percent}%). Consider more RAM or fewer loaded chunks/entities.',
           gcPauses: 'G1 young GC averages {ms}ms. Longer pauses often mean too little RAM or too many allocations.',
           groundItems: '{count} item entities are loaded. Clear ground drops and tune item merge/despawn settings.',
@@ -194,6 +209,7 @@ export const en = {
     plugins: {
       title: 'Plugin Updates',
       description: 'Keep track of plugin updates without checking every plugin page for updates.',
+      homeDescription: 'Modrinth and Spigot — see what is outdated at a glance.',
       experimental: 'experimental',
       warning: 'This tool is experimental. Always double-check updates manually before installing. Wrong outdated flags can happen.',
       addServer: 'Add server',

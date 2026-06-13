@@ -4,7 +4,7 @@ export const ru = {
     abbrev: 'MST',
     tagline: 'Бесплатные инструменты для Minecraft-серверов — JVM-флаги, стартовые скрипты и оптимизация на modrinth.black.',
   },
-  nav: { home: 'Главная', theme: 'Тема', language: 'Язык' },
+  nav: { home: 'Главная', theme: 'Тема', language: 'Язык', tools: 'Инструменты' },
   sections: {
     serverTools: {
       title: 'Инструменты Minecraft-сервера',
@@ -12,10 +12,17 @@ export const ru = {
     },
   },
   common: { comingSoon: 'Скоро', copy: 'Копировать', copied: 'Скопировано' },
+  home: {
+    heroSubtitle: 'JVM-флаги, анализ Spark и трекер плагинов — бесплатно, без регистрации.',
+    heroBadge: 'Бесплатно · modrinth.black',
+    toolsHeading: 'Инструменты',
+    open: 'Открыть',
+  },
   tools: {
     flags: {
       title: 'Генератор флагов',
       description: 'Генератор стартовых скриптов Minecraft с JVM-флагами Aikar для Paper, Purpur, Velocity и Waterfall.',
+      homeDescription: 'Флаги Aikar и готовый стартовый скрипт за минуту.',
       fileName: 'Имя файла',
       fileNameHint: 'Имя файла, который будет использоваться для запуска сервера.',
       environment: 'Окружение',
@@ -63,6 +70,7 @@ export const ru = {
     analyze: {
       title: 'Анализ',
       description: 'Анализ Spark Profile и Paper Timings с рекомендациями по оптимизации сервера Minecraft.',
+      homeDescription: 'Вставь Spark-ссылку — получи правки конфигов и узкие места по лагам.',
       disclaimer: 'Это не магические значения. Многие настройки влияют на механику сервера.',
       guideLink: 'этому гайду',
       stepInstall: 'Установите Spark',
@@ -99,6 +107,9 @@ export const ru = {
           allGood: '✅ Всё в порядке',
           tickHealth: '✅ Тики в норме',
           msptSpikes: '❌ Пики MSPT',
+          mspt: 'MSPT',
+          profiler: 'Профайлер',
+          threadWait: '⚠ Ожидание потока',
           heapPressure: '❌ Нагрузка на heap',
           gcPauses: '❌ Паузы GC',
           groundItems: '❌ Предметы на земле',
@@ -135,6 +146,10 @@ export const ru = {
           timingcost: 'Ваш timingcost — {cost}. CPU перегружен или слабый.',
           timingcostUrgent: 'Ваш timingcost — {cost}. На нормальном сервере было бы не больше 200. CPU критически перегружен. Скрыто {hidden} второстепенных рекомендаций, пока не решите эту проблему.',
           msptSpikes: 'При {players} игроках MSPT p95 — {p95}мс, пик — {max}мс. TPS может быть 20, но лаги всё равно ощущаются.',
+          msptOverview: 'min {min} · med {med} · p95 {p95} · max {max}ms{players}. Выше 50мс — ощутимо; TPS может оставаться 20.',
+          msptSpikesDetail: 'Пик тика {max}мс, p95 — {p95}мс. Микрофризы ощущаются даже при нормальном среднем TPS.',
+          profilerPlugin: '{share}% сэмплов Server thread в худшем 60с окне (пик MSPT {mspt}мс). Тяжёлые packet listeners — проверь, что плагин делает в main/Netty потоке.',
+          threadWait: '~{share}% сэмплов Server thread в худшем окне — ожидание (park/yield), не тик. Часто VPS/планировщик CPU, а не плагины.',
           heapPressure: 'Heap: {used}МБ / {max}МБ ({percent}%). Нужно больше RAM или меньше чанков/сущностей.',
           gcPauses: 'G1 young GC в среднем {ms}мс. Длинные паузы — часто нехватка RAM или лишние аллокации.',
           groundItems: 'Загружено {count} item-сущностей. Почистите дроп и настройте merge/despawn.',
@@ -194,6 +209,7 @@ export const ru = {
     plugins: {
       title: 'Обновления плагинов',
       description: 'Отслеживание обновлений плагинов без проверки каждой страницы.',
+      homeDescription: 'Modrinth и Spigot — кто устарел, одним взглядом.',
       experimental: 'experimental',
       warning: 'Инструмент экспериментальный. Перед установкой всегда проверяй обновления вручную. Возможны ложные «устарело».',
       addServer: 'Добавить сервер',

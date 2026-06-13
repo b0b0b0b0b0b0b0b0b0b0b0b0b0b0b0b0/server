@@ -9,8 +9,9 @@ const SEVERITY_ICONS = {
 export function parseFinding(name) {
   const isOk = name.startsWith('✅');
   const isIssue = name.startsWith('❌');
-  const severity = isOk ? 'ok' : isIssue ? 'issue' : 'warn';
-  const raw = name.replace(/^[✅❌]\s*/, '').trim();
+  const isWarn = name.startsWith('⚠');
+  const severity = isOk ? 'ok' : isIssue ? 'issue' : isWarn ? 'warn' : 'issue';
+  const raw = name.replace(/^[✅❌⚠]\s*/, '').trim();
   const segments = raw.includes('.') ? raw.split('.') : [raw];
   const label = segments[0];
   const path = segments.length > 1 ? segments.slice(1) : null;
