@@ -289,6 +289,7 @@ export const fa = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'در Modrinth یا Spigot نیست',
+      jarLinkManually: 'پیوند دستی',
 
       renameServer: 'تغییر نام سرور',
       deleteServer: 'حذف سرور',

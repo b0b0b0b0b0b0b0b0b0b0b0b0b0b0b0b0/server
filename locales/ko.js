@@ -295,6 +295,7 @@ export const ko = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Modrinth 또는 Spigot에 없음',
+      jarLinkManually: '수동으로 연결',
 
       renameServer: '서버 이름 변경',
       deleteServer: '서버 삭제',

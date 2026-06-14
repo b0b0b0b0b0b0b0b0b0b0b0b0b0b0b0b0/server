@@ -295,6 +295,7 @@ export const pl = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Brak na Modrinth i Spigot',
+      jarLinkManually: 'Połącz ręcznie',
 
       renameServer: 'Zmień nazwę serwera',
       deleteServer: 'Usuń serwer',

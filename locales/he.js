@@ -289,6 +289,7 @@ export const he = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'לא ב-Modrinth או Spigot',
+      jarLinkManually: 'קישור ידני',
 
       renameServer: 'שנה שם שרת',
       deleteServer: 'מחק שרת',

@@ -1035,6 +1035,13 @@
   color: var(--tool-accent);
 }
 
+.plugin-jar-link {
+  flex-shrink: 0;
+  gap: 6px;
+  color: var(--tool-accent);
+  white-space: nowrap;
+}
+
 .plugin-relink-current {
   display: flex;
   flex-direction: column;

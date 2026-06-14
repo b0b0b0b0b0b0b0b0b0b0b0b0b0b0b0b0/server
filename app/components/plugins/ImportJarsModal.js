@@ -6,6 +6,7 @@ import LumTooltip from '@/app/components/LumTooltip';
 import { useLocale } from '@/app/components/AppProviders';
 import ModalPortal from '@/app/components/ModalPortal';
 import RelinkPluginModal from '@/app/components/plugins/RelinkPluginModal';
+import { buildMiscPluginFromJar } from '@/lib/tools/plugins/buildMiscPlugin';
 import { mergeJarRelinkPlugin, resolveJarPlugins } from '@/lib/tools/plugins/resolveJarPlugin';
 import { scanPluginJars } from '@/lib/tools/plugins/scanPluginJars';
 import { ModrinthIcon, SpigotIcon } from '@/lib/ui/SourceIcons';
@@ -254,6 +255,17 @@ export default function ImportJarsModal({
     return [...existingPlugins, ...fromScan];
   }, [existingPlugins, readyItems, relinkItem]);
 
+  const openRelink = (item) => {
+    setRelinkItem({
+      ...item,
+      plugin: item.plugin ?? buildMiscPluginFromJar({
+        name: item.name,
+        version: item.version,
+        fileName: item.fileName,
+      }),
+    });
+  };
+
   const handleRelinkSave = (merged) => {
     if (!relinkItem) return;
     const oldKey = itemKey(relinkItem);
@@ -274,6 +286,8 @@ export default function ImportJarsModal({
       if (itemKey(item) !== oldKey) return item;
       return {
         ...item,
+        status: 'ready',
+        reason: undefined,
         plugin: merged,
         source: nextSource,
         name: item.name ?? relinkItem.name,
@@ -282,9 +296,8 @@ export default function ImportJarsModal({
 
     setSelected((current) => {
       const nextSelected = new Set(current);
-      const wasSelected = nextSelected.has(oldKey);
       nextSelected.delete(oldKey);
-      if (wasSelected) nextSelected.add(newKey);
+      nextSelected.add(newKey);
       return nextSelected;
     });
     setRelinkItem(null);
@@ -302,7 +315,7 @@ export default function ImportJarsModal({
   return (
     <>
     <ModalPortal>
-      <div className="plugin-modal-backdrop" onClick={phase ? undefined : onClose} role="presentation">
+      <div className="plugin-modal-backdrop" role="presentation">
       <div
         className="plugin-modal plugin-modal--jars"
         role="dialog"
@@ -450,7 +463,7 @@ export default function ImportJarsModal({
                           <button
                             type="button"
                             className="lum-btn plugin-btn plugin-btn--icon plugin-jar-relink"
-                            onClick={() => setRelinkItem(item)}
+                            onClick={() => openRelink(item)}
                             aria-label={t('tools.plugins.relinkPlugin')}
                           >
                             <Link2 size={15} />
@@ -467,6 +480,26 @@ export default function ImportJarsModal({
                           <Loader2 size={13} className="spin" />
                           {t('tools.plugins.jarResolving')}
                         </span>
+                      </div>
+                    ) : item.status === 'notFound' ? (
+                      <div className="plugin-jar-item-static">
+                        <span className="plugin-jar-item-main">
+                          <strong>{item.name ?? item.fileName}</strong>
+                          <span className="plugin-jar-item-file">{item.fileName}</span>
+                        </span>
+                        <span className="plugin-jar-item-reason">{reasonLabel(item.reason)}</span>
+                        {!phase && (
+                          <LumTooltip content={t('tools.plugins.tooltips.jarLinkManually')} side="left">
+                            <button
+                              type="button"
+                              className="lum-btn plugin-btn plugin-btn--compact plugin-jar-link"
+                              onClick={() => openRelink(item)}
+                            >
+                              <Link2 size={14} />
+                              {t('tools.plugins.jarLinkManually')}
+                            </button>
+                          </LumTooltip>
+                        )}
                       </div>
                     ) : (
                       <div className="plugin-jar-item-static">
@@ -506,7 +539,7 @@ export default function ImportJarsModal({
     </div>
     </ModalPortal>
 
-    {relinkItem?.plugin && (
+    {relinkItem && (
       <RelinkPluginModal
         open
         plugin={relinkItem.plugin}

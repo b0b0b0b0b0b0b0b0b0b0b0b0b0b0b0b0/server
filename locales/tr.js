@@ -296,6 +296,7 @@ export const tr = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Modrinth veya Spigot\'ta yok',
+      jarLinkManually: 'Manuel bağla',
 
       renameServer: 'Sunucuyu yeniden adlandır',
       deleteServer: 'Sunucuyu sil',

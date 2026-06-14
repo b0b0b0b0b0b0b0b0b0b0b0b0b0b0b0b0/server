@@ -289,6 +289,7 @@ export const hi = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Modrinth या Spigot पर नहीं मिला',
+      jarLinkManually: 'मैन्युअल लिंक करें',
 
       renameServer: 'सर्वर का नाम बदलें',
       deleteServer: 'सर्वर हटाएँ',

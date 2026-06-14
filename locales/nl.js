@@ -295,6 +295,7 @@ export const nl = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Niet op Modrinth of Spigot',
+      jarLinkManually: 'Handmatig koppelen',
 
       renameServer: 'Server hernoemen',
       deleteServer: 'Server verwijderen',

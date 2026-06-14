@@ -289,6 +289,7 @@ export const kk = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Modrinth пен Spigot-та жоқ',
+      jarLinkManually: 'Қолмен байлау',
 
       renameServer: 'Сервер атауын өзгерту',
       deleteServer: 'Серверді жою',

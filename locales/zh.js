@@ -295,6 +295,7 @@ export const zh = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Modrinth 和 Spigot 上均未找到',
+      jarLinkManually: '手动关联',
 
       renameServer: '重命名服务器',
       deleteServer: '删除服务器',

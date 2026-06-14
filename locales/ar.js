@@ -289,6 +289,7 @@ export const ar = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'غير موجود على Modrinth أو Spigot',
+      jarLinkManually: 'ربط يدوي',
 
       renameServer: 'إعادة تسمية الخادم',
       deleteServer: 'حذف الخادم',

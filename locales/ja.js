@@ -295,6 +295,7 @@ export const ja = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Modrinth / Spigot にありません',
+      jarLinkManually: '手動でリンク',
 
       renameServer: 'サーバー名を変更',
       deleteServer: 'サーバーを削除',

@@ -295,6 +295,7 @@ export const vi = {
       jarReasonReadError: 'Could not read archive',
       jarReasonDuplicate: 'Already on this server',
       jarReasonNotFound: 'Không có trên Modrinth hoặc Spigot',
+      jarLinkManually: 'Liên kết thủ công',
 
       renameServer: 'Đổi tên máy chủ',
       deleteServer: 'Xóa máy chủ',

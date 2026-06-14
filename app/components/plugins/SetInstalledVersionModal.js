@@ -132,7 +132,7 @@ export default function SetInstalledVersionModal({
 
   return (
     <ModalPortal>
-      <div className="plugin-modal-backdrop" onClick={loading ? undefined : onClose} role="presentation">
+      <div className="plugin-modal-backdrop" role="presentation">
         <div
           className="plugin-modal plugin-modal--version"
           role="dialog"

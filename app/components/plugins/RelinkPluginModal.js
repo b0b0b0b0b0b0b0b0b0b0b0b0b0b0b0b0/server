@@ -206,7 +206,7 @@ export default function RelinkPluginModal({
 
   return (
     <ModalPortal>
-      <div className="plugin-modal-backdrop" onClick={onClose} role="presentation">
+      <div className="plugin-modal-backdrop" role="presentation">
         <div
           className="plugin-modal"
           role="dialog"
