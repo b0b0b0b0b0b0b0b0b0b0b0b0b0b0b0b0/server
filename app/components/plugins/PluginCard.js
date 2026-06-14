@@ -13,10 +13,11 @@ import {
 import { useLocale } from '@/app/components/AppProviders';
 import LumTooltip from '@/app/components/LumTooltip';
 import { ModrinthIcon, SpigotIcon } from '@/lib/ui/SourceIcons';
-import { formatPluginDate, getPluginPageUrl, getSafePluginIconUrl, isUpdateAvailable } from '@/lib/tools/plugins/pluginUtils';
+import { formatPluginDate, getPluginDisplayName, getPluginPageUrl, getSafePluginIconUrl, isInstalledLatest, isLatestForGameVersion, isUpdateAvailable, shouldShowLatestVersion } from '@/lib/tools/plugins/pluginUtils';
 
 export default function PluginCard({
   plugin,
+  gameVersion,
   loading,
   onRefresh,
   onDownload,
@@ -27,11 +28,18 @@ export default function PluginCard({
 }) {
   const { t, locale } = useLocale();
   const updateAvailable = isUpdateAvailable(plugin);
+  const latestForServer = isLatestForGameVersion(plugin, gameVersion);
+  const showLatestVersion = latestForServer && shouldShowLatestVersion(plugin);
   const pageUrl = getPluginPageUrl(plugin);
   const iconUrl = getSafePluginIconUrl(plugin);
+  const latestVersionTooltip = plugin.updateDate
+    ? t('tools.plugins.lastCheckedShort', {
+      date: formatPluginDate(plugin.updateDate, locale),
+    })
+    : null;
 
   return (
-    <article className={`plugin-card${updateAvailable ? ' plugin-card--outdated' : ''}`}>
+    <article className="plugin-card">
       <div className="plugin-card-head">
         <div className="plugin-card-icon">
           {iconUrl ? (
@@ -45,13 +53,13 @@ export default function PluginCard({
           )}
         </div>
         <div className="plugin-card-meta">
-          <h3 className="plugin-card-title">{plugin.name}</h3>
-          {plugin.mcVersions?.length > 0 && (
-            <p className="plugin-card-versions-range">
-              {plugin.mcVersions[0]} – {plugin.mcVersions[plugin.mcVersions.length - 1]}
+          <h3 className="plugin-card-title">{getPluginDisplayName(plugin)}</h3>
+          {plugin.noBuildForGameVersion && plugin.targetGameVersion && (
+            <p className="plugin-card-no-build">
+              {t('tools.plugins.noVersionForMc', { version: plugin.targetGameVersion })}
             </p>
           )}
-          {updateAvailable && plugin.latestVersion && (
+          {updateAvailable && plugin.latestVersion && latestForServer && (
             <p className="plugin-card-update-note">
               {t('tools.plugins.updateAvailable', {
                 date: formatPluginDate(plugin.latestVersion.releaseDate, locale),
@@ -60,16 +68,19 @@ export default function PluginCard({
           )}
         </div>
         <div className="plugin-card-head-actions">
-        <LumTooltip content={t('tools.plugins.tooltips.relink')} side="bottom">
-          <button
-            type="button"
-            className="lum-btn plugin-btn plugin-btn--icon plugin-card-relink"
-            onClick={onRelink}
-            aria-label={t('tools.plugins.relinkPlugin')}
-          >
-            <Link2 size={16} />
-          </button>
-        </LumTooltip>
+        {pageUrl && (
+          <LumTooltip content={t('tools.plugins.tooltips.viewPlugin')} side="bottom">
+            <a
+              href={pageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-card-page"
+              aria-label={t('tools.plugins.viewPlugin')}
+            >
+              <ExternalLink size={16} />
+            </a>
+          </LumTooltip>
+        )}
         <LumTooltip content={t('tools.plugins.tooltips.remove')} side="bottom">
           <button
             type="button"
@@ -83,30 +94,41 @@ export default function PluginCard({
         </div>
       </div>
 
-      {plugin.type !== 'misc' && plugin.description && (
-        <p className="plugin-card-desc">{plugin.description}</p>
+      {plugin.currentVersion && (
+        <div className="plugin-card-versions">
+          <p className="plugin-card-version-line">
+            {t('tools.plugins.versionLineYour')}{' '}
+            <strong>{plugin.currentVersion.name}</strong>
+            {latestForServer && (
+              showLatestVersion ? (
+                <>
+                  {' → '}
+                  {t('tools.plugins.versionLineLatest')}{' '}
+                  <LumTooltip
+                    content={latestVersionTooltip}
+                    side="bottom"
+                    className="plugin-card-version-latest-tip"
+                  >
+                    <strong className="plugin-card-version-latest">{plugin.latestVersion.name}</strong>
+                  </LumTooltip>
+                </>
+              ) : (
+                <>
+                  {' = '}
+                  {t('tools.plugins.versionLineUpToDate')}{' '}
+                  <LumTooltip
+                    content={latestVersionTooltip}
+                    side="bottom"
+                    className="plugin-card-version-latest-tip"
+                  >
+                    <strong>{plugin.latestVersion.name}</strong>
+                  </LumTooltip>
+                </>
+              )
+            )}
+          </p>
+        </div>
       )}
-
-      <dl className="plugin-card-stats">
-        {plugin.updateDate && (
-          <div>
-            <dt>{t('tools.plugins.lastChecked')}</dt>
-            <dd>{formatPluginDate(plugin.updateDate, locale)}</dd>
-          </div>
-        )}
-        {plugin.currentVersion && (
-          <div>
-            <dt>{t('tools.plugins.current')}</dt>
-            <dd>{plugin.currentVersion.name}</dd>
-          </div>
-        )}
-        {plugin.latestVersion && plugin.type !== 'misc' && (
-          <div>
-            <dt>{t('tools.plugins.latest')}</dt>
-            <dd>{plugin.latestVersion.name}</dd>
-          </div>
-        )}
-      </dl>
 
       <div className="plugin-card-actions">
         {plugin.type !== 'misc' && (
@@ -119,19 +141,6 @@ export default function PluginCard({
               aria-label={t('tools.plugins.checkUpdate')}
             >
               {loading ? <Loader2 size={16} className="spin" /> : <RefreshCw size={16} />}
-            </button>
-          </LumTooltip>
-        )}
-        {updateAvailable && (plugin.file?.url || plugin.file?.externalUrl) && (
-          <LumTooltip content={t('tools.plugins.download')}>
-            <button
-              type="button"
-              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact plugin-btn--primary"
-              onClick={onDownload}
-              disabled={loading}
-              aria-label={t('tools.plugins.download')}
-            >
-              <Download size={16} />
             </button>
           </LumTooltip>
         )}
@@ -148,17 +157,17 @@ export default function PluginCard({
             </button>
           </LumTooltip>
         )}
-        {pageUrl && (
-          <LumTooltip content={t('tools.plugins.viewPlugin')}>
-            <a
-              href={pageUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact"
-              aria-label={t('tools.plugins.viewPlugin')}
+        {plugin.type !== 'misc' && (
+          <LumTooltip content={t('tools.plugins.tooltips.relink')}>
+            <button
+              type="button"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact plugin-card-relink"
+              onClick={onRelink}
+              disabled={loading}
+              aria-label={t('tools.plugins.relinkPlugin')}
             >
-              <ExternalLink size={16} />
-            </a>
+              <Link2 size={16} />
+            </button>
           </LumTooltip>
         )}
         {updateAvailable && (
@@ -170,6 +179,19 @@ export default function PluginCard({
               aria-label={t('tools.plugins.markUpdated')}
             >
               <Check size={16} />
+            </button>
+          </LumTooltip>
+        )}
+        {updateAvailable && (plugin.file?.url || plugin.file?.externalUrl) && (
+          <LumTooltip content={t('tools.plugins.download')} className="plugin-card-download">
+            <button
+              type="button"
+              className="lum-btn plugin-btn plugin-btn--icon plugin-btn--compact plugin-btn--primary"
+              onClick={onDownload}
+              disabled={loading}
+              aria-label={t('tools.plugins.download')}
+            >
+              <Download size={16} />
             </button>
           </LumTooltip>
         )}

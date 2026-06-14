@@ -21,9 +21,11 @@ import LumDropdown from '@/app/components/LumDropdown';
 import LumTooltip from '@/app/components/LumTooltip';
 import ServerSwitcher from '@/app/components/ServerSwitcher';
 import { useWorkspace } from '@/app/components/WorkspaceProvider';
+import { useMinecraftVersions } from '@/app/hooks/useMinecraftVersions';
 import {
   PLUGIN_FILTERS,
   PLUGIN_SOFTWARE,
+  PLUGIN_DEFAULT_GAME_VERSION,
   PLUGIN_BULK_CHECK_DELAY_MS,
   PLUGIN_SPIGOT_DOWNLOAD_LIMIT,
   PLUGIN_SPIGOT_DOWNLOAD_WINDOW_MS,
@@ -32,7 +34,7 @@ import { delay, yieldToMain } from '@/lib/core/yieldToMain';
 import { parsePluginImportJson, pluginExportFilename } from '@/lib/tools/plugins/pluginBackup';
 import { refreshPlugin } from '@/lib/tools/plugins/PluginRegistry';
 import { downloadSpigotPlugin } from '@/lib/tools/plugins/SpigotPlugin';
-import { isUpdateAvailable, openPluginDownload } from '@/lib/tools/plugins/pluginUtils';
+import { isUnavailableForGameVersion, isUpdateAvailable, openPluginDownload } from '@/lib/tools/plugins/pluginUtils';
 import { PLUGIN_SOFTWARE_ICONS } from '@/lib/ui/PluginSoftwareIcons';
 import { ModrinthIcon, SOURCE_ICONS, SpigotIcon } from '@/lib/ui/SourceIcons';
 
@@ -53,6 +55,8 @@ export default function PluginsClient() {
   const [bulkLoading, setBulkLoading] = useState(null);
   const [checkProgress, setCheckProgress] = useState(null);
   const [toast, setToast] = useState(null);
+  const [showAllMcVersions, setShowAllMcVersions] = useState(false);
+  const { release, full, entries, loading: mcVersionsLoading } = useMinecraftVersions();
   const [spigotRateLimit] = useState({
     downloadCount: 0,
     resetTime: 0,
@@ -61,6 +65,7 @@ export default function PluginsClient() {
   });
   const mountedRef = useRef(false);
   const importFileRef = useRef(null);
+  const fetchContextRef = useRef(null);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -81,8 +86,59 @@ export default function PluginsClient() {
   }, []);
 
   const software = activeServer?.plugins.software ?? 'paper';
+  const storedGameVersion = activeServer?.plugins.gameVersion ?? PLUGIN_DEFAULT_GAME_VERSION;
+  const resolvedGameVersion = storedGameVersion || release[0] || '';
+  const gameVersion = resolvedGameVersion;
+  const fetchOptions = useMemo(() => ({ software, gameVersion }), [software, gameVersion]);
   const plugins = activeServer?.plugins.list ?? [];
+  const pluginsRef = useRef(plugins);
+  pluginsRef.current = plugins;
   const serverName = activeServer?.name ?? t('workspace.defaultServerName');
+
+  useEffect(() => {
+    if (!ready || !activeServerId || !gameVersion) return undefined;
+
+    const contextKey = `${activeServerId}:${software}:${gameVersion}`;
+    if (fetchContextRef.current === contextKey) return undefined;
+    fetchContextRef.current = contextKey;
+
+    const checkable = pluginsRef.current
+      .map((plugin, index) => ({ plugin, index }))
+      .filter(({ plugin }) => plugin.type !== 'misc');
+
+    if (!checkable.length) return undefined;
+
+    let cancelled = false;
+
+    const refreshForServerVersion = async () => {
+      for (const { plugin, index } of checkable) {
+        if (cancelled) return;
+        if (plugin.latestVersion) {
+          if (plugin.type === 'spigot' && plugin.targetGameVersion) continue;
+          if (plugin.targetGameVersion === gameVersion) continue;
+        }
+
+        try {
+          const updated = await refreshPlugin(plugin, fetchOptions);
+          if (cancelled || !mountedRef.current) return;
+          updated.updateDate = new Date();
+          patch((store) => {
+            store.updatePlugin(index, updated, activeServerId);
+          });
+        } catch {
+        }
+
+        await delay(PLUGIN_BULK_CHECK_DELAY_MS);
+        await yieldToMain();
+      }
+    };
+
+    refreshForServerVersion();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [ready, activeServerId, software, gameVersion, fetchOptions, patch]);
 
   const softwareOptions = useMemo(
     () => PLUGIN_SOFTWARE.map((value) => {
@@ -95,6 +151,28 @@ export default function PluginsClient() {
     }),
     [t],
   );
+
+  const gameVersionOptions = useMemo(() => {
+    const list = showAllMcVersions ? full : release;
+    const entryMap = new Map((entries ?? []).map((entry) => [entry.version, entry]));
+    return list.map((value) => {
+      const entry = entryMap.get(value);
+      const type = entry?.version_type;
+      const typeLabel = type && type !== 'release' ? type : '';
+      const suffix = typeLabel ? ` · ${typeLabel}` : '';
+      return { value, label: `${value}${suffix}` };
+    });
+  }, [release, full, entries, showAllMcVersions, t]);
+
+  useEffect(() => {
+    if (mcVersionsLoading || !full.length || !activeServerId) return;
+    if (storedGameVersion && full.includes(storedGameVersion)) return;
+    const nextVersion = release[0] ?? full[0];
+    if (!nextVersion) return;
+    patch((store) => {
+      store.setPluginGameVersion(nextVersion, activeServerId);
+    });
+  }, [mcVersionsLoading, full, release, storedGameVersion, activeServerId, patch]);
 
   const filterOptions = useMemo(() => PLUGIN_FILTERS.map((value) => {
     if (value === 'all') {
@@ -123,7 +201,12 @@ export default function PluginsClient() {
 
     return {
       outdated: filtered.filter(({ plugin }) => isUpdateAvailable(plugin)),
-      current: filtered.filter(({ plugin }) => !isUpdateAvailable(plugin)),
+      unavailable: filtered.filter(
+        ({ plugin }) => !isUpdateAvailable(plugin) && isUnavailableForGameVersion(plugin),
+      ),
+      current: filtered.filter(
+        ({ plugin }) => !isUpdateAvailable(plugin) && !isUnavailableForGameVersion(plugin),
+      ),
       total: filtered.length,
     };
   }, [plugins, pluginsFilter]);
@@ -179,7 +262,7 @@ export default function PluginsClient() {
     const key = `plugin-${index}`;
     setLoading(key, true);
     try {
-      const updated = await refreshPlugin(plugin, software);
+      const updated = await refreshPlugin(plugin, fetchOptions);
       if (!mountedRef.current) return;
       updated.updateDate = new Date();
       patch((store) => {
@@ -265,7 +348,7 @@ export default function PluginsClient() {
         await delay(PLUGIN_BULK_CHECK_DELAY_MS);
         await yieldToMain();
 
-        const updated = await refreshPlugin(plugin, software);
+        const updated = await refreshPlugin(plugin, fetchOptions);
         if (!mountedRef.current) return;
         updated.updateDate = new Date();
         patch((store) => {
@@ -289,6 +372,7 @@ export default function PluginsClient() {
     <PluginCard
       key={`${plugin.type}-${plugin.id}-${index}`}
       plugin={plugin}
+      gameVersion={gameVersion}
       loading={loadingMap[`plugin-${index}`]}
       onRefresh={() => handleRefreshPlugin(index)}
       onDownload={() => handleDownloadPlugin(index)}
@@ -357,6 +441,36 @@ export default function PluginsClient() {
                 value={software}
                 options={softwareOptions}
                 onChange={(value) => patch((store) => { store.setPluginSoftware(value, activeServerId); })}
+              />
+            </LumTooltip>
+            <LumTooltip
+              content={t('tools.plugins.tooltips.gameVersion')}
+              side="bottom"
+              className="plugin-toolbar-dropdown-tip plugin-toolbar-dropdown-tip--game-version"
+            >
+              <LumDropdown
+                id="plugin-game-version"
+                value={gameVersion}
+                options={gameVersionOptions}
+                menuMinWidth={220}
+                menuClassName="lum-dropdown-menu--fit-labels"
+                footer={(
+                  <label className="lum-dropdown-menu-footer-toggle" htmlFor="plugin-show-all-mc-versions">
+                    <span className="lum-dropdown-menu-footer-toggle-label">
+                      {t('tools.plugins.showAllGameVersions')}
+                    </span>
+                    <span className="lum-toggle">
+                      <input
+                        id="plugin-show-all-mc-versions"
+                        type="checkbox"
+                        checked={showAllMcVersions}
+                        onChange={(event) => setShowAllMcVersions(event.target.checked)}
+                      />
+                      <span className="lum-toggle-track" />
+                    </span>
+                  </label>
+                )}
+                onChange={(value) => patch((store) => { store.setPluginGameVersion(value, activeServerId); })}
               />
             </LumTooltip>
             <LumTooltip
@@ -468,6 +582,17 @@ export default function PluginsClient() {
           </section>
         )}
 
+        {pluginGroups.unavailable.length > 0 && (
+          <section className="plugin-section">
+            <h2 className="plugin-section-title plugin-section-title--unavailable">
+              {t('tools.plugins.sections.unavailable', { count: pluginGroups.unavailable.length })}
+            </h2>
+            <div className="plugin-grid">
+              {pluginGroups.unavailable.map(renderPluginCard)}
+            </div>
+          </section>
+        )}
+
         {pluginGroups.current.length > 0 && (
           <section className="plugin-section">
             <h2 className="plugin-section-title">
@@ -484,6 +609,7 @@ export default function PluginsClient() {
       <AddPluginModal
         open
         software={software}
+        gameVersion={gameVersion}
         existingPlugins={plugins}
         onClose={() => setModalOpen(false)}
         onAdd={(plugin) => {
@@ -500,6 +626,7 @@ export default function PluginsClient() {
       <ImportJarsModal
         open
         software={software}
+        gameVersion={gameVersion}
         existingPlugins={plugins}
         onClose={() => setJarModalOpen(false)}
         onImport={(items) => {
@@ -520,6 +647,7 @@ export default function PluginsClient() {
         open
         plugin={plugins[relinkIndex]}
         software={software}
+        gameVersion={gameVersion}
         existingPlugins={plugins}
         excludeIndex={relinkIndex}
         onClose={() => setRelinkIndex(null)}
@@ -537,6 +665,7 @@ export default function PluginsClient() {
         open
         plugin={plugins[versionIndex]}
         software={software}
+        gameVersion={gameVersion}
         onClose={() => setVersionIndex(null)}
         onSave={(next) => {
           patch((store) => {

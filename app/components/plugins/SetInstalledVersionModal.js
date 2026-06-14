@@ -13,10 +13,15 @@ export default function SetInstalledVersionModal({
   open,
   plugin,
   software,
+  gameVersion,
   onClose,
   onSave,
 }) {
   const { t, locale } = useLocale();
+  const fetchOptions = useMemo(
+    () => ({ software, gameVersion, allVersions: true }),
+    [software, gameVersion],
+  );
   const [loading, setLoading] = useState(false);
   const [notice, setNotice] = useState(null);
   const [draft, setDraft] = useState(null);
@@ -50,7 +55,7 @@ export default function SetInstalledVersionModal({
       setLoading(true);
       setNotice(null);
       try {
-        const refreshed = await refreshPlugin(currentPlugin, software);
+        const refreshed = await refreshPlugin(currentPlugin, fetchOptions);
         if (cancelled) return;
         setDraft(refreshed);
         setSelectedId(String(refreshed.currentVersion?.id ?? refreshed.versions?.[0]?.id ?? ''));
@@ -68,7 +73,7 @@ export default function SetInstalledVersionModal({
     return () => {
       cancelled = true;
     };
-  }, [open, pluginKey, software, t]);
+  }, [open, pluginKey, fetchOptions, t]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -123,7 +128,7 @@ export default function SetInstalledVersionModal({
 
   if (!open || !plugin) return null;
 
-  const canSave = Boolean(selectedId && draft?.versions?.length);
+  const canSave = Boolean(selectedId && versionOptions.length);
 
   return (
     <ModalPortal>

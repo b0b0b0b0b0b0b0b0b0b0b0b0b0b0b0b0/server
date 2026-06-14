@@ -230,6 +230,10 @@
   min-width: 10.5rem;
 }
 
+.plugin-toolbar-dropdown-tip--game-version {
+  min-width: 9rem;
+}
+
 .plugin-toolbar-dropdown-tip--filter {
   min-width: 9.5rem;
 }
@@ -240,6 +244,15 @@
 
 .plugin-toolbar-dropdown-tip--software .lum-dropdown-trigger {
   min-width: 10.5rem;
+}
+
+.plugin-toolbar-dropdown-tip--game-version .lum-dropdown-trigger {
+  min-width: 9rem;
+}
+
+.plugin-toolbar-dropdown-tip--game-version .lum-dropdown-trigger-label {
+  overflow: visible;
+  text-overflow: unset;
 }
 
 .plugin-toolbar-dropdown-tip--filter .lum-dropdown-trigger {
@@ -267,12 +280,38 @@
   scrollbar-color: color-mix(in srgb, var(--tool-accent) 42%, transparent) transparent;
 }
 
-.plugins-page .lum-dropdown-menu::-webkit-scrollbar-thumb {
+.plugins-page .lum-dropdown-menu-scroll {
+  scrollbar-color: color-mix(in srgb, var(--tool-accent) 42%, transparent) transparent;
+}
+
+.plugins-page .lum-dropdown-menu-footer .lum-toggle-track {
+  border: none;
+  background: color-mix(in srgb, var(--color-bg) 72%, var(--color-surface-muted));
+  box-shadow: inset 0 2px 5px color-mix(in srgb, var(--color-bg) 48%, transparent);
+}
+
+.plugins-page .lum-dropdown-menu-footer .lum-toggle input:checked + .lum-toggle-track {
+  background: color-mix(in srgb, var(--tool-accent) 30%, var(--glass-fill));
+  border-color: color-mix(in srgb, var(--tool-accent) 45%, var(--glass-border));
+  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--color-bg) 25%, transparent);
+}
+
+.plugins-page .lum-dropdown-menu-footer .lum-toggle input:checked + .lum-toggle-track::after {
+  background: var(--tool-accent);
+}
+
+.plugins-page .lum-dropdown-menu-footer .lum-toggle input:focus-visible + .lum-toggle-track {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tool-accent) 22%, transparent);
+}
+
+.plugins-page .lum-dropdown-menu::-webkit-scrollbar-thumb,
+.plugins-page .lum-dropdown-menu-scroll::-webkit-scrollbar-thumb {
   background: color-mix(in srgb, var(--tool-accent) 38%, var(--color-text-secondary));
   background-clip: padding-box;
 }
 
-.plugins-page .lum-dropdown-menu::-webkit-scrollbar-thumb:hover {
+.plugins-page .lum-dropdown-menu::-webkit-scrollbar-thumb:hover,
+.plugins-page .lum-dropdown-menu-scroll::-webkit-scrollbar-thumb:hover {
   background: color-mix(in srgb, var(--tool-accent) 58%, var(--color-text-secondary));
   background-clip: padding-box;
 }
@@ -454,7 +493,11 @@
 }
 
 .plugin-section-title--outdated {
-  color: color-mix(in srgb, var(--accent-yellow) 78%, var(--color-text));
+  color: var(--color-text-secondary);
+}
+
+.plugin-section-title--unavailable {
+  color: var(--color-text-secondary);
 }
 
 @media (min-width: 720px) {
@@ -484,6 +527,7 @@
 .plugin-empty-list {
   margin: 0;
   padding: 28px 20px;
+  border: none;
   border-radius: var(--size-radius-lg);
   text-align: center;
   color: var(--color-text-secondary);
@@ -504,13 +548,6 @@
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
-}
-
-.plugin-card--outdated {
-  box-shadow:
-    var(--glass-shadow),
-    inset 0 1px 0 var(--glass-highlight),
-    0 0 0 1px color-mix(in srgb, var(--accent-yellow) 28%, transparent);
 }
 
 .plugin-card-head {
@@ -561,12 +598,12 @@
   color: color-mix(in srgb, var(--color-error) 72%, var(--color-text-secondary));
 }
 
-.plugin-card-relink {
+.plugin-card-page {
   flex-shrink: 0;
   color: color-mix(in srgb, var(--tool-accent) 72%, var(--color-text-secondary));
 }
 
-.plugin-card-relink:hover:not(:disabled) {
+.plugin-card-page:hover {
   color: var(--tool-accent);
   background: color-mix(in srgb, var(--tool-accent) 12%, var(--glass-fill-strong));
 }
@@ -590,27 +627,18 @@
   font-weight: 700;
 }
 
-.plugin-card-versions-range,
-.plugin-card-update-note {
+.plugin-card-update-note,
+.plugin-card-no-build {
   margin: 4px 0 0;
   font-size: 0.78rem;
   color: var(--color-text-secondary);
 }
 
-.plugin-card-update-note {
-  color: color-mix(in srgb, var(--accent-yellow) 82%, white);
+.plugin-card-no-build {
+  color: color-mix(in srgb, var(--color-text-secondary) 88%, var(--color-text));
 }
 
-.plugin-card-desc {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.55;
-  color: var(--color-text-secondary);
-}
-
-.plugin-card-stats {
-  display: grid;
-  gap: 8px;
+.plugin-card-versions {
   margin: 0;
   padding: 10px 12px;
   border-radius: var(--size-radius-sm);
@@ -618,28 +646,51 @@
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--glass-highlight) 35%, transparent);
 }
 
-.plugin-card-stats div {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 0.82rem;
-}
-
-.plugin-card-stats dt {
-  color: var(--color-text-secondary);
-}
-
-.plugin-card-stats dd {
+.plugin-card-version-line {
   margin: 0;
-  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.plugin-card-version-line strong {
+  font-weight: 700;
+}
+
+.plugin-card-version-latest-tip.lum-tooltip {
+  display: inline;
+  max-width: none;
+  vertical-align: baseline;
+}
+
+.plugin-card-version-latest {
+  cursor: help;
+  color: var(--tool-accent);
+  text-decoration: underline dotted color-mix(in srgb, var(--tool-accent) 45%, transparent);
+  text-underline-offset: 2px;
+}
+
+.plugin-card-actions .plugin-card-relink {
+  color: color-mix(in srgb, var(--tool-accent) 72%, var(--color-text-secondary));
+}
+
+.plugin-card-actions .plugin-card-relink:hover:not(:disabled) {
+  color: var(--tool-accent);
+  background: color-mix(in srgb, var(--tool-accent) 12%, var(--glass-fill-strong));
 }
 
 .plugin-card-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
   margin-top: auto;
   padding-top: 4px;
+}
+
+.plugin-card-download {
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .plugin-modal-backdrop {

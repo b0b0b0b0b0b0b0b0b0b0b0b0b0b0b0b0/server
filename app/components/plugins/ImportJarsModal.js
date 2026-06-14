@@ -52,12 +52,14 @@ function summarizeItems(items) {
 export default function ImportJarsModal({
   open,
   software,
+  gameVersion,
   existingPlugins,
   onClose,
   onImport,
   onNotify,
 }) {
   const { t } = useLocale();
+  const fetchOptions = useMemo(() => ({ software, gameVersion }), [software, gameVersion]);
   const inputId = useId();
   const inputRef = useRef(null);
   const mountedRef = useRef(true);
@@ -173,7 +175,7 @@ export default function ImportJarsModal({
       await resolveJarPlugins(
         parsed.parsed,
         existingPlugins,
-        software,
+        fetchOptions,
         {
           onProgress: (done, total) => {
             if (!mountedRef.current) return;
@@ -509,6 +511,7 @@ export default function ImportJarsModal({
         open
         plugin={relinkItem.plugin}
         software={software}
+        gameVersion={gameVersion}
         existingPlugins={relinkExistingPlugins}
         mergePlugin={(_, draft) => mergeJarRelinkPlugin(relinkItem, draft)}
         onClose={() => setRelinkItem(null)}

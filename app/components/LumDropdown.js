@@ -29,6 +29,9 @@ export default function LumDropdown({
   iconOnly = false,
   tooltip,
   className = '',
+  menuClassName = '',
+  menuMinWidth,
+  footer,
 }) {
   const [open, setOpen] = useState(false);
   const [menuStyle, setMenuStyle] = useState(null);
@@ -49,7 +52,9 @@ export default function LumDropdown({
     const rect = trigger.getBoundingClientRect();
     const isRtl = document.documentElement.dir === 'rtl';
     const inHeaderLocale = Boolean(root.closest('.site-header-locale'));
-    const minWidth = iconOnly || inHeaderLocale ? 168 : rect.width;
+    const minWidth = iconOnly || inHeaderLocale
+      ? 168
+      : Math.max(rect.width, menuMinWidth ?? 0);
     const menuWidth = Math.max(rect.width, minWidth);
     const viewportPadding = 8;
     const maxHeight = Math.min(
@@ -74,7 +79,7 @@ export default function LumDropdown({
       maxHeight: `${Math.max(120, maxHeight)}px`,
       zIndex: getMenuLayer(root),
     };
-  }, [iconOnly]);
+  }, [iconOnly, menuMinWidth]);
 
   const updateMenuPosition = useCallback(() => {
     const style = computeMenuStyle();
@@ -172,11 +177,28 @@ export default function LumDropdown({
     ? createPortal(
       <div
         ref={menuRef}
-        className="lum-dropdown-menu lum-dropdown-menu--floating"
+        className={[
+          'lum-dropdown-menu',
+          'lum-dropdown-menu--floating',
+          footer ? 'lum-dropdown-menu--with-footer' : '',
+          menuClassName,
+        ].filter(Boolean).join(' ')}
         role="listbox"
         style={menuStyle}
       >
-        {menuItems}
+        {footer ? (
+          <div className="lum-dropdown-menu-scroll">
+            {menuItems}
+          </div>
+        ) : menuItems}
+        {footer ? (
+          <div
+            className="lum-dropdown-menu-footer"
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            {footer}
+          </div>
+        ) : null}
       </div>,
       document.body,
     )

@@ -25,6 +25,7 @@ const SOURCE_DESCRIPTION_KEYS = {
 export default function AddPluginModal({
   open,
   software,
+  gameVersion,
   existingPlugins,
   onClose,
   onAdd,
@@ -44,6 +45,7 @@ export default function AddPluginModal({
   }, [t]);
 
   const loaders = useMemo(() => getPluginLoaders(software), [software]);
+  const fetchOptions = useMemo(() => ({ software, gameVersion }), [software, gameVersion]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -107,7 +109,7 @@ export default function AddPluginModal({
     setLoading(true);
     try {
       const instance = createPlugin({ type: source, id: pluginId });
-      await instance.fetch(software);
+      await instance.fetch(fetchOptions);
       setDraft(instance.toJSON());
       setSearchResults([]);
     } catch (error) {
@@ -139,7 +141,7 @@ export default function AddPluginModal({
       setLoading(true);
       setNotice(null);
       try {
-        const hits = await searchPlugins(source, value, loaders);
+        const hits = await searchPlugins(source, value, loaders, gameVersion);
         if (cancelled) return;
         if (!hits.length) {
           setNotice({ type: 'warn', message: tRef.current('tools.plugins.noResults', { query: value }) });
@@ -167,7 +169,7 @@ export default function AddPluginModal({
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [query, source, open, software, loaders]);
+  }, [query, source, open, fetchOptions, loaders, gameVersion]);
 
   const handleSelectResult = async (pluginId) => {
     const hit = searchResults.find((item) => String(item.id) === String(pluginId));
@@ -180,7 +182,7 @@ export default function AddPluginModal({
     setLoading(true);
     try {
       const instance = createPlugin({ type: source, id: hit.id });
-      await instance.fetch(software);
+      await instance.fetch(fetchOptions);
       setDraft(instance.toJSON());
       setSearchResults([]);
       suppressSearchRef.current = true;
