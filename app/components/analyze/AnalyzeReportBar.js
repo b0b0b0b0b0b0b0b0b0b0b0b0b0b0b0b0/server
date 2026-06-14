@@ -28,7 +28,18 @@ function passedLabel(count, locale, t) {
   return count === 1 ? t('tools.analyze.reportPassedOne') : t('tools.analyze.reportPassed');
 }
 
-export default function AnalyzeReportBar({ id, issueCount, okCount }) {
+function warningsLabel(count, locale, t) {
+  if (locale === 'ru') {
+    return pluralRu(count, {
+      one: 'замечание',
+      few: 'замечания',
+      many: 'замечаний',
+    });
+  }
+  return count === 1 ? t('tools.analyze.reportWarning') : t('tools.analyze.reportWarnings');
+}
+
+export default function AnalyzeReportBar({ id, issueCount, warnCount = 0, okCount }) {
   const { t, locale } = useLocale();
   const [copied, setCopied] = useState(false);
 
@@ -45,6 +56,12 @@ export default function AnalyzeReportBar({ id, issueCount, okCount }) {
         <span className="analyze-report-stat-value">{issueCount}</span>
         <span className="analyze-report-stat-label">{issuesLabel(issueCount, locale, t)}</span>
       </div>
+      {warnCount > 0 && (
+        <div className="analyze-report-stat analyze-report-stat--warn">
+          <span className="analyze-report-stat-value">{warnCount}</span>
+          <span className="analyze-report-stat-label">{warningsLabel(warnCount, locale, t)}</span>
+        </div>
+      )}
       {okCount > 0 && (
         <div className="analyze-report-stat analyze-report-stat--ok">
           <span className="analyze-report-stat-value">{okCount}</span>

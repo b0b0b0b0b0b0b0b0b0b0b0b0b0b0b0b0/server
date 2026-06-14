@@ -1,13 +1,17 @@
+'use client';
+
 import { Zap } from 'lucide-react';
 import AnalyzeForm from '@/app/components/analyze/AnalyzeForm';
-import AnalyzeFinding, { parseFinding } from '@/app/components/analyze/AnalyzeFinding';
+import AnalyzeFinding from '@/app/components/analyze/AnalyzeFinding';
 import AnalyzeReportBar from '@/app/components/analyze/AnalyzeReportBar';
+import { useLocale } from '@/app/components/AppProviders';
 import ServerSwitcher from '@/app/components/ServerSwitcher';
 import WorkspaceAnalyses from '@/app/components/WorkspaceAnalyses';
 import { ANALYZE_GUIDE_URL, ANALYZE_SPARK_URL } from '@/lib/config/analyze';
-import { SITE_ORIGIN } from '@/lib/config/site';
 
-export default function AnalyzeLanding({ t }) {
+export default function AnalyzeLanding() {
+  const { t } = useLocale();
+
   return (
     <section className="tool-page analyze-page">
       <header className="tool-page-head">
@@ -44,19 +48,15 @@ export default function AnalyzeLanding({ t }) {
       <AnalyzeForm />
 
       <WorkspaceAnalyses />
-
-      <p className="analyze-share">
-        {t('tools.analyze.shareHint')}
-        <br />
-        <span className="analyze-share-url">{`${SITE_ORIGIN}/tools/analyze/[id]`}</span>
-      </p>
     </section>
   );
 }
 
-export function AnalyzeResultsView({ t, id, results, showAnother = true }) {
-  const issueCount = results.filter((field) => parseFinding(field.name).severity === 'issue').length;
-  const okCount = results.filter((field) => parseFinding(field.name).severity === 'ok').length;
+export function AnalyzeResultsView({ id, results, showAnother = true }) {
+  const { t } = useLocale();
+  const issueCount = results.filter((field) => field.severity === 'issue').length;
+  const warnCount = results.filter((field) => field.severity === 'warn').length;
+  const okCount = results.filter((field) => field.severity === 'ok').length;
 
   return (
     <section className="tool-page analyze-page">
@@ -80,7 +80,7 @@ export function AnalyzeResultsView({ t, id, results, showAnother = true }) {
       <ServerSwitcher />
 
       <div className="analyze-report">
-        <AnalyzeReportBar id={id} issueCount={issueCount} okCount={okCount} />
+        <AnalyzeReportBar id={id} issueCount={issueCount} warnCount={warnCount} okCount={okCount} />
 
         <ul className="analyze-findings">
           {results.map((field, index) => (
@@ -95,12 +95,6 @@ export function AnalyzeResultsView({ t, id, results, showAnother = true }) {
           <AnalyzeForm autoFocus />
         </div>
       )}
-
-      <p className="analyze-share">
-        {t('tools.analyze.shareHint')}
-        <br />
-        <span className="analyze-share-url">{`${SITE_ORIGIN}/tools/analyze/${id}`}</span>
-      </p>
     </section>
   );
 }
