@@ -205,9 +205,12 @@ export default function ImportJarsModal({
     runImport(fileList);
   };
 
-  const itemKey = (item) => (
-    item.plugin ? `${item.plugin.type}:${item.plugin.id}` : item.fileName
-  );
+  const itemKey = (item) => {
+    if (item.status === 'ready' && item.plugin) {
+      return `${item.plugin.type}:${item.plugin.id}`;
+    }
+    return item.fileName;
+  };
 
   const toggleItem = (key) => {
     setSelected((current) => {
@@ -250,7 +253,7 @@ export default function ImportJarsModal({
 
   const relinkExistingPlugins = useMemo(() => {
     const fromScan = readyItems
-      .filter((item) => !relinkItem || itemKey(item) !== itemKey(relinkItem))
+      .filter((item) => !relinkItem || item.fileName !== relinkItem.fileName)
       .map((item) => item.plugin);
     return [...existingPlugins, ...fromScan];
   }, [existingPlugins, readyItems, relinkItem]);
@@ -268,12 +271,13 @@ export default function ImportJarsModal({
 
   const handleRelinkSave = (merged) => {
     if (!relinkItem) return;
+    const matchFileName = relinkItem.fileName;
     const oldKey = itemKey(relinkItem);
     const newKey = `${merged.type}:${merged.id}`;
     const nextSource = merged.type === 'spigot' ? 'spigot' : 'modrinth';
 
     const duplicateInBatch = readyItems.some(
-      (item) => itemKey(item) !== oldKey
+      (item) => item.fileName !== matchFileName
         && item.plugin?.type === merged.type
         && String(item.plugin?.id) === String(merged.id),
     );
@@ -283,7 +287,7 @@ export default function ImportJarsModal({
     }
 
     setItems((current) => current.map((item) => {
-      if (itemKey(item) !== oldKey) return item;
+      if (item.fileName !== matchFileName) return item;
       return {
         ...item,
         status: 'ready',
