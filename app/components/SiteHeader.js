@@ -8,13 +8,31 @@ import LumDropdown from '@/app/components/LumDropdown';
 import LumTooltip from '@/app/components/LumTooltip';
 import { labels } from '@/locales/index';
 import { LOCALES } from '@/lib/config/constants';
+import '@/styles/account.css';
+
+const ACCOUNT_SITE = 'https://modrinth.black';
 
 export default function SiteHeader() {
   const { t, locale, setLocale } = useLocale();
   const { theme, setTheme, ready } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  const [account, setAccount] = useState(undefined);
+
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    let alive = true;
+    fetch('/api/me', { cache: 'no-store' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (alive) setAccount(data?.user || null); })
+      .catch(() => { if (alive) setAccount(null); });
+    return () => { alive = false; };
+  }, []);
+
+  const signInHref = mounted
+    ? `${ACCOUNT_SITE}/login?next=${encodeURIComponent(window.location.href)}`
+    : `${ACCOUNT_SITE}/login`;
 
   const localeOptions = useMemo(
     () => LOCALES.map((code) => ({
@@ -41,6 +59,21 @@ export default function SiteHeader() {
               onChange={setLocale}
             />
           </div>
+          {account && (
+            <a href={`${ACCOUNT_SITE}/account`} className="site-header-account" title={account.username}>
+              {account.avatar ? (
+                <img src={account.avatar} alt="" width={24} height={24} className="site-header-account-avatar" />
+              ) : (
+                <span className="site-header-account-initial">{account.username.slice(0, 1).toUpperCase()}</span>
+              )}
+              <span className="site-header-account-name">{account.username}</span>
+            </a>
+          )}
+          {account === null && (
+            <a href={signInHref} className="site-header-account site-header-account--guest">
+              {locale === 'ru' ? 'Войти' : 'Sign in'}
+            </a>
+          )}
           <LumTooltip content={t('nav.tooltips.theme')} side="bottom">
             <button
               type="button"
