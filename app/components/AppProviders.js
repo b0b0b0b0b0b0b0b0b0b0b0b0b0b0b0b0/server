@@ -8,6 +8,7 @@ import { writePrefCookie } from '@/lib/core/prefCookies';
 import { applyDocumentLocale } from '@/lib/core/localeDirection';
 import { catalog } from '@/locales/index';
 import { DEFAULT_LOCALE, DEFAULT_THEME, LOCALES, STORAGE_KEYS } from '@/lib/config/constants';
+import { readSharedLocale, writeSharedLocale } from '@/lib/core/sharedLocale';
 
 const LocaleContext = createContext(null);
 const ThemeContext = createContext(null);
@@ -43,15 +44,18 @@ export default function AppProviders({
     const storedLocale = settings.read(STORAGE_KEYS.locale, null);
     const storedTheme = themeStore.read(null);
 
-    const resolvedLocale = storedLocale && LOCALES.includes(storedLocale)
-      ? storedLocale
-      : initialLocale;
+    const sharedLocale = readSharedLocale();
+    const resolvedLocale = sharedLocale && LOCALES.includes(sharedLocale)
+      ? sharedLocale
+      : storedLocale && LOCALES.includes(storedLocale)
+        ? storedLocale
+        : initialLocale;
 
     const resolvedTheme = storedTheme === 'light' || storedTheme === 'dark'
       ? storedTheme
       : initialTheme;
 
-    if (!storedLocale && LOCALES.includes(resolvedLocale)) {
+    if (storedLocale !== resolvedLocale && LOCALES.includes(resolvedLocale)) {
       settings.write(STORAGE_KEYS.locale, resolvedLocale);
     }
 
@@ -70,6 +74,7 @@ export default function AppProviders({
     setLocaleState(next);
     applyDocumentLocale(next);
     writePrefCookie(STORAGE_KEYS.locale, next);
+    writeSharedLocale(next);
   }, []);
 
   const setTheme = useCallback((next) => {

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import LumTooltip from '@/app/components/LumTooltip';
 import '@/styles/services-nav.css';
 
-const ACCOUNT_SITE = 'https://modrinth.black';
 
 const TEXT = {
   ru: {
@@ -44,12 +43,12 @@ const TEXT = {
 export default function ServicesNav({ locale }) {
   const text = locale === 'ru' || locale === 'uk' ? TEXT.ru : TEXT.en;
   const [account, setAccount] = useState(undefined);
-  const [signInHref, setSignInHref] = useState(`${ACCOUNT_SITE}/api/auth/sso`);
+  const [signInHref, setSignInHref] = useState('/login');
 
   useEffect(() => {
     let alive = true;
     let last = 0;
-    setSignInHref(`${ACCOUNT_SITE}/api/auth/sso?next=${encodeURIComponent(window.location.href)}`);
+    setSignInHref(`/login?next=${encodeURIComponent(window.location.pathname + window.location.search)}`);
     const load = () => {
       const now = Date.now();
       if (now - last < 5000) return;
@@ -107,7 +106,7 @@ export default function ServicesNav({ locale }) {
           </div>
         </div>
         {account && (
-          <a href={`${ACCOUNT_SITE}/account`} className="nav-account" title={account.username}>
+          <a href="/account" className="nav-account" title={account.username}>
             {account.avatar ? (
               <img src={account.avatar} alt="" width={22} height={22} className="nav-account-avatar" />
             ) : (
