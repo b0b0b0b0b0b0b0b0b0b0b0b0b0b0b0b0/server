@@ -31,8 +31,8 @@ export default function SiteHeader() {
   }, []);
 
   const signInHref = mounted
-    ? `${ACCOUNT_SITE}/login?next=${encodeURIComponent(window.location.href)}`
-    : `${ACCOUNT_SITE}/login`;
+    ? `${ACCOUNT_SITE}/api/auth/sso?next=${encodeURIComponent(window.location.href)}`
+    : `${ACCOUNT_SITE}/api/auth/sso`;
 
   const localeOptions = useMemo(
     () => LOCALES.map((code) => ({

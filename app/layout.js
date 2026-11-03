@@ -47,7 +47,7 @@ export default async function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="manifest" href="/manifest.webmanifest" crossOrigin="use-credentials" />
         <SiteJsonLd />
       </head>
       <body className={`${inter.className} min-h-screen antialiased`}>
