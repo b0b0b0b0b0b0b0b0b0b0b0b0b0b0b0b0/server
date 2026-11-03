@@ -48,12 +48,28 @@ export default function ServicesNav({ locale }) {
 
   useEffect(() => {
     let alive = true;
+    let last = 0;
     setSignInHref(`${ACCOUNT_SITE}/api/auth/sso?next=${encodeURIComponent(window.location.href)}`);
-    fetch('/api/me', { cache: 'no-store' })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => { if (alive) setAccount(data?.user || null); })
-      .catch(() => { if (alive) setAccount(null); });
-    return () => { alive = false; };
+    const load = () => {
+      const now = Date.now();
+      if (now - last < 5000) return;
+      last = now;
+      fetch('/api/me', { cache: 'no-store' })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => { if (alive) setAccount(data?.user || null); })
+        .catch(() => { if (alive) setAccount(null); });
+    };
+    const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+    load();
+    const timer = window.setInterval(onVisible, 60000);
+    window.addEventListener('focus', load);
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      alive = false;
+      window.clearInterval(timer);
+      window.removeEventListener('focus', load);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, []);
 
   return (
