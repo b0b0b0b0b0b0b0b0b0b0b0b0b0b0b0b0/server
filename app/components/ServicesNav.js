@@ -1,7 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import LumTooltip from '@/app/components/LumTooltip';
 import '@/styles/services-nav.css';
+
+const ACCOUNT_SITE = 'https://modrinth.black';
 
 const TEXT = {
   ru: {
@@ -16,6 +19,7 @@ const TEXT = {
       { href: 'https://dm.modrinth.black', label: 'Редактор DeluxeMenu', tip: 'Редактор DeluxeMenu и AbstractMenus' },
     ],
     mtoolsDesc: 'Инструменты для серверов Minecraft',
+    signIn: 'Войти',
     ping: 'Пинг серверов',
     pingDesc: 'Проверка серверов (мб недоступен в РФ)',
   },
@@ -31,6 +35,7 @@ const TEXT = {
       { href: 'https://dm.modrinth.black', label: 'DeluxeMenu Editor', tip: 'DeluxeMenu and AbstractMenus editor' },
     ],
     mtoolsDesc: 'Tools for Minecraft servers',
+    signIn: 'Sign in',
     ping: 'Server ping',
     pingDesc: 'Check Minecraft servers (may be unavailable in Russia)',
   },
@@ -38,6 +43,18 @@ const TEXT = {
 
 export default function ServicesNav({ locale }) {
   const text = locale === 'ru' || locale === 'uk' ? TEXT.ru : TEXT.en;
+  const [account, setAccount] = useState(undefined);
+  const [signInHref, setSignInHref] = useState(`${ACCOUNT_SITE}/api/auth/sso`);
+
+  useEffect(() => {
+    let alive = true;
+    setSignInHref(`${ACCOUNT_SITE}/api/auth/sso?next=${encodeURIComponent(window.location.href)}`);
+    fetch('/api/me', { cache: 'no-store' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (alive) setAccount(data?.user || null); })
+      .catch(() => { if (alive) setAccount(null); });
+    return () => { alive = false; };
+  }, []);
 
   return (
     <nav className="svc-nav" aria-label={text.aria}>
@@ -73,6 +90,21 @@ export default function ServicesNav({ locale }) {
             </div>
           </div>
         </div>
+        {account && (
+          <a href={`${ACCOUNT_SITE}/account`} className="nav-account" title={account.username}>
+            {account.avatar ? (
+              <img src={account.avatar} alt="" width={22} height={22} className="nav-account-avatar" />
+            ) : (
+              <span className="nav-account-initial">{account.username.slice(0, 1).toUpperCase()}</span>
+            )}
+            <span className="nav-account-name">{account.username}</span>
+          </a>
+        )}
+        {account === null && (
+          <a href={signInHref} className="nav-account nav-account--guest">
+            {text.signIn}
+          </a>
+        )}
       </div>
     </nav>
   );
