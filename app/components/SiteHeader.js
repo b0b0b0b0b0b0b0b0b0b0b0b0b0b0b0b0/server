@@ -6,6 +6,7 @@ import { Moon, Sun } from 'lucide-react';
 import { useLocale, useTheme } from '@/app/components/AppProviders';
 import LumDropdown from '@/app/components/LumDropdown';
 import LumTooltip from '@/app/components/LumTooltip';
+import ServicesNav from '@/app/components/ServicesNav';
 import { labels } from '@/locales/index';
 import { LOCALES } from '@/lib/config/constants';
 import '@/styles/account.css';
@@ -43,49 +44,52 @@ export default function SiteHeader() {
   );
 
   return (
-    <header className="site-header">
-      <div className="site-header-inner">
-        <Link href="/" className="site-header-logo">
-          <span className="site-header-brand">{t('site.name')}</span>
-          <span className="site-header-abbrev">{t('site.abbrev')}</span>
-        </Link>
-        <nav className="site-header-nav" aria-label={t('nav.language')}>
-          <div className="site-header-locale">
-            <LumDropdown
-              id="header-locale"
-              value={locale}
-              options={localeOptions}
-              tooltip={t('nav.tooltips.locale')}
-              onChange={setLocale}
-            />
-          </div>
-          {account && (
-            <a href={`${ACCOUNT_SITE}/account`} className="site-header-account" title={account.username}>
-              {account.avatar ? (
-                <img src={account.avatar} alt="" width={24} height={24} className="site-header-account-avatar" />
-              ) : (
-                <span className="site-header-account-initial">{account.username.slice(0, 1).toUpperCase()}</span>
-              )}
-              <span className="site-header-account-name">{account.username}</span>
-            </a>
-          )}
-          {account === null && (
-            <a href={signInHref} className="site-header-account site-header-account--guest">
-              {locale === 'ru' ? 'Войти' : 'Sign in'}
-            </a>
-          )}
-          <LumTooltip content={t('nav.tooltips.theme')} side="bottom">
-            <button
-              type="button"
-              className="site-header-btn"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              aria-label={t('nav.theme')}
-            >
-              {mounted && ready && (theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />)}
-            </button>
-          </LumTooltip>
-        </nav>
-      </div>
-    </header>
+    <>
+      <ServicesNav locale={locale} />
+      <header className="site-header">
+        <div className="site-header-inner">
+          <Link href="/" className="site-header-logo">
+            <span className="site-header-brand">{t('site.name')}</span>
+            <span className="site-header-abbrev">{t('site.abbrev')}</span>
+          </Link>
+          <nav className="site-header-nav" aria-label={t('nav.language')}>
+            <div className="site-header-locale">
+              <LumDropdown
+                id="header-locale"
+                value={locale}
+                options={localeOptions}
+                tooltip={t('nav.tooltips.locale')}
+                onChange={setLocale}
+              />
+            </div>
+            {account && (
+              <a href={`${ACCOUNT_SITE}/account`} className="site-header-account" title={account.username}>
+                {account.avatar ? (
+                  <img src={account.avatar} alt="" width={24} height={24} className="site-header-account-avatar" />
+                ) : (
+                  <span className="site-header-account-initial">{account.username.slice(0, 1).toUpperCase()}</span>
+                )}
+                <span className="site-header-account-name">{account.username}</span>
+              </a>
+            )}
+            {account === null && (
+              <a href={signInHref} className="site-header-account site-header-account--guest">
+                {locale === 'ru' ? 'Войти' : 'Sign in'}
+              </a>
+            )}
+            <LumTooltip content={t('nav.tooltips.theme')} side="bottom">
+              <button
+                type="button"
+                className="site-header-btn"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                aria-label={t('nav.theme')}
+              >
+                {mounted && ready && (theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />)}
+              </button>
+            </LumTooltip>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }

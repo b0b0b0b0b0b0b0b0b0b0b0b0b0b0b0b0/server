@@ -1,0 +1,79 @@
+'use client';
+
+import LumTooltip from '@/app/components/LumTooltip';
+import '@/styles/services-nav.css';
+
+const TEXT = {
+  ru: {
+    aria: 'Сервисы modrinth.black',
+    more: 'Ещё сервисы',
+    here: 'Вы здесь',
+    links: [
+      { href: 'https://modrinth.black', label: 'ModrinthProxy', tip: 'Модринч по-русски' },
+      { href: 'https://client.modrinth.black', label: 'Клиент/Сервер', tip: 'Скачать все версии Minecraft' },
+      { href: 'https://rp.modrinth.black', label: 'RP Перепак', tip: 'Перепаковка защищённых ресурспаков' },
+      { href: 'https://jar.modrinth.black', label: 'Перевод Плагинов', tip: 'Перевод плагинов онлайн (InJarTranslator)' },
+      { href: 'https://dm.modrinth.black', label: 'Редактор DeluxeMenu', tip: 'Редактор DeluxeMenu и AbstractMenus' },
+    ],
+    mtoolsDesc: 'Инструменты для серверов Minecraft',
+    ping: 'Пинг серверов',
+    pingDesc: 'Проверка серверов (мб недоступен в РФ)',
+  },
+  en: {
+    aria: 'modrinth.black services',
+    more: 'More services',
+    here: 'You are here',
+    links: [
+      { href: 'https://modrinth.black', label: 'ModrinthProxy', tip: 'Modrinth in Russian' },
+      { href: 'https://client.modrinth.black', label: 'Client/Server', tip: 'Download every Minecraft version' },
+      { href: 'https://rp.modrinth.black', label: 'RP Repack', tip: 'Repack protected resource packs' },
+      { href: 'https://jar.modrinth.black', label: 'Plugin Translator', tip: 'Translate plugins online (InJarTranslator)' },
+      { href: 'https://dm.modrinth.black', label: 'DeluxeMenu Editor', tip: 'DeluxeMenu and AbstractMenus editor' },
+    ],
+    mtoolsDesc: 'Tools for Minecraft servers',
+    ping: 'Server ping',
+    pingDesc: 'Check Minecraft servers (may be unavailable in Russia)',
+  },
+};
+
+export default function ServicesNav({ locale }) {
+  const text = locale === 'ru' || locale === 'uk' ? TEXT.ru : TEXT.en;
+
+  return (
+    <nav className="svc-nav" aria-label={text.aria}>
+      <div className="svc-nav-inner">
+        {text.links.map((link) => (
+          <LumTooltip key={link.href} content={link.tip} side="bottom">
+            <a href={link.href} className="svc-nav-link">
+              {link.label}
+            </a>
+          </LumTooltip>
+        ))}
+        <div className="nav-more">
+          <button type="button" className="svc-nav-link nav-more-trigger" aria-label={text.more} aria-haspopup="true">
+            <svg className="nav-more-dots" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <circle cx="12" cy="5" r="1.9" />
+              <circle cx="12" cy="12" r="1.9" />
+              <circle cx="12" cy="19" r="1.9" />
+            </svg>
+          </button>
+          <div className="nav-more-panel" role="menu">
+            <div className="nav-more-list">
+              <span className="nav-more-item nav-more-item--here" role="menuitem" aria-current="page">
+                <span className="nav-more-title">
+                  <span className="svc-nav-dot" aria-hidden="true" />
+                  MTools
+                </span>
+                <span className="nav-more-desc">{text.here} · {text.mtoolsDesc}</span>
+              </span>
+              <a href="https://ping.modrinth.black" className="nav-more-item" role="menuitem">
+                <span className="nav-more-title">{text.ping}</span>
+                <span className="nav-more-desc">{text.pingDesc}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
