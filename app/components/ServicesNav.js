@@ -12,7 +12,7 @@ const TEXT = {
     more: 'Ещё сервисы',
     here: 'Вы здесь',
     links: [
-      { href: 'https://modrinth.black', label: 'ModrinthProxy', tip: 'Модринч по-русски' },
+      { href: 'https://modrinth.black', label: 'ModrinthProxy', tip: 'Модринт по-русски' },
       { href: 'https://client.modrinth.black', label: 'Клиент/Сервер', tip: 'Скачать все версии Minecraft' },
       { href: 'https://rp.modrinth.black', label: 'RP Перепак', tip: 'Перепаковка защищённых ресурспаков' },
       { href: 'https://jar.modrinth.black', label: 'Перевод Плагинов', tip: 'Перевод плагинов онлайн (InJarTranslator)' },
