@@ -1,10 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { KittenFace } from '@/components/mpa/Kitten'
 import { errorText, getText } from '@/components/mpa/text'
-import '@/components/mpa/mpa.css'
+import { ErrorBox, Field, Frame, Side, Spinner, Svg, USER_ICON } from '@/components/mpa/ui'
 
 const ACCOUNT_SITE = 'https://modrinth.black'
+const SHIELD_ICON = 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z'
+const EXIT_ICON = 'M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9'
 
 export default function AccountPanel() {
   const [text, setText] = useState(getText)
@@ -12,7 +15,7 @@ export default function AccountPanel() {
   const [username, setUsername] = useState('')
   const [busy, setBusy] = useState(false)
   const [notice, setNotice] = useState('')
-  const [error, setError] = useState('')
+  const [error, setError] = useState({ text: '', id: 0 })
 
   useEffect(() => {
     setText(getText())
@@ -41,12 +44,14 @@ export default function AccountPanel() {
     }
   }, [])
 
+  const fail = (code) => setError((prev) => ({ text: errorText(text, code), id: prev.id + 1 }))
+
   const rename = async (event) => {
     event.preventDefault()
     if (busy || !user) return
     setBusy(true)
-    setError('')
     setNotice('')
+    setError((prev) => ({ text: '', id: prev.id }))
     try {
       const res = await fetch('/api/auth/rename', {
         method: 'POST',
@@ -55,7 +60,7 @@ export default function AccountPanel() {
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok || !data?.user) {
-        setError(errorText(text, data?.error))
+        fail(data?.error)
         if (data?.error === 'unauthorized') setUser(null)
       } else {
         setUser(data.user)
@@ -63,7 +68,7 @@ export default function AccountPanel() {
         setNotice(text.saved)
       }
     } catch {
-      setError(errorText(text, 'unavailable'))
+      fail('unavailable')
     }
     setBusy(false)
   }
@@ -74,58 +79,95 @@ export default function AccountPanel() {
     window.location.assign('/')
   }
 
-  if (user === undefined) return <div className="mpa-shell" />
-
-  if (!user) {
+  if (user === undefined) {
     return (
-      <div className="mpa-shell">
-        <div className="mpa-card">
-          <p className="mpa-title">{text.signedOut}</p>
-          <a href="/login?next=%2Faccount" className="mpa-btn mpa-btn--primary">{text.signIn}</a>
-        </div>
+      <div className="mpa-page mpa-page--loading">
+        <Spinner />
       </div>
     )
   }
 
+  if (!user) {
+    return (
+      <Frame side={<Side text={text} />}>
+        <div className="mpa-swap mpa-swap--left">
+          <div className="mpa-head">
+            <div>
+              <h1 className="mpa-title">{text.signedOutTitle}</h1>
+              <p className="mpa-lead">{text.signedOutLead}</p>
+            </div>
+            <span className="mpa-guard mpa-guard--static">
+              <KittenFace mood="look" />
+            </span>
+          </div>
+          <a href="/login?next=%2Faccount" className="mpa-submit mpa-submit--link">{text.submitLogin}</a>
+        </div>
+      </Frame>
+    )
+  }
+
+  const profile = (
+    <div className="mpa-profile mpa-rise">
+      {user.avatar ? (
+        <img src={user.avatar} alt="" width={96} height={96} className="mpa-profile-avatar" />
+      ) : (
+        <span className="mpa-profile-initial">{user.username.slice(0, 1).toUpperCase()}</span>
+      )}
+      <h2 className="mpa-side-title">{user.username}</h2>
+      <p className="mpa-side-lead">{text.accountLead}</p>
+    </div>
+  )
+
   return (
-    <div className="mpa-shell">
-      <div className="mpa-card">
-        <div className="mpa-profile">
-          {user.avatar ? (
-            <img src={user.avatar} alt="" width={56} height={56} className="mpa-avatar" />
-          ) : (
-            <span className="mpa-avatar mpa-avatar--initial">{user.username.slice(0, 1).toUpperCase()}</span>
-          )}
+    <Frame side={profile}>
+      <div className="mpa-swap mpa-swap--left">
+        <div className="mpa-head">
           <div>
-            <p className="mpa-title">{user.username}</p>
-            <p className="mpa-hint">{text.oneAccount}</p>
+            <h1 className="mpa-title">{text.accountTitle}</h1>
+            <p className="mpa-lead">{text.accountLead}</p>
           </div>
         </div>
-        <form className="mpa-row" onSubmit={rename}>
-          <label className="mpa-field mpa-grow">
-            <span>{text.nickname}</span>
+
+        <form className="mpa-form" onSubmit={rename}>
+          <Field label={text.nickname} hint={text.usernameHint} icon={USER_ICON}>
             <input
               className="mpa-input"
               value={username}
               onChange={(e) => { setUsername(e.target.value); setNotice('') }}
+              autoCapitalize="none"
+              spellCheck={false}
               maxLength={24}
               required
             />
-          </label>
-          <button type="submit" className="mpa-btn mpa-btn--primary" disabled={busy || username.trim() === user.username}>
+          </Field>
+          <ErrorBox shakeKey={error.id}>{error.text}</ErrorBox>
+          {notice ? <p className="mpa-success">{notice}</p> : null}
+          <button type="submit" className="mpa-submit" disabled={busy || username.trim() === user.username}>
+            {busy ? <Spinner /> : null}
             {text.save}
           </button>
         </form>
-        {error && <p className="mpa-error" role="alert">{error}</p>}
-        {notice && <p className="mpa-ok">{notice}</p>}
-        <div className="mpa-section">
-          <p className="mpa-hint">{text.security}</p>
-          <a href={`${ACCOUNT_SITE}/settings/security`} className="mpa-btn">{text.securityLink}</a>
+
+        <div className="mpa-block">
+          <span className="mpa-block-icon"><Svg path={SHIELD_ICON} className="mpa-icon mpa-icon--sm" /></span>
+          <div className="mpa-block-body">
+            <span className="mpa-perk-title">{text.security}</span>
+            <span className="mpa-perk-text">{text.securityText}</span>
+          </div>
+          <a href={`${ACCOUNT_SITE}/settings/security`} className="mpa-ghost">{text.securityLink}</a>
         </div>
-        <button type="button" className="mpa-btn mpa-btn--danger" onClick={logout} disabled={busy}>
-          {text.logout}
-        </button>
+
+        <div className="mpa-block mpa-block--danger">
+          <span className="mpa-block-icon"><Svg path={EXIT_ICON} className="mpa-icon mpa-icon--sm" /></span>
+          <div className="mpa-block-body">
+            <span className="mpa-perk-title">{text.logout}</span>
+            <span className="mpa-perk-text">{text.logoutText}</span>
+          </div>
+          <button type="button" className="mpa-ghost mpa-ghost--danger" onClick={logout} disabled={busy}>
+            {text.logout}
+          </button>
+        </div>
       </div>
-    </div>
+    </Frame>
   )
 }
