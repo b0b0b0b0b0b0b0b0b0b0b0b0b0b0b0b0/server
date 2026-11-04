@@ -720,3 +720,31 @@ html:not(.dark) .mpa-auto .mpa-ghost:hover {
 html:not(.dark) .mpa-auto .mpa-alert {
   color: #b45309;
 }
+
+.mpa-back {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--mpa-line);
+  border-radius: 999px;
+  color: var(--mpa-muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgb(255 255 255 / 0.03);
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s, transform 0.2s;
+}
+
+.mpa-back:hover {
+  color: rgb(var(--mpa-accent));
+  border-color: rgb(var(--mpa-accent) / 0.4);
+  background: rgb(var(--mpa-accent) / 0.08);
+  transform: translateX(-2px);
+}
+
+html:not(.dark) .mpa-auto .mpa-back {
+  background: rgb(0 0 0 / 0.03);
+}

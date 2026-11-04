@@ -89,7 +89,7 @@ export default function AccountPanel() {
 
   if (!user) {
     return (
-      <Frame side={<Side text={text} />}>
+      <Frame side={<Side text={text} />} home={text.home}>
         <div className="mpa-swap mpa-swap--left">
           <div className="mpa-head">
             <div>
@@ -119,7 +119,7 @@ export default function AccountPanel() {
   )
 
   return (
-    <Frame side={profile}>
+    <Frame side={profile} home={text.home}>
       <div className="mpa-swap mpa-swap--left">
         <div className="mpa-head">
           <div>

@@ -10,6 +10,7 @@ const PERK_ICONS = [
 
 export const USER_ICON = 'M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z'
 const LOCK_ICON = 'M7 11V7a5 5 0 0 1 10 0v4M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z'
+const BACK_ICON = 'M19 12H5M12 19l-7-7 7-7'
 const STRENGTH_COLORS = ['#ef4444', '#f59e0b', '#eab308', '#22c55e']
 
 export function Svg({ path, className = 'mpa-icon' }) {
@@ -20,11 +21,17 @@ export function Svg({ path, className = 'mpa-icon' }) {
   )
 }
 
-export function Frame({ side, children }) {
+export function Frame({ side, home, children }) {
   return (
     <div className="mpa-page">
       <div className="mpa-blob mpa-blob--a" aria-hidden="true" />
       <div className="mpa-blob mpa-blob--b" aria-hidden="true" />
+      {home ? (
+        <a href="/" className="mpa-back">
+          <Svg path={BACK_ICON} className="mpa-icon mpa-icon--sm" />
+          {home}
+        </a>
+      ) : null}
       <div className="mpa-frame">
         <div className="mpa-frame-glow" aria-hidden="true" />
         <div className="mpa-frame-inner">

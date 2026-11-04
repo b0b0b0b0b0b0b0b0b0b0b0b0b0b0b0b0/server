@@ -69,7 +69,7 @@ export default function AuthPanel() {
   }
 
   return (
-    <Frame side={<Side text={text} />}>
+    <Frame side={<Side text={text} />} home={text.home}>
       <div key={mode} className={`mpa-swap ${isRegister ? 'mpa-swap--right' : 'mpa-swap--left'}`}>
         <div className="mpa-head">
           <div>
