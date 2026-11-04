@@ -243,7 +243,6 @@ html:not(.dark) .nav-more-desc {
   width: 22px;
   height: 22px;
   object-fit: contain;
-  transform: scaleX(-1) scaleY(1.12);
   image-rendering: pixelated;
 }
 
