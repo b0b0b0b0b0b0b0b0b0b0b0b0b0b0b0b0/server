@@ -748,3 +748,69 @@ html:not(.dark) .mpa-auto .mpa-alert {
 html:not(.dark) .mpa-auto .mpa-back {
   background: rgb(0 0 0 / 0.03);
 }
+
+.mpa-quick {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.mpa-quick-text {
+  min-width: 0;
+}
+
+.mpa-quick-hint {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--mpa-faint);
+}
+
+.mpa-quick-buttons {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.mpa-quick-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--mpa-line);
+  border-radius: 12px;
+  color: var(--mpa-text);
+  background: var(--mpa-field);
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.mpa-quick-button:hover {
+  color: rgb(var(--mpa-accent));
+  border-color: rgb(var(--mpa-accent));
+  transform: translateY(-1px);
+}
+
+.mpa-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mpa-faint);
+}
+
+.mpa-or span {
+  flex: 1;
+  height: 1px;
+  background: var(--mpa-line);
+}
+
+.mpa-or + .mpa-form {
+  margin-top: 16px;
+}

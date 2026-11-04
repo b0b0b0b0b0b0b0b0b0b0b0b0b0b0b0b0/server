@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import GuardKitten from '@/components/mpa/Kitten'
 import { useCaptcha } from '@/components/mpa/useCaptcha'
 import { errorText, getText, passwordStrength } from '@/components/mpa/text'
-import { ErrorBox, Field, Frame, PasswordField, Side, Spinner, Strength, USER_ICON } from '@/components/mpa/ui'
+import { ErrorBox, Field, Frame, PasswordField, QuickLogin, Side, Spinner, Strength, USER_ICON } from '@/components/mpa/ui'
 
 function safeLocalNext() {
   const next = new URLSearchParams(window.location.search).get('next') || ''
@@ -22,12 +22,14 @@ export default function AuthPanel() {
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState({ text: '', id: 0 })
+  const [back, setBack] = useState('')
   const loginProof = useCaptcha('login')
   const registerProof = useCaptcha('register')
   const isRegister = mode === 'register'
 
   useEffect(() => {
     setText(getText())
+    setBack(window.location.origin + safeLocalNext())
     if (new URLSearchParams(window.location.search).get('mode') === 'register') setMode('register')
     fetch('/api/me', { cache: 'no-store' })
       .then((res) => (res.ok ? res.json() : null))
@@ -78,6 +80,8 @@ export default function AuthPanel() {
           </div>
           <GuardKitten field={focused} reveal={showPassword} typed={username.length} label={text.petKitten} />
         </div>
+
+        {back ? <QuickLogin text={text} back={back} /> : null}
 
         <form onSubmit={submit} className="mpa-form">
           <Field label={text.username} hint={isRegister ? text.usernameHint : null} icon={USER_ICON}>
