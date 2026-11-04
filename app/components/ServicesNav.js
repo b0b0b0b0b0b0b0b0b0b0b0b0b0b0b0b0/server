@@ -98,7 +98,7 @@ export default function ServicesNav({ locale }) {
                 </span>
                 <span className="nav-more-desc">{text.here} · {text.mtoolsDesc}</span>
               </span>
-              <a href="https://ping.modrinth.black" className="nav-more-item" role="menuitem">
+              <a href="https://ping.modrinth.black" target="_blank" rel="noopener noreferrer" className="nav-more-item" role="menuitem">
                 <span className="nav-more-title">{text.ping}</span>
                 <span className="nav-more-desc">{text.pingDesc}</span>
               </a>
