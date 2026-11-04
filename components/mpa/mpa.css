@@ -593,7 +593,6 @@
   width: 96px;
   height: 96px;
   object-fit: contain;
-  transform: scaleX(-1) scaleY(1.12);
   image-rendering: pixelated;
   filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.35));
 }
