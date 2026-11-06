@@ -98,10 +98,6 @@ export default function ServicesNav({ locale }) {
                 </span>
                 <span className="nav-more-desc">{text.here} · {text.mtoolsDesc}</span>
               </span>
-              <a href="/tools/ping" className="nav-more-item" role="menuitem">
-                <span className="nav-more-title">{text.ping}</span>
-                <span className="nav-more-desc">{text.pingDesc}</span>
-              </a>
             </div>
           </div>
         </div>
