@@ -19,6 +19,7 @@ import '@/styles/site-footer.css';
 import '@/app/components/kitten/kitten.css';
 import './globals.css';
 import SiteFooter from '@/app/components/footer/SiteFooter';
+import { SITE_VERSION } from '@/lib/config/siteVersion';
 import PeekKitten from '@/app/components/kitten/PeekKitten';
 import OiiaParty from '@/app/components/kitten/OiiaParty';
 import { buildRootMetadata } from '@/lib/seo/metadata';
@@ -73,6 +74,7 @@ export default async function RootLayout({ children }) {
               domain="mtools.modrinth.black"
               tagline="Инструменты для серверов Minecraft: флаги запуска, анализ лагов, плагины и градиенты."
               accent="Всё для своего сервера в одном месте"
+              version={SITE_VERSION}
             />
           </WorkspaceProvider>
         </AppProviders>
