@@ -65,6 +65,11 @@
   --page-tint-bottom: color-mix(in srgb, var(--accent-violet) 4%, var(--color-bg));
 }
 
+.page-stage[data-ambience='rgb'] {
+  --page-tint-top: color-mix(in srgb, var(--accent-rose) 6%, var(--color-bg));
+  --page-tint-bottom: color-mix(in srgb, var(--accent-rose) 4%, var(--color-bg));
+}
+
 .page-stage[data-ambience='default'] {
   --page-tint-top: var(--color-bg);
   --page-tint-bottom: var(--color-bg);
@@ -212,6 +217,10 @@
 
 .tool-nav-pill[data-accent='violet'].is-active .tool-nav-pill-dot {
   background: var(--accent-violet);
+}
+
+.tool-nav-pill[data-accent='rose'].is-active .tool-nav-pill-dot {
+  background: var(--accent-rose);
 }
 
 .tool-nav-pill-dot {

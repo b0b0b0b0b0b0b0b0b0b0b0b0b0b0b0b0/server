@@ -274,9 +274,7 @@
 }
 
 .plugins-page .lum-dropdown-menu {
-  border: none;
-  background: color-mix(in srgb, var(--color-bg-elevated) 96%, transparent);
-  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+  border: 1px solid var(--dropdown-border);
   scrollbar-color: color-mix(in srgb, var(--tool-accent) 42%, transparent) transparent;
 }
 
@@ -768,14 +766,12 @@
 .plugins-page .plugin-modal .lum-input,
 .plugins-page .plugin-modal .lum-btn,
 .plugins-page .plugin-modal .lum-dropdown-trigger {
-  background: color-mix(in srgb, var(--color-surface-muted) 88%, var(--color-bg-elevated));
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--glass-highlight) 45%, transparent);
+  background: var(--dropdown-bg);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 10%, transparent);
 }
 
 .plugins-page .plugin-modal .lum-dropdown-menu {
-  background: var(--color-bg-elevated);
-  border: none;
-  box-shadow: none;
+  border: 1px solid var(--dropdown-border);
 }
 
 .plugins-page .plugin-modal .plugin-search-result {

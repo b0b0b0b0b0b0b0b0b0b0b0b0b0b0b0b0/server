@@ -272,6 +272,11 @@
   background: color-mix(in srgb, var(--accent-violet-bg) 55%, transparent);
 }
 
+.home-tool-card-icon--rose {
+  color: var(--accent-rose);
+  background: color-mix(in srgb, var(--accent-rose-bg) 55%, transparent);
+}
+
 .home-tool-card-title {
   position: relative;
   z-index: 2;

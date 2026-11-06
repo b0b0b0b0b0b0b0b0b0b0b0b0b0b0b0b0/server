@@ -78,8 +78,6 @@
   min-width: 10.5rem;
   max-height: min(15rem, calc(100vh - 96px));
   padding: 6px 4px 6px 6px;
-  background: color-mix(in srgb, var(--color-bg-elevated) 96%, transparent);
-  border: none;
   scrollbar-color: color-mix(in srgb, var(--accent-orange) 45%, transparent) transparent;
 }
 

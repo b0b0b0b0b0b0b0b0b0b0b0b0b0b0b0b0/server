@@ -1,7 +1,7 @@
 'use client';
 
 import HomeToolCard from '@/app/components/HomeToolCard';
-import { Flag, Zap, Blocks } from 'lucide-react';
+import { Flag, Zap, Blocks, Palette } from 'lucide-react';
 import { tools } from '@/lib/config/tools';
 import { useLocale } from '@/app/components/AppProviders';
 
@@ -9,6 +9,7 @@ const ICONS = {
   flag: Flag,
   zap: Zap,
   blocks: Blocks,
+  palette: Palette,
 };
 
 const STACK_PILLS = ['Paper', 'Purpur', 'Velocity'];
