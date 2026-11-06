@@ -1,6 +1,6 @@
 .flags-page {
-  --tool-accent: var(--accent-orange);
-  --tool-accent-bg: var(--accent-orange-bg);
+  --tool-accent: rgb(var(--palette));
+  --tool-accent-bg: rgb(var(--palette) / 0.14);
 }
 
 .flags-page .tool-page-head {

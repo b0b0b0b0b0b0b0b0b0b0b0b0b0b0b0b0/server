@@ -1,6 +1,6 @@
 .mpa-page {
-  --mpa-accent: 27 217 106;
-  --mpa-accent-light: 46 224 122;
+  --mpa-accent: var(--palette, 27 217 106);
+  --mpa-accent-light: var(--palette-light, 46 224 122);
   --mpa-card: #27292e;
   --mpa-field: #16181c;
   --mpa-line: #1f2937;

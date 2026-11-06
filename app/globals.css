@@ -29,3 +29,26 @@ select,
 textarea {
   font: inherit;
 }
+
+
+.analyze-page .lum-input:focus,
+.plugins-page .lum-input:focus,
+.plugin-data-input:focus,
+.script-output-filename-input:focus,
+.flags-page .script-output-filename-input:focus,
+.script-output-scroll:focus-visible,
+.lum-range-input:focus::-webkit-slider-thumb,
+.flags-page .lum-range-input:focus::-webkit-slider-thumb,
+.lum-toggle input:focus-visible + .lum-toggle-track,
+.flags-page .lum-toggle input:focus-visible + .lum-toggle-track,
+.plugins-page .lum-dropdown-menu-footer .lum-toggle input:focus-visible + .lum-toggle-track,
+.plugins-page .plugin-modal .lum-toggle input:focus-visible + .lum-toggle-track {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.analyze-page .lum-input:focus,
+.plugins-page .lum-input:focus {
+  box-shadow: var(--input-glass);
+}

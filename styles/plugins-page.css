@@ -1,6 +1,6 @@
 .plugins-page {
-  --tool-accent: var(--accent-violet);
-  --tool-accent-bg: var(--accent-violet-bg);
+  --tool-accent: rgb(var(--palette));
+  --tool-accent-bg: rgb(var(--palette) / 0.14);
 }
 
 .plugins-page .tool-page-head {

@@ -1,6 +1,6 @@
 .rgb-page {
-  --tool-accent: var(--accent-rose);
-  --tool-accent-bg: var(--accent-rose-bg);
+  --tool-accent: rgb(var(--palette));
+  --tool-accent-bg: rgb(var(--palette) / 0.14);
 }
 
 .rgb-page .tool-page-head {

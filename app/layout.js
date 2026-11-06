@@ -25,6 +25,7 @@ import PageTransition from '@/app/components/PageTransition';
 import { resolveServerLocale } from '@/lib/core/detectLocale';
 import { resolveDocumentDirection } from '@/lib/core/localeDirection';
 import { resolveServerTheme } from '@/lib/core/ThemeStore';
+import { LOOK_BOOT_SCRIPT } from '@/lib/core/siteLook';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -48,11 +49,12 @@ export default async function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: LOOK_BOOT_SCRIPT }} />
         <link rel="manifest" href="/manifest.webmanifest" crossOrigin="use-credentials" />
         <SiteJsonLd />
       </head>
-      <body className={`${inter.className} min-h-screen antialiased`}>
-        <AppProviders initialLocale={locale} initialTheme={theme}>
+      <body className={`${inter.className} min-h-screen antialiased mpa-auto`}>
+        <AppProviders initialLocale={locale}>
           <WorkspaceProvider>
             <SiteHeader />
             <PageTransition>{children}</PageTransition>

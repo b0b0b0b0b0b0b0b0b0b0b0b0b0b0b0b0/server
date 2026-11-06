@@ -2,16 +2,24 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { I18n } from '@/lib/core/I18n';
-import { SettingsStore } from '@/lib/core/SettingsStore';
-import { ThemeStore } from '@/lib/core/ThemeStore';
-import { writePrefCookie } from '@/lib/core/prefCookies';
 import { applyDocumentLocale } from '@/lib/core/localeDirection';
 import { catalog } from '@/locales/index';
-import { DEFAULT_LOCALE, DEFAULT_THEME, LOCALES, STORAGE_KEYS } from '@/lib/config/constants';
-import { readSharedLocale, writeSharedLocale } from '@/lib/core/sharedLocale';
+import { DEFAULT_LOCALE } from '@/lib/config/constants';
+import { readSharedLocale, toolsLocaleFromSiteLocale } from '@/lib/core/sharedLocale';
 
 const LocaleContext = createContext(null);
-const ThemeContext = createContext(null);
+
+const LEGACY_STORAGE_KEYS = ['server-tools.locale', 'server-tools.theme'];
+const LEGACY_COOKIES = ['server-tools.locale', 'server-tools.theme'];
+
+function dropLegacyPrefs() {
+  try {
+    LEGACY_STORAGE_KEYS.forEach((key) => window.localStorage.removeItem(key));
+  } catch {}
+  LEGACY_COOKIES.forEach((name) => {
+    document.cookie = `${name}=;path=/;max-age=0;samesite=lax`;
+  });
+}
 
 export function useLocale() {
   const ctx = useContext(LocaleContext);
@@ -21,68 +29,29 @@ export function useLocale() {
   return ctx;
 }
 
-export function useTheme() {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) {
-    throw new Error('useTheme outside provider');
-  }
-  return ctx;
-}
-
-export default function AppProviders({
-  children,
-  initialLocale = DEFAULT_LOCALE,
-  initialTheme = DEFAULT_THEME,
-}) {
+export default function AppProviders({ children, initialLocale = DEFAULT_LOCALE }) {
   const [locale, setLocaleState] = useState(initialLocale);
-  const [theme, setThemeState] = useState(initialTheme);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const settings = new SettingsStore(window.localStorage);
-    const themeStore = new ThemeStore(window.localStorage);
-    const storedLocale = settings.read(STORAGE_KEYS.locale, null);
-    const storedTheme = themeStore.read(null);
-
-    const sharedLocale = readSharedLocale();
-    const resolvedLocale = sharedLocale && LOCALES.includes(sharedLocale)
-      ? sharedLocale
-      : storedLocale && LOCALES.includes(storedLocale)
-        ? storedLocale
-        : initialLocale;
-
-    const resolvedTheme = storedTheme === 'light' || storedTheme === 'dark'
-      ? storedTheme
-      : initialTheme;
-
-    if (storedLocale !== resolvedLocale && LOCALES.includes(resolvedLocale)) {
-      settings.write(STORAGE_KEYS.locale, resolvedLocale);
-    }
-
-    setLocaleState(resolvedLocale);
-    setThemeState(resolvedTheme);
-    themeStore.apply(resolvedTheme);
-    applyDocumentLocale(resolvedLocale);
-    writePrefCookie(STORAGE_KEYS.locale, resolvedLocale);
-    writePrefCookie(STORAGE_KEYS.theme, resolvedTheme);
+    dropLegacyPrefs();
+    const sync = () => {
+      const shared = toolsLocaleFromSiteLocale(readSharedLocale());
+      if (!shared) return;
+      applyDocumentLocale(shared);
+      setLocaleState(shared);
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') sync();
+    };
+    sync();
     setReady(true);
-  }, [initialLocale, initialTheme]);
-
-  const setLocale = useCallback((next) => {
-    const settings = new SettingsStore(window.localStorage);
-    settings.write(STORAGE_KEYS.locale, next);
-    setLocaleState(next);
-    applyDocumentLocale(next);
-    writePrefCookie(STORAGE_KEYS.locale, next);
-    writeSharedLocale(next);
-  }, []);
-
-  const setTheme = useCallback((next) => {
-    const themeStore = new ThemeStore(window.localStorage);
-    themeStore.write(next);
-    themeStore.apply(next);
-    setThemeState(next);
-    writePrefCookie(STORAGE_KEYS.theme, next);
+    window.addEventListener('focus', sync);
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      window.removeEventListener('focus', sync);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, []);
 
   const i18n = useMemo(() => new I18n(catalog, locale), [locale]);
@@ -95,20 +64,13 @@ export default function AppProviders({
   }, [i18n, locale, ready]);
 
   const localeValue = useMemo(
-    () => ({ locale, setLocale, i18n, t }),
-    [locale, setLocale, i18n, t],
-  );
-
-  const themeValue = useMemo(
-    () => ({ theme, setTheme, ready }),
-    [theme, setTheme, ready],
+    () => ({ locale, i18n, t }),
+    [locale, i18n, t],
   );
 
   return (
     <LocaleContext.Provider value={localeValue}>
-      <ThemeContext.Provider value={themeValue}>
-        {children}
-      </ThemeContext.Provider>
+      {children}
     </LocaleContext.Provider>
   );
 }

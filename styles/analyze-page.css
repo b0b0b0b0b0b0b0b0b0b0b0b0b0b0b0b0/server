@@ -1,6 +1,6 @@
 .analyze-page {
-  --tool-accent: var(--accent-yellow);
-  --tool-accent-bg: var(--accent-yellow-bg);
+  --tool-accent: rgb(var(--palette));
+  --tool-accent-bg: rgb(var(--palette) / 0.14);
 }
 
 .analyze-page .tool-page-head {
