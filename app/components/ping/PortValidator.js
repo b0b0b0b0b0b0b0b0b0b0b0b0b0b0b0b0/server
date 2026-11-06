@@ -1,0 +1,117 @@
+const FORBIDDEN_PORTS = new Set([
+    11211,
+    1433,
+    1434,
+    3306,
+    3389,
+    5432,
+    5900,
+    5901,
+    5902,
+    5903,
+    5904,
+    5905,
+    5906,
+    6379,
+    8080,
+    8443,
+    27017,
+]);
+export class PortValidator {
+    static parse(port) {
+        let value;
+        if (typeof port === 'number') {
+            value = port;
+        }
+        else if (typeof port === 'string' && /^\d{1,5}$/.test(port.trim())) {
+            value = Number(port.trim());
+        }
+        else {
+            return { valid: false, error: 'Неверный номер порта' };
+        }
+        if (!Number.isInteger(value) || value < 1 || value > 65535) {
+            return { valid: false, error: 'Неверный номер порта' };
+        }
+        if (PortValidator.isForbidden(value)) {
+            return {
+                valid: false,
+                error: 'Пинг этого порта запрещен по соображениям безопасности',
+            };
+        }
+        return { valid: true, port: value };
+    }
+    static isForbidden(port) {
+        if (!Number.isInteger(port)) {
+            return true;
+        }
+        if (port <= 1023) {
+            return true;
+        }
+        return FORBIDDEN_PORTS.has(port);
+    }
+    static validate(port) {
+        const parsed = PortValidator.parse(port);
+        if (!parsed.valid) {
+            return { valid: false, error: parsed.error };
+        }
+        return { valid: true };
+    }
+    static canonicalizeAddress(address) {
+        let raw = address.trim();
+        raw = raw.replace(/^https?:\/\//i, '');
+        raw = raw.replace(/^minecraft:\/\//i, '');
+        const cut = (value, token) => {
+            const index = value.indexOf(token);
+            return index === -1 ? value : value.slice(0, index);
+        };
+        raw = cut(raw, '/');
+        raw = cut(raw, '?');
+        raw = cut(raw, '#');
+        raw = raw.replace(/\.+$/, '');
+        return raw.trim();
+    }
+    static formatAddress(host, port) {
+        return port === 25565 ? host : `${host}:${port}`;
+    }
+    static parseAddress(address, fallbackPort = 25565) {
+        if (typeof address !== 'string' || !address.trim()) {
+            return { valid: false, error: 'Неверный адрес сервера' };
+        }
+        const raw = PortValidator.canonicalizeAddress(address);
+        let host;
+        let portRaw = fallbackPort;
+        if (raw.startsWith('[')) {
+            const end = raw.indexOf(']');
+            if (end <= 1) {
+                return { valid: false, error: 'Неверный адрес сервера' };
+            }
+            host = raw.slice(1, end);
+            const rest = raw.slice(end + 1);
+            if (rest.startsWith(':')) {
+                portRaw = rest.slice(1);
+            }
+            else if (rest.length > 0) {
+                return { valid: false, error: 'Неверный адрес сервера' };
+            }
+        }
+        else if (/^[^[\s/\\]+:\d{1,5}$/.test(raw)) {
+            const colon = raw.lastIndexOf(':');
+            host = raw.slice(0, colon);
+            portRaw = raw.slice(colon + 1);
+        }
+        else {
+            host = raw;
+        }
+        if (!host || /[/\s\\]/.test(host)) {
+            return { valid: false, error: 'Неверный адрес сервера' };
+        }
+        const parsedPort = PortValidator.parse(portRaw);
+        if (!parsedPort.valid) {
+            return parsedPort;
+        }
+        return { valid: true, host, port: parsedPort.port };
+    }
+    static getForbiddenPorts() {
+        return Array.from(FORBIDDEN_PORTS);
+    }
+}

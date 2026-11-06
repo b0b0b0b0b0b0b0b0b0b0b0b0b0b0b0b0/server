@@ -479,5 +479,17 @@ export const en = {
       randomColor: 'Random color',
       clickGradientAdd: 'Click the bar to add a color, or drag handles to move them.',
     },
+    ping: {
+      title: 'Server Ping',
+      description: 'Check any Minecraft server: online status, players, version and colored MOTD. Works with Java and Bedrock. Plus player skins in 3D.',
+      homeDescription: 'Is your friend’s server alive? Status, players, version and 3D skins in seconds.',
+      serverTitle: 'Server check',
+      serverHint: 'Enter the IP address or domain of a Minecraft server. Works with Java and Bedrock Edition.',
+      connecting: 'Connecting to the server…',
+      offline: 'The server is offline or unreachable',
+      refreshFailed: 'Could not refresh',
+      loadingPlayer: 'Loading the player…',
+      playerNotFound: 'Player not found',
+    },
   },
 };

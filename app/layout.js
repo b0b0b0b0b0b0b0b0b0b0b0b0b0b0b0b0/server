@@ -10,6 +10,7 @@ import '@/styles/flags-page.css';
 import '@/styles/plugins-page.css';
 import '@/styles/analyze-page.css';
 import '@/styles/rgb-page.css';
+import '@/styles/ping-page.css';
 import '@/styles/home-page.css';
 import '@/styles/transitions.css';
 import '@/styles/workspace.css';

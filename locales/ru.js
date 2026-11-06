@@ -486,5 +486,17 @@ export const ru = {
       randomColor: 'Случайный цвет',
       clickGradientAdd: 'Клик по полосе — добавить цвет, перетаскивание — сдвинуть.',
     },
+    ping: {
+      title: 'Пинг серверов',
+      description: 'Проверь любой сервер Minecraft: онлайн, игроки, версия и MOTD с цветами. Работает с Java и Bedrock. А ещё — скины игроков в 3D.',
+      homeDescription: 'Жив ли сервер друга? Онлайн, игроки, версия и скины в 3D — за пару секунд.',
+      serverTitle: 'Проверка сервера',
+      serverHint: 'Введи IP-адрес или домен сервера Minecraft. Работает с Java и Bedrock Edition.',
+      connecting: 'Подключаемся к серверу…',
+      offline: 'Сервер оффлайн или недоступен',
+      refreshFailed: 'Не удалось обновить',
+      loadingPlayer: 'Загружаем игрока…',
+      playerNotFound: 'Игрок не найден',
+    },
   },
 };
