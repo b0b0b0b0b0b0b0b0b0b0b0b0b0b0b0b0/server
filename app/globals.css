@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
+@theme {
+  --color-modrinth-green: rgb(var(--palette));
+  --color-modrinth-green-light: rgb(var(--palette-light));
+}
 
 * {
   box-sizing: border-box;

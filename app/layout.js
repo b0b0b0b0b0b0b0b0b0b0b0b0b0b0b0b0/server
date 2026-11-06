@@ -15,7 +15,12 @@ import '@/styles/transitions.css';
 import '@/styles/workspace.css';
 import '@/styles/locale-fonts.css';
 import '@/styles/rtl.css';
+import '@/styles/site-footer.css';
+import '@/app/components/kitten/kitten.css';
 import './globals.css';
+import SiteFooter from '@/app/components/footer/SiteFooter';
+import PeekKitten from '@/app/components/kitten/PeekKitten';
+import OiiaParty from '@/app/components/kitten/OiiaParty';
 import { buildRootMetadata } from '@/lib/seo/metadata';
 import SiteJsonLd from '@/app/components/SiteJsonLd';
 import AppProviders from '@/app/components/AppProviders';
@@ -58,6 +63,17 @@ export default async function RootLayout({ children }) {
           <WorkspaceProvider>
             <SiteHeader />
             <PageTransition>{children}</PageTransition>
+            <OiiaParty />
+            <div className="sf-peek">
+              <PeekKitten />
+            </div>
+            <SiteFooter
+              here="mtools"
+              title="MTools"
+              domain="mtools.modrinth.black"
+              tagline="Инструменты для серверов Minecraft: флаги запуска, анализ лагов, плагины и градиенты."
+              accent="Всё для своего сервера в одном месте"
+            />
           </WorkspaceProvider>
         </AppProviders>
       </body>
