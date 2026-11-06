@@ -20,7 +20,7 @@ const TEXT = {
     mtoolsDesc: 'Инструменты для серверов Minecraft',
     signIn: 'Войти',
     ping: 'Пинг серверов',
-    pingDesc: 'Проверка серверов (мб недоступен в РФ)',
+    pingDesc: 'Проверка серверов Minecraft',
   },
   en: {
     aria: 'modrinth.black services',
@@ -36,7 +36,7 @@ const TEXT = {
     mtoolsDesc: 'Tools for Minecraft servers',
     signIn: 'Sign in',
     ping: 'Server ping',
-    pingDesc: 'Check Minecraft servers (may be unavailable in Russia)',
+    pingDesc: 'Check Minecraft servers',
   },
 };
 
@@ -98,7 +98,7 @@ export default function ServicesNav({ locale }) {
                 </span>
                 <span className="nav-more-desc">{text.here} · {text.mtoolsDesc}</span>
               </span>
-              <a href="https://ping.modrinth.black" target="_blank" rel="noopener noreferrer" className="nav-more-item" role="menuitem">
+              <a href="/tools/ping" className="nav-more-item" role="menuitem">
                 <span className="nav-more-title">{text.ping}</span>
                 <span className="nav-more-desc">{text.pingDesc}</span>
               </a>

@@ -9,7 +9,7 @@ const SERVICES = [
     { id: 'jar', href: 'https://jar.modrinth.black', label: 'Перевод плагинов', icon: 'M4 5h8M8 3v2m2.5 0C9.6 9.4 7.2 12.6 4 14.5m2.5-6c1.2 2.4 3 4.2 5.5 5.5M13 21l4-9 4 9m-6.8-3h5.6' },
     { id: 'dm', href: 'https://dm.modrinth.black', label: 'Редактор DeluxeMenu', icon: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z' },
     { id: 'mtools', href: 'https://mtools.modrinth.black', label: 'MTools', icon: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z' },
-    { id: 'ping', href: 'https://ping.modrinth.black', label: 'Пинг серверов', icon: 'M3 12h4l3-8 4 16 3-8h4' },
+    { id: 'ping', href: 'https://mtools.modrinth.black/tools/ping', label: 'Пинг серверов', icon: 'M3 12h4l3-8 4 16 3-8h4' },
 ];
 function EmailCopy() {
     const [copied, setCopied] = useState(false);
@@ -79,7 +79,7 @@ export default function SiteFooter({ here, title, domain, tagline, accent, versi
               {SERVICES.map((service) => {
             const current = service.id === here;
             return (<li key={service.id}>
-                    <a href={service.href} className={`sf-service${current ? ' sf-service--here' : ''}`} aria-current={current ? 'page' : undefined} target={service.id === 'ping' && !current ? '_blank' : undefined} rel={service.id === 'ping' && !current ? 'noopener noreferrer' : undefined}>
+                    <a href={service.href} className={`sf-service${current ? ' sf-service--here' : ''}`} aria-current={current ? 'page' : undefined}>
                       <svg className="sf-service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d={service.icon}/>
                       </svg>
