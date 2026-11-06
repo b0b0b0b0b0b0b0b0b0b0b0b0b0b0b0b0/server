@@ -258,6 +258,7 @@ export default function FooterKitten() {
     const count = pets ?? 0;
     const nextGoal = ACHIEVEMENTS.find((item) => item.count > count);
     const unlockedCount = ACHIEVEMENTS.filter((item) => item.count <= count).length;
+    const current = unlockedCount > 0 ? ACHIEVEMENTS[unlockedCount - 1] : null;
     return (<div className="fk">
       <div className="fk-stage">
         <button ref={ref} type="button" className={`fk-button${hop ? ' fk-button--hop' : ''}`} onClick={pet} onAnimationEnd={() => setHop(false)} aria-label="Погладить котика">
@@ -277,7 +278,7 @@ export default function FooterKitten() {
 
       <div className="fk-info">
         {signedIn ? (<>
-            <p className="fk-say">{count ? 'Мур! Погладь ещё' : 'Погладь котика'}</p>
+            <p className={`fk-say${current ? ' fk-say--rank' : ''}`}>{current ? current.title : 'Погладь котика'}</p>
             <p className="fk-count">
               {count ? `Поглажено: ${count}` : 'Он очень ждёт'}
               {nextGoal && count > 0 ? ` · до ачивки ${nextGoal.count - count}` : ''}

@@ -19,17 +19,17 @@ async function askKitten(add) {
         if (!res.ok)
             return null;
         const data = await res.json();
-        return typeof data?.pets === 'number' ? data.pets : null;
+        return typeof data?.pets === 'number' ? data : null;
     }
     catch {
         return null;
     }
 }
 export async function GET() {
-    return Response.json({ pets: await askKitten(0) }, { headers: NO_STORE });
+    return Response.json((await askKitten(0)) ?? { pets: null }, { headers: NO_STORE });
 }
 export async function POST(request) {
     const body = await request.json().catch(() => null);
     const add = Math.max(1, Math.min(5, Math.floor(Number(body?.add) || 1)));
-    return Response.json({ pets: await askKitten(add) }, { headers: NO_STORE });
+    return Response.json((await askKitten(add)) ?? { pets: null }, { headers: NO_STORE });
 }
