@@ -37,6 +37,17 @@ export const kk = {
     heroBadge: 'Тегін · mtools.modrinth.black',
     toolsHeading: 'Құралдар',
     open: 'Ашу',
+    ping: {
+      badge: "Жаңа · Серверлер пингі",
+      title: "Досыңның серверін тексер",
+      subtitle: "Сервер тірі ме — бірнеше секундта біл: қанша ойыншы онлайн, қай нұсқа және MOTD-та не жазылған. Кез келген скинді 3D-де көруге де болады.",
+      placeholder: "Сервер мекенжайы, мысалы mc.hypixel.net",
+      button: "Тексеру",
+      examples: "Байқап көр:",
+      featureEditions: "Java және Bedrock",
+      featurePlayers: "Онлайн ойыншылар және нұсқа",
+      featureSkins: "Ойыншылардың 3D скиндері",
+    },
   },
   tools: {
     flags: {

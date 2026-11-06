@@ -37,6 +37,17 @@ export const nl = {
     heroBadge: 'Gratis · mtools.modrinth.black',
     toolsHeading: 'Tools',
     open: 'Openen',
+    ping: {
+      badge: "Nieuw · Server-ping",
+      title: "Check de server van je vriend",
+      subtitle: "Zie in een paar seconden of een server draait: hoeveel spelers er online zijn, welke versie en wat er in de MOTD staat. Je kunt ook elke skin in 3D bekijken.",
+      placeholder: "Serveradres, bijv. mc.hypixel.net",
+      button: "Controleren",
+      examples: "Probeer:",
+      featureEditions: "Java en Bedrock",
+      featurePlayers: "Spelers online en versie",
+      featureSkins: "Spelerskins in 3D",
+    },
   },
   tools: {
     flags: {

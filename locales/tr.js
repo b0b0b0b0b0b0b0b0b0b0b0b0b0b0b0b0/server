@@ -37,6 +37,17 @@ export const tr = {
     heroBadge: 'Ücretsiz · mtools.modrinth.black',
     toolsHeading: 'Araçlar',
     open: 'Aç',
+    ping: {
+      badge: "Yeni · Sunucu Ping",
+      title: "Arkadaşının sunucusunu kontrol et",
+      subtitle: "Bir sunucunun açık olup olmadığını saniyeler içinde öğren: kaç oyuncu çevrimiçi, hangi sürüm ve MOTD’de ne yazıyor. Ayrıca istediğin skini 3D görebilirsin.",
+      placeholder: "Sunucu adresi, örn. mc.hypixel.net",
+      button: "Kontrol et",
+      examples: "Dene:",
+      featureEditions: "Java ve Bedrock",
+      featurePlayers: "Çevrimiçi oyuncular ve sürüm",
+      featureSkins: "Oyuncu skinleri 3D",
+    },
   },
   tools: {
     flags: {

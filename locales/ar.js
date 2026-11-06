@@ -37,6 +37,17 @@ export const ar = {
     heroBadge: 'مجاني · mtools.modrinth.black',
     toolsHeading: 'الأدوات',
     open: 'فتح',
+    ping: {
+      badge: "جديد · فحص الخوادم",
+      title: "افحص خادم صديقك",
+      subtitle: "اعرف خلال ثوانٍ إن كان الخادم يعمل: كم لاعبًا متصلًا، وما الإصدار، وماذا تقول رسالة MOTD. ويمكنك أيضًا رؤية أي سكن بتقنية ثلاثية الأبعاد.",
+      placeholder: "عنوان الخادم، مثل mc.hypixel.net",
+      button: "افحص",
+      examples: "جرّب:",
+      featureEditions: "Java وBedrock",
+      featurePlayers: "اللاعبون المتصلون والإصدار",
+      featureSkins: "سكنات اللاعبين ثلاثية الأبعاد",
+    },
   },
   tools: {
     flags: {

@@ -37,6 +37,17 @@ export const zh = {
     heroBadge: '免费 · mtools.modrinth.black',
     toolsHeading: '工具',
     open: '打开',
+    ping: {
+      badge: "新功能 · 服务器 Ping",
+      title: "查查朋友的服务器",
+      subtitle: "几秒钟就知道服务器还开着没：在线玩家多少、什么版本、MOTD 写了什么。还能 3D 查看任意皮肤。",
+      placeholder: "服务器地址，例如 mc.hypixel.net",
+      button: "检查",
+      examples: "试试：",
+      featureEditions: "Java 和 Bedrock",
+      featurePlayers: "在线玩家和版本",
+      featureSkins: "3D 玩家皮肤",
+    },
   },
   tools: {
     flags: {

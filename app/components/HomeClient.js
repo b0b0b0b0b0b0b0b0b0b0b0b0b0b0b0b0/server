@@ -1,6 +1,7 @@
 'use client';
 
 import HomeToolCard from '@/app/components/HomeToolCard';
+import HomePingSpotlight from '@/app/components/HomePingSpotlight';
 import { Flag, Zap, Blocks, Palette, Activity } from 'lucide-react';
 import { tools } from '@/lib/config/tools';
 import { useLocale } from '@/app/components/AppProviders';
@@ -38,13 +39,15 @@ export default function HomeClient() {
         </div>
       </section>
 
+      <HomePingSpotlight />
+
       <section className="home-tools">
         <div className="home-tools-head">
           <h2 className="home-tools-title">{t('home.toolsHeading')}</h2>
         </div>
 
         <div className="home-tools-row">
-          {tools.map((tool) => {
+          {tools.filter((tool) => tool.id !== 'ping').map((tool) => {
             const Icon = ICONS[tool.icon];
             const title = t(tool.titleKey);
             const description = t(tool.homeDescriptionKey ?? tool.descriptionKey);

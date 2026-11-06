@@ -37,6 +37,17 @@ export const fr = {
     heroBadge: 'Gratuit · mtools.modrinth.black',
     toolsHeading: 'Outils',
     open: 'Ouvrir',
+    ping: {
+      badge: "Nouveau · Ping de serveurs",
+      title: "Vérifie le serveur de ton ami",
+      subtitle: "Découvre en quelques secondes si un serveur tourne : combien de joueurs sont en ligne, quelle version et ce que dit sa MOTD. Tu peux aussi voir n’importe quel skin en 3D.",
+      placeholder: "Adresse du serveur, par ex. mc.hypixel.net",
+      button: "Vérifier",
+      examples: "Essaie :",
+      featureEditions: "Java et Bedrock",
+      featurePlayers: "Joueurs en ligne et version",
+      featureSkins: "Skins des joueurs en 3D",
+    },
   },
   tools: {
     flags: {

@@ -37,6 +37,17 @@ export const ko = {
     heroBadge: '무료 · mtools.modrinth.black',
     toolsHeading: '도구',
     open: '열기',
+    ping: {
+      badge: "새 기능 · 서버 핑",
+      title: "친구 서버를 확인해 보세요",
+      subtitle: "서버가 살아 있는지 몇 초 만에 알 수 있어요: 온라인 플레이어 수, 버전, MOTD 내용까지. 어떤 스킨이든 3D로 볼 수도 있어요.",
+      placeholder: "서버 주소, 예: mc.hypixel.net",
+      button: "확인",
+      examples: "해 보기:",
+      featureEditions: "Java와 Bedrock",
+      featurePlayers: "온라인 플레이어와 버전",
+      featureSkins: "플레이어 스킨 3D",
+    },
   },
   tools: {
     flags: {

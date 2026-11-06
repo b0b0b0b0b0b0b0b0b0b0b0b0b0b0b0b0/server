@@ -37,6 +37,17 @@ export const ja = {
     heroBadge: '無料 · mtools.modrinth.black',
     toolsHeading: 'ツール',
     open: '開く',
+    ping: {
+      badge: "新機能 · サーバー Ping",
+      title: "友だちのサーバーをチェック",
+      subtitle: "サーバーが動いているか数秒で分かります：オンライン人数、バージョン、MOTD の中身まで。どんなスキンも 3D で見られます。",
+      placeholder: "サーバーアドレス（例：mc.hypixel.net）",
+      button: "チェック",
+      examples: "試してみて：",
+      featureEditions: "Java と Bedrock",
+      featurePlayers: "オンライン人数とバージョン",
+      featureSkins: "プレイヤーのスキンを 3D で",
+    },
   },
   tools: {
     flags: {

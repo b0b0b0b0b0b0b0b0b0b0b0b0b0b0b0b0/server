@@ -37,6 +37,17 @@ export const hi = {
     heroBadge: 'मुफ़्त · mtools.modrinth.black',
     toolsHeading: 'टूल्स',
     open: 'खोलें',
+    ping: {
+      badge: "नया · सर्वर पिंग",
+      title: "दोस्त का सर्वर जाँचें",
+      subtitle: "कुछ ही सेकंड में जानें कि सर्वर चालू है या नहीं: कितने खिलाड़ी ऑनलाइन हैं, कौन-सा वर्शन है और MOTD में क्या लिखा है। आप कोई भी स्किन 3D में भी देख सकते हैं।",
+      placeholder: "सर्वर का पता, जैसे mc.hypixel.net",
+      button: "जाँचें",
+      examples: "आज़माएँ:",
+      featureEditions: "Java और Bedrock",
+      featurePlayers: "ऑनलाइन खिलाड़ी और वर्शन",
+      featureSkins: "खिलाड़ियों की 3D स्किन",
+    },
   },
   tools: {
     flags: {

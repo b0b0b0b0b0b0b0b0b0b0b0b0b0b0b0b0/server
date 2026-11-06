@@ -57,6 +57,17 @@ export const ru = {
     heroBadge: 'Бесплатно · mtools.modrinth.black',
     toolsHeading: 'Инструменты',
     open: 'Открыть',
+    ping: {
+      badge: "Новое · Пинг серверов",
+      title: "Проверь сервер друга",
+      subtitle: "Узнай за пару секунд, жив ли сервер: сколько игроков онлайн, какая версия и что написано в MOTD. А ещё можно посмотреть любой скин в 3D.",
+      placeholder: "Адрес сервера, например mc.hypixel.net",
+      button: "Проверить",
+      examples: "Попробуй:",
+      featureEditions: "Java и Bedrock",
+      featurePlayers: "Игроки онлайн и версия",
+      featureSkins: "Скины игроков в 3D",
+    },
   },
   tools: {
     flags: {

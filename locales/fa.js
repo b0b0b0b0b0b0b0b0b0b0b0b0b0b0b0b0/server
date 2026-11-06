@@ -37,6 +37,17 @@ export const fa = {
     heroBadge: 'رایگان · mtools.modrinth.black',
     toolsHeading: 'ابزارها',
     open: 'باز کردن',
+    ping: {
+      badge: "جدید · پینگ سرور",
+      title: "سرور دوستت را بررسی کن",
+      subtitle: "در چند ثانیه بفهم سرور روشن است یا نه: چند بازیکن آنلاین‌اند، چه نسخه‌ای دارد و در MOTD چه نوشته. هر اسکینی را هم می‌توانی سه‌بعدی ببینی.",
+      placeholder: "آدرس سرور، مثلاً mc.hypixel.net",
+      button: "بررسی",
+      examples: "امتحان کن:",
+      featureEditions: "Java و Bedrock",
+      featurePlayers: "بازیکنان آنلاین و نسخه",
+      featureSkins: "اسکین سه‌بعدی بازیکنان",
+    },
   },
   tools: {
     flags: {

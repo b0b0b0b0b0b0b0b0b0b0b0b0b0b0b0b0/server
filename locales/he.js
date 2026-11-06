@@ -37,6 +37,17 @@ export const he = {
     heroBadge: 'חינם · mtools.modrinth.black',
     toolsHeading: 'כלים',
     open: 'פתח',
+    ping: {
+      badge: "חדש · פינג לשרתים",
+      title: "בדקו את השרת של החבר",
+      subtitle: "גלו תוך שניות אם השרת פועל: כמה שחקנים מחוברים, איזו גרסה ומה כתוב ב־MOTD. אפשר גם לראות כל סקין בתלת־ממד.",
+      placeholder: "כתובת שרת, למשל mc.hypixel.net",
+      button: "בדיקה",
+      examples: "נסו:",
+      featureEditions: "Java ו־Bedrock",
+      featurePlayers: "שחקנים מחוברים וגרסה",
+      featureSkins: "סקינים של שחקנים בתלת־ממד",
+    },
   },
   tools: {
     flags: {

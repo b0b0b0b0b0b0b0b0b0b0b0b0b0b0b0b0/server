@@ -37,6 +37,17 @@ export const vi = {
     heroBadge: 'Miễn phí · mtools.modrinth.black',
     toolsHeading: 'Công cụ',
     open: 'Mở',
+    ping: {
+      badge: "Mới · Ping máy chủ",
+      title: "Kiểm tra máy chủ của bạn bè",
+      subtitle: "Biết ngay trong vài giây máy chủ còn hoạt động không: bao nhiêu người đang chơi, phiên bản nào và MOTD viết gì. Bạn còn xem được mọi skin dạng 3D.",
+      placeholder: "Địa chỉ máy chủ, ví dụ mc.hypixel.net",
+      button: "Kiểm tra",
+      examples: "Thử:",
+      featureEditions: "Java và Bedrock",
+      featurePlayers: "Người chơi trực tuyến và phiên bản",
+      featureSkins: "Skin người chơi 3D",
+    },
   },
   tools: {
     flags: {
