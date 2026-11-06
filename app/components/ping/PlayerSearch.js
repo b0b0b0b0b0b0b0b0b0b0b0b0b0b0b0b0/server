@@ -1,4 +1,5 @@
 'use client';
+import { pt } from './pingText';
 import React from 'react';
 export class PlayerSearch extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ export class PlayerSearch extends React.Component {
     }
     validateUsername(username) {
         if (!username.trim()) {
-            this.setState({ error: 'Введите ник игрока или UUID' });
+            this.setState({ error: pt('enterPlayer') });
             return false;
         }
         if (this.isUuid(username)) {
@@ -24,7 +25,7 @@ export class PlayerSearch extends React.Component {
         }
         const pattern = /^[a-zA-Z0-9_]{3,16}$/;
         if (!pattern.test(username)) {
-            this.setState({ error: 'Ник должен быть 3-16 символов (a-z, 0-9, _) или UUID' });
+            this.setState({ error: pt('badPlayer') });
             return false;
         }
         this.setState({ error: '' });
@@ -47,14 +48,14 @@ export class PlayerSearch extends React.Component {
         const { username, error } = this.state;
         const { loading } = this.props;
         return (<div className="player-search-container">
-        <h2 className="section-title">Поиск игрока</h2>
+        <h2 className="section-title">{pt('playerTitle')}</h2>
         <p className="section-hint">
-          Введите ник игрока или UUID для просмотра скина в 3D. Работает с любым форматом
+          {pt('playerHint')}
         </p>
         <form onSubmit={this.handleSubmit} className="search-form">
-          <input type="text" value={username} onChange={this.handleChange} placeholder="Ник или UUID игрока" className={`search-input player-search-input ${error ? 'error' : ''}`} disabled={loading}/>
+          <input type="text" value={username} onChange={this.handleChange} placeholder={pt('playerPlaceholder')} className={`search-input player-search-input ${error ? 'error' : ''}`} disabled={loading}/>
           <button type="submit" className="btn btn-search" disabled={loading}>
-            Искать
+            {pt('search')}
           </button>
           {error && <span className="error-message">{error}</span>}
         </form>

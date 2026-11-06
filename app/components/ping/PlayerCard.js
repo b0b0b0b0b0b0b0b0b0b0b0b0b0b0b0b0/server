@@ -1,4 +1,5 @@
 'use client';
+import { pt } from './pingText';
 import React from 'react';
 import { SkinViewer3D } from './SkinViewer3D';
 import { CapeRenderer } from './CapeRenderer';
@@ -134,7 +135,7 @@ export class PlayerCard extends React.Component {
               </div>
 
               <div className="info-row copyable" onClick={() => this.copyToClipboard(data.uuid.short, 'uuid-short')}>
-                <span className="info-label">UUID (короткий):</span>
+                <span className="info-label">{pt('uuidShort')}</span>
                 <span className="info-value uuid-mono">{data.uuid.short}</span>
                 <span className={`copy-icon ${this.state.copiedField === 'uuid-short' ? 'copied' : ''}`}>
                   {this.state.copiedField === 'uuid-short' ? '✓' : (<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -145,12 +146,12 @@ export class PlayerCard extends React.Component {
               </div>
 
               <div className="info-row">
-                <span className="info-label">Модель скина:</span>
+                <span className="info-label">{pt('skinModel')}</span>
                 <span className="info-value">{data.textures.skin.model === 'slim' ? 'Alex (Slim)' : 'Steve (Classic)'}</span>
               </div>
 
               {data.textures.timestamp && (<div className="info-row">
-                  <span className="info-label">Обновлено:</span>
+                  <span className="info-label">{pt('updated')}</span>
                   <span className="info-value">
                     {new Date(data.textures.timestamp).toLocaleString('ru', {
                     year: 'numeric',
@@ -167,10 +168,10 @@ export class PlayerCard extends React.Component {
 
         <div className="player-textures-grid">
           {data.textures.cape.exists && capeRendered && capeRaw && (<div className="texture-block">
-              <h4 className="texture-title">Плащ</h4>
+              <h4 className="texture-title">{pt('cape')}</h4>
               <div className="texture-images">
                 <div className="texture-image-wrapper">
-                  <div className="texture-label">Рендер</div>
+                  <div className="texture-label">{pt('render')}</div>
                   <img src={capeRendered} alt="Cape Rendered" className="texture-preview cape-preview"/>
                 </div>
                 <div className="texture-image-wrapper">
@@ -181,7 +182,7 @@ export class PlayerCard extends React.Component {
             </div>)}
 
           {skinRaw && (<div className="texture-block">
-              <h4 className="texture-title">Скин</h4>
+              <h4 className="texture-title">{pt('skin')}</h4>
               <div className="texture-images">
                 <div className="texture-image-wrapper">
                   <div className="texture-label">RAW</div>
@@ -193,10 +194,10 @@ export class PlayerCard extends React.Component {
 
         <div className="player-actions">
           <button onClick={this.downloadSkin} className="btn btn-download">
-            Скачать скин
+            {pt('downloadSkin')}
           </button>
           {data.textures.cape.exists && (<button onClick={this.downloadCape} className="btn btn-download">
-              Скачать плащ
+              {pt('downloadCape')}
             </button>)}
           <button onClick={this.openJsonData} className="btn btn-raw">
             JSON

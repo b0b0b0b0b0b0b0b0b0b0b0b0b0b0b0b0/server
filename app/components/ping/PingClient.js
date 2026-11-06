@@ -10,6 +10,7 @@ import { PlayerCard } from '@/app/components/ping/PlayerCard';
 import { MinecraftServer } from '@/app/components/ping/MinecraftServer';
 import { MinecraftPlayer } from '@/app/components/ping/MinecraftPlayer';
 import { PortValidator } from '@/app/components/ping/PortValidator';
+import { setPingTranslator } from '@/app/components/ping/pingText';
 
 function writeAddressToUrl(address) {
   const url = new URL(window.location.href);
@@ -20,6 +21,7 @@ function writeAddressToUrl(address) {
 
 export default function PingClient() {
   const { t } = useLocale();
+  setPingTranslator(t);
   const [server, setServer] = useState(null);
   const [serverLoading, setServerLoading] = useState(false);
   const [serverError, setServerError] = useState(null);

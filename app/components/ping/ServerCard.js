@@ -1,4 +1,5 @@
 'use client';
+import { pt } from './pingText';
 import React from 'react';
 import { isMeaningfulBedrockVersionName } from './bedrockPing';
 import { MotdFormatter } from './MotdFormatter';
@@ -23,7 +24,7 @@ export class ServerCard extends React.Component {
     }
     formatMotd(motd) {
         if (!motd?.html || motd.html.length === 0) {
-            return <span>Нет описания</span>;
+            return <span>{pt('noMotd')}</span>;
         }
         return (<>
         {motd.html.map((line, index) => (<div key={index} dangerouslySetInnerHTML={{ __html: line }}/>))}
@@ -113,7 +114,7 @@ export class ServerCard extends React.Component {
         return (<div className="debug-section">
         <button className="debug-toggle" onClick={this.toggleMotd} aria-expanded={motdExpanded}>
           <span className="debug-icon">▶</span>
-          Коды MOTD для разных серверов
+          {pt('motdCodes')}
         </button>
         {motdExpanded && (<div className="debug-content">
             <div className="motd-code-block">
@@ -134,7 +135,7 @@ export class ServerCard extends React.Component {
                   <code>{vanillaMotd}</code>
                 </div>
               </div>
-              <div className="motd-code-note">Не поддерживает RGB/HEX цвета.</div>
+              <div className="motd-code-note">{pt('noRgb')}</div>
             </div>
 
             <div className="motd-code-block">
@@ -207,39 +208,39 @@ export class ServerCard extends React.Component {
         return (<div className="debug-section">
         <button className="debug-toggle" onClick={this.toggleDebug} aria-expanded={debugExpanded}>
           <span className="debug-icon">▶</span>
-          Техническая информация
+          {pt('techInfo')}
         </button>
         {debugExpanded && (<div className="debug-content">
             <div className="debug-row">
-              <span className="debug-label">Последняя проверка:</span>
+              <span className="debug-label">{pt('lastCheck')}</span>
               <span className="debug-value">{status.cacheTime || 'N/A'}</span>
             </div>
             <div className="debug-row">
-              <span className="debug-label">Домен:</span>
+              <span className="debug-label">{pt('domainLabel')}</span>
               <span className="debug-value">{status.hostname || this.props.server.getHost()}</span>
             </div>
             <div className="debug-row">
-              <span className="debug-label">IP адрес:</span>
+              <span className="debug-label">{pt('ipLabel')}</span>
               <span className="debug-value">{status.resolvedIP || 'N/A'}</span>
             </div>
             <div className="debug-row">
-              <span className="debug-label">Порт:</span>
+              <span className="debug-label">{pt('portLabel')}</span>
               <span className="debug-value">{status.port || this.props.server.getPort()}</span>
             </div>
             <div className="debug-row">
-              <span className="debug-label">Протокол:</span>
+              <span className="debug-label">{pt('protocolLabel')}</span>
               <span className="debug-value">{status.version} ({status.protocol})</span>
             </div>
             <div className="debug-row">
-              <span className="debug-label">SRV запись:</span>
+              <span className="debug-label">{pt('srvLabel')}</span>
               <span className="debug-value">
-                {status.srvRecord ? `${status.srvRecord.host}:${status.srvRecord.port}` : 'Нет'}
+                {status.srvRecord ? `${status.srvRecord.host}:${status.srvRecord.port}` : pt('no')}
               </span>
             </div>
             <div className="debug-row">
               <span className="debug-label">Query:</span>
               <span className="debug-value">
-                {status.querySuccess ? 'Да' : 'Нет'}
+                {status.querySuccess ? pt('yes') : pt('no')}
               </span>
             </div>
           </div>)}
@@ -258,18 +259,18 @@ export class ServerCard extends React.Component {
         return (<div className="debug-section">
         <button className="debug-toggle" onClick={this.toggleDns} aria-expanded={dnsExpanded}>
           <span className="debug-icon">▶</span>
-          DNS информация
+          {pt('dnsInfo')}
         </button>
         {dnsExpanded && (<div className="debug-content">
             {isDefaultPort && hasSrvRecord && (<>
-                <div className="dns-subtitle">SRV записи</div>
+                <div className="dns-subtitle">{pt('srvRecords')}</div>
                 <div className="dns-table-wrapper">
                   <table className="dns-table">
                     <thead>
                       <tr>
-                        <th>Домен</th>
-                        <th>Тип</th>
-                        <th>Данные</th>
+                        <th>{pt('domainCol')}</th>
+                        <th>{pt('typeCol')}</th>
+                        <th>{pt('dataCol')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -284,14 +285,14 @@ export class ServerCard extends React.Component {
               </>)}
             
             {hasDnsRecords && status.dnsRecords && (<>
-                <div className="dns-subtitle">DNS записи</div>
+                <div className="dns-subtitle">{pt('dnsRecords')}</div>
                 <div className="dns-table-wrapper">
                   <table className="dns-table">
                     <thead>
                       <tr>
-                        <th>Домен</th>
-                        <th>Тип</th>
-                        <th>Данные</th>
+                        <th>{pt('domainCol')}</th>
+                        <th>{pt('typeCol')}</th>
+                        <th>{pt('dataCol')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -308,39 +309,39 @@ export class ServerCard extends React.Component {
       </div>);
     }
     renderBedrockDetails(bedrock, title) {
-        const protocolTooltip = 'Номер сетевого протокола Bedrock. Его ещё нет в нашем справочнике — сервер, скорее всего, на свежей версии.';
+        const protocolTooltip = pt('bedrockProtocolTip');
         return (<div className="mc-detail-block mc-detail-full mc-bedrock-details">
         <div className="mc-detail-label">{title}</div>
         <div className="mc-bedrock-grid">
           {bedrock.editionLabel && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">Издание</span>
+              <span className="mc-bedrock-key">{pt('edition')}</span>
               <span className="mc-bedrock-val">{bedrock.editionLabel}</span>
             </div>)}
           {isMeaningfulBedrockVersionName(bedrock.versionName) && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">Версия клиента</span>
+              <span className="mc-bedrock-key">{pt('clientVersion')}</span>
               <span className="mc-bedrock-val">{bedrock.versionName}</span>
             </div>)}
           {bedrock.mappedVersion && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">По справочнику</span>
+              <span className="mc-bedrock-key">{pt('byRegistry')}</span>
               <span className="mc-bedrock-val">{bedrock.mappedVersion}</span>
             </div>)}
           {bedrock.protocol !== undefined && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">Протокол</span>
+              <span className="mc-bedrock-key">{pt('protocol')}</span>
               <span className={`mc-bedrock-val${bedrock.versionKnown === false ? ' mc-version-unknown' : ''}`} {...(bedrock.versionKnown === false
                 ? { 'data-tooltip': protocolTooltip }
                 : {})}>
                 {bedrock.protocol}
-                {bedrock.versionKnown === false ? ' · нет в справочнике' : ''}
+                {bedrock.versionKnown === false ? ` · ${pt('notInRegistry')}` : ''}
               </span>
             </div>)}
           <div className="mc-bedrock-row">
-            <span className="mc-bedrock-key">Игроки</span>
+            <span className="mc-bedrock-key">{pt('players')}</span>
             <span className="mc-bedrock-val">
               {bedrock.players?.online ?? 0} / {bedrock.players?.max ?? 0}
             </span>
           </div>
           {bedrock.gamemode && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">Режим</span>
+              <span className="mc-bedrock-key">{pt('mode')}</span>
               <span className="mc-bedrock-val">
                 {bedrock.gamemode}
                 {bedrock.gamemodeId !== null && bedrock.gamemodeId !== undefined
@@ -349,19 +350,19 @@ export class ServerCard extends React.Component {
               </span>
             </div>)}
           {bedrock.serverId && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">ID сервера</span>
+              <span className="mc-bedrock-key">{pt('serverId')}</span>
               <span className="mc-bedrock-val mc-bedrock-mono">{bedrock.serverId}</span>
             </div>)}
           {(bedrock.bedrockPort || bedrock.port) && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">Порт UDP</span>
+              <span className="mc-bedrock-key">{pt('udpPort')}</span>
               <span className="mc-bedrock-val">
                 {bedrock.bedrockPort ?? bedrock.port}
                 {bedrock.bedrockPortv6 ? ` · IPv6 ${bedrock.bedrockPortv6}` : ''}
               </span>
             </div>)}
           {bedrock.latency !== undefined && (<div className="mc-bedrock-row">
-              <span className="mc-bedrock-key">Пинг</span>
-              <span className="mc-bedrock-val">{bedrock.latency} мс</span>
+              <span className="mc-bedrock-key">{pt('ping')}</span>
+              <span className="mc-bedrock-val">{pt('ms', { value: bedrock.latency })}</span>
             </div>)}
         </div>
         {bedrock.motd?.html && bedrock.motd.html.length > 0 && (<div className="mc-bedrock-motd">
@@ -397,10 +398,10 @@ export class ServerCard extends React.Component {
             <div className="mc-title">
               <span className="mc-name">{server.getFullAddress()}</span>
               {status?.version && (status.versionKnown === false ? (<span className="mc-version mc-version-unknown" data-tooltip={status.protocolReliable === false
-                    ? 'Протокол ненадёжный: сервер вернул тот номер, который мы сами отправили'
+                    ? pt('protocolUnreliable')
                     : status.isBedrock
-                        ? 'Сервер не сообщил версию клиента — показан номер сетевого протокола'
-                        : 'Не удалось определить версию по протоколу: сервер сообщил неизвестный номер'}>
+                        ? pt('noClientVersion')
+                        : pt('unknownProtocol')}>
                     {status.version}
                   </span>) : (<span className="mc-version">{status.version}</span>))}
               {status?.isBedrock && (<span className="mc-bedrock-badge">BEDROCK</span>)}
@@ -422,7 +423,7 @@ export class ServerCard extends React.Component {
                   <span className="mc-players-online">{status?.players?.online || 0}</span>
                   <span className="mc-players-sep">/</span>
                   <span className="mc-players-max">{status?.players?.max || 0}</span>
-                </div>) : (<div className="mc-offline">ОФФЛАЙН</div>)}
+                </div>) : (<div className="mc-offline">{pt('offlineBadge')}</div>)}
           </div>
         </div>
 
@@ -460,28 +461,28 @@ export class ServerCard extends React.Component {
                                 name.length > 0;
                         });
                         return (<div className="mc-detail-block mc-detail-full">
-                <div className="mc-detail-label">Игроки онлайн</div>
+                <div className="mc-detail-label">{pt('playersOnline')}</div>
                 <div className="mc-detail-value">
                       {realPlayers.slice(0, 10).join(', ')}
                       {realPlayers.length > 10 && '...'}
                 </div>
-                <button onClick={this.openPlayersList} className="mc-players-all" data-tooltip="Данные об игроках могут быть неверны, так как это может быть прокси-сервер">
-                  Посмотреть всех ({realPlayers.length})
+                <button onClick={this.openPlayersList} className="mc-players-all" data-tooltip={pt('proxyWarning')}>
+                  {pt('showAll', { count: realPlayers.length })}
                 </button>
               </div>);
                     })()}
 
               {bedrockPrimary &&
-                        this.renderBedrockDetails(bedrockPrimary, `Bedrock Edition (порт ${bedrockPrimary.bedrockPort ?? bedrockPrimary.port ?? 19132})`)}
+                        this.renderBedrockDetails(bedrockPrimary, pt('bedrockPort', { port: bedrockPrimary.bedrockPort ?? bedrockPrimary.port ?? 19132 }))}
 
               {bedrockEdition &&
-                        this.renderBedrockDetails(bedrockEdition, `Bedrock Edition (порт ${bedrockEdition.port ?? bedrockEdition.bedrockPort ?? 19132})`)}
+                        this.renderBedrockDetails(bedrockEdition, pt('bedrockPort', { port: bedrockEdition.port ?? bedrockEdition.bedrockPort ?? 19132 }))}
           </div>);
             })()}
 
         <div className="mc-actions">
           <button onClick={this.handleRefresh} className="btn btn-refresh" disabled={this.state.refreshCooldown > 0}>
-            {this.state.refreshCooldown > 0 ? `Обновить (${this.state.refreshCooldown}с)` : 'Обновить'}
+            {this.state.refreshCooldown > 0 ? pt('refreshIn', { seconds: this.state.refreshCooldown }) : pt('refresh')}
           </button>
           <button onClick={this.openRawData} className="btn btn-raw">
             JSON

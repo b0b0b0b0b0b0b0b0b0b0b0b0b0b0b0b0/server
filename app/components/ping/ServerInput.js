@@ -1,4 +1,5 @@
 'use client';
+import { pt } from './pingText';
 import React from 'react';
 import { PortValidator } from './PortValidator';
 export class ServerInput extends React.Component {
@@ -16,12 +17,12 @@ export class ServerInput extends React.Component {
     }
     validateAddress(address) {
         if (!address.trim()) {
-            this.setState({ error: 'Введите адрес сервера' });
+            this.setState({ error: pt('enterServer') });
             return false;
         }
         const pattern = /^[a-zA-Z0-9.-]+(\:[0-9]{1,5})?$/;
         if (!pattern.test(address)) {
-            this.setState({ error: 'Неверный формат адреса' });
+            this.setState({ error: pt('badAddress') });
             return false;
         }
         const parsed = PortValidator.parseAddress(address);
@@ -50,9 +51,9 @@ export class ServerInput extends React.Component {
         const { loading } = this.props;
         return (<div className="search-container">
         <form onSubmit={this.handleSubmit} className="search-form">
-          <input type="text" value={address} onChange={this.handleChange} placeholder="Адрес сервера" className={`search-input ${error ? 'error' : ''}`} disabled={loading}/>
+          <input type="text" value={address} onChange={this.handleChange} placeholder={pt('serverPlaceholder')} className={`search-input ${error ? 'error' : ''}`} disabled={loading}/>
           <button type="submit" className="btn btn-search" disabled={loading}>
-            Искать
+            {pt('search')}
           </button>
           {error && <span className="error-message">{error}</span>}
         </form>

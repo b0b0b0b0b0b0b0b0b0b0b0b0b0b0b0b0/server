@@ -1,3 +1,4 @@
+import { pt } from './pingText';
 const FORBIDDEN_PORTS = new Set([
     11211,
     1433,
@@ -27,15 +28,15 @@ export class PortValidator {
             value = Number(port.trim());
         }
         else {
-            return { valid: false, error: 'Неверный номер порта' };
+            return { valid: false, error: pt('badPort') };
         }
         if (!Number.isInteger(value) || value < 1 || value > 65535) {
-            return { valid: false, error: 'Неверный номер порта' };
+            return { valid: false, error: pt('badPort') };
         }
         if (PortValidator.isForbidden(value)) {
             return {
                 valid: false,
-                error: 'Пинг этого порта запрещен по соображениям безопасности',
+                error: pt('blockedPort'),
             };
         }
         return { valid: true, port: value };
@@ -75,7 +76,7 @@ export class PortValidator {
     }
     static parseAddress(address, fallbackPort = 25565) {
         if (typeof address !== 'string' || !address.trim()) {
-            return { valid: false, error: 'Неверный адрес сервера' };
+            return { valid: false, error: pt('badServer') };
         }
         const raw = PortValidator.canonicalizeAddress(address);
         let host;
@@ -83,7 +84,7 @@ export class PortValidator {
         if (raw.startsWith('[')) {
             const end = raw.indexOf(']');
             if (end <= 1) {
-                return { valid: false, error: 'Неверный адрес сервера' };
+                return { valid: false, error: pt('badServer') };
             }
             host = raw.slice(1, end);
             const rest = raw.slice(end + 1);
@@ -91,7 +92,7 @@ export class PortValidator {
                 portRaw = rest.slice(1);
             }
             else if (rest.length > 0) {
-                return { valid: false, error: 'Неверный адрес сервера' };
+                return { valid: false, error: pt('badServer') };
             }
         }
         else if (/^[^[\s/\\]+:\d{1,5}$/.test(raw)) {
@@ -103,7 +104,7 @@ export class PortValidator {
             host = raw;
         }
         if (!host || /[/\s\\]/.test(host)) {
-            return { valid: false, error: 'Неверный адрес сервера' };
+            return { valid: false, error: pt('badServer') };
         }
         const parsedPort = PortValidator.parse(portRaw);
         if (!parsedPort.valid) {
