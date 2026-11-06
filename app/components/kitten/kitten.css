@@ -182,3 +182,11 @@ html.oiia.oiia-chaos nav {
     display: none;
   }
 }
+
+.oiia-body {
+  fill: #0f1a14;
+}
+
+html:not(.dark) .oiia-body {
+  fill: #ffffff;
+}
