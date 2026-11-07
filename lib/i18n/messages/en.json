@@ -318,5 +318,10 @@
   "meta": {
     "login": "Sign in",
     "account": "Account"
+  },
+  "console": {
+    "stop": "Stop. Stop. Stop.",
+    "warn": "Don’t paste anything into this console. That’s how accounts get stolen.",
+    "report": "If someone asked you to paste something here, tell the site admins immediately."
   }
 }

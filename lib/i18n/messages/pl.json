@@ -318,5 +318,10 @@
   "meta": {
     "login": "Logowanie",
     "account": "Konto"
+  },
+  "console": {
+    "stop": "Stop, stop, stop!",
+    "warn": "Nie wklejaj niczego w to okno. To bardzo niebezpieczne!",
+    "report": "Jeśli ktoś poprosił cię o wklejenie tu czegoś, natychmiast powiadom administrację strony!"
   }
 }

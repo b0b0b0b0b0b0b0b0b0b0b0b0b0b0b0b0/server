@@ -318,5 +318,10 @@
   "meta": {
     "login": "Pieteikties",
     "account": "Konts"
+  },
+  "console": {
+    "stop": "Stop, stop, stop!",
+    "warn": "Neielīmē šajā logā neko. Tas ir ļoti bīstami!",
+    "report": "Ja kāds tev lūdza šeit kaut ko ielīmēt, nekavējoties paziņo vietnes administrācijai!"
   }
 }

@@ -318,5 +318,10 @@
   "meta": {
     "login": "Logga in",
     "account": "Konto"
+  },
+  "console": {
+    "stop": "Stopp, stopp, stopp!",
+    "warn": "Klistra inte in något i det här fönstret. Det är mycket farligt!",
+    "report": "Om någon har bett dig klistra in något här, säg till sidans administratörer direkt!"
   }
 }

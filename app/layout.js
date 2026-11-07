@@ -35,6 +35,7 @@ import { resolveDocumentDirection } from '@/lib/core/localeDirection';
 import { resolveServerTheme } from '@/lib/core/ThemeStore';
 import { LOOK_BOOT_SCRIPT } from '@/lib/core/siteLook';
 import { I18nProvider } from '@/components/i18n/I18nProvider';
+import ConsoleWarning from '@/components/i18n/ConsoleWarning';
 import { getServerT } from '@/lib/i18n/server';
 
 const inter = Inter({
@@ -66,6 +67,7 @@ export default async function RootLayout({ children }) {
       </head>
       <body className={`${inter.className} min-h-screen antialiased mpa-auto`}>
         <I18nProvider locale={shared.locale} messages={shared.messages}>
+          <ConsoleWarning />
         <AppProviders initialLocale={locale}>
           <WorkspaceProvider>
             <SiteHeader />
