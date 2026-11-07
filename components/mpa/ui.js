@@ -94,7 +94,7 @@ export function PasswordField({ label, visible, onToggle, toggleLabel, inputProp
       <span className="mpa-control">
         <Svg path={LOCK_ICON} className="mpa-icon mpa-field-icon" />
         <input type={visible ? 'text' : 'password'} className="mpa-input mpa-input--toggle" {...inputProps} />
-        <button type="button" data-password-toggle className="mpa-eye" onClick={onToggle} aria-label={toggleLabel} aria-pressed={visible}>
+        <button type="button" data-password-toggle className="mpa-eye" onClick={onToggle} aria-label={toggleLabel} aria-pressed={visible} data-tooltip={toggleLabel}>
           <Svg
             className="mpa-icon"
             path={visible
@@ -154,7 +154,7 @@ export function QuickLogin({ text, back }) {
         </div>
         <div className="mpa-quick-buttons">
           {buttons.map((button) => (
-            <a key={button.icon} href={button.href} className="mpa-quick-button" aria-label={button.label} title={button.label}>
+            <a key={button.icon} href={button.href} className="mpa-quick-button" aria-label={button.label} data-tooltip={button.label}>
               <svg className="mpa-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d={button.icon} />
               </svg>
