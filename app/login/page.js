@@ -1,5 +1,6 @@
 import AuthPanel from '@/components/mpa/AuthPanel'
 
+export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Вход', robots: { index: false, follow: false } }
 
 export default function Page() {
