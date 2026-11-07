@@ -73,7 +73,6 @@
 
 .mpa-frame {
   position: relative;
-  overflow: hidden;
   padding: 1px;
   border-radius: 24px;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -85,6 +84,15 @@
 }
 
 .mpa-frame-glow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.mpa-frame-glow::before {
+  content: "";
   position: absolute;
   left: 50%;
   top: 50%;
@@ -102,7 +110,6 @@
 .mpa-frame-inner {
   position: relative;
   display: grid;
-  overflow: hidden;
   border-radius: 23px;
   background: var(--mpa-card);
 }
@@ -898,5 +905,17 @@ html:not(.dark) .mpa-page {
   .mpa-page [data-tooltip]:hover::after,
   .mpa-page [data-tooltip]:hover::before {
     display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mpa-side {
+    border-radius: 23px 0 0 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mpa-frame-glow::before {
+    animation: none;
   }
 }
