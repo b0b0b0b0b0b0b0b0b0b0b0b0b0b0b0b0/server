@@ -264,15 +264,8 @@
   field-sizing: content;
 }
 
-.script-output-filename-input:hover {
-  color: var(--color-text);
-}
-
 .script-output-filename-input:focus {
   outline: none;
-  color: var(--color-text);
-  background: color-mix(in srgb, var(--color-surface) 55%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
 .script-output-filename-ext {

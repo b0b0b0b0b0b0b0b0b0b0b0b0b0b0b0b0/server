@@ -287,10 +287,6 @@
   transition: color 0.15s ease;
 }
 
-.mpa-control:focus-within .mpa-field-icon {
-  color: rgb(var(--mpa-accent));
-}
-
 .mpa-input {
   width: 100%;
   margin: 0;
@@ -302,16 +298,10 @@
   font-size: 14px;
   background: var(--mpa-field);
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .mpa-input::placeholder {
   color: #4b5563;
-}
-
-.mpa-input:focus {
-  border-color: rgb(var(--mpa-accent));
-  box-shadow: 0 0 0 3px rgb(var(--mpa-accent) / 0.18);
 }
 
 .mpa-input--toggle {
@@ -350,6 +340,7 @@
 }
 
 .mpa-eye:hover {
+  z-index: 30;
   color: var(--mpa-text);
 }
 
@@ -543,10 +534,6 @@
 
 .mpa-guard--static {
   cursor: default;
-}
-
-.mpa-guard:focus-visible {
-  outline: 2px solid rgb(var(--mpa-accent));
 }
 
 .mpa-guard--read {
@@ -838,6 +825,10 @@ html:not(.dark) .mpa-page {
 
 .mpa-page [data-tooltip]:not(.mpa-eye) {
   position: relative;
+}
+
+.mpa-page [data-tooltip]:not(.mpa-eye):hover {
+  z-index: 30;
 }
 
 .mpa-page [data-tooltip]:hover::after {

@@ -53,7 +53,6 @@
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--glass-highlight) 50%, transparent);
 }
 
-.flags-page .lum-input:focus,
 .flags-page .lum-btn:hover {
   border: none;
   box-shadow:
@@ -206,10 +205,6 @@
 
 .flags-page .script-output-line .hl-keyword {
   color: color-mix(in srgb, var(--tool-accent) 55%, #8eb4ff);
-}
-
-.flags-page .script-output-filename-input:focus {
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--tool-accent) 22%, transparent);
 }
 
 .flags-page .script-output-action {
