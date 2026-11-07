@@ -1,7 +1,1 @@
-const TEXT = {
-  'account.petKitten': 'Погладить котика',
-}
-
-export function useT() {
-  return (key) => TEXT[key] || key
-}
+export { useT } from '@/components/i18n/I18nProvider'

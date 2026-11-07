@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "Client/Server",
+    "clientServerTip": "Minecraft-Client und -Server für jede Version herunterladen",
+    "here": "Du bist hier",
+    "rpRepack": "RP entpacken",
+    "rpRepackTip": "Geschützte Ressourcenpakete entpacken",
+    "pluginTranslate": "Plugin-Übersetzung",
+    "pluginTranslateTip": "Plugins online übersetzen (InJarTranslator)",
+    "deluxeMenu": "DeluxeMenu-Editor",
+    "deluxeMenuTip": "DeluxeMenu- und AbstractMenus-Editor",
+    "pingServers": "Server-Ping",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "Modrinth, nur netter"
+  },
+  "footer": {
+    "siteVersion": "Site-Version: {version}",
+    "family": "Teil von modrinth.black",
+    "services": "Dienste",
+    "servicesAria": "Dienste von modrinth.black",
+    "here": "du bist hier",
+    "contact": "Kontakt",
+    "official": "Für offizielle Anfragen",
+    "copyAria": "E-Mail kopieren",
+    "copied": "Kopiert!",
+    "copyHint": "Klicken zum Kopieren",
+    "tagline": "Werkzeuge für Minecraft-Server: Startflags, Lag-Analyse, Plugins und Farbverläufe.",
+    "accent": "Alles für deinen Server an einem Ort"
+  },
+  "kitten": {
+    "aria": "Kätzchen streicheln",
+    "pet": "Streichle das Kätzchen",
+    "petMore": "Schnurr! Noch mal streicheln",
+    "waiting": "Es wartet schon auf dich",
+    "petted": "Gestreichelt: {count}",
+    "toNext": "noch {count} bis zum Erfolg",
+    "unlocked": "Erfolge: {count} von {total}",
+    "signIn": "Melde dich an, damit sich das Kätzchen an dich erinnert",
+    "waking": "Das Kätzchen wacht auf…",
+    "toastKicker": "Erfolg freigeschaltet",
+    "list": [
+      {
+        "title": "Erstes Kennenlernen",
+        "text": "Du hast das Kätzchen gestreichelt! Es merkt sich dich"
+      },
+      {
+        "title": "Das Kätzchen schnurrt",
+        "text": "Es gefällt ihm, mach weiter"
+      },
+      {
+        "title": "Warme Pfote",
+        "text": "Das Kätzchen gibt dir Pfötchen"
+      },
+      {
+        "title": "Bester Freund",
+        "text": "Das Kätzchen schnurrt, wenn es dich sieht"
+      },
+      {
+        "title": "Ganz entzückt",
+        "text": "So viel Liebe hat das Kätzchen noch nie bekommen"
+      },
+      {
+        "title": "Hinterm Ohr kraulen",
+        "text": "Du hast seine Lieblingsstelle gefunden"
+      },
+      {
+        "title": "Meister des Schnurrens",
+        "text": "Das Kätzchen ruft dich beim Namen"
+      },
+      {
+        "title": "Glückspfote",
+        "text": "Das Kätzchen hat sich etwas für dich gewünscht"
+      },
+      {
+        "title": "Weiche Hände",
+        "text": "Das Kätzchen wärmt sich an deiner Hand"
+      },
+      {
+        "title": "Legende von modrinth.black",
+        "text": "Das Kätzchen erzählt seinen Freunden von dir"
+      },
+      {
+        "title": "Kraul-Meister",
+        "text": "Du weißt genau, wo man kraulen muss"
+      },
+      {
+        "title": "Schnurr-Marathon",
+        "text": "Das Kätzchen schnurrt ohne Pause"
+      },
+      {
+        "title": "Kuschelkätzchen",
+        "text": "Das Kätzchen will kuscheln"
+      },
+      {
+        "title": "Katzen-Jackpot",
+        "text": "Das Kätzchen hatte riesiges Glück"
+      },
+      {
+        "title": "Wollknäuel des Glücks",
+        "text": "Das Kätzchen bringt dir sein Wollknäuel"
+      },
+      {
+        "title": "Flauschige Wolke",
+        "text": "Das Kätzchen ist weich wie eine Wolke"
+      },
+      {
+        "title": "Freund aller Kätzchen",
+        "text": "Das Kätzchen hat allen Kätzchen von dir erzählt"
+      },
+      {
+        "title": "Wächterkätzchen",
+        "text": "Jetzt bewacht das Kätzchen deinen Schlaf"
+      },
+      {
+        "title": "Sternenpfote",
+        "text": "Das Kätzchen schenkt dir ein Sternchen"
+      },
+      {
+        "title": "Königliches Kuscheln",
+        "text": "Das Kätzchen trägt für dich eine Krone"
+      },
+      {
+        "title": "Schnurr-Orchester",
+        "text": "Die Kätzchen schnurren im Chor für dich"
+      },
+      {
+        "title": "Regenbogenschwanz",
+        "text": "Der Schwanz des Kätzchens leuchtet in allen Farben"
+      },
+      {
+        "title": "Geheimnis des Katzenherzens",
+        "text": "Das Kätzchen verrät dir sein Geheimnis"
+      },
+      {
+        "title": "Reisekätzchen",
+        "text": "Das Kätzchen folgt dir über alle Seiten"
+      },
+      {
+        "title": "Mondschein-Schnurren",
+        "text": "Das Kätzchen schnurrt sogar im Schlaf"
+      },
+      {
+        "title": "Hüter der Gemütlichkeit",
+        "text": "Bei dir ist es immer warm"
+      },
+      {
+        "title": "Katzenweiser",
+        "text": "Das Kätzchen hält dich für weiser als sich selbst"
+      },
+      {
+        "title": "Schnurr-Universum",
+        "text": "Das Schnurren hört man sogar im Weltall"
+      },
+      {
+        "title": "Fast eine Legende",
+        "text": "Nur noch ein kleines Stück bis zum Gipfel"
+      },
+      {
+        "title": "Ewige Liebe",
+        "text": "Das Kätzchen gehört für immer dir"
+      }
+    ],
+    "grumpy": {
+      "aria": "Das Kätzchen will nicht gestreichelt werden",
+      "title": "Das Kätzchen ist beleidigt",
+      "text": "Kein Streicheln, keine Erfolge",
+      "sulks": [
+        "Pff! Finger weg",
+        "Das Kätzchen hat sich abgewandt",
+        "Nein, nein, nicht streicheln",
+        "Das Kätzchen tut so, als sähe es dich nicht",
+        "Mit dem Schwanz gewedelt und weg"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "Kätzchen streicheln",
+    "updates": "Updates",
+    "favorites": "Favoriten",
+    "collections": "Sammlungen",
+    "downloads": "Download-Verlauf",
+    "logout": "Abmelden",
+    "dashboard": "Übersicht",
+    "menu": "Profilmenü",
+    "signIn": "Anmelden",
+    "settings": "Einstellungen"
+  },
+  "sn": {
+    "display": "Anzeige",
+    "appearance": "Aussehen",
+    "language": "Sprache",
+    "account": "Konto",
+    "profile": "Profil",
+    "notifications": "Benachrichtigungen",
+    "extras": "Feiertage & Klänge",
+    "data": "Verlauf & Daten",
+    "security": "Anmeldung & Sicherheit",
+    "signIn": "Anmelden",
+    "signInHint": "Profil, Benachrichtigungen und alles rund ums Konto — nach der Anmeldung.",
+    "menu": "Profilmenü",
+    "dashboard": "Übersicht",
+    "localHint": "Wird nur in diesem Browser gespeichert — klappt auch ohne Konto."
+  },
+  "settings": {
+    "pageTitle": "Einstellungen",
+    "navAria": "Zu den Einstellungen springen",
+    "home": "Start",
+    "crumbsAria": "Navigation",
+    "themeTitle": "Farbschema",
+    "themeSystem": "System (Auto)",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "themeSystemAria": "System (Auto) Farbschema",
+    "themeLightAria": "Helles Farbschema",
+    "themeDarkAria": "Dunkles Farbschema",
+    "paletteTitle": "Akzentfarbe",
+    "paletteHint": "Die Markenfarbe — Buttons, Links, Highlights. Nicht das ganze Look, nur die Palette.",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "Eisengrau",
+      "medelsin": "Kupferorange",
+      "dragon": "Drachengrün"
+    },
+    "on": "An",
+    "off": "Aus",
+    "languageTitle": "Sprache",
+    "languageStandard": "Verfügbare Sprachen",
+    "kittenSounds": "Kätzchen-Töne",
+    "sharedNote": "Diese Einstellungen sind gemeinsam: Sie ändern sich sofort hier, auf modrinth.black und in allen seinen Diensten in diesem Browser.",
+    "themeHint": "Wähle dein bevorzugtes Farbschema für alle ModrinthProxy-Seiten auf diesem Gerät.",
+    "soundsTitle": "Töne",
+    "soundsHint": "Ebenfalls für alle Seiten gemeinsam.",
+    "kittenSoundsHint": "Leise, sanfte Töne, wenn du das Kätzchen streichelst. Sie spielen nie von selbst — nur bei einem Klick.",
+    "languageWarn": "Die Sprache gilt für alle Seiten: Wähle sie hier, und sie wird auf modrinth.black und allen seinen Diensten aktiv."
+  },
+  "mpa": {
+    "loginTitle": "Willkommen zurück",
+    "registerTitle": "Konto erstellen",
+    "registerLead": "Eine halbe Minute — und ohne E-Mail.",
+    "usernamePlaceholder": "z. B. steve_2026",
+    "passwordPlaceholder": "dein Passwort",
+    "newPasswordPlaceholder": "denk dir ein Passwort aus",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "submitLogin": "Anmelden",
+    "submitRegister": "Konto erstellen",
+    "noRecovery": "Wir fragen nicht nach einer E-Mail, deshalb lässt sich das Passwort nicht wiederherstellen — heb es gut auf.",
+    "noAccount": "Noch kein Konto?",
+    "haveAccount": "Schon ein Konto?",
+    "usernameHint": "3–24 Zeichen: lateinische Buchstaben, Ziffern und _",
+    "password": "Passwort",
+    "or": "oder auf die alte Art",
+    "quickTitle": "Schnell-Login",
+    "quickHint": "Kein Passwort nötig. Gibt es noch kein Konto, wird es automatisch erstellt.",
+    "telegram": "Weiter mit Telegram",
+    "github": "Weiter mit GitHub",
+    "petKitten": "Kätzchen streicheln",
+    "switchLogin": "Anmelden",
+    "errors": {
+      "invalid": "Benutzername oder Passwort falsch.",
+      "captcha": "Die Anfrage konnte nicht geprüft werden. Probier es noch mal.",
+      "rate_limit": "Zu viele Versuche. Probier es später noch mal.",
+      "signup_limit": "Aus deinem Netzwerk wurden heute schon zu viele Konten erstellt. Probier es morgen.",
+      "taken": "Dieser Benutzername ist schon vergeben.",
+      "username": "Benutzername: 3–24 Zeichen, nur lateinische Buchstaben, Ziffern und _.",
+      "password": "Passwort: 8 bis 128 Zeichen.",
+      "unauthorized": "Die Sitzung ist abgelaufen, bitte melde dich erneut an",
+      "forbidden": "Anfrage abgelehnt, lade die Seite neu",
+      "unavailable": "Der Kontoserver antwortet nicht, versuche es später"
+    },
+    "strength": [
+      "",
+      "Schwach",
+      "Geht so",
+      "Gut",
+      "Sehr gut"
+    ],
+    "sideTitle": "Ein Konto für alle Dienste",
+    "sideLead": "Hier angemeldet — und schon bist du auf modrinth.black und allen seinen Seiten dabei.",
+    "perks": [
+      {
+        "title": "Überall derselbe Name",
+        "text": "Name und Avatar sind auf modrinth.black, dem Client, dem Repacker, der Plugin-Übersetzung und den anderen Diensten gleich."
+      },
+      {
+        "title": "Einmal anmelden",
+        "text": "Auf einer Seite angemeldet — auf den anderen bist du es auch. Abgemeldet — überall abgemeldet."
+      },
+      {
+        "title": "Favoriten und Verlauf",
+        "text": "Lieblingsmods und Download-Verlauf liegen auf modrinth.black und sind immer griffbereit."
+      }
+    ],
+    "loginLead": "Melde dich an, damit du alles griffbereit hast.",
+    "username": "Name",
+    "passwordHint": "mindestens 8 Zeichen",
+    "switchRegister": "Erstellen",
+    "home": "Zur Startseite",
+    "accountTitle": "Dein Konto",
+    "accountLead": "Eins für modrinth.black und alle seine Dienste.",
+    "nickname": "Name",
+    "save": "Speichern",
+    "saved": "Name auf allen Seiten aktualisiert",
+    "security": "Passwort und Verknüpfungen",
+    "securityText": "Passwort, GitHub und Telegram änderst du auf modrinth.black.",
+    "securityLink": "Einstellungen öffnen",
+    "logout": "Abmelden",
+    "logoutText": "Die Abmeldung gilt sofort auf allen Seiten.",
+    "signedOutTitle": "Du bist nicht angemeldet",
+    "signedOutLead": "Melde dich an oder erstelle ein Konto — eins für alle Dienste."
+  },
+  "meta": {
+    "login": "Anmelden",
+    "account": "Konto"
+  }
+}

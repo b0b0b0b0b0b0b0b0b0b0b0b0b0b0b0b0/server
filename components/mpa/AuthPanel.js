@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import GuardKitten from '@/components/mpa/Kitten'
 import { useCaptcha } from '@/components/mpa/useCaptcha'
-import { errorText, getText, passwordStrength } from '@/components/mpa/text'
+import { errorText, passwordStrength, useMpaText } from '@/components/mpa/text'
 import { ErrorBox, Field, Frame, PasswordField, QuickLogin, Side, Spinner, Strength, USER_ICON } from '@/components/mpa/ui'
 
 function safeLocalNext() {
@@ -12,7 +12,7 @@ function safeLocalNext() {
 }
 
 export default function AuthPanel() {
-  const [text, setText] = useState(getText)
+  const text = useMpaText()
   const [mode, setMode] = useState('login')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -28,7 +28,6 @@ export default function AuthPanel() {
   const isRegister = mode === 'register'
 
   useEffect(() => {
-    setText(getText())
     setBack(window.location.origin + safeLocalNext())
     if (new URLSearchParams(window.location.search).get('mode') === 'register') setMode('register')
     fetch('/api/me', { cache: 'no-store' })

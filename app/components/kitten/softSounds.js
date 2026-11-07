@@ -1,18 +1,20 @@
 'use client'
 
+import { SOUNDS_COOKIE, readPref, writePref } from '@/components/settings/sharedPrefs'
+
 const STORAGE_KEY = 'kitten-sounds'
 const listeners = new Set()
 let context = null
-let muted = null
 
 function readMuted() {
-  if (muted !== null) return muted
+  if (typeof window === 'undefined') return false
+  const shared = readPref(SOUNDS_COOKIE)
+  if (shared === 'on' || shared === 'off') return shared === 'off'
   try {
-    muted = localStorage.getItem(STORAGE_KEY) === 'off'
+    return localStorage.getItem(STORAGE_KEY) === 'off'
   } catch {
-    muted = false
+    return false
   }
-  return muted
 }
 
 export function soundsMuted() {
@@ -20,7 +22,7 @@ export function soundsMuted() {
 }
 
 export function setSoundsMuted(next) {
-  muted = next
+  writePref(SOUNDS_COOKIE, next ? 'off' : 'on')
   try {
     localStorage.setItem(STORAGE_KEY, next ? 'off' : 'on')
   } catch {}

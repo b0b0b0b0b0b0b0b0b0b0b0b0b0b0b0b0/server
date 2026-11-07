@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { KittenFace } from '@/components/mpa/Kitten'
-import { errorText, getText } from '@/components/mpa/text'
+import { errorText, useMpaText } from '@/components/mpa/text'
 import { ACCOUNT_SITE, ErrorBox, Field, Frame, Side, Spinner, Svg, USER_ICON } from '@/components/mpa/ui'
 
 const SHIELD_ICON = 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z'
 const EXIT_ICON = 'M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9'
 
 export default function AccountPanel() {
-  const [text, setText] = useState(getText)
+  const text = useMpaText()
   const [user, setUser] = useState(undefined)
   const [username, setUsername] = useState('')
   const [busy, setBusy] = useState(false)
@@ -17,7 +17,6 @@ export default function AccountPanel() {
   const [error, setError] = useState({ text: '', id: 0 })
 
   useEffect(() => {
-    setText(getText())
     let alive = true
     const load = () => {
       fetch('/api/me', { cache: 'no-store' })

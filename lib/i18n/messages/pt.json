@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "Cliente/Servidor",
+    "clientServerTip": "Baixe o cliente e o servidor do Minecraft para cada versão",
+    "here": "Você está aqui",
+    "rpRepack": "Descompactar RP",
+    "rpRepackTip": "Descompacte resource packs protegidos",
+    "pluginTranslate": "Tradução de plugins",
+    "pluginTranslateTip": "Traduza plugins online (InJarTranslator)",
+    "deluxeMenu": "Editor DeluxeMenu",
+    "deluxeMenuTip": "Editor DeluxeMenu e AbstractMenus",
+    "pingServers": "Ping de servidores",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "Modrinth, só que mais gentil"
+  },
+  "footer": {
+    "siteVersion": "Versão do site: {version}",
+    "family": "Parte do modrinth.black",
+    "services": "Serviços",
+    "servicesAria": "Serviços do modrinth.black",
+    "here": "você está aqui",
+    "contact": "Fale conosco",
+    "official": "Para solicitações oficiais",
+    "copyAria": "Copiar e-mail",
+    "copied": "Copiado!",
+    "copyHint": "Clique para copiar",
+    "tagline": "Ferramentas para servidores de Minecraft: flags de inicialização, análise de lag, plugins e degradês.",
+    "accent": "Tudo para o seu servidor num só lugar"
+  },
+  "kitten": {
+    "aria": "Fazer carinho no gatinho",
+    "pet": "Faça carinho no gatinho",
+    "petMore": "Purr! Mais um carinho",
+    "waiting": "Ele está esperando você",
+    "petted": "Carinhos: {count}",
+    "toNext": "{count} para a próxima conquista",
+    "unlocked": "Conquistas: {count} de {total}",
+    "signIn": "Entre para o gatinho se lembrar de você",
+    "waking": "O gatinho está acordando…",
+    "toastKicker": "Conquista desbloqueada",
+    "list": [
+      {
+        "title": "Primeiro encontro",
+        "text": "Você fez carinho no gatinho! Ele vai se lembrar de você"
+      },
+      {
+        "title": "O gatinho ronrona",
+        "text": "Ele gostou, continue"
+      },
+      {
+        "title": "Patinha quentinha",
+        "text": "O gatinho te deu a patinha"
+      },
+      {
+        "title": "Melhor amigo",
+        "text": "O gatinho ronrona quando vê você"
+      },
+      {
+        "title": "Nas nuvens",
+        "text": "O gatinho nunca recebeu tanto carinho"
+      },
+      {
+        "title": "Coceguinha atrás da orelha",
+        "text": "Você achou o lugar favorito dele"
+      },
+      {
+        "title": "Mestre do ronronar",
+        "text": "O gatinho chama você pelo nome"
+      },
+      {
+        "title": "Patinha da sorte",
+        "text": "O gatinho fez um pedido por você"
+      },
+      {
+        "title": "Mãos macias",
+        "text": "O gatinho se aquece na sua mão"
+      },
+      {
+        "title": "Lenda do modrinth.black",
+        "text": "O gatinho contou de você para os amigos"
+      },
+      {
+        "title": "Mestre do coceguinha",
+        "text": "Você sabe exatamente onde coçar"
+      },
+      {
+        "title": "Maratona de ronrons",
+        "text": "O gatinho ronrona sem parar"
+      },
+      {
+        "title": "Gatinho abraçador",
+        "text": "O gatinho quer um abraço"
+      },
+      {
+        "title": "Sorte grande",
+        "text": "O gatinho teve uma sorte enorme"
+      },
+      {
+        "title": "Novelo da felicidade",
+        "text": "O gatinho trouxe o novelo dele para você"
+      },
+      {
+        "title": "Nuvenzinha fofa",
+        "text": "O gatinho está macio como uma nuvem"
+      },
+      {
+        "title": "Amigo de todos os gatinhos",
+        "text": "O gatinho contou de você para todos os gatinhos"
+      },
+      {
+        "title": "Gatinho guardião",
+        "text": "Agora o gatinho protege o seu sono"
+      },
+      {
+        "title": "Patinha estrelada",
+        "text": "O gatinho te deu uma estrelinha"
+      },
+      {
+        "title": "Carinho real",
+        "text": "O gatinho colocou uma coroa para você"
+      },
+      {
+        "title": "Orquestra de ronrons",
+        "text": "Os gatinhos ronronam em coro por você"
+      },
+      {
+        "title": "Rabinho arco-íris",
+        "text": "O rabinho do gatinho brilha com todas as cores"
+      },
+      {
+        "title": "O segredo do coração felino",
+        "text": "O gatinho te contou o segredo dele"
+      },
+      {
+        "title": "Gatinho viajante",
+        "text": "O gatinho segue você por todos os sites"
+      },
+      {
+        "title": "Ronrom ao luar",
+        "text": "O gatinho ronrona até dormindo"
+      },
+      {
+        "title": "Guardião do aconchego",
+        "text": "Perto de você está sempre quentinho"
+      },
+      {
+        "title": "Sábio felino",
+        "text": "O gatinho acha você mais sábio que ele"
+      },
+      {
+        "title": "Universo de ronrons",
+        "text": "O ronronar dá para ouvir até no espaço"
+      },
+      {
+        "title": "Quase uma lenda",
+        "text": "Falta só um pouquinho para o topo"
+      },
+      {
+        "title": "Amor eterno",
+        "text": "O gatinho é seu para sempre"
+      }
+    ],
+    "grumpy": {
+      "aria": "O gatinho não quer carinho",
+      "title": "O gatinho está emburrado",
+      "text": "Não deixa fazer carinho nem conta conquistas",
+      "sulks": [
+        "Fff! Não toca",
+        "O gatinho virou a cara",
+        "Não, não, nada de carinho",
+        "O gatinho finge que não te vê",
+        "Balançou o rabo e foi embora"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "Fazer carinho no gatinho",
+    "updates": "Atualizações",
+    "favorites": "Favoritos",
+    "collections": "Coleções",
+    "downloads": "Histórico de downloads",
+    "logout": "Sair",
+    "dashboard": "Painel",
+    "menu": "Menu do perfil",
+    "signIn": "Entrar",
+    "settings": "Configurações"
+  },
+  "sn": {
+    "display": "Exibição",
+    "appearance": "Aparência",
+    "language": "Idioma",
+    "account": "Conta",
+    "profile": "Perfil",
+    "notifications": "Notificações",
+    "extras": "Festas e sons",
+    "data": "Histórico e dados",
+    "security": "Login e segurança",
+    "signIn": "Entrar",
+    "signInHint": "Perfil, notificações e tudo sobre a conta — depois de entrar.",
+    "menu": "Menu do perfil",
+    "dashboard": "Painel",
+    "localHint": "Salvo só neste navegador — funciona até sem conta."
+  },
+  "settings": {
+    "pageTitle": "Configurações",
+    "navAria": "Ir às configurações",
+    "home": "Início",
+    "crumbsAria": "Navegação",
+    "themeTitle": "Tema de cores",
+    "themeSystem": "Sistema (Auto)",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "themeSystemAria": "Tema do sistema (auto)",
+    "themeLightAria": "Tema claro",
+    "themeDarkAria": "Tema escuro",
+    "paletteTitle": "Cor de destaque",
+    "paletteHint": "A cor de identidade — botões, links, destaques. Não é o visual inteiro, só a paleta.",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "Cinza ferro",
+      "medelsin": "Laranja cobre",
+      "dragon": "Verde dragão"
+    },
+    "on": "On",
+    "off": "Off",
+    "languageTitle": "Idioma",
+    "languageStandard": "Idiomas disponíveis",
+    "kittenSounds": "Sons do gatinho",
+    "sharedNote": "Estas configurações são compartilhadas: mudam na hora aqui, no modrinth.black e em todos os seus serviços neste navegador.",
+    "themeHint": "Escolha o tema de cores preferido para todos os sites do ModrinthProxy neste dispositivo.",
+    "soundsTitle": "Sons",
+    "soundsHint": "Também são compartilhados entre todos os sites.",
+    "kittenSoundsHint": "Sons suaves e baixinhos quando você faz carinho no gatinho. Nunca tocam sozinhos — só depois de um clique.",
+    "languageWarn": "O idioma é compartilhado entre todos os sites: escolha aqui e ele será ativado no modrinth.black e em todos os seus serviços."
+  },
+  "mpa": {
+    "loginTitle": "Bem-vindo de volta",
+    "registerTitle": "Crie uma conta",
+    "registerLead": "Meio minuto — e sem e-mail.",
+    "usernamePlaceholder": "por exemplo, steve_2026",
+    "passwordPlaceholder": "sua senha",
+    "newPasswordPlaceholder": "invente uma senha",
+    "showPassword": "Mostrar senha",
+    "hidePassword": "Ocultar senha",
+    "submitLogin": "Entrar",
+    "submitRegister": "Criar conta",
+    "noRecovery": "Não pedimos e-mail, então a senha não pode ser recuperada — guarde bem.",
+    "noAccount": "Ainda não tem conta?",
+    "haveAccount": "Já tem conta?",
+    "usernameHint": "3–24 caracteres: letras latinas, números e _",
+    "password": "Senha",
+    "or": "ou do jeito antigo",
+    "quickTitle": "Entrada rápida",
+    "quickHint": "Sem senha. Se você ainda não tem conta, ela é criada sozinha.",
+    "telegram": "Continuar com Telegram",
+    "github": "Continuar com GitHub",
+    "petKitten": "Fazer carinho no gatinho",
+    "switchLogin": "Entrar",
+    "errors": {
+      "invalid": "Usuário ou senha incorretos.",
+      "captcha": "Não foi possível verificar a solicitação. Tente de novo.",
+      "rate_limit": "Tentativas demais. Tente mais tarde.",
+      "signup_limit": "Hoje já foram criadas contas demais a partir da sua rede. Tente amanhã.",
+      "taken": "Esse usuário já está em uso.",
+      "username": "Usuário: 3–24 caracteres, apenas letras latinas, números e _.",
+      "password": "Senha: de 8 a 128 caracteres.",
+      "unauthorized": "A sessão expirou, entre de novo",
+      "forbidden": "Pedido recusado, recarregue a página",
+      "unavailable": "O servidor de contas não responde, tente mais tarde"
+    },
+    "strength": [
+      "",
+      "Fraca",
+      "Mais ou menos",
+      "Boa",
+      "Ótima"
+    ],
+    "sideTitle": "Uma conta para todos os serviços",
+    "sideLead": "Entrou aqui — e você já é de casa no modrinth.black e em todos os seus sites.",
+    "perks": [
+      {
+        "title": "O mesmo nome em todo lugar",
+        "text": "Nome e avatar iguais no modrinth.black, no cliente, no repacker, na tradução de plugins e nos outros serviços."
+      },
+      {
+        "title": "Um único login",
+        "text": "Entrou em um site — está dentro nos outros também. Saiu — saiu de todos."
+      },
+      {
+        "title": "Favoritos e histórico",
+        "text": "Mods favoritos e histórico de downloads ficam no modrinth.black, sempre à mão."
+      }
+    ],
+    "loginLead": "Entre para ter tudo à mão.",
+    "username": "Nome",
+    "passwordHint": "mínimo de 8 caracteres",
+    "switchRegister": "Criar",
+    "home": "Ir para o início",
+    "accountTitle": "Sua conta",
+    "accountLead": "Uma só para o modrinth.black e todos os seus serviços.",
+    "nickname": "Nome",
+    "save": "Salvar",
+    "saved": "Nome atualizado em todos os sites",
+    "security": "Senha e vínculos",
+    "securityText": "Senha, GitHub e Telegram são alterados no modrinth.black.",
+    "securityLink": "Abrir configurações",
+    "logout": "Sair da conta",
+    "logoutText": "A saída vale na hora para todos os sites.",
+    "signedOutTitle": "Você não entrou",
+    "signedOutLead": "Entre ou crie uma conta — uma para todos os serviços."
+  },
+  "meta": {
+    "login": "Entrar",
+    "account": "Conta"
+  }
+}

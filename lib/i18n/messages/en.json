@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "Client/Server",
+    "clientServerTip": "Download Minecraft client and server for every version",
+    "here": "You are here",
+    "rpRepack": "RP unpack",
+    "rpRepackTip": "Unpack protected resource packs",
+    "pluginTranslate": "Plugin translation",
+    "pluginTranslateTip": "Translate plugins online (InJarTranslator)",
+    "deluxeMenu": "DeluxeMenu editor",
+    "deluxeMenuTip": "DeluxeMenu and AbstractMenus editor",
+    "pingServers": "Server ping",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "Modrinth, our way"
+  },
+  "footer": {
+    "siteVersion": "Site version: {version}",
+    "family": "Part of modrinth.black",
+    "services": "Services",
+    "servicesAria": "modrinth.black services",
+    "here": "you are here",
+    "contact": "Contact us",
+    "official": "For official inquiries",
+    "copyAria": "Copy email",
+    "copied": "Copied!",
+    "copyHint": "Click to copy",
+    "tagline": "Tools for Minecraft servers: startup flags, lag analysis, plugins and gradients.",
+    "accent": "Everything for your server in one place"
+  },
+  "kitten": {
+    "aria": "Pet the kitten",
+    "pet": "Pet the kitten",
+    "petMore": "Purr! Pet me more",
+    "waiting": "He is waiting for you",
+    "petted": "Pets: {count}",
+    "toNext": "{count} to the next achievement",
+    "unlocked": "Achievements: {count} of {total}",
+    "signIn": "Sign in so the kitten remembers you",
+    "waking": "The kitten is waking up…",
+    "toastKicker": "Achievement unlocked",
+    "list": [
+      {
+        "title": "First meeting",
+        "text": "You petted the kitten! He will remember you"
+      },
+      {
+        "title": "The kitten purrs",
+        "text": "He likes it, keep going"
+      },
+      {
+        "title": "Warm paw",
+        "text": "The kitten gave you his paw"
+      },
+      {
+        "title": "Best friend",
+        "text": "The kitten purrs whenever he sees you"
+      },
+      {
+        "title": "Over the moon",
+        "text": "The kitten has never been petted so much"
+      },
+      {
+        "title": "Ear scratches",
+        "text": "You found his favourite spot"
+      },
+      {
+        "title": "Lord of purrs",
+        "text": "The kitten calls you by name"
+      },
+      {
+        "title": "Lucky paw",
+        "text": "The kitten made a wish about you"
+      },
+      {
+        "title": "Soft hands",
+        "text": "The kitten warms up on your hand"
+      },
+      {
+        "title": "Legend of modrinth.black",
+        "text": "The kitten told his friends about you"
+      },
+      {
+        "title": "Scratch master",
+        "text": "You know exactly where to scratch"
+      },
+      {
+        "title": "Purr marathon",
+        "text": "The kitten purrs non-stop"
+      },
+      {
+        "title": "Cuddle kitten",
+        "text": "The kitten wants a hug"
+      },
+      {
+        "title": "Kitty jackpot",
+        "text": "The kitten got really lucky"
+      },
+      {
+        "title": "Ball of happiness",
+        "text": "The kitten brought you his yarn ball"
+      },
+      {
+        "title": "Fluffy cloud",
+        "text": "The kitten is soft as a cloud"
+      },
+      {
+        "title": "Friend of all kittens",
+        "text": "The kitten told every kitten about you"
+      },
+      {
+        "title": "Guardian kitten",
+        "text": "Now the kitten guards your sleep"
+      },
+      {
+        "title": "Starry paw",
+        "text": "The kitten gave you a little star"
+      },
+      {
+        "title": "Royal cuddles",
+        "text": "The kitten put on a crown for you"
+      },
+      {
+        "title": "Purring orchestra",
+        "text": "Kittens purr in chorus for you"
+      },
+      {
+        "title": "Rainbow tail",
+        "text": "The kitten’s tail shines in every colour"
+      },
+      {
+        "title": "Secret of a cat’s heart",
+        "text": "The kitten told you his secret"
+      },
+      {
+        "title": "Travelling kitten",
+        "text": "The kitten follows you across every site"
+      },
+      {
+        "title": "Moonlight purr",
+        "text": "The kitten purrs even in his sleep"
+      },
+      {
+        "title": "Keeper of cosiness",
+        "text": "It is always warm next to you"
+      },
+      {
+        "title": "Cat sage",
+        "text": "The kitten thinks you are wiser than him"
+      },
+      {
+        "title": "Universe of purrs",
+        "text": "The purring can be heard in space"
+      },
+      {
+        "title": "Almost a legend",
+        "text": "Just a little more to the top"
+      },
+      {
+        "title": "Forever love",
+        "text": "The kitten is yours forever"
+      }
+    ],
+    "grumpy": {
+      "aria": "The kitten does not want to be petted",
+      "title": "The kitten is sulking",
+      "text": "No petting allowed, no achievements counted",
+      "sulks": [
+        "Hmph! Paws off",
+        "The kitten turned away",
+        "Nope, no petting",
+        "The kitten pretends not to see you",
+        "Flicked its tail and walked off"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "Pet the kitten",
+    "updates": "Updates",
+    "favorites": "Favorites",
+    "collections": "Collections",
+    "downloads": "Download history",
+    "logout": "Sign out",
+    "dashboard": "Dashboard",
+    "menu": "Profile menu",
+    "signIn": "Sign in",
+    "settings": "Settings"
+  },
+  "sn": {
+    "display": "Display",
+    "appearance": "Appearance",
+    "language": "Language",
+    "account": "Account",
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "extras": "Holidays & sounds",
+    "data": "History & data",
+    "security": "Sign-in & security",
+    "signIn": "Sign in",
+    "signInHint": "Profile, notifications and everything about your account — after signing in.",
+    "menu": "Profile menu",
+    "dashboard": "Dashboard",
+    "localHint": "Saved only in this browser — works even without an account."
+  },
+  "settings": {
+    "pageTitle": "Settings",
+    "navAria": "Jump to settings",
+    "home": "Home",
+    "crumbsAria": "Navigation",
+    "themeTitle": "Color theme",
+    "themeSystem": "System (Auto)",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystemAria": "System (Auto) theme",
+    "themeLightAria": "Light theme",
+    "themeDarkAria": "Dark theme",
+    "paletteTitle": "Accent color",
+    "paletteHint": "The identity color — buttons, links, highlights. Not the whole look, just the palette.",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "Irongray",
+      "medelsin": "Copperange",
+      "dragon": "Dragonreen"
+    },
+    "on": "On",
+    "off": "Off",
+    "languageTitle": "Language",
+    "languageStandard": "Available languages",
+    "kittenSounds": "Kitten sounds",
+    "sharedNote": "These settings are shared: they change right away here, on modrinth.black and on all its services in this browser.",
+    "themeHint": "Choose your preferred color theme for all ModrinthProxy sites on this device.",
+    "soundsTitle": "Sounds",
+    "soundsHint": "Also shared across all sites.",
+    "kittenSoundsHint": "Quiet, soft sounds when you pet the kitten. They never play on their own — only when you click.",
+    "languageWarn": "The language is shared across all sites: pick it here and it switches on modrinth.black and all its services."
+  },
+  "mpa": {
+    "loginTitle": "Welcome back",
+    "registerTitle": "Create an account",
+    "registerLead": "Half a minute, no email needed.",
+    "usernamePlaceholder": "e.g. steve_2026",
+    "passwordPlaceholder": "your password",
+    "newPasswordPlaceholder": "make up a password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "submitLogin": "Sign in",
+    "submitRegister": "Create account",
+    "noRecovery": "We do not ask for email, so the password cannot be recovered — keep it safe.",
+    "noAccount": "No account yet?",
+    "haveAccount": "Already have an account?",
+    "usernameHint": "3–24 characters: latin letters, digits and _",
+    "password": "Password",
+    "or": "or the old-fashioned way",
+    "quickTitle": "One-click sign-in",
+    "quickHint": "No password needed. If you don’t have an account yet, one is created for you.",
+    "telegram": "Continue with Telegram",
+    "github": "Continue with GitHub",
+    "petKitten": "Pet the kitten",
+    "switchLogin": "Sign in",
+    "errors": {
+      "invalid": "Wrong username or password",
+      "captcha": "Check failed, try again",
+      "rate_limit": "Too many attempts, wait a bit",
+      "signup_limit": "Someone signed up from this network recently, try later",
+      "taken": "This username is taken",
+      "username": "Username: 3–24 characters, latin letters, digits and _",
+      "password": "Password: 8 to 128 characters",
+      "unauthorized": "Session expired, sign in again",
+      "forbidden": "Request rejected, reload the page",
+      "unavailable": "Account server is not responding, try later"
+    },
+    "strength": [
+      "",
+      "Weak",
+      "So-so",
+      "Good",
+      "Strong"
+    ],
+    "sideTitle": "One account for every service",
+    "sideLead": "Sign in here and you are signed in on modrinth.black and all its sites.",
+    "perks": [
+      {
+        "title": "Same name everywhere",
+        "text": "Your username and avatar are the same on modrinth.black, the client, repacker, plugin translator and other services."
+      },
+      {
+        "title": "Sign in once",
+        "text": "Signed in on one site — you are signed in on the others. Signed out — signed out everywhere."
+      },
+      {
+        "title": "Favorites and history",
+        "text": "Favorite mods and download history live on modrinth.black, always at hand."
+      }
+    ],
+    "loginLead": "Sign in to keep everything at hand.",
+    "username": "Username",
+    "passwordHint": "8+ characters",
+    "switchRegister": "Create one",
+    "home": "Home",
+    "accountTitle": "Your account",
+    "accountLead": "One for modrinth.black and all its services.",
+    "nickname": "Username",
+    "save": "Save",
+    "saved": "Username updated on every site",
+    "security": "Password and links",
+    "securityText": "Password, GitHub and Telegram are managed on modrinth.black.",
+    "securityLink": "Open settings",
+    "logout": "Sign out",
+    "logoutText": "You will be signed out on every site at once.",
+    "signedOutTitle": "You are not signed in",
+    "signedOutLead": "Sign in or create an account — one for every service."
+  },
+  "meta": {
+    "login": "Sign in",
+    "account": "Account"
+  }
+}

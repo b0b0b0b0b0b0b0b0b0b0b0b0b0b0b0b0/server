@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "クライアント/サーバー",
+    "clientServerTip": "各バージョンのMinecraftクライアントとサーバーをダウンロード",
+    "here": "現在地",
+    "rpRepack": "RPの展開",
+    "rpRepackTip": "保護されたリソースパックを展開",
+    "pluginTranslate": "プラグイン翻訳",
+    "pluginTranslateTip": "プラグインをオンラインで翻訳（InJarTranslator）",
+    "deluxeMenu": "DeluxeMenuエディター",
+    "deluxeMenuTip": "DeluxeMenuとAbstractMenusのエディター",
+    "pingServers": "サーバーPing",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "もっとやさしい Modrinth"
+  },
+  "footer": {
+    "siteVersion": "サイトバージョン: {version}",
+    "family": "modrinth.black の一部",
+    "services": "サービス",
+    "servicesAria": "modrinth.black のサービス",
+    "here": "現在地",
+    "contact": "お問い合わせ",
+    "official": "公式なお問い合わせ用",
+    "copyAria": "メールアドレスをコピー",
+    "copied": "コピーしました！",
+    "copyHint": "クリックでコピー",
+    "tagline": "Minecraft サーバー向けツール：起動フラグ、ラグ分析、プラグイン、グラデーション。",
+    "accent": "サーバーに必要なものがひとつの場所に"
+  },
+  "kitten": {
+    "aria": "子猫をなでる",
+    "pet": "子猫をなでてね",
+    "petMore": "ゴロゴロ！もう一回なでて",
+    "waiting": "きみを待ってるよ",
+    "petted": "なでた回数：{count}",
+    "toNext": "次の実績まであと {count}",
+    "unlocked": "実績：{count} / {total}",
+    "signIn": "ログインすると子猫がきみを覚えてくれるよ",
+    "waking": "子猫が目を覚ましています…",
+    "toastKicker": "実績解除",
+    "list": [
+      {
+        "title": "はじめまして",
+        "text": "子猫をなでたね！きみのことを覚えたよ"
+      },
+      {
+        "title": "ゴロゴロ",
+        "text": "気に入ったみたい、もっとなでて"
+      },
+      {
+        "title": "あったか肉球",
+        "text": "子猫がおててを差し出したよ"
+      },
+      {
+        "title": "大親友",
+        "text": "きみを見るとゴロゴロ言うよ"
+      },
+      {
+        "title": "子猫は大よろこび",
+        "text": "こんなにかわいがられたのは初めて"
+      },
+      {
+        "title": "耳のうしろカキカキ",
+        "text": "お気に入りの場所を見つけたね"
+      },
+      {
+        "title": "ゴロゴロの王様",
+        "text": "子猫がきみの名前を呼んでいるよ"
+      },
+      {
+        "title": "ラッキーな肉球",
+        "text": "子猫がきみのためにお願いごとをしたよ"
+      },
+      {
+        "title": "ふわふわの手",
+        "text": "子猫がきみの手であたたまっているよ"
+      },
+      {
+        "title": "modrinth.black の伝説",
+        "text": "子猫が友だちにきみの話をしたよ"
+      },
+      {
+        "title": "カキカキ名人",
+        "text": "どこをかけばいいか分かってるね"
+      },
+      {
+        "title": "ゴロゴロマラソン",
+        "text": "子猫がずっとゴロゴロ言ってるよ"
+      },
+      {
+        "title": "だっこ子猫",
+        "text": "子猫がだっこしてほしいって"
+      },
+      {
+        "title": "ニャンコの大当たり",
+        "text": "子猫にすごい幸運がきたよ"
+      },
+      {
+        "title": "しあわせの毛糸玉",
+        "text": "子猫が毛糸玉を持ってきてくれたよ"
+      },
+      {
+        "title": "ふわふわ雲",
+        "text": "子猫が雲みたいにふわふわだよ"
+      },
+      {
+        "title": "みんなの子猫の友だち",
+        "text": "子猫がみんなにきみのことを話したよ"
+      },
+      {
+        "title": "見守り子猫",
+        "text": "これからは子猫がきみの眠りを守るよ"
+      },
+      {
+        "title": "星の肉球",
+        "text": "子猫が小さな星をくれたよ"
+      },
+      {
+        "title": "王様のなでなで",
+        "text": "子猫がきみのために王冠をかぶったよ"
+      },
+      {
+        "title": "ゴロゴロ合唱団",
+        "text": "子猫たちがきみのために合唱しているよ"
+      },
+      {
+        "title": "にじいろしっぽ",
+        "text": "子猫のしっぽが七色に光っているよ"
+      },
+      {
+        "title": "ネコ心のひみつ",
+        "text": "子猫がひみつを教えてくれたよ"
+      },
+      {
+        "title": "旅する子猫",
+        "text": "子猫がどのサイトにもついてくるよ"
+      },
+      {
+        "title": "月夜のゴロゴロ",
+        "text": "子猫は寝ていてもゴロゴロ言うよ"
+      },
+      {
+        "title": "ぬくもりの守り手",
+        "text": "きみのそばはいつもあったかい"
+      },
+      {
+        "title": "ネコの賢者",
+        "text": "子猫はきみを自分より賢いと思っているよ"
+      },
+      {
+        "title": "ゴロゴロ宇宙",
+        "text": "ゴロゴロが宇宙まで聞こえるよ"
+      },
+      {
+        "title": "伝説まであと少し",
+        "text": "頂上まであとちょっと"
+      },
+      {
+        "title": "永遠の愛",
+        "text": "子猫はずっときみのものだよ"
+      }
+    ],
+    "grumpy": {
+      "aria": "子猫はなでられたくないみたい",
+      "title": "子猫はすねています",
+      "text": "なでさせてくれないし、実績も数えない",
+      "sulks": [
+        "フン!さわらないで",
+        "子猫はそっぽを向いた",
+        "だめだめ、なでないで",
+        "子猫は見えないふりをしている",
+        "しっぽを振って行ってしまった"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "子猫をなでる",
+    "updates": "アップデート",
+    "favorites": "お気に入り",
+    "collections": "コレクション",
+    "downloads": "ダウンロード履歴",
+    "logout": "ログアウト",
+    "dashboard": "マイページ",
+    "menu": "プロフィールメニュー",
+    "signIn": "ログイン",
+    "settings": "設定"
+  },
+  "sn": {
+    "display": "表示",
+    "appearance": "外観",
+    "language": "言語",
+    "account": "アカウント",
+    "profile": "プロフィール",
+    "notifications": "通知",
+    "extras": "季節イベントとサウンド",
+    "data": "履歴とデータ",
+    "security": "ログインとセキュリティ",
+    "signIn": "ログイン",
+    "signInHint": "プロフィールや通知などアカウントの設定は、ログイン後に使えます。",
+    "menu": "プロフィールメニュー",
+    "dashboard": "マイページ",
+    "localHint": "このブラウザだけに保存されます。アカウントなしでも使えます。"
+  },
+  "settings": {
+    "pageTitle": "設定",
+    "navAria": "設定へ移動",
+    "home": "ホーム",
+    "crumbsAria": "ナビゲーション",
+    "themeTitle": "カラーテーマ",
+    "themeSystem": "システム（自動）",
+    "themeLight": "ライト",
+    "themeDark": "ダーク",
+    "themeSystemAria": "システム（自動）テーマ",
+    "themeLightAria": "ライトテーマ",
+    "themeDarkAria": "ダークテーマ",
+    "paletteTitle": "アクセントカラー",
+    "paletteHint": "ブランド色 — ボタン、リンク、強調。見た目全体ではなくパレットだけです。",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "アイアングレー",
+      "medelsin": "カッパーオレンジ",
+      "dragon": "ドラゴングリーン"
+    },
+    "on": "オン",
+    "off": "オフ",
+    "languageTitle": "言語",
+    "languageStandard": "利用できる言語",
+    "kittenSounds": "子ねこの音",
+    "sharedNote": "これは共通の設定です。このブラウザでは、ここ・modrinth.black・すべてのサービスにすぐ反映されます。",
+    "themeHint": "この端末のすべての ModrinthProxy サイトで使うカラーテーマを選んでください。",
+    "soundsTitle": "サウンド",
+    "soundsHint": "こちらもすべてのサイトで共通です。",
+    "kittenSoundsHint": "子猫をなでたときの小さくやさしい音。勝手には鳴らず、クリックしたときだけ鳴ります。",
+    "languageWarn": "言語はすべてのサイトで共通です。ここで選ぶと modrinth.black とすべてのサービスで切り替わります。"
+  },
+  "mpa": {
+    "loginTitle": "おかえりなさい",
+    "registerTitle": "アカウントを作成",
+    "registerLead": "30秒で完了。メール不要。",
+    "usernamePlaceholder": "例：steve_2026",
+    "passwordPlaceholder": "パスワード",
+    "newPasswordPlaceholder": "パスワードを決める",
+    "showPassword": "パスワードを表示",
+    "hidePassword": "パスワードを隠す",
+    "submitLogin": "ログイン",
+    "submitRegister": "アカウントを作成",
+    "noRecovery": "メールアドレスは聞かないので、パスワードの復旧はできません。大切に保管してください。",
+    "noAccount": "アカウントをお持ちでない？",
+    "haveAccount": "すでにアカウントがある？",
+    "usernameHint": "3〜24文字：半角英数字と _",
+    "password": "パスワード",
+    "or": "または従来の方法で",
+    "quickTitle": "ワンクリックログイン",
+    "quickHint": "パスワード不要。アカウントがなければ自動で作成されます。",
+    "telegram": "Telegram で続ける",
+    "github": "GitHub で続ける",
+    "petKitten": "子猫をなでる",
+    "switchLogin": "ログイン",
+    "errors": {
+      "invalid": "ユーザー名またはパスワードが違います。",
+      "captcha": "リクエストを確認できませんでした。もう一度お試しください。",
+      "rate_limit": "試行回数が多すぎます。しばらくしてからもう一度。",
+      "signup_limit": "今日はあなたのネットワークから作成されたアカウントが多すぎます。明日またお試しください。",
+      "taken": "このユーザー名はすでに使われています。",
+      "username": "ユーザー名：3〜24文字、半角英数字と _ のみ。",
+      "password": "パスワード：8〜128文字。",
+      "unauthorized": "セッションが切れました。もう一度ログインしてください",
+      "forbidden": "リクエストが拒否されました。ページを再読み込みしてください",
+      "unavailable": "アカウントサーバーが応答しません。しばらくしてからお試しください"
+    },
+    "strength": [
+      "",
+      "弱い",
+      "まあまあ",
+      "良い",
+      "とても良い"
+    ],
+    "sideTitle": "すべてのサービスでひとつのアカウント",
+    "sideLead": "ここでログインすれば、modrinth.black とそのすべてのサイトでおなじみの顔です。",
+    "perks": [
+      {
+        "title": "どこでも同じ名前",
+        "text": "名前とアバターは modrinth.black、クライアント、リパッカー、プラグイン翻訳などのサービスで共通です。"
+      },
+      {
+        "title": "ログインは一度だけ",
+        "text": "ひとつのサイトでログインすれば、ほかのサイトでもログイン状態に。ログアウトすればすべてで。"
+      },
+      {
+        "title": "お気に入りと履歴",
+        "text": "お気に入りの Mod とダウンロード履歴は modrinth.black にあり、いつでも手元に。"
+      }
+    ],
+    "loginLead": "ログインすれば、あなたのものがいつでも手元に。",
+    "username": "ユーザー名",
+    "passwordHint": "8 文字以上",
+    "switchRegister": "作成",
+    "home": "ホームへ",
+    "accountTitle": "あなたのアカウント",
+    "accountLead": "modrinth.black とすべてのサービスで共通のひとつ。",
+    "nickname": "ユーザー名",
+    "save": "保存",
+    "saved": "すべてのサイトでユーザー名を更新しました",
+    "security": "パスワードと連携",
+    "securityText": "パスワード、GitHub、Telegram は modrinth.black で変更します。",
+    "securityLink": "設定を開く",
+    "logout": "ログアウト",
+    "logoutText": "ログアウトはすぐにすべてのサイトに反映されます。",
+    "signedOutTitle": "ログインしていません",
+    "signedOutLead": "ログインするかアカウントを作成してください。すべてのサービスで共通です。"
+  },
+  "meta": {
+    "login": "ログイン",
+    "account": "アカウント"
+  }
+}

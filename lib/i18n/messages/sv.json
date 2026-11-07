@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "Klient/Server",
+    "clientServerTip": "Ladda ner Minecraft-klient och server för varje version",
+    "here": "Du är här",
+    "rpRepack": "Packa upp RP",
+    "rpRepackTip": "Packa upp skyddade resurspaket",
+    "pluginTranslate": "Pluginöversättning",
+    "pluginTranslateTip": "Översätt plugins online (InJarTranslator)",
+    "deluxeMenu": "DeluxeMenu-redigerare",
+    "deluxeMenuTip": "DeluxeMenu- och AbstractMenus-redigerare",
+    "pingServers": "Serverping",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "Modrinth, fast vänligare"
+  },
+  "footer": {
+    "siteVersion": "Webbplatsversion: {version}",
+    "family": "Del av modrinth.black",
+    "services": "Tjänster",
+    "servicesAria": "Tjänster på modrinth.black",
+    "here": "du är här",
+    "contact": "Kontakta oss",
+    "official": "För officiella förfrågningar",
+    "copyAria": "Kopiera e-post",
+    "copied": "Kopierat!",
+    "copyHint": "Klicka för att kopiera",
+    "tagline": "Verktyg för Minecraft-servrar: startflaggor, laganalys, plugins och gradienter.",
+    "accent": "Allt för din server på ett ställe"
+  },
+  "kitten": {
+    "aria": "Klappa kattungen",
+    "pet": "Klappa kattungen",
+    "petMore": "Spinn! Klappa igen",
+    "waiting": "Den väntar på dig",
+    "petted": "Klappar: {count}",
+    "toNext": "{count} kvar till nästa prestation",
+    "unlocked": "Prestationer: {count} av {total}",
+    "signIn": "Logga in så att kattungen minns dig",
+    "waking": "Kattungen vaknar…",
+    "toastKicker": "Prestation upplåst",
+    "list": [
+      {
+        "title": "Första mötet",
+        "text": "Du klappade kattungen! Den kommer ihåg dig"
+      },
+      {
+        "title": "Kattungen spinner",
+        "text": "Den gillar det, fortsätt"
+      },
+      {
+        "title": "Varm tass",
+        "text": "Kattungen räckte dig tassen"
+      },
+      {
+        "title": "Bästa vän",
+        "text": "Kattungen spinner när den ser dig"
+      },
+      {
+        "title": "I sjunde himlen",
+        "text": "Så mycket kärlek har kattungen aldrig fått"
+      },
+      {
+        "title": "Kli bakom örat",
+        "text": "Du hittade dess favoritställe"
+      },
+      {
+        "title": "Spinnets mästare",
+        "text": "Kattungen ropar ditt namn"
+      },
+      {
+        "title": "Lyckotass",
+        "text": "Kattungen önskade sig något för din skull"
+      },
+      {
+        "title": "Mjuka händer",
+        "text": "Kattungen värmer sig mot din hand"
+      },
+      {
+        "title": "Legend på modrinth.black",
+        "text": "Kattungen har berättat om dig för sina vänner"
+      },
+      {
+        "title": "Kliarmästare",
+        "text": "Du vet precis var man ska klia"
+      },
+      {
+        "title": "Spinnmaraton",
+        "text": "Kattungen spinner utan paus"
+      },
+      {
+        "title": "Gosig kattunge",
+        "text": "Kattungen vill kramas"
+      },
+      {
+        "title": "Kattjackpott",
+        "text": "Kattungen hade jättetur"
+      },
+      {
+        "title": "Lyckans garnnystan",
+        "text": "Kattungen kom med sitt garnnystan till dig"
+      },
+      {
+        "title": "Fluffigt moln",
+        "text": "Kattungen är mjuk som ett moln"
+      },
+      {
+        "title": "Alla kattungars vän",
+        "text": "Kattungen har berättat om dig för alla kattungar"
+      },
+      {
+        "title": "Väktarkattunge",
+        "text": "Nu vaktar kattungen din sömn"
+      },
+      {
+        "title": "Stjärntass",
+        "text": "Kattungen gav dig en liten stjärna"
+      },
+      {
+        "title": "Kunglig kel",
+        "text": "Kattungen satte på sig en krona för dig"
+      },
+      {
+        "title": "Spinnorkester",
+        "text": "Kattungarna spinner i kör för dig"
+      },
+      {
+        "title": "Regnbågssvans",
+        "text": "Kattungens svans lyser i alla färger"
+      },
+      {
+        "title": "Kattens hjärtas hemlighet",
+        "text": "Kattungen berättade sin hemlighet för dig"
+      },
+      {
+        "title": "Resande kattunge",
+        "text": "Kattungen följer dig över alla sajter"
+      },
+      {
+        "title": "Månskensspinn",
+        "text": "Kattungen spinner till och med i sömnen"
+      },
+      {
+        "title": "Mysets väktare",
+        "text": "Bredvid dig är det alltid varmt"
+      },
+      {
+        "title": "Kattvis",
+        "text": "Kattungen tycker att du är klokare än den"
+      },
+      {
+        "title": "Spinnets universum",
+        "text": "Spinnet hörs ända ut i rymden"
+      },
+      {
+        "title": "Nästan en legend",
+        "text": "Bara en liten bit kvar till toppen"
+      },
+      {
+        "title": "Evig kärlek",
+        "text": "Kattungen är din för alltid"
+      }
+    ],
+    "grumpy": {
+      "aria": "Kattungen vill inte bli klappad",
+      "title": "Kattungen surar",
+      "text": "Ingen klappning, inga prestationer",
+      "sulks": [
+        "Fnys! Tassarna bort",
+        "Kattungen vände sig bort",
+        "Nej, nej, ingen klappning",
+        "Kattungen låtsas att den inte ser dig",
+        "Viftade på svansen och gick"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "Klappa kattungen",
+    "updates": "Uppdateringar",
+    "favorites": "Favoriter",
+    "collections": "Samlingar",
+    "downloads": "Nedladdningshistorik",
+    "logout": "Logga ut",
+    "dashboard": "Översikt",
+    "menu": "Profilmeny",
+    "signIn": "Logga in",
+    "settings": "Inställningar"
+  },
+  "sn": {
+    "display": "Visning",
+    "appearance": "Utseende",
+    "language": "Språk",
+    "account": "Konto",
+    "profile": "Profil",
+    "notifications": "Aviseringar",
+    "extras": "Högtider och ljud",
+    "data": "Historik och data",
+    "security": "Inloggning och säkerhet",
+    "signIn": "Logga in",
+    "signInHint": "Profil, aviseringar och allt om kontot — efter inloggning.",
+    "menu": "Profilmeny",
+    "dashboard": "Översikt",
+    "localHint": "Sparas bara i den här webbläsaren — funkar även utan konto."
+  },
+  "settings": {
+    "pageTitle": "Inställningar",
+    "navAria": "Gå till inställningar",
+    "home": "Hem",
+    "crumbsAria": "Navigering",
+    "themeTitle": "Färgtema",
+    "themeSystem": "System (Auto)",
+    "themeLight": "Ljust",
+    "themeDark": "Mörkt",
+    "themeSystemAria": "Systemtema (auto)",
+    "themeLightAria": "Ljust tema",
+    "themeDarkAria": "Mörkt tema",
+    "paletteTitle": "Accentfärg",
+    "paletteHint": "Identitetsfärgen — knappar, länkar, markeringar. Inte hela utseendet, bara paletten.",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "Järngrå",
+      "medelsin": "Kopparorange",
+      "dragon": "Drakgrön"
+    },
+    "on": "På",
+    "off": "Av",
+    "languageTitle": "Språk",
+    "languageStandard": "Tillgängliga språk",
+    "kittenSounds": "Kattungeljud",
+    "sharedNote": "De här inställningarna är gemensamma: de ändras direkt här, på modrinth.black och i alla dess tjänster i den här webbläsaren.",
+    "themeHint": "Välj önskat färgtema för alla ModrinthProxy-sidor på den här enheten.",
+    "soundsTitle": "Ljud",
+    "soundsHint": "Också gemensamma för alla sidor.",
+    "kittenSoundsHint": "Tysta, mjuka ljud när du klappar kattungen. De spelas aldrig av sig själva — bara när du klickar.",
+    "languageWarn": "Språket är gemensamt för alla sidor: välj det här så slås det på på modrinth.black och alla dess tjänster."
+  },
+  "mpa": {
+    "loginTitle": "Välkommen tillbaka",
+    "registerTitle": "Skapa ett konto",
+    "registerLead": "En halv minut — och utan e-post.",
+    "usernamePlaceholder": "till exempel steve_2026",
+    "passwordPlaceholder": "ditt lösenord",
+    "newPasswordPlaceholder": "hitta på ett lösenord",
+    "showPassword": "Visa lösenord",
+    "hidePassword": "Dölj lösenord",
+    "submitLogin": "Logga in",
+    "submitRegister": "Skapa konto",
+    "noRecovery": "Vi frågar inte efter e-post, så lösenordet går inte att återställa — spara det.",
+    "noAccount": "Inget konto än?",
+    "haveAccount": "Har du redan ett konto?",
+    "usernameHint": "3–24 tecken: latinska bokstäver, siffror och _",
+    "password": "Lösenord",
+    "or": "eller på det gamla sättet",
+    "quickTitle": "Snabbinloggning",
+    "quickHint": "Inget lösenord behövs. Har du inget konto än skapas det automatiskt.",
+    "telegram": "Fortsätt med Telegram",
+    "github": "Fortsätt med GitHub",
+    "petKitten": "Klappa kattungen",
+    "switchLogin": "Logga in",
+    "errors": {
+      "invalid": "Fel användarnamn eller lösenord.",
+      "captcha": "Det gick inte att verifiera förfrågan. Försök igen.",
+      "rate_limit": "För många försök. Försök igen senare.",
+      "signup_limit": "För många konton har redan skapats från ditt nätverk i dag. Försök i morgon.",
+      "taken": "Det användarnamnet är redan upptaget.",
+      "username": "Användarnamn: 3–24 tecken, bara latinska bokstäver, siffror och _.",
+      "password": "Lösenord: 8 till 128 tecken.",
+      "unauthorized": "Sessionen har gått ut, logga in igen",
+      "forbidden": "Begäran nekades, ladda om sidan",
+      "unavailable": "Kontoservern svarar inte, försök senare"
+    },
+    "strength": [
+      "",
+      "Svagt",
+      "Sådär",
+      "Bra",
+      "Utmärkt"
+    ],
+    "sideTitle": "Ett konto för alla tjänster",
+    "sideLead": "Logga in här — så är du hemma på modrinth.black och alla dess sidor.",
+    "perks": [
+      {
+        "title": "Samma namn överallt",
+        "text": "Namn och avatar är desamma på modrinth.black, klienten, ompackaren, pluginöversättningen och de andra tjänsterna."
+      },
+      {
+        "title": "Logga in en gång",
+        "text": "Inloggad på en sida — inloggad på de andra också. Utloggad — överallt."
+      },
+      {
+        "title": "Favoriter och historik",
+        "text": "Favoritmoddar och nedladdningshistorik finns på modrinth.black och alltid nära till hands."
+      }
+    ],
+    "loginLead": "Logga in så har du allt nära till hands.",
+    "username": "Namn",
+    "passwordHint": "minst 8 tecken",
+    "switchRegister": "Skapa",
+    "home": "Till startsidan",
+    "accountTitle": "Ditt konto",
+    "accountLead": "Ett för modrinth.black och alla dess tjänster.",
+    "nickname": "Namn",
+    "save": "Spara",
+    "saved": "Namnet har uppdaterats på alla sidor",
+    "security": "Lösenord och kopplingar",
+    "securityText": "Lösenord, GitHub och Telegram ändras på modrinth.black.",
+    "securityLink": "Öppna inställningar",
+    "logout": "Logga ut",
+    "logoutText": "Utloggningen gäller direkt på alla sidor.",
+    "signedOutTitle": "Du är inte inloggad",
+    "signedOutLead": "Logga in eller skapa ett konto — ett för alla tjänster."
+  },
+  "meta": {
+    "login": "Logga in",
+    "account": "Konto"
+  }
+}

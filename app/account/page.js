@@ -1,7 +1,11 @@
+import { getServerT } from '@/lib/i18n/server'
 import AccountPanel from '@/components/mpa/AccountPanel'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Аккаунт', robots: { index: false, follow: false } }
+export async function generateMetadata() {
+  const { t } = await getServerT()
+  return { title: t('meta.account'), robots: { index: false, follow: false } }
+}
 
 export default function Page() {
   return (

@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "Klients/Serveris",
+    "clientServerTip": "Lejupielādē Minecraft klientu un serveri katrai versijai",
+    "here": "Tu esi šeit",
+    "rpRepack": "Izpakot RP",
+    "rpRepackTip": "Izpako aizsargātas resursu pakotnes",
+    "pluginTranslate": "Spraudņu tulkojums",
+    "pluginTranslateTip": "Tulko spraudņus tiešsaistē (InJarTranslator)",
+    "deluxeMenu": "DeluxeMenu redaktors",
+    "deluxeMenuTip": "DeluxeMenu un AbstractMenus redaktors",
+    "pingServers": "Serveru ping",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "Modrinth, tikai laipnāks"
+  },
+  "footer": {
+    "siteVersion": "Vietnes versija: {version}",
+    "family": "Daļa no modrinth.black",
+    "services": "Pakalpojumi",
+    "servicesAria": "modrinth.black pakalpojumi",
+    "here": "tu esi šeit",
+    "contact": "Sazināties ar mums",
+    "official": "Oficiāliem pieprasījumiem",
+    "copyAria": "Kopēt e-pastu",
+    "copied": "Nokopēts!",
+    "copyHint": "Noklikšķini, lai kopētu",
+    "tagline": "Rīki Minecraft serveriem: palaišanas karogi, lagu analīze, spraudņi un gradienti.",
+    "accent": "Viss tavam serverim vienuviet"
+  },
+  "kitten": {
+    "aria": "Paglaudīt kaķēnu",
+    "pet": "Paglaudi kaķēnu",
+    "petMore": "Murr! Paglaudi vēl",
+    "waiting": "Viņš tevi ļoti gaida",
+    "petted": "Paglaudīts: {count}",
+    "toNext": "vēl {count} līdz sasniegumam",
+    "unlocked": "Sasniegumi: {count} no {total}",
+    "signIn": "Pieslēdzies, lai kaķēns tevi atcerētos",
+    "waking": "Kaķēns mostas…",
+    "toastKicker": "Sasniegums atbloķēts",
+    "list": [
+      {
+        "title": "Pirmā iepazīšanās",
+        "text": "Tu paglaudīji kaķēnu! Viņš tevi atcerēsies"
+      },
+      {
+        "title": "Kaķēns murrā",
+        "text": "Viņam patīk, turpini"
+      },
+      {
+        "title": "Siltā ķepiņa",
+        "text": "Kaķēns pasniedza tev ķepiņu"
+      },
+      {
+        "title": "Labākais draugs",
+        "text": "Kaķēns murrā, kad tevi ierauga"
+      },
+      {
+        "title": "Kaķēns sajūsmā",
+        "text": "Tik daudz mīļuma kaķēns vēl nav saņēmis"
+      },
+      {
+        "title": "Pakasīšana aiz austiņas",
+        "text": "Tu atradi viņa mīļāko vietiņu"
+      },
+      {
+        "title": "Murrāšanas valdnieks",
+        "text": "Kaķēns sauc tevi vārdā"
+      },
+      {
+        "title": "Laimīgā ķepiņa",
+        "text": "Kaķēns iedomājās vēlēšanos par tevi"
+      },
+      {
+        "title": "Mīkstās plaukstas",
+        "text": "Kaķēns sildās pie tavas rokas"
+      },
+      {
+        "title": "modrinth.black leģenda",
+        "text": "Kaķēns pastāstīja par tevi draugiem"
+      },
+      {
+        "title": "Kasīšanas meistars",
+        "text": "Tu zini, kur kaķēnu pakasīt"
+      },
+      {
+        "title": "Murrāšanas maratons",
+        "text": "Kaķēns murrā bez apstājas"
+      },
+      {
+        "title": "Apskāvienu kaķēns",
+        "text": "Kaķēns grib apskauties"
+      },
+      {
+        "title": "Kaķu džekpots",
+        "text": "Kaķēnam ļoti paveicās"
+      },
+      {
+        "title": "Laimes kamoliņš",
+        "text": "Kaķēns atnesa tev savu kamoliņu"
+      },
+      {
+        "title": "Pūkains mākonītis",
+        "text": "Kaķēns ir mīksts kā mākonītis"
+      },
+      {
+        "title": "Visu kaķēnu draugs",
+        "text": "Kaķēns pastāstīja par tevi visiem kaķēniem"
+      },
+      {
+        "title": "Sargkaķēns",
+        "text": "Tagad kaķēns sargā tavu miegu"
+      },
+      {
+        "title": "Zvaigžņu ķepiņa",
+        "text": "Kaķēns uzdāvināja tev zvaigznīti"
+      },
+      {
+        "title": "Karaliskie glāsti",
+        "text": "Kaķēns tevis dēļ uzlika kroni"
+      },
+      {
+        "title": "Murrāšanas orķestris",
+        "text": "Kaķēni murrā korī tev par godu"
+      },
+      {
+        "title": "Varavīksnes astīte",
+        "text": "Kaķēna astīte mirdz visās krāsās"
+      },
+      {
+        "title": "Kaķa sirds noslēpums",
+        "text": "Kaķēns uzticēja tev savu noslēpumu"
+      },
+      {
+        "title": "Ceļotājs kaķēns",
+        "text": "Kaķēns seko tev pa visām vietnēm"
+      },
+      {
+        "title": "Mēnesnīcas murrāšana",
+        "text": "Kaķēns murrā pat miegā"
+      },
+      {
+        "title": "Omulības sargs",
+        "text": "Tev blakus vienmēr ir silti"
+      },
+      {
+        "title": "Kaķu gudrais",
+        "text": "Kaķēns tevi uzskata par gudrāku par sevi"
+      },
+      {
+        "title": "Murrāšanas visums",
+        "text": "Murrāšanu var dzirdēt pat kosmosā"
+      },
+      {
+        "title": "Gandrīz leģenda",
+        "text": "Vēl mazliet līdz virsotnei"
+      },
+      {
+        "title": "Mūžīga mīlestība",
+        "text": "Kaķēns ir tavs uz visiem laikiem"
+      }
+    ],
+    "grumpy": {
+      "aria": "Kaķēns negrib, lai viņu glāsta",
+      "title": "Kaķēns ir apvainojies",
+      "text": "Glāstīt neļauj, sasniegumus neskaita",
+      "sulks": [
+        "Fū! Neaiztiec",
+        "Kaķēns novērsās",
+        "Nē, nē, neglāstīt",
+        "Kaķēns izliekas, ka tevi neredz",
+        "Pamāja ar asti un aizgāja"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "Paglaudīt kaķēnu",
+    "updates": "Atjauninājumi",
+    "favorites": "Izlase",
+    "collections": "Kolekcijas",
+    "downloads": "Lejupielāžu vēsture",
+    "logout": "Iziet",
+    "dashboard": "Panelis",
+    "menu": "Profila izvēlne",
+    "signIn": "Ieiet",
+    "settings": "Iestatījumi"
+  },
+  "sn": {
+    "display": "Attēlojums",
+    "appearance": "Izskats",
+    "language": "Valoda",
+    "account": "Konts",
+    "profile": "Profils",
+    "notifications": "Paziņojumi",
+    "extras": "Svētki un skaņas",
+    "data": "Vēsture un dati",
+    "security": "Ieeja un drošība",
+    "signIn": "Ieiet kontā",
+    "signInHint": "Profils, paziņojumi un viss par kontu — pēc ieiešanas.",
+    "menu": "Profila izvēlne",
+    "dashboard": "Panelis",
+    "localHint": "Saglabājas tikai šajā pārlūkā — darbojas arī bez konta."
+  },
+  "settings": {
+    "pageTitle": "Iestatījumi",
+    "navAria": "Iet uz iestatījumiem",
+    "home": "Sākums",
+    "crumbsAria": "Navigācija",
+    "themeTitle": "Krāsu tēma",
+    "themeSystem": "Sistēma (Auto)",
+    "themeLight": "Gaiša",
+    "themeDark": "Tumša",
+    "themeSystemAria": "Sistēmas (auto) tēma",
+    "themeLightAria": "Gaišā tēma",
+    "themeDarkAria": "Tumšā tēma",
+    "paletteTitle": "Akcenta krāsa",
+    "paletteHint": "Identitātes krāsa — pogas, saites, izcēlumi. Ne viss izskats, tikai palete.",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "Dzelzs pelēks",
+      "medelsin": "Vara oranžs",
+      "dragon": "Pūķa zaļš"
+    },
+    "on": "Iesl.",
+    "off": "Izsl.",
+    "languageTitle": "Valoda",
+    "languageStandard": "Pieejamās valodas",
+    "kittenSounds": "Kaķēna skaņas",
+    "sharedNote": "Šie iestatījumi ir kopīgi: tie mainās uzreiz šeit, modrinth.black un visos tā pakalpojumos šajā pārlūkā.",
+    "themeHint": "Izvēlies vēlamo krāsu tēmu visām ModrinthProxy vietnēm šajā ierīcē.",
+    "soundsTitle": "Skaņas",
+    "soundsHint": "Arī kopīgas visām vietnēm.",
+    "kittenSoundsHint": "Klusas, maigas skaņas, kad glāsti kaķēnu. Pašas neskan — tikai pēc klikšķa.",
+    "languageWarn": "Valoda ir kopīga visām vietnēm: izvēlies to šeit, un tā ieslēgsies modrinth.black un visos tā pakalpojumos."
+  },
+  "mpa": {
+    "loginTitle": "Sveiks atpakaļ",
+    "registerTitle": "Izveido kontu",
+    "registerLead": "Pusminūte — un bez e-pasta.",
+    "usernamePlaceholder": "piemēram, steve_2026",
+    "passwordPlaceholder": "tava parole",
+    "newPasswordPlaceholder": "izdomā paroli",
+    "showPassword": "Rādīt paroli",
+    "hidePassword": "Slēpt paroli",
+    "submitLogin": "Ieiet",
+    "submitRegister": "Izveidot kontu",
+    "noRecovery": "E-pastu neprasām, tāpēc paroli atjaunot nevar — saglabā to.",
+    "noAccount": "Vēl nav konta?",
+    "haveAccount": "Jau ir konts?",
+    "usernameHint": "3–24 rakstzīmes: latīņu burti, cipari un _",
+    "password": "Parole",
+    "or": "vai pa vecam",
+    "quickTitle": "Ātrā ieeja",
+    "quickHint": "Parole nav vajadzīga. Ja konta vēl nav, tas izveidosies pats.",
+    "telegram": "Turpināt ar Telegram",
+    "github": "Turpināt ar GitHub",
+    "petKitten": "Paglaudīt kaķēnu",
+    "switchLogin": "Ieiet",
+    "errors": {
+      "invalid": "Nepareizs lietotājvārds vai parole.",
+      "captcha": "Neizdevās pārbaudīt pieprasījumu. Pamēģini vēlreiz.",
+      "rate_limit": "Pārāk daudz mēģinājumu. Pamēģini vēlāk.",
+      "signup_limit": "No tava tīkla šodien jau izveidots pārāk daudz kontu. Pamēģini rīt.",
+      "taken": "Šis lietotājvārds jau ir aizņemts.",
+      "username": "Lietotājvārds: 3–24 rakstzīmes, tikai latīņu burti, cipari un _.",
+      "password": "Parole: no 8 līdz 128 rakstzīmēm.",
+      "unauthorized": "Sesija beigusies, piesakies vēlreiz",
+      "forbidden": "Pieprasījums noraidīts, pārlādē lapu",
+      "unavailable": "Kontu serveris neatbild, mēģini vēlāk"
+    },
+    "strength": [
+      "",
+      "Vāja",
+      "Tā nekas",
+      "Laba",
+      "Lieliska"
+    ],
+    "sideTitle": "Viens konts visiem pakalpojumiem",
+    "sideLead": "Pieteicies šeit — un tu jau esi savējais modrinth.black un visās tā vietnēs.",
+    "perks": [
+      {
+        "title": "Visur viens segvārds",
+        "text": "Segvārds un avatārs ir vienādi modrinth.black, klientā, pārpakotājā, spraudņu tulkotājā un citos pakalpojumos."
+      },
+      {
+        "title": "Pieteikšanās vienreiz",
+        "text": "Pieteicies vienā vietnē — arī pārējās tu esi kontā. Izrakstījies — visur."
+      },
+      {
+        "title": "Izlase un vēsture",
+        "text": "Iecienītie modi un lejupielāžu vēsture glabājas modrinth.black un vienmēr ir pie rokas."
+      }
+    ],
+    "loginLead": "Piesakies, lai viss tavs būtu pie rokas.",
+    "username": "Segvārds",
+    "passwordHint": "vismaz 8 rakstzīmes",
+    "switchRegister": "Izveidot",
+    "home": "Uz sākumu",
+    "accountTitle": "Tavs konts",
+    "accountLead": "Viens modrinth.black un visiem tā pakalpojumiem.",
+    "nickname": "Segvārds",
+    "save": "Saglabāt",
+    "saved": "Segvārds atjaunināts visās vietnēs",
+    "security": "Parole un piesaistes",
+    "securityText": "Paroli, GitHub un Telegram maina modrinth.black.",
+    "securityLink": "Atvērt iestatījumus",
+    "logout": "Izrakstīties",
+    "logoutText": "Izrakstīšanās nostrādās uzreiz visās vietnēs.",
+    "signedOutTitle": "Tu neesi pieteicies",
+    "signedOutLead": "Piesakies vai izveido kontu — viens visiem pakalpojumiem."
+  },
+  "meta": {
+    "login": "Pieteikties",
+    "account": "Konts"
+  }
+}

@@ -1,88 +1,33 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import LumTooltip from '@/app/components/LumTooltip';
+import AccountChip from '@/components/AccountChip';
+import { useT } from '@/components/i18n/I18nProvider';
 import '@/styles/services-nav.css';
 
+const LINKS = [
+  { href: 'https://modrinth.black', label: null, tip: 'nav.proxyTip' },
+  { href: 'https://client.modrinth.black', label: 'nav.clientServer', tip: 'nav.clientServerTip' },
+  { href: 'https://rp.modrinth.black', label: 'nav.rpRepack', tip: 'nav.rpRepackTip' },
+  { href: 'https://jar.modrinth.black', label: 'nav.pluginTranslate', tip: 'nav.pluginTranslateTip' },
+  { href: 'https://dm.modrinth.black', label: 'nav.deluxeMenu', tip: 'nav.deluxeMenuTip' },
+];
 
-const TEXT = {
-  ru: {
-    aria: 'Сервисы modrinth.black',
-    more: 'Ещё сервисы',
-    here: 'Вы здесь',
-    links: [
-      { href: 'https://modrinth.black', label: 'ModrinthProxy', tip: 'Модринт по-русски' },
-      { href: 'https://client.modrinth.black', label: 'Клиент/Сервер', tip: 'Скачать все версии Minecraft' },
-      { href: 'https://rp.modrinth.black', label: 'RP Перепак', tip: 'Перепаковка защищённых ресурспаков' },
-      { href: 'https://jar.modrinth.black', label: 'Перевод Плагинов', tip: 'Перевод плагинов онлайн (InJarTranslator)' },
-      { href: 'https://dm.modrinth.black', label: 'Редактор DeluxeMenu', tip: 'Редактор DeluxeMenu и AbstractMenus' },
-    ],
-    mtoolsDesc: 'Инструменты для серверов Minecraft',
-    signIn: 'Войти',
-    ping: 'Пинг серверов',
-    pingDesc: 'Проверка серверов Minecraft',
-  },
-  en: {
-    aria: 'modrinth.black services',
-    more: 'More services',
-    here: 'You are here',
-    links: [
-      { href: 'https://modrinth.black', label: 'ModrinthProxy', tip: 'Modrinth in Russian' },
-      { href: 'https://client.modrinth.black', label: 'Client/Server', tip: 'Download every Minecraft version' },
-      { href: 'https://rp.modrinth.black', label: 'RP Repack', tip: 'Repack protected resource packs' },
-      { href: 'https://jar.modrinth.black', label: 'Plugin Translator', tip: 'Translate plugins online (InJarTranslator)' },
-      { href: 'https://dm.modrinth.black', label: 'DeluxeMenu Editor', tip: 'DeluxeMenu and AbstractMenus editor' },
-    ],
-    mtoolsDesc: 'Tools for Minecraft servers',
-    signIn: 'Sign in',
-    ping: 'Server ping',
-    pingDesc: 'Check Minecraft servers',
-  },
-};
-
-export default function ServicesNav({ locale }) {
-  const text = locale === 'ru' || locale === 'uk' ? TEXT.ru : TEXT.en;
-  const [account, setAccount] = useState(undefined);
-  const [signInHref, setSignInHref] = useState('/login');
-
-  useEffect(() => {
-    let alive = true;
-    let last = 0;
-    setSignInHref(`/login?next=${encodeURIComponent(window.location.pathname + window.location.search)}`);
-    const load = () => {
-      const now = Date.now();
-      if (now - last < 5000) return;
-      last = now;
-      fetch('/api/me', { cache: 'no-store' })
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => { if (alive) setAccount(data?.user || null); })
-        .catch(() => { if (alive) setAccount(null); });
-    };
-    const onVisible = () => { if (document.visibilityState === 'visible') load(); };
-    load();
-    const timer = window.setInterval(onVisible, 60000);
-    window.addEventListener('focus', load);
-    document.addEventListener('visibilitychange', onVisible);
-    return () => {
-      alive = false;
-      window.clearInterval(timer);
-      window.removeEventListener('focus', load);
-      document.removeEventListener('visibilitychange', onVisible);
-    };
-  }, []);
+export default function ServicesNav() {
+  const t = useT();
 
   return (
-    <nav className="svc-nav" aria-label={text.aria}>
+    <nav className="svc-nav" aria-label={t('footer.servicesAria')}>
       <div className="svc-nav-inner">
-        {text.links.map((link) => (
-          <LumTooltip key={link.href} content={link.tip} side="bottom">
+        {LINKS.map((link) => (
+          <LumTooltip key={link.href} content={t(link.tip)} side="bottom">
             <a href={link.href} className="svc-nav-link">
-              {link.label}
+              {link.label ? t(link.label) : 'ModrinthProxy'}
             </a>
           </LumTooltip>
         ))}
         <div className="nav-more">
-          <button type="button" className="svc-nav-link nav-more-trigger" aria-label={text.more} aria-haspopup="true">
+          <button type="button" className="svc-nav-link nav-more-trigger" aria-label={t('nav.more')} aria-haspopup="true">
             <svg className="nav-more-dots" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <circle cx="12" cy="5" r="1.9" />
               <circle cx="12" cy="12" r="1.9" />
@@ -96,26 +41,12 @@ export default function ServicesNav({ locale }) {
                   <span className="svc-nav-dot" aria-hidden="true" />
                   MTools
                 </span>
-                <span className="nav-more-desc">{text.here} · {text.mtoolsDesc}</span>
+                <span className="nav-more-desc">{t('nav.here')} · {t('nav.mtoolsTip')}</span>
               </span>
             </div>
           </div>
         </div>
-        {account && (
-          <a href="/account" className="nav-account" title={account.username}>
-            {account.avatar ? (
-              <img src={account.avatar} alt="" width={22} height={22} className="nav-account-avatar" />
-            ) : (
-              <span className="nav-account-initial">{account.username.slice(0, 1).toUpperCase()}</span>
-            )}
-            <span className="nav-account-name">{account.username}</span>
-          </a>
-        )}
-        {account === null && (
-          <a href={signInHref} className="nav-account nav-account--guest">
-            {text.signIn}
-          </a>
-        )}
+        <AccountChip />
       </div>
     </nav>
   );

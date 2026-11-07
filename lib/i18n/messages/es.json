@@ -1,0 +1,322 @@
+{
+  "nav": {
+    "clientServer": "Cliente/Servidor",
+    "clientServerTip": "Descarga el cliente y el servidor de Minecraft para cada versión",
+    "here": "Estás aquí",
+    "rpRepack": "Descomprimir RP",
+    "rpRepackTip": "Descomprime resource packs protegidos",
+    "pluginTranslate": "Traducción de plugins",
+    "pluginTranslateTip": "Traduce plugins online (InJarTranslator)",
+    "deluxeMenu": "Editor DeluxeMenu",
+    "deluxeMenuTip": "Editor de DeluxeMenu y AbstractMenus",
+    "pingServers": "Ping de servidores",
+    "more": "More services",
+    "mtoolsTip": "Tools for Minecraft servers",
+    "proxyTip": "Modrinth, pero más amable"
+  },
+  "footer": {
+    "siteVersion": "Versión del sitio: {version}",
+    "family": "Parte de modrinth.black",
+    "services": "Servicios",
+    "servicesAria": "Servicios de modrinth.black",
+    "here": "estás aquí",
+    "contact": "Contacto",
+    "official": "Para consultas oficiales",
+    "copyAria": "Copiar correo",
+    "copied": "¡Copiado!",
+    "copyHint": "Haz clic para copiar",
+    "tagline": "Herramientas para servidores de Minecraft: flags de arranque, análisis de lag, plugins y degradados.",
+    "accent": "Todo para tu servidor en un solo lugar"
+  },
+  "kitten": {
+    "aria": "Acariciar al gatito",
+    "pet": "Acaricia al gatito",
+    "petMore": "¡Purr! Acarícialo otra vez",
+    "waiting": "Te está esperando",
+    "petted": "Caricias: {count}",
+    "toNext": "{count} para el próximo logro",
+    "unlocked": "Logros: {count} de {total}",
+    "signIn": "Inicia sesión para que el gatito te recuerde",
+    "waking": "El gatito se está despertando…",
+    "toastKicker": "Logro desbloqueado",
+    "list": [
+      {
+        "title": "Primer encuentro",
+        "text": "¡Acariciaste al gatito! Te recordará"
+      },
+      {
+        "title": "El gatito ronronea",
+        "text": "Le gusta, sigue así"
+      },
+      {
+        "title": "Patita calentita",
+        "text": "El gatito te da la patita"
+      },
+      {
+        "title": "Mejor amigo",
+        "text": "El gatito ronronea cuando te ve"
+      },
+      {
+        "title": "Gatito feliz",
+        "text": "El gatito nunca había recibido tanto cariño"
+      },
+      {
+        "title": "Rasquitos detrás de la oreja",
+        "text": "Encontraste su lugar favorito"
+      },
+      {
+        "title": "Señor del ronroneo",
+        "text": "El gatito te llama por tu nombre"
+      },
+      {
+        "title": "Patita de la suerte",
+        "text": "El gatito pidió un deseo por ti"
+      },
+      {
+        "title": "Manos suavecitas",
+        "text": "El gatito se calienta en tu mano"
+      },
+      {
+        "title": "Leyenda de modrinth.black",
+        "text": "El gatito les habló de ti a sus amigos"
+      },
+      {
+        "title": "Maestro de los rasquidos",
+        "text": "Sabes justo dónde rascar"
+      },
+      {
+        "title": "Maratón de ronroneos",
+        "text": "El gatito ronronea sin parar"
+      },
+      {
+        "title": "Gatito abrazador",
+        "text": "El gatito quiere un abrazo"
+      },
+      {
+        "title": "Premio gatuno",
+        "text": "El gatito tuvo muchísima suerte"
+      },
+      {
+        "title": "Ovillo de felicidad",
+        "text": "El gatito te trajo su ovillo"
+      },
+      {
+        "title": "Nubecita esponjosa",
+        "text": "El gatito es suave como una nube"
+      },
+      {
+        "title": "Amigo de todos los gatitos",
+        "text": "El gatito les habló de ti a todos los gatitos"
+      },
+      {
+        "title": "Gatito guardián",
+        "text": "Ahora el gatito cuida tu sueño"
+      },
+      {
+        "title": "Patita estrellada",
+        "text": "El gatito te regaló una estrellita"
+      },
+      {
+        "title": "Mimos reales",
+        "text": "El gatito se puso una corona para ti"
+      },
+      {
+        "title": "Orquesta de ronroneos",
+        "text": "Los gatitos ronronean a coro por ti"
+      },
+      {
+        "title": "Colita arcoíris",
+        "text": "La colita del gatito brilla de todos los colores"
+      },
+      {
+        "title": "El secreto del corazón gatuno",
+        "text": "El gatito te contó su secreto"
+      },
+      {
+        "title": "Gatito viajero",
+        "text": "El gatito te sigue por todos los sitios"
+      },
+      {
+        "title": "Ronroneo de luna",
+        "text": "El gatito ronronea hasta dormido"
+      },
+      {
+        "title": "Guardián del calorcito",
+        "text": "A tu lado siempre se está calentito"
+      },
+      {
+        "title": "Sabio gatuno",
+        "text": "El gatito cree que eres más sabio que él"
+      },
+      {
+        "title": "Universo de ronroneos",
+        "text": "El ronroneo se oye hasta en el espacio"
+      },
+      {
+        "title": "Casi una leyenda",
+        "text": "Falta muy poquito para la cima"
+      },
+      {
+        "title": "Amor eterno",
+        "text": "El gatito es tuyo para siempre"
+      }
+    ],
+    "grumpy": {
+      "aria": "El gatito no quiere que lo acaricien",
+      "title": "El gatito está enfurruñado",
+      "text": "No deja que lo acaricies ni cuenta logros",
+      "sulks": [
+        "¡Fff! No me toques",
+        "El gatito se dio la vuelta",
+        "No, no, nada de caricias",
+        "El gatito finge que no te ve",
+        "Movió la cola y se fue"
+      ]
+    }
+  },
+  "account": {
+    "petKitten": "Acariciar al gatito",
+    "updates": "Actualizaciones",
+    "favorites": "Favoritos",
+    "collections": "Colecciones",
+    "downloads": "Historial de descargas",
+    "logout": "Salir",
+    "dashboard": "Panel",
+    "menu": "Menú del perfil",
+    "signIn": "Entrar",
+    "settings": "Ajustes"
+  },
+  "sn": {
+    "display": "Visualización",
+    "appearance": "Apariencia",
+    "language": "Idioma",
+    "account": "Cuenta",
+    "profile": "Perfil",
+    "notifications": "Notificaciones",
+    "extras": "Fiestas y sonidos",
+    "data": "Historial y datos",
+    "security": "Acceso y seguridad",
+    "signIn": "Iniciar sesión",
+    "signInHint": "Perfil, notificaciones y todo sobre la cuenta — tras iniciar sesión.",
+    "menu": "Menú del perfil",
+    "dashboard": "Panel",
+    "localHint": "Se guarda solo en este navegador — funciona incluso sin cuenta."
+  },
+  "settings": {
+    "pageTitle": "Ajustes",
+    "navAria": "Ir a ajustes",
+    "home": "Inicio",
+    "crumbsAria": "Navegación",
+    "themeTitle": "Tema de color",
+    "themeSystem": "Sistema (Auto)",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "themeSystemAria": "Tema del sistema (auto)",
+    "themeLightAria": "Tema claro",
+    "themeDarkAria": "Tema oscuro",
+    "paletteTitle": "Color de acento",
+    "paletteHint": "El color de identidad — botones, enlaces, resaltes. No es todo el look, solo la paleta.",
+    "palette": {
+      "pink": "ModrinthProxy",
+      "discord": "Blurple",
+      "cyan": "Diamocyan",
+      "red": "Rubystone",
+      "gold": "Lavagold",
+      "purple": "Endamethyst",
+      "gray": "Gris hierro",
+      "medelsin": "Naranja cobre",
+      "dragon": "Verde dragón"
+    },
+    "on": "On",
+    "off": "Off",
+    "languageTitle": "Idioma",
+    "languageStandard": "Idiomas disponibles",
+    "kittenSounds": "Sonidos del gatito",
+    "sharedNote": "Estos ajustes son compartidos: cambian al instante aquí, en modrinth.black y en todos sus servicios en este navegador.",
+    "themeHint": "Elige el tema de color preferido para todos los sitios de ModrinthProxy en este dispositivo.",
+    "soundsTitle": "Sonidos",
+    "soundsHint": "También son comunes a todos los sitios.",
+    "kittenSoundsHint": "Sonidos suaves y bajitos cuando acaricias al gatito. Nunca suenan solos, solo al hacer clic.",
+    "languageWarn": "El idioma es común a todos los sitios: elígelo aquí y se activará en modrinth.black y en todos sus servicios."
+  },
+  "mpa": {
+    "loginTitle": "Bienvenido de nuevo",
+    "registerTitle": "Crea una cuenta",
+    "registerLead": "Medio minuto, y sin correo.",
+    "usernamePlaceholder": "por ejemplo, steve_2026",
+    "passwordPlaceholder": "tu contraseña",
+    "newPasswordPlaceholder": "inventa una contraseña",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "submitLogin": "Entrar",
+    "submitRegister": "Crear cuenta",
+    "noRecovery": "No pedimos correo, así que la contraseña no se puede recuperar — guárdala bien.",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "usernameHint": "3–24 caracteres: letras latinas, números y _",
+    "password": "Contraseña",
+    "or": "o a la antigua",
+    "quickTitle": "Acceso rápido",
+    "quickHint": "Sin contraseña. Si aún no tienes cuenta, se crea sola.",
+    "telegram": "Continuar con Telegram",
+    "github": "Continuar con GitHub",
+    "petKitten": "Acariciar al gatito",
+    "switchLogin": "Entrar",
+    "errors": {
+      "invalid": "Usuario o contraseña incorrectos.",
+      "captcha": "No se pudo verificar la solicitud. Inténtalo otra vez.",
+      "rate_limit": "Demasiados intentos. Prueba más tarde.",
+      "signup_limit": "Hoy ya se han creado demasiadas cuentas desde tu red. Prueba mañana.",
+      "taken": "Ese usuario ya está ocupado.",
+      "username": "Usuario: 3–24 caracteres, solo letras latinas, números y _.",
+      "password": "Contraseña: de 8 a 128 caracteres.",
+      "unauthorized": "La sesión ha caducado, vuelve a iniciar sesión",
+      "forbidden": "Solicitud rechazada, recarga la página",
+      "unavailable": "El servidor de cuentas no responde, inténtalo más tarde"
+    },
+    "strength": [
+      "",
+      "Débil",
+      "Regular",
+      "Buena",
+      "Excelente"
+    ],
+    "sideTitle": "Una cuenta para todos los servicios",
+    "sideLead": "Inicias sesión aquí y ya eres de la casa en modrinth.black y todos sus sitios.",
+    "perks": [
+      {
+        "title": "El mismo nombre en todas partes",
+        "text": "Nombre y avatar iguales en modrinth.black, el cliente, el reempaquetador, la traducción de plugins y los demás servicios."
+      },
+      {
+        "title": "Un solo inicio de sesión",
+        "text": "Entras en un sitio y ya estás dentro en los demás. Sales y sales de todos."
+      },
+      {
+        "title": "Favoritos e historial",
+        "text": "Tus mods favoritos y el historial de descargas viven en modrinth.black y siempre están a mano."
+      }
+    ],
+    "loginLead": "Inicia sesión para tener todo a mano.",
+    "username": "Nombre",
+    "passwordHint": "mínimo 8 caracteres",
+    "switchRegister": "Crear",
+    "home": "Ir al inicio",
+    "accountTitle": "Tu cuenta",
+    "accountLead": "Una para modrinth.black y todos sus servicios.",
+    "nickname": "Nombre",
+    "save": "Guardar",
+    "saved": "Nombre actualizado en todos los sitios",
+    "security": "Contraseña y vinculaciones",
+    "securityText": "La contraseña, GitHub y Telegram se cambian en modrinth.black.",
+    "securityLink": "Abrir ajustes",
+    "logout": "Cerrar sesión",
+    "logoutText": "La salida se aplica al instante en todos los sitios.",
+    "signedOutTitle": "No has iniciado sesión",
+    "signedOutLead": "Inicia sesión o crea una cuenta: una para todos los servicios."
+  },
+  "meta": {
+    "login": "Iniciar sesión",
+    "account": "Cuenta"
+  }
+}

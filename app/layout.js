@@ -18,6 +18,7 @@ import '@/styles/locale-fonts.css';
 import '@/styles/rtl.css';
 import '@/styles/site-footer.css';
 import '@/app/components/kitten/kitten.css';
+import '@/components/settings/settings.css';
 import './globals.css';
 import SiteFooter from '@/app/components/footer/SiteFooter';
 import { SITE_VERSION } from '@/lib/config/siteVersion';
@@ -33,6 +34,8 @@ import { resolveServerLocale } from '@/lib/core/detectLocale';
 import { resolveDocumentDirection } from '@/lib/core/localeDirection';
 import { resolveServerTheme } from '@/lib/core/ThemeStore';
 import { LOOK_BOOT_SCRIPT } from '@/lib/core/siteLook';
+import { I18nProvider } from '@/components/i18n/I18nProvider';
+import { getServerT } from '@/lib/i18n/server';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -47,6 +50,7 @@ export default async function RootLayout({ children }) {
   const locale = resolveServerLocale(cookieStore, headerStore.get('accept-language'));
   const theme = resolveServerTheme(cookieStore);
   const direction = resolveDocumentDirection(locale);
+  const shared = await getServerT();
 
   return (
     <html
@@ -61,6 +65,7 @@ export default async function RootLayout({ children }) {
         <SiteJsonLd />
       </head>
       <body className={`${inter.className} min-h-screen antialiased mpa-auto`}>
+        <I18nProvider locale={shared.locale} messages={shared.messages}>
         <AppProviders initialLocale={locale}>
           <WorkspaceProvider>
             <SiteHeader />
@@ -73,12 +78,13 @@ export default async function RootLayout({ children }) {
               here="mtools"
               title="MTools"
               domain="mtools.modrinth.black"
-              tagline="Инструменты для серверов Minecraft: флаги запуска, анализ лагов, плагины и градиенты."
-              accent="Всё для своего сервера в одном месте"
+              tagline={shared.t('footer.tagline')}
+              accent={shared.t('footer.accent')}
               version={SITE_VERSION}
             />
           </WorkspaceProvider>
         </AppProviders>
+        </I18nProvider>
       </body>
     </html>
   );
