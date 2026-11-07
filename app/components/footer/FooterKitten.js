@@ -110,6 +110,33 @@ function playPurr() {
     }
     catch { }
 }
+const SULKS = [
+  'Фыр! Не трогай',
+  'Котик отвернулся',
+  'Нет-нет, не гладить',
+  'Котик делает вид, что тебя не видит',
+  'Хвостом махнул и ушёл',
+];
+
+function GrumpyKittenFace() {
+  return (
+    <svg className="fk-face fk-face--grumpy" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24" aria-hidden="true">
+      {EARS.map((ear, index) => (
+        <g key={ear.outer} className={`fk-ear fk-ear--${index ? 'right' : 'left'}`}>
+          <path d={ear.outer} strokeLinejoin="round" className="fk-fill" />
+          <path d={ear.inner} stroke="none" className="fk-inner" />
+        </g>
+      ))}
+      <circle cx="12" cy="12" r="9" className="fk-fill" />
+      <path d="M7.6 9.2l2.6.8M16.4 9.2l-2.6.8" strokeWidth="1.2" />
+      <path d="M8.2 11h2.2M13.6 11h2.2" />
+      <path d="M11.4 12.5h1.2l-.6.7Z" fill="currentColor" strokeWidth="1" strokeLinejoin="round" />
+      <path d="M10.7 14.9q1.3-1.1 2.6 0" />
+      <path d="M3.6 12.2 6.4 12.8M3.9 14.6l2.6-.7M20.4 12.2l-2.8.6M20.1 14.6l-2.6-.7" strokeWidth="1" />
+    </svg>
+  );
+}
+
 function KittenFace({ mood, look }) {
     return (<svg className="fk-face" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24" aria-hidden="true">
       {EARS.map((ear, index) => (<g key={ear.outer} className={`fk-ear fk-ear--${index ? 'right' : 'left'}`}>
@@ -137,6 +164,9 @@ export default function FooterKitten() {
     const [hop, setHop] = useState(false);
     const [hearts, setHearts] = useState([]);
     const [pets, setPets] = useState(null);
+    const [grumpy, setGrumpy] = useState(false);
+    const [sulk, setSulk] = useState(-1);
+    const [dodge, setDodge] = useState(false);
     const [signedIn, setSignedIn] = useState(null);
     const [loginHref, setLoginHref] = useState('/login');
     const [toast, setToast] = useState(null);
@@ -154,6 +184,7 @@ export default function FooterKitten() {
             .then((data) => {
             const value = typeof data?.pets === 'number' ? data.pets : null;
             setSignedIn(value !== null);
+            setGrumpy(data?.grumpy === true);
             setPets(value);
         })
             .catch(() => setSignedIn(false));
@@ -219,6 +250,13 @@ export default function FooterKitten() {
         });
     }, []);
     const pet = useCallback(() => {
+        if (grumpy) {
+            setSulk((current) => current + 1);
+            if (calm.current) return;
+            setDodge(false);
+            requestAnimationFrame(() => setDodge(true));
+            return;
+        }
         clearTimeout(moodTimer.current);
         setMood('happy');
         moodTimer.current = setTimeout(() => setMood('look'), 1300);
@@ -254,7 +292,30 @@ export default function FooterKitten() {
         }));
         setHearts((current) => [...current, ...fresh]);
         setTimeout(() => setHearts((current) => current.filter((heart) => !fresh.includes(heart))), 1500);
-    }, [signedIn, flush]);
+    }, [grumpy, signedIn, flush]);
+    if (grumpy) {
+        const phrase = sulk >= 0 ? SULKS[sulk % SULKS.length] : 'Гладить себя не даёт, ачивки не считает';
+        return (
+          <div className="fk">
+            <div className="fk-stage">
+              <button
+                type="button"
+                className={`fk-button fk-button--grumpy${dodge ? ' fk-button--dodge' : ''}`}
+                onClick={pet}
+                onAnimationEnd={() => setDodge(false)}
+                aria-label="Котик не хочет, чтобы его гладили"
+              >
+                <GrumpyKittenFace />
+              </button>
+            </div>
+            <div className="fk-info">
+              <p className="fk-say">Котик обиделся</p>
+              <p className="fk-count" aria-live="polite">{phrase}</p>
+            </div>
+          </div>
+        );
+    }
+
     const count = pets ?? 0;
     const nextGoal = ACHIEVEMENTS.find((item) => item.count > count);
     const unlockedCount = ACHIEVEMENTS.filter((item) => item.count <= count).length;

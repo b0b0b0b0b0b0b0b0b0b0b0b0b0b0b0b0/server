@@ -689,3 +689,40 @@
 .fk-say--rank {
   color: rgb(var(--palette));
 }
+
+.fk-button--grumpy,
+.fk-button--grumpy:hover {
+  transform: rotate(8deg);
+}
+
+.fk-face--grumpy .fk-ear--left,
+.fk-button--grumpy:hover .fk-face--grumpy .fk-ear--left {
+  transform: rotate(-38deg) translateY(1px);
+}
+
+.fk-face--grumpy .fk-ear--right,
+.fk-button--grumpy:hover .fk-face--grumpy .fk-ear--right {
+  transform: rotate(38deg) translateY(1px);
+}
+
+.fk-button--dodge {
+  animation: fk-dodge 0.5s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes fk-dodge {
+  25% {
+    transform: translateX(14px) rotate(16deg);
+  }
+  55% {
+    transform: translateX(-6px) rotate(4deg);
+  }
+  100% {
+    transform: rotate(8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fk-button--dodge {
+    animation: none;
+  }
+}
