@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { setKittenShy } from '@/app/components/kitten/kittenShy'
 
 const EARS = [
   { outer: 'M5.7 5.6 5 0.9 10.1 3.2', inner: 'M6.6 5 6.3 2.6 8.8 3.7Z' },
@@ -99,6 +100,12 @@ export default function GuardKitten({ field = null, reveal = false, typed = 0, l
 
   const reading = field === 'username'
   const paws = field === 'password' ? (reveal ? 'peek' : 'cover') : null
+
+  useEffect(() => {
+    setKittenShy(paws)
+  }, [paws])
+
+  useEffect(() => () => setKittenShy(null), [])
   const eyes = reading ? { x: -0.8 + Math.min(1, typed / 24) * 1.6, y: 0.9 } : look
 
   const pet = () => {

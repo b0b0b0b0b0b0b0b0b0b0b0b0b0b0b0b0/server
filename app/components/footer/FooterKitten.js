@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useMessages, useT } from '@/components/i18n/I18nProvider';
 import { soundsMuted } from '@/app/components/kitten/softSounds';
+import { useKittenShy } from '@/app/components/kitten/kittenShy';
 const PURR_URL = '/sounds/kitten-purr.mp3';
 const FLUSH_MS = 700;
 const MAX_BATCH = 5;
@@ -93,7 +94,7 @@ function GrumpyKittenFace() {
       <path d="M3.6 12.2 6.4 12.8M3.9 14.6l2.6-.7M20.4 12.2l-2.8.6M20.1 14.6l-2.6-.7" strokeWidth="1"/>
     </svg>);
 }
-function KittenFace({ mood, look }) {
+function KittenFace({ mood, look, paws = null }) {
     return (<svg className="fk-face" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24" aria-hidden="true">
       {EARS.map((ear, index) => (<g key={ear.outer} className={`fk-ear fk-ear--${index ? 'right' : 'left'}`}>
           <path d={ear.outer} strokeLinejoin="round" className="fk-fill"/>
@@ -108,6 +109,17 @@ function KittenFace({ mood, look }) {
               <circle cx={cx + look.x * 0.7 - 0.45} cy={10 + look.y * 0.6 - 0.45} r="0.42" fill="white"/>
             </g>))}
         </g>)}
+      <g className={`fk-paws${paws ? ` fk-paws--${paws}` : ''}`} stroke="none">
+        {[9.2, 14.8].map((cx, index) => (
+          <g key={cx} className={`fk-paw fk-paw--${index ? 'right' : 'left'}`}>
+            <ellipse cx={cx} cy="10.6" rx="2.7" ry="2.3" fill="currentColor" />
+            <ellipse cx={cx} cy="11.2" rx="1" ry="0.75" fill="white" fillOpacity="0.45" />
+            {[-1.2, 0, 1.2].map((dx) => (
+              <circle key={dx} cx={cx + dx} cy={dx ? 9.3 : 9} r="0.42" fill="white" fillOpacity="0.45" />
+            ))}
+          </g>
+        ))}
+      </g>
       <path d="M11.4 12.5h1.2l-.6.7Z" fill="currentColor" strokeWidth="1" strokeLinejoin="round"/>
       {mood === 'happy' ? (<path d="M10.6 13.4q1.4 1.8 2.8 0"/>) : (<path d="M12 13.3q-.4 1.4-1.6 1.1M12 13.3q.4 1.4 1.6 1.1"/>)}
       <path d="M3.6 12.2 6.4 12.8M3.9 14.6l2.6-.7M20.4 12.2l-2.8.6M20.1 14.6l-2.6-.7" strokeWidth="1"/>
@@ -115,6 +127,7 @@ function KittenFace({ mood, look }) {
 }
 export default function FooterKitten() {
     const t = useT();
+    const shy = useKittenShy();
     const list = useMessages('kitten.list');
     const sulks = (useMessages('kitten.grumpy.sulks') || []);
     const ACHIEVEMENTS = useMemo(() => GOALS.map((count, index) => ({ count, title: list?.[index]?.title || '', text: list?.[index]?.text || '' })), [list]);
@@ -275,7 +288,7 @@ export default function FooterKitten() {
     return (<div className="fk">
       <div className="fk-stage pixel-tip" data-pixel-tip={t('pixel.footer')}>
         <button ref={ref} type="button" className={`fk-button${hop ? ' fk-button--hop' : ''}`} onClick={pet} onAnimationEnd={() => setHop(false)} aria-label={t('kitten.aria')}>
-          <KittenFace mood={mood} look={look}/>
+          <KittenFace mood={shy ? 'look' : mood} look={look} paws={shy}/>
         </button>
         {hearts.map((heart) => (<span key={heart.id} className="fk-heart" style={{
                 '--fk-x': `${heart.x}px`,

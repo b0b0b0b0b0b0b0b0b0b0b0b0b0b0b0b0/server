@@ -6,6 +6,7 @@ import { KittenFace, KittenHearts, useKittenHearts, useKittenMood } from './Kitt
 import { useT } from './text'
 import { playMew } from './softSounds'
 import { OIIA_TAPS, onOiiaChange, startOiia } from './OiiaParty'
+import { useKittenShy } from './kittenShy'
 
 const POSES = {
   phone: { rest: '-5%', peek: '-25%' },
@@ -18,6 +19,7 @@ const random = (min, max) => min + Math.random() * (max - min)
 
 export default function PeekKitten() {
   const t = useT()
+  const shy = useKittenShy()
   const reduceMotion = useReducedMotion()
   const faceRef = useRef(null)
   const body = useAnimationControls()
@@ -157,7 +159,7 @@ export default function PeekKitten() {
           style={{ originY: 1 }}
           className="block h-full w-full cursor-pointer rounded-full border-0 bg-transparent p-0 outline-hidden"
         >
-          <KittenFace mood={mood} look={look} className="h-full w-full" />
+          <KittenFace mood={shy ? 'look' : mood} look={look} paws={shy} className="h-full w-full" />
         </motion.button>
       </div>
       <div
