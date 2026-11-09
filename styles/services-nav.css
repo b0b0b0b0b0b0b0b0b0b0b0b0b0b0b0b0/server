@@ -241,3 +241,7 @@
     padding: 0.3rem 0.85rem;
   }
 }
+
+.svc-nav-desktop {
+  display: contents;
+}
