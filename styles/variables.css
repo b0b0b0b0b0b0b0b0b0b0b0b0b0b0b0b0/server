@@ -153,8 +153,8 @@
   --size-gap-sm: 10px;
   --size-gap-lg: 24px;
   --size-gap-xl: 48px;
-  --size-font-base: 15px;
-  --size-font-sm: 13px;
+  --size-font-base: 1rem;
+  --size-font-sm: 0.8125rem;
   --size-font-lg: 22px;
   --size-font-xl: 28px;
   --size-container: 72rem;

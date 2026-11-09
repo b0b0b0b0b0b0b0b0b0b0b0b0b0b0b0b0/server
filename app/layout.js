@@ -1,5 +1,5 @@
 import { cookies, headers } from 'next/headers';
-import { Inter } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import '@/styles/variables.css';
 import '@/styles/base.css';
 import '@/styles/layout.css';
@@ -38,10 +38,15 @@ import { I18nProvider } from '@/components/i18n/I18nProvider';
 import ConsoleWarning from '@/components/i18n/ConsoleWarning';
 import { getServerT } from '@/lib/i18n/server';
 
-const inter = Inter({
-  subsets: ['latin', 'cyrillic'],
+const nunito = Nunito({
+  subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-nunito',
   display: 'swap',
-});
+  preload: false,
+  adjustFontFallback: true,
+  fallback: ['system-ui', 'arial'],
+})
 
 export const metadata = buildRootMetadata();
 
@@ -57,7 +62,7 @@ export default async function RootLayout({ children }) {
     <html
       lang={locale}
       dir={direction}
-      className={theme === 'dark' ? 'dark' : undefined}
+      className={theme === 'dark' ? `dark ${nunito.variable}` : nunito.variable}
       suppressHydrationWarning
     >
       <head>
@@ -65,7 +70,7 @@ export default async function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.webmanifest" crossOrigin="use-credentials" />
         <SiteJsonLd />
       </head>
-      <body className={`${inter.className} min-h-screen antialiased mpa-auto`}>
+      <body className={`${nunito.className} min-h-screen antialiased mpa-auto`}>
         <I18nProvider locale={shared.locale} messages={shared.messages}>
           <ConsoleWarning />
         <AppProviders initialLocale={locale}>

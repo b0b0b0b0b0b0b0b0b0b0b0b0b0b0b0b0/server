@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 @theme {
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.375rem;
+  --font-sans: var(--font-nunito), system-ui, arial, sans-serif;
   --color-modrinth-green: rgb(var(--palette));
   --color-modrinth-green-light: rgb(var(--palette-light));
 }
@@ -10,6 +15,7 @@
 }
 
 html {
+  font-size: 106.25%;
   min-height: 100%;
   background: var(--color-bg);
 }
