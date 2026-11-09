@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLocale } from '@/app/components/AppProviders';
 import ServicesNav from '@/app/components/ServicesNav';
+import ToolNav from '@/app/components/ToolNav';
 
 export default function SiteHeader() {
   const { t, locale } = useLocale();
@@ -16,6 +17,7 @@ export default function SiteHeader() {
             <span className="site-header-brand">{t('site.name')}</span>
             <span className="site-header-abbrev">{t('site.abbrev')}</span>
           </Link>
+          <ToolNav />
         </div>
       </header>
     </>
