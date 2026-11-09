@@ -14,7 +14,8 @@
     "mtoolsTip": "Tools for Minecraft servers",
     "proxyTip": "Modrinth, fast vänligare",
     "servicesShow": "Visa tjänstlänkar",
-    "servicesHide": "Dölj tjänstlänkar"
+    "servicesHide": "Dölj tjänstlänkar",
+    "news": "Nyheter"
   },
   "footer": {
     "siteVersion": "Webbplatsversion: {version}",

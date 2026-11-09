@@ -14,7 +14,8 @@
     "mtoolsTip": "Tools for Minecraft servers",
     "proxyTip": "もっとやさしい Modrinth",
     "servicesShow": "サービスリンクを表示",
-    "servicesHide": "サービスリンクを隠す"
+    "servicesHide": "サービスリンクを隠す",
+    "news": "ニュース"
   },
   "footer": {
     "siteVersion": "サイトバージョン: {version}",

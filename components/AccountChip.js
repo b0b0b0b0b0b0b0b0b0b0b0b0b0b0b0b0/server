@@ -17,6 +17,7 @@ const ICONS = {
     logIn: ['M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3'],
     logOut: ['M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9'],
     out: ['M7 17 17 7M8 7h9v9'],
+    news: ['M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2', 'M18 14h-8M15 18h-5M10 6h8v4h-8V6Z'],
 };
 const MAIN_LINKS = [
     { href: `${MAIN}/account?tab=updates`, label: 'account.updates', icon: 'updates' },
@@ -99,54 +100,63 @@ export default function AccountChip({ signInLabel }) {
         await fetch('/api/auth/logout', { method: 'POST' }).catch(() => { });
         window.location.assign('/');
     };
-    if (user === undefined)
-        return <span className="nav-account am-skel" aria-hidden="true"/>;
-    if (!user) {
-        return (<div className="am-guest">
-        <a href={signInHref} className="nav-account nav-account--guest" suppressHydrationWarning>
-          <Icon name="logIn" className="am-icon am-icon--sm"/>
-          {signInLabel || t('account.signIn')}
-        </a>
-        <a href="/settings" className="top-nav-link nav-settings" data-tooltip={t('account.settings')} aria-label={t('account.settings')}>
-          <Icon name="settings" className="am-gear"/>
-        </a>
+    const news = (<a href={`${MAIN}/news`} className="top-nav-link top-nav-link--icon" data-tooltip={t('nav.news')} aria-label={t('nav.news')}>
+      <Icon name="news" className="nav-icon"/>
+    </a>);
+    if (user === undefined) {
+        return (<div className="nav-tools">
+        <span className="nav-icon-skel" aria-hidden="true"/>
+        {news}
       </div>);
     }
-    return (<div ref={rootRef} className="am-root">
-      <button type="button" onClick={() => setOpen((value) => !value)} className={`nav-account am-trigger${open ? ' am-trigger--open' : ''}`} aria-label={t('account.menu')} aria-haspopup="menu" aria-expanded={open} aria-controls={menuId} title={user.username}>
-        <Avatar user={user} size={22}/>
-        <span className="nav-account-name">{user.username}</span>
-        <svg className="am-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
-      </button>
-
-      {open ? (<div id={menuId} role="menu" className="am-menu glass-pop">
-          <a href="/account" role="menuitem" onClick={close} className="am-head">
-            <Avatar user={user} size={32}/>
-            <span className="am-head-text">
-              <span className="am-head-name">{user.username}</span>
-              <span className="am-head-sub">{t('account.dashboard')}</span>
-            </span>
+    if (!user) {
+        return (<div className="nav-tools">
+        <div className="am-guest">
+          <a href={signInHref} className="am-login" aria-label={signInLabel || t('account.signIn')} suppressHydrationWarning>
+            <Icon name="logIn"/>
+            <span className="am-login-text">{signInLabel || t('account.signIn')}</span>
           </a>
-
-          {MAIN_LINKS.map((link) => (<a key={link.href} href={link.href} role="menuitem" onClick={close} className="am-item">
-              <Icon name={link.icon}/>
-              <span className="am-label">{t(link.label)}</span>
-              <Icon name="out" className="am-out"/>
-            </a>))}
-
-          <div className="am-sep" role="separator"/>
-
-          <a href="/settings" role="menuitem" onClick={close} className="am-item">
-            <Icon name="settings"/>
-            <span className="am-label">{t('account.settings')}</span>
+          <a href="/settings" className="top-nav-link top-nav-link--icon am-compact" data-tooltip={t('account.settings')} aria-label={t('account.settings')}>
+            <Icon name="settings" className="nav-icon"/>
           </a>
+        </div>
+        {news}
+      </div>);
+    }
+    return (<div className="nav-tools">
+      <div ref={rootRef} className="am-root">
+        <button type="button" onClick={() => setOpen((value) => !value)} className={`top-nav-link top-nav-link--icon am-trigger${open ? ' top-nav-link--active' : ''}`} data-tooltip={open ? undefined : t('account.menu')} aria-label={t('account.menu')} aria-haspopup="menu" aria-expanded={open} aria-controls={menuId}>
+          {user.avatar ? <img src={user.avatar} alt="" width={24} height={24} className="am-trigger-avatar" draggable={false}/> : <Icon name="user" className="nav-icon"/>}
+        </button>
 
-          <button type="button" role="menuitem" onClick={logout} disabled={busy} className="am-item am-item--danger">
-            <Icon name="logOut"/>
-            <span className="am-label">{t('account.logout')}</span>
-          </button>
-        </div>) : null}
+        {open ? (<div id={menuId} role="menu" className="am-menu glass-pop">
+            <a href="/account" role="menuitem" onClick={close} className="am-head">
+              <Avatar user={user} size={32}/>
+              <span className="am-head-text">
+                <span className="am-head-name">{user.username}</span>
+                <span className="am-head-sub">{t('account.dashboard')}</span>
+              </span>
+            </a>
+
+            {MAIN_LINKS.map((link) => (<a key={link.href} href={link.href} role="menuitem" onClick={close} className="am-item">
+                <Icon name={link.icon}/>
+                <span className="am-label">{t(link.label)}</span>
+                <Icon name="out" className="am-out"/>
+              </a>))}
+
+            <div className="am-sep" role="separator"/>
+
+            <a href="/settings" role="menuitem" onClick={close} className="am-item">
+              <Icon name="settings"/>
+              <span className="am-label">{t('account.settings')}</span>
+            </a>
+
+            <button type="button" role="menuitem" onClick={logout} disabled={busy} className="am-item am-item--danger">
+              <Icon name="logOut"/>
+              <span className="am-label">{t('account.logout')}</span>
+            </button>
+          </div>) : null}
+      </div>
+      {news}
     </div>);
 }

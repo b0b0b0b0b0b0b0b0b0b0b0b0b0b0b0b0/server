@@ -53,6 +53,8 @@ export default function ServicesNav() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="smn-desktop">
           <AccountChip />
         </div>
       </div>

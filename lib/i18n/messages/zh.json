@@ -14,7 +14,8 @@
     "mtoolsTip": "Tools for Minecraft servers",
     "proxyTip": "更友好的 Modrinth",
     "servicesShow": "显示服务链接",
-    "servicesHide": "隐藏服务链接"
+    "servicesHide": "隐藏服务链接",
+    "news": "动态"
   },
   "footer": {
     "siteVersion": "站点版本：{version}",

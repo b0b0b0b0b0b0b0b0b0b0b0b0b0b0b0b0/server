@@ -14,7 +14,8 @@
     "mtoolsTip": "Tools for Minecraft servers",
     "proxyTip": "Modrinth, tikai laipnāks",
     "servicesShow": "Rādīt pakalpojumu saites",
-    "servicesHide": "Slēpt pakalpojumu saites"
+    "servicesHide": "Slēpt pakalpojumu saites",
+    "news": "Jaunumi"
   },
   "footer": {
     "siteVersion": "Vietnes versija: {version}",

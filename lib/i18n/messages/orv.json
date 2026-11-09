@@ -14,7 +14,8 @@
     "mtoolsTip": "Tools for Minecraft servers",
     "proxyTip": "Модринтъ по-русски",
     "servicesShow": "Явить заведенія",
-    "servicesHide": "Утаить заведенія"
+    "servicesHide": "Утаить заведенія",
+    "news": "Вѣсти"
   },
   "footer": {
     "siteVersion": "Годъ вѣдомости: {version}",

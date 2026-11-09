@@ -245,3 +245,7 @@
 .svc-nav-desktop {
   display: contents;
 }
+
+.svc-nav-inner > .smn-desktop {
+  margin-inline-start: 0.6rem;
+}

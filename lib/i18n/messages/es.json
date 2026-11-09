@@ -14,7 +14,8 @@
     "mtoolsTip": "Tools for Minecraft servers",
     "proxyTip": "Modrinth, pero más amable",
     "servicesShow": "Mostrar enlaces de servicios",
-    "servicesHide": "Ocultar enlaces de servicios"
+    "servicesHide": "Ocultar enlaces de servicios",
+    "news": "Novedades"
   },
   "footer": {
     "siteVersion": "Versión del sitio: {version}",

@@ -783,45 +783,136 @@ html:not(.dark) .st-lang-ring {
   }
 }
 
-.nav-settings {
+.nav-tools {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-nav-link.top-nav-link--icon {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem 0.55rem;
-  border-radius: 6px;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  gap: 0;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: #9ca3af;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.nav-settings:hover {
+.top-nav-link.top-nav-link--icon:hover {
+  background: rgb(var(--palette) / 0.08);
+  color: rgb(var(--palette));
+  box-shadow: none;
+}
+
+.top-nav-link.top-nav-link--icon.top-nav-link--active {
+  color: rgb(var(--palette));
+  background: rgb(31 41 55 / 0.4);
+}
+
+html:not(.dark) .top-nav-link.top-nav-link--icon.top-nav-link--active {
+  background: rgb(0 0 0 / 0.06);
+}
+
+.nav-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.nav-icon-skel {
+  display: inline-block;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
   background: var(--line);
-  color: var(--text-primary);
+  animation: st-pulse 1.6s ease-in-out infinite;
 }
 
-.nav-settings svg {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-settings:hover svg {
-  transform: rotate(90deg);
+.am-trigger-avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
 .am-guest {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.5rem;
 }
 
-.am-guest .nav-account--guest {
-  gap: 6px;
+.am-login {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  height: 2.25rem;
+  padding: 0 0.625rem;
+  border-radius: 0.75rem;
+  background: rgb(var(--palette));
+  color: #000;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter 0.15s ease, transform 0.15s ease;
 }
 
-.am-skel {
-  width: 96px;
-  animation: st-pulse 1.6s ease-in-out infinite;
+.am-login:hover {
+  filter: brightness(1.1);
+}
+
+.am-login:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 399px) {
+  .am-login {
+    width: 2.25rem;
+    padding: 0;
+  }
+
+  .am-login-text {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .nav-tools,
+  .am-guest {
+    gap: 0.25rem;
+  }
+
+  .am-login {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+  }
+
+  .am-login-text {
+    display: none;
+  }
+
+  .am-compact {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .am-compact .nav-icon {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .am-icon {
@@ -838,30 +929,6 @@ html:not(.dark) .st-lang-ring {
 .am-root {
   position: relative;
   display: inline-flex;
-}
-
-.am-trigger {
-  border: 0;
-  font: inherit;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.am-trigger--open {
-  color: var(--text-primary);
-  background-color: var(--bg-tertiary-hover);
-}
-
-.am-chevron {
-  width: 13px;
-  height: 13px;
-  margin-inline-start: -2px;
-  opacity: 0.6;
-  transition: transform 0.2s ease;
-}
-
-.am-trigger--open .am-chevron {
-  transform: rotate(180deg);
 }
 
 .am-menu {
@@ -919,7 +986,7 @@ html:not(.dark) .st-lang-ring {
 
 .am-head-name {
   overflow: hidden;
-  font-size: 14px;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: var(--text-primary);
   text-overflow: ellipsis;
@@ -927,7 +994,7 @@ html:not(.dark) .st-lang-ring {
 }
 
 .am-head-sub {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: var(--text-faint);
 }
 
@@ -941,7 +1008,7 @@ html:not(.dark) .st-lang-ring {
   border-radius: 12px;
   background: transparent;
   font: inherit;
-  font-size: 14px;
+  font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.3;
   color: var(--text-secondary);
@@ -990,38 +1057,28 @@ html:not(.dark) .st-lang-ring {
   background: var(--line);
 }
 
-.am-gear {
-  width: 18px;
-  height: 18px;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .st-radio,
   .st-switch,
   .st-knob,
   .st-loading div,
   .st-skel,
-  .am-skel,
+  .nav-icon-skel,
   .st-fade,
   .st-lang,
   .am-menu,
-  .am-chevron,
-  .nav-settings svg {
+  .am-login {
     animation: none;
     transition: none;
   }
-
-  .nav-settings:hover svg {
-    transform: none;
-  }
 }
 
-.nav-settings[data-tooltip],
+.top-nav-link--icon[data-tooltip],
 .st-switch[data-tooltip] {
   position: relative;
 }
 
-.nav-settings[data-tooltip]:hover::after,
+.top-nav-link--icon[data-tooltip]:hover::after,
 .st-switch[data-tooltip]:hover::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -1043,7 +1100,7 @@ html:not(.dark) .st-lang-ring {
   animation: st-tip-in 0.17s cubic-bezier(0.2, 0.9, 0.3, 1.15);
 }
 
-.nav-settings[data-tooltip]:hover::before,
+.top-nav-link--icon[data-tooltip]:hover::before,
 .st-switch[data-tooltip]:hover::before {
   content: '';
   position: absolute;
@@ -1060,7 +1117,7 @@ html:not(.dark) .st-lang-ring {
   animation: st-tip-arrow-in 0.17s cubic-bezier(0.2, 0.9, 0.3, 1.15);
 }
 
-html:not(.dark) .nav-settings[data-tooltip]:hover::after,
+html:not(.dark) .top-nav-link--icon[data-tooltip]:hover::after,
 html:not(.dark) .st-switch[data-tooltip]:hover::after {
   background: rgb(var(--tip-bg, 255 255 255));
   color: rgb(var(--tip-fg, 33 37 41));
@@ -1081,8 +1138,8 @@ html:not(.dark) .st-switch[data-tooltip]:hover::after {
 }
 
 @media (hover: none), (prefers-reduced-motion: reduce) {
-  .nav-settings[data-tooltip]:hover::after,
-  .nav-settings[data-tooltip]:hover::before,
+  .top-nav-link--icon[data-tooltip]:hover::after,
+  .top-nav-link--icon[data-tooltip]:hover::before,
   .st-switch[data-tooltip]:hover::after,
   .st-switch[data-tooltip]:hover::before {
     animation: none;
@@ -1090,8 +1147,8 @@ html:not(.dark) .st-switch[data-tooltip]:hover::after {
 }
 
 @media (hover: none) {
-  .nav-settings[data-tooltip]:hover::after,
-  .nav-settings[data-tooltip]:hover::before,
+  .top-nav-link--icon[data-tooltip]:hover::after,
+  .top-nav-link--icon[data-tooltip]:hover::before,
   .st-switch[data-tooltip]:hover::after,
   .st-switch[data-tooltip]:hover::before {
     display: none;
