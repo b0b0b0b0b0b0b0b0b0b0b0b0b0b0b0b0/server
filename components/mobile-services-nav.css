@@ -1,0 +1,252 @@
+.smn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .smn {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .smn-desktop {
+    display: none !important;
+  }
+}
+
+.smn-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.smn-toolbar .nav-account {
+  margin-inline-start: 0;
+}
+
+.smn-trigger {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+  padding: 0.25rem 0.15rem;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.smn-trigger:focus-visible {
+  outline: 2px solid rgb(var(--palette));
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.smn-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(var(--palette));
+  align-self: center;
+}
+
+.smn-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--palette));
+  animation: smn-pulse 2s infinite;
+}
+
+.smn-sep {
+  margin: 0 0.2rem;
+  font-weight: 600;
+}
+
+@keyframes smn-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.smn-strip {
+  flex: 1;
+  position: relative;
+  min-height: 2rem;
+  min-width: 0;
+  align-self: center;
+}
+
+.smn-rail {
+  position: absolute;
+  left: 0;
+  right: 1.75rem;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    rgb(var(--palette) / 0.35) 8%,
+    rgb(var(--palette)) 52%,
+    rgb(var(--palette) / 0.5) 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.smn-rail--extended {
+  transform: scaleX(1);
+}
+
+.smn-rider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  transition:
+    left 0.52s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.smn-rider--end {
+  left: 100%;
+  transform: translate(calc(-100% + 2px), -50%);
+}
+
+.smn-rider-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--palette));
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smn-rider-inner--down {
+  transform: rotate(90deg);
+}
+
+.smn-chevron {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.smn-panel {
+  display: grid;
+  width: 100%;
+  position: relative;
+  min-height: 0;
+  transition: grid-template-rows 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smn-panel--collapsed {
+  overflow: hidden;
+}
+
+.smn-panel--collapsed .smn-links {
+  pointer-events: none;
+}
+
+.smn-panel::before {
+  content: '';
+  position: absolute;
+  right: 0.55rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: rgb(var(--palette));
+  opacity: 0.88;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.44s cubic-bezier(0.4, 0, 0.2, 1) 0.06s;
+  pointer-events: none;
+}
+
+.smn-panel:not(.smn-panel--open)::before {
+  visibility: hidden;
+}
+
+.smn-panel--open::before {
+  transform: scaleY(1);
+}
+
+.smn-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.smn-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgb(255 255 255 / 0.07);
+}
+
+html:not(.dark) .smn-links {
+  border-top-color: rgb(0 0 0 / 0.08);
+}
+
+.smn-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.smn-link:hover,
+.smn-link:focus-visible {
+  outline: none;
+  background: rgb(var(--palette) / 0.08);
+  color: rgb(var(--palette));
+}
+
+html:not(.dark) .smn-link:hover,
+html:not(.dark) .smn-link:focus-visible {
+  background: rgb(var(--palette) / 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smn-rail,
+  .smn-rider,
+  .smn-rider-inner,
+  .smn-panel,
+  .smn-panel::before {
+    transition: none;
+  }
+}

@@ -12,7 +12,9 @@
     "pingServers": "サーバーPing",
     "more": "More services",
     "mtoolsTip": "Tools for Minecraft servers",
-    "proxyTip": "もっとやさしい Modrinth"
+    "proxyTip": "もっとやさしい Modrinth",
+    "servicesShow": "サービスリンクを表示",
+    "servicesHide": "サービスリンクを隠す"
   },
   "footer": {
     "siteVersion": "サイトバージョン: {version}",

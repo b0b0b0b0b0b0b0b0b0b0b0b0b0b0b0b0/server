@@ -12,7 +12,9 @@
     "pingServers": "Проба дворовъ",
     "more": "More services",
     "mtoolsTip": "Tools for Minecraft servers",
-    "proxyTip": "Модринтъ по-русски"
+    "proxyTip": "Модринтъ по-русски",
+    "servicesShow": "Явить заведенія",
+    "servicesHide": "Утаить заведенія"
   },
   "footer": {
     "siteVersion": "Годъ вѣдомости: {version}",

@@ -12,7 +12,9 @@
     "pingServers": "Serveru ping",
     "more": "More services",
     "mtoolsTip": "Tools for Minecraft servers",
-    "proxyTip": "Modrinth, tikai laipnāks"
+    "proxyTip": "Modrinth, tikai laipnāks",
+    "servicesShow": "Rādīt pakalpojumu saites",
+    "servicesHide": "Slēpt pakalpojumu saites"
   },
   "footer": {
     "siteVersion": "Vietnes versija: {version}",

@@ -12,7 +12,9 @@
     "pingServers": "Пинг Серверов",
     "more": "Ещё сервисы",
     "mtoolsTip": "Инструменты для серверов Minecraft",
-    "proxyTip": "Модринт по-русски"
+    "proxyTip": "Модринт по-русски",
+    "servicesShow": "Показать ссылки на сервисы",
+    "servicesHide": "Скрыть ссылки на сервисы"
   },
   "footer": {
     "siteVersion": "Версия сайта: {version}",

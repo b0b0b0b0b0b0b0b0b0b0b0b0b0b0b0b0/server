@@ -12,7 +12,9 @@
     "pingServers": "Ping máy chủ",
     "more": "More services",
     "mtoolsTip": "Tools for Minecraft servers",
-    "proxyTip": "Modrinth, nhưng thân thiện hơn"
+    "proxyTip": "Modrinth, nhưng thân thiện hơn",
+    "servicesShow": "Hiện liên kết dịch vụ",
+    "servicesHide": "Ẩn liên kết dịch vụ"
   },
   "footer": {
     "siteVersion": "Phiên bản trang: {version}",

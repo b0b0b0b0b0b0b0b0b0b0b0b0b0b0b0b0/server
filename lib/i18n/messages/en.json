@@ -12,7 +12,9 @@
     "pingServers": "Server ping",
     "more": "More services",
     "mtoolsTip": "Tools for Minecraft servers",
-    "proxyTip": "Modrinth, our way"
+    "proxyTip": "Modrinth, our way",
+    "servicesShow": "Show service links",
+    "servicesHide": "Hide service links"
   },
   "footer": {
     "siteVersion": "Site version: {version}",
