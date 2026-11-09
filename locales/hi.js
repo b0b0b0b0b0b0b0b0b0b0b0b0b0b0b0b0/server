@@ -33,7 +33,7 @@ export const hi = {
     removeAnalysis: 'इतिहास से हटाएँ',
   },
   home: {
-    heroSubtitle: 'JVM फ़्लैग, Spark विश्लेषण और प्लगइन अपडेट — मुफ़्त, साइनअप की ज़रूरत नहीं।',
+    heroSubtitle: "JVM फ़्लैग, Spark विश्लेषण, प्लगइन अपडेट, RGB ग्रेडिएंट और सर्वर पिंग — मुफ़्त, साइनअप की ज़रूरत नहीं।",
     heroBadge: 'मुफ़्त · mtools.modrinth.black',
     toolsHeading: 'टूल्स',
     open: 'खोलें',

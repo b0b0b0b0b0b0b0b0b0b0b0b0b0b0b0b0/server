@@ -33,7 +33,7 @@ export const fa = {
     removeAnalysis: 'حذف از تاریخچه',
   },
   home: {
-    heroSubtitle: 'فلگ‌های JVM، تحلیل Spark و به‌روزرسانی پلاگین — رایگان، بدون ثبت‌نام.',
+    heroSubtitle: "فلگ‌های JVM، تحلیل Spark، به‌روزرسانی پلاگین، گرادیان RGB و پینگ سرور — رایگان، بدون ثبت‌نام.",
     heroBadge: 'رایگان · mtools.modrinth.black',
     toolsHeading: 'ابزارها',
     open: 'باز کردن',

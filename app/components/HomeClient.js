@@ -25,7 +25,6 @@ export default function HomeClient() {
         <div className="home-hero-content">
           <div className="home-hero-brand">
             <h1 className="home-hero-title">{t('site.name')}</h1>
-            <span className="home-hero-abbrev">{t('site.abbrev')}</span>
           </div>
           <p className="home-hero-subtitle">{t('home.heroSubtitle')}</p>
           <div className="home-hero-meta">

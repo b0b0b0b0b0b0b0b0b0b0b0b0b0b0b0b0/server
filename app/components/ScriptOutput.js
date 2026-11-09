@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Check, Copy, Download } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
-import LumTooltip from '@/app/components/LumTooltip';
 import { highlightScriptLine, splitScriptLines } from '@/lib/ui/highlightScript';
 
 export default function ScriptOutput({
@@ -67,7 +66,7 @@ export default function ScriptOutput({
         <label className="field-label" htmlFor={id}>{title}</label>
         {hint ? <p className="field-hint">{hint}</p> : null}
       </div>
-      <div className={`script-output-panel${copied || saved ? ' is-copied' : ''}`}>
+      <div className="script-output-panel">
         <div className="script-output-toolbar">
           <div className="script-output-dots" aria-hidden>
             <span />
@@ -100,6 +99,28 @@ export default function ScriptOutput({
             )}
             {language ? <span className="script-output-lang">{language}</span> : null}
           </span>
+          <div className="script-output-actions">
+            <button
+              type="button"
+              className={`script-output-action script-output-copy${copied ? ' is-copied' : ''}`}
+              onClick={copy}
+              aria-label={copied ? t('common.copied') : t('common.copy')}
+            >
+              {copied ? <Check size={16} strokeWidth={2.5} aria-hidden /> : <Copy size={16} strokeWidth={2} aria-hidden />}
+              <span className="script-output-action-label">{t('common.copy')}</span>
+            </button>
+            {allowDownload ? (
+              <button
+                type="button"
+                className={`script-output-action script-output-download${saved ? ' is-saved' : ''}`}
+                onClick={download}
+                aria-label={saved ? t('common.downloaded') : t('common.download')}
+              >
+                {saved ? <Check size={16} strokeWidth={2.5} aria-hidden /> : <Download size={16} strokeWidth={2} aria-hidden />}
+                <span className="script-output-action-label">{t('common.download')}</span>
+              </button>
+            ) : null}
+          </div>
         </div>
         <div className="script-output-body">
           <div
@@ -122,50 +143,6 @@ export default function ScriptOutput({
             ))}
           </div>
           <span className="script-output-sr-only">{value}</span>
-          <div className="script-output-actions">
-            <LumTooltip content={t('common.tooltips.copy')} side="left">
-              <button
-                type="button"
-                className={`script-output-action script-output-copy${copied ? ' is-copied' : ''}`}
-                onClick={copy}
-                aria-label={copied ? t('common.copied') : t('common.copy')}
-              >
-              <span className="script-output-action-icons" aria-hidden>
-                <span className="script-output-action-icon script-output-action-icon-copy">
-                  <Copy size={16} strokeWidth={2} />
-                </span>
-                <span className="script-output-action-icon script-output-action-icon-check">
-                  <Check size={16} strokeWidth={2.5} />
-                </span>
-              </span>
-              <span className="script-output-action-label">
-                {copied ? t('common.copied') : t('common.copy')}
-              </span>
-            </button>
-            </LumTooltip>
-            {allowDownload ? (
-            <LumTooltip content={t('common.tooltips.download')} side="left">
-              <button
-                type="button"
-                className={`script-output-action script-output-download${saved ? ' is-saved' : ''}`}
-                onClick={download}
-                aria-label={saved ? t('common.downloaded') : t('common.download')}
-              >
-              <span className="script-output-action-icons" aria-hidden>
-                <span className="script-output-action-icon script-output-action-icon-download">
-                  <Download size={16} strokeWidth={2} />
-                </span>
-                <span className="script-output-action-icon script-output-action-icon-check">
-                  <Check size={16} strokeWidth={2.5} />
-                </span>
-              </span>
-              <span className="script-output-action-label">
-                {saved ? t('common.downloaded') : t('common.download')}
-              </span>
-            </button>
-            </LumTooltip>
-            ) : null}
-          </div>
           <span className="script-output-feedback" role="status" aria-live="polite">
             {copied ? t('common.copied') : saved ? t('common.downloaded') : ''}
           </span>

@@ -33,7 +33,7 @@ export const vi = {
     removeAnalysis: 'Xóa khỏi lịch sử',
   },
   home: {
-    heroSubtitle: 'Cờ JVM, phân tích Spark và cập nhật plugin — miễn phí, không cần đăng ký.',
+    heroSubtitle: "Cờ JVM, phân tích Spark, cập nhật plugin, dải màu RGB và ping máy chủ — miễn phí, không cần đăng ký.",
     heroBadge: 'Miễn phí · mtools.modrinth.black',
     toolsHeading: 'Công cụ',
     open: 'Mở',

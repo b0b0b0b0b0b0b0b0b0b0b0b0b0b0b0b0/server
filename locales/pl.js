@@ -33,7 +33,7 @@ export const pl = {
     removeAnalysis: 'Usuń z historii',
   },
   home: {
-    heroSubtitle: 'Flagi JVM, analiza Spark i aktualizacje pluginów — za darmo, bez rejestracji.',
+    heroSubtitle: "Flagi JVM, analiza Spark, aktualizacje pluginów, gradienty RGB i ping serwerów — za darmo, bez rejestracji.",
     heroBadge: 'Za darmo · mtools.modrinth.black',
     toolsHeading: 'Narzędzia',
     open: 'Otwórz',

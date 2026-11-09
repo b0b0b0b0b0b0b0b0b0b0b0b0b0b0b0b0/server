@@ -33,7 +33,7 @@ export const fr = {
     removeAnalysis: 'Retirer de l’historique',
   },
   home: {
-    heroSubtitle: 'Flags JVM, analyse Spark et mises à jour de plugins — gratuit, sans inscription.',
+    heroSubtitle: "Flags JVM, analyse Spark, mises à jour de plugins, dégradés RGB et ping de serveurs — gratuit, sans inscription.",
     heroBadge: 'Gratuit · mtools.modrinth.black',
     toolsHeading: 'Outils',
     open: 'Ouvrir',

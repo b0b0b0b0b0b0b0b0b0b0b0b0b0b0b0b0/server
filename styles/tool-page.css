@@ -191,13 +191,6 @@
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.script-output-panel.is-copied {
-  border-color: color-mix(in srgb, var(--color-success) 45%, var(--color-border));
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--color-success) 18%, transparent),
-    0 8px 24px color-mix(in srgb, var(--color-success) 8%, transparent);
-}
-
 .script-output-toolbar {
   display: flex;
   align-items: center;
@@ -235,6 +228,7 @@
 
 .script-output-meta {
   display: flex;
+  flex: 1;
   align-items: center;
   gap: 8px;
   min-width: 0;
@@ -296,7 +290,7 @@
 
 .script-output-scroll {
   min-height: 240px;
-  padding: 16px 148px 16px 0;
+  padding: 16px 16px 16px 0;
   overflow: auto;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
@@ -417,119 +411,40 @@
 }
 
 .script-output-actions {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  z-index: 2;
   display: flex;
+  flex-shrink: 0;
   gap: 6px;
   align-items: center;
 }
 
 .script-output-action {
-  display: inline-grid;
-  grid-template-columns: 16px 0fr;
-  column-gap: 0;
+  display: inline-flex;
   align-items: center;
-  padding: 7px 8px;
-  border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  gap: 6px;
+  padding: 7px 11px;
+  border: 0;
   border-radius: var(--size-radius-sm);
-  background: color-mix(in srgb, var(--color-surface) 72%, transparent);
-  backdrop-filter: blur(10px);
-  color: var(--color-text-secondary);
-  font-size: 0.72rem;
+  background: var(--bg-tertiary);
+  box-shadow: var(--btn-glass);
+  color: var(--text-muted);
+  font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease,
-    grid-template-columns 0.25s ease,
-    column-gap 0.25s ease,
-    padding 0.25s ease;
-}
-
-.script-output-action:hover,
-.script-output-action.is-copied,
-.script-output-action.is-saved,
-.script-output-action:focus-visible {
-  grid-template-columns: 16px auto;
-  column-gap: 6px;
-  padding: 7px 10px;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .script-output-action:hover {
-  color: var(--color-text);
-  border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
-  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-bg) 55%, transparent);
-  transform: translateY(-1px);
+  background: var(--bg-tertiary-hover);
+  color: var(--text-primary);
 }
 
 .script-output-action.is-copied,
 .script-output-action.is-saved {
   color: var(--color-success);
-  border-color: color-mix(in srgb, var(--color-success) 40%, var(--color-border));
-  background: color-mix(in srgb, var(--color-success) 10%, var(--color-surface));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 12%, transparent);
-}
-
-.script-output-action-icon {
-  position: absolute;
-  inset: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.script-output-action-icons {
-  position: relative;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.script-output-action-icon-check {
-  opacity: 0;
-  transform: scale(0.7);
-}
-
-.script-output-action-icon-copy,
-.script-output-action-icon-download {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.script-output-action.is-copied .script-output-action-icon-copy,
-.script-output-action.is-saved .script-output-action-icon-download {
-  opacity: 0;
-  transform: scale(0.7);
-}
-
-.script-output-action.is-copied .script-output-action-icon-check,
-.script-output-action.is-saved .script-output-action-icon-check {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .script-output-action-label {
-  overflow: hidden;
   white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.script-output-action:hover .script-output-action-label,
-.script-output-action.is-copied .script-output-action-label,
-.script-output-action.is-saved .script-output-action-label,
-.script-output-action:focus-visible .script-output-action-label {
-  opacity: 1;
 }
 
 .script-output-feedback {
@@ -545,10 +460,18 @@
 }
 
 @media (max-width: 640px) {
+  .script-output-action-label {
+    display: none;
+  }
+
+  .script-output-action {
+    padding: 7px;
+  }
+
   .script-output-scroll {
     min-height: 0;
     max-height: min(38vh, 280px);
-    padding: 12px 76px 12px 0;
+    padding: 12px 10px 12px 0;
     -webkit-overflow-scrolling: touch;
   }
 

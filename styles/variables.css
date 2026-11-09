@@ -158,11 +158,11 @@
   --size-font-lg: 22px;
   --size-font-xl: 28px;
   --size-container: 72rem;
-  --glass-fill: var(--bg-tertiary);
-  --glass-fill-strong: var(--bg-tertiary-hover);
+  --glass-fill: var(--bg-secondary);
+  --glass-fill-strong: var(--bg-secondary);
   --glass-border: transparent;
-  --glass-highlight: rgb(255 255 255 / 0.14);
-  --glass-shadow: var(--float-shadow);
+  --glass-highlight: rgb(255 255 255 / 0.06);
+  --glass-shadow: var(--card-glass);
   --glass-blur: 18px;
   --glass-saturate: 1.6;
 }

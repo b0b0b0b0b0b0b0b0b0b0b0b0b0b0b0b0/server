@@ -33,7 +33,7 @@ export const nl = {
     removeAnalysis: 'Uit geschiedenis verwijderen',
   },
   home: {
-    heroSubtitle: 'JVM-flags, Spark-analyse en plugin-updates — gratis, geen registratie.',
+    heroSubtitle: "JVM-flags, Spark-analyse, plugin-updates, RGB-verlopen en serverping — gratis, geen registratie.",
     heroBadge: 'Gratis · mtools.modrinth.black',
     toolsHeading: 'Tools',
     open: 'Openen',

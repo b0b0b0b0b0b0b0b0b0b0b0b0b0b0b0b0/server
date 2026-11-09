@@ -9,8 +9,6 @@
   border: none;
   border-radius: var(--size-radius-lg);
   background: var(--glass-fill-strong);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
 }
 
@@ -36,8 +34,6 @@
   padding: 24px 20px 28px;
   border-radius: var(--size-radius-lg);
   background: var(--glass-fill-strong);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
 }
 
@@ -87,8 +83,6 @@
   border: none;
   border-radius: var(--size-radius-lg);
   background: var(--glass-fill);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
 }
 
@@ -354,18 +348,6 @@
   padding: 10px 12px;
   border-radius: var(--size-radius);
   border: 1px solid var(--dropdown-border);
-  background: var(--popover-bg-muted);
-}
-
-.rgb-picker .lum-input,
-.rgb-picker .lum-btn {
-  background: var(--popover-bg);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border: 1px solid var(--dropdown-border);
-}
-
-.rgb-picker .lum-btn:hover {
   background: var(--popover-bg-muted);
 }
 

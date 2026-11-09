@@ -33,7 +33,7 @@ export const kk = {
     removeAnalysis: 'Тарихтан алу',
   },
   home: {
-    heroSubtitle: 'JVM флагтары, Spark талдауы және плагин жаңартулары — тегін, тіркелусіз.',
+    heroSubtitle: "JVM флагтары, Spark талдауы, плагин жаңартулары, RGB градиенттері және сервер пингі — тегін, тіркелусіз.",
     heroBadge: 'Тегін · mtools.modrinth.black',
     toolsHeading: 'Құралдар',
     open: 'Ашу',

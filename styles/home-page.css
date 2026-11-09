@@ -15,24 +15,8 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: var(--glass-fill-strong);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
-  pointer-events: none;
-}
-
-.home-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    145deg,
-    color-mix(in srgb, var(--glass-highlight) 70%, transparent) 0%,
-    transparent 48%
-  );
+  background: var(--bg-secondary);
+  box-shadow: var(--card-glass);
   pointer-events: none;
 }
 
@@ -59,21 +43,6 @@
   color: var(--color-text);
 }
 
-.home-hero-abbrev {
-  padding: 6px 10px;
-  border: 1px solid color-mix(in srgb, var(--accent-orange) 35%, var(--glass-border));
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-orange-bg) 55%, transparent);
-  backdrop-filter: blur(12px) saturate(1.5);
-  -webkit-backdrop-filter: blur(12px) saturate(1.5);
-  box-shadow: inset 0 1px 0 var(--glass-highlight);
-  color: var(--accent-orange);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  line-height: 1;
-}
-
 .home-hero-subtitle {
   margin: 0 0 20px;
   font-size: clamp(1rem, 2.2vw, 1.15rem);
@@ -90,15 +59,12 @@
 
 .home-hero-badge {
   padding: 6px 12px;
-  border: 1px solid var(--glass-border);
   border-radius: 999px;
-  background: var(--glass-fill);
-  backdrop-filter: blur(16px) saturate(1.6);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
-  box-shadow: inset 0 1px 0 var(--glass-highlight);
-  font-size: 0.75rem;
+  background: var(--bg-tertiary);
+  box-shadow: var(--btn-glass);
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-text-secondary);
+  color: var(--text-muted);
 }
 
 .home-hero-stack {
@@ -112,15 +78,12 @@
 
 .home-hero-stack li {
   padding: 6px 12px;
-  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--glass-border));
   border-radius: 999px;
-  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
-  backdrop-filter: blur(14px) saturate(1.5);
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  box-shadow: inset 0 1px 0 var(--glass-highlight);
-  font-size: 0.75rem;
+  background: var(--bg-tertiary);
+  box-shadow: var(--btn-glass);
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: rgb(var(--palette));
 }
 
 .home-tools-head {
@@ -182,8 +145,6 @@
   inset: 0;
   border-radius: inherit;
   background: var(--glass-fill);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
   pointer-events: none;
@@ -289,7 +250,7 @@
 .home-tool-card-desc {
   position: relative;
   z-index: 2;
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--color-text-secondary);
 }
@@ -308,12 +269,9 @@
 .home-tool-card-tags li {
   padding: 3px 7px;
   border-radius: 999px;
-  border: 1px solid var(--glass-border);
-  background: color-mix(in srgb, var(--glass-fill) 80%, transparent);
-  backdrop-filter: blur(10px) saturate(1.5);
-  -webkit-backdrop-filter: blur(10px) saturate(1.5);
-  box-shadow: inset 0 1px 0 var(--glass-highlight);
-  font-size: 0.62rem;
+  background: var(--bg-tertiary);
+  box-shadow: var(--btn-glass);
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--color-text-secondary);
 }

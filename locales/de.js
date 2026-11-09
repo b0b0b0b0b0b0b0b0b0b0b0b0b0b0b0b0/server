@@ -33,7 +33,7 @@ export const de = {
     removeAnalysis: 'Aus Verlauf entfernen',
   },
   home: {
-    heroSubtitle: 'JVM-Flags, Spark-Analyse und Plugin-Updates — kostenlos, ohne Anmeldung.',
+    heroSubtitle: "JVM-Flags, Spark-Analyse, Plugin-Updates, RGB-Verläufe und Server-Ping — kostenlos, ohne Anmeldung.",
     heroBadge: 'Kostenlos · mtools.modrinth.black',
     toolsHeading: 'Tools',
     open: 'Öffnen',

@@ -7,6 +7,7 @@ import '@/styles/cards.css';
 import '@/styles/forms.css';
 import '@/styles/tool-page.css';
 import '@/styles/flags-page.css';
+import '@/styles/plugins-page.css';
 import '@/styles/analyze-page.css';
 import '@/styles/rgb-page.css';
 import '@/styles/ping-page.css';

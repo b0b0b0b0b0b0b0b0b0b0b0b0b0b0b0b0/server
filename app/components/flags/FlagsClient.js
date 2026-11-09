@@ -36,7 +36,8 @@ import {
   scriptExtensionKey,
 } from '@/lib/tools/flags/scriptFilename';
 import { MEMORY_MAX, MEMORY_STEP } from '@/lib/config/constants';
-import { formatGiB, memoryPercent } from '@/lib/ui/formatGiB';
+import { formatGiB } from '@/lib/ui/formatGiB';
+import MemoryRange from '@/app/components/flags/MemoryRange';
 import { ENVIRONMENT_ICONS } from '@/lib/ui/EnvironmentIcons';
 import { SOFTWARE_ICONS } from '@/lib/ui/SoftwareIcons';
 
@@ -202,29 +203,16 @@ export default function FlagsClient() {
             </div>
           </div>
 
-          <div className="field lum-range">
-            <div className="lum-range-meta">
-              <label className="field-label" htmlFor="memory">{t('tools.flags.memory')}</label>
-              <span className="lum-range-value">{formatGiB(state.memory)}</span>
-            </div>
-            <div
-              className="lum-range-track-wrap"
-              style={{ '--range-percent': `${memoryPercent(state.memory, memoryMin, MEMORY_MAX)}%` }}
-            >
-              <div className="lum-range-track">
-                <div className="lum-range-fill" />
-              </div>
-              <input
-                id="memory"
-                className="lum-range-input"
-                type="range"
-                min={memoryMin}
-                max={MEMORY_MAX}
-                step={MEMORY_STEP}
-                value={state.memory}
-                onInput={(e) => persist({ memory: Number(e.target.value) })}
-              />
-            </div>
+          <MemoryRange
+            id="memory"
+            label={t('tools.flags.memory')}
+            value={state.memory}
+            min={memoryMin}
+            max={MEMORY_MAX}
+            step={MEMORY_STEP}
+            format={formatGiB}
+            onChange={(memory) => persist({ memory })}
+          >
             <p className="field-hint">{t('tools.flags.memoryHint')}</p>
             {showProxyMemoryWarning && (
               <p className="flags-proxy-memory-warning">
@@ -238,7 +226,7 @@ export default function FlagsClient() {
                 </a>
               </p>
             )}
-          </div>
+          </MemoryRange>
 
           <div className="toggle-group">
             <ToggleField

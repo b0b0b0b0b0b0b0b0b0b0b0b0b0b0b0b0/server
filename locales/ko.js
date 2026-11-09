@@ -33,7 +33,7 @@ export const ko = {
     removeAnalysis: '기록에서 제거',
   },
   home: {
-    heroSubtitle: 'JVM 플래그, Spark 분석 및 플러그인 업데이트 — 무료, 가입 불필요.',
+    heroSubtitle: "JVM 플래그, Spark 분석, 플러그인 업데이트, RGB 그라데이션, 서버 핑 — 무료, 가입 불필요.",
     heroBadge: '무료 · mtools.modrinth.black',
     toolsHeading: '도구',
     open: '열기',

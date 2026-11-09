@@ -33,7 +33,7 @@ export const tr = {
     removeAnalysis: 'Geçmişten kaldır',
   },
   home: {
-    heroSubtitle: 'JVM bayrakları, Spark analizi ve eklenti güncellemeleri — ücretsiz, kayıt gerekmez.',
+    heroSubtitle: "JVM bayrakları, Spark analizi, eklenti güncellemeleri, RGB gradyanları ve sunucu ping — ücretsiz, kayıt gerekmez.",
     heroBadge: 'Ücretsiz · mtools.modrinth.black',
     toolsHeading: 'Araçlar',
     open: 'Aç',

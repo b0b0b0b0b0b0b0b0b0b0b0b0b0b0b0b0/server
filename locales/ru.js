@@ -53,7 +53,7 @@ export const ru = {
     },
   },
   home: {
-    heroSubtitle: 'JVM-флаги, анализ Spark и трекер плагинов — бесплатно, без регистрации.',
+    heroSubtitle: "JVM-флаги, анализ Spark, обновления плагинов, RGB-градиенты и пинг серверов — бесплатно, без регистрации.",
     heroBadge: 'Бесплатно · mtools.modrinth.black',
     toolsHeading: 'Инструменты',
     open: 'Открыть',

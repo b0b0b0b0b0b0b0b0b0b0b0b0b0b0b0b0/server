@@ -33,7 +33,7 @@ export const ar = {
     removeAnalysis: 'إزالة من السجل',
   },
   home: {
-    heroSubtitle: 'أعلام JVM، تحليل Spark وتحديثات الإضافات — مجاناً، بدون تسجيل.',
+    heroSubtitle: "أعلام JVM، تحليل Spark، تحديثات الإضافات، تدرّجات RGB وفحص الخوادم — مجاناً، بدون تسجيل.",
     heroBadge: 'مجاني · mtools.modrinth.black',
     toolsHeading: 'الأدوات',
     open: 'فتح',

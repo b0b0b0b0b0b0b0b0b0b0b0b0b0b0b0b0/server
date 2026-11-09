@@ -33,7 +33,7 @@ export const he = {
     removeAnalysis: 'הסר מההיסטוריה',
   },
   home: {
-    heroSubtitle: 'דגלי JVM, ניתוח Spark ועדכוני תוספים — חינם, בלי הרשמה.',
+    heroSubtitle: "דגלי JVM, ניתוח Spark, עדכוני תוספים, מעברי צבע RGB ופינג לשרתים — חינם, בלי הרשמה.",
     heroBadge: 'חינם · mtools.modrinth.black',
     toolsHeading: 'כלים',
     open: 'פתח',

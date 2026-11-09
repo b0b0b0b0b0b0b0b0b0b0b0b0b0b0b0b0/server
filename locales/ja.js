@@ -33,7 +33,7 @@ export const ja = {
     removeAnalysis: '履歴から削除',
   },
   home: {
-    heroSubtitle: 'JVM フラグ、Spark 分析、プラグイン更新 — 無料、登録不要。',
+    heroSubtitle: "JVM フラグ、Spark 分析、プラグイン更新、RGB グラデーション、サーバー Ping — 無料、登録不要。",
     heroBadge: '無料 · mtools.modrinth.black',
     toolsHeading: 'ツール',
     open: '開く',

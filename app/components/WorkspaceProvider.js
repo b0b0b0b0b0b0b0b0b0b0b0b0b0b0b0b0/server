@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from '@/app/components/AppProviders';
 import { WorkspaceStore } from '@/lib/core/WorkspaceStore';
 
@@ -48,6 +48,8 @@ export function useWorkspace() {
 export default function WorkspaceProvider({ children }) {
   const { locale } = useLocale();
   const [workspace, setWorkspace] = useState(null);
+  const localeRef = useRef(locale);
+  localeRef.current = locale;
 
   useEffect(() => {
     const store = WorkspaceStore.load(window.localStorage);
@@ -74,6 +76,7 @@ export default function WorkspaceProvider({ children }) {
       if (!current) return current;
       const next = current.clone();
       mutator(next);
+      localizeDefaultServerNames(next, localeRef.current);
       return next;
     });
   }, []);

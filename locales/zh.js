@@ -33,7 +33,7 @@ export const zh = {
     removeAnalysis: '从历史记录中移除',
   },
   home: {
-    heroSubtitle: 'JVM 参数、Spark 分析与插件更新 — 免费，无需注册。',
+    heroSubtitle: "JVM 参数、Spark 分析、插件更新、RGB 渐变与服务器 Ping — 免费，无需注册。",
     heroBadge: '免费 · mtools.modrinth.black',
     toolsHeading: '工具',
     open: '打开',

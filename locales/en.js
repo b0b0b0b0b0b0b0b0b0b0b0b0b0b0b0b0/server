@@ -53,7 +53,7 @@ export const en = {
     },
   },
   home: {
-    heroSubtitle: 'JVM flags, Spark analysis, and plugin updates — free, no signup.',
+    heroSubtitle: "JVM flags, Spark analysis, plugin updates, RGB gradients and server ping — free, no signup.",
     heroBadge: 'Free · mtools.modrinth.black',
     toolsHeading: 'Tools',
     open: 'Open',
