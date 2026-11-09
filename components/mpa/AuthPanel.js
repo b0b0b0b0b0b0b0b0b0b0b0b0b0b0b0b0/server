@@ -7,6 +7,7 @@ import { errorText, passwordStrength, useMpaText } from '@/components/mpa/text'
 import { ErrorBox, Field, Frame, PasswordField, QuickLogin, Side, Spinner, Strength, Svg, USER_ICON } from '@/components/mpa/ui'
 import { randomNickname } from '@/components/mpa/nickname'
 
+const INSERT_PATH = 'M9 10l-5 5 5 5M20 4v7a4 4 0 0 1-4 4H4'
 const DICE_PATH = 'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01'
 
 function safeLocalNext() {
@@ -21,7 +22,7 @@ export default function AuthPanel() {
   const [password, setPassword] = useState('')
   const [website, setWebsite] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [example] = useState(randomNickname)
+  const [example, setExample] = useState('')
   const [focused, setFocused] = useState(null)
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
@@ -30,6 +31,20 @@ export default function AuthPanel() {
   const loginProof = useCaptcha('login')
   const registerProof = useCaptcha('register')
   const isRegister = mode === 'register'
+
+  useEffect(() => {
+    setExample(randomNickname())
+  }, [])
+
+  const fillNickname = () => {
+    if (!username && example) {
+      setUsername(example)
+      return
+    }
+    let next = randomNickname()
+    while (next === username) next = randomNickname()
+    setUsername(next)
+  }
 
   useEffect(() => {
     setBack(window.location.origin + safeLocalNext())
@@ -95,8 +110,7 @@ export default function AuthPanel() {
               onChange={(e) => setUsername(e.target.value)}
               onFocus={() => setFocused('username')}
               onBlur={() => setFocused((current) => (current === 'username' ? null : current))}
-              placeholder={(text.usernamePlaceholder || '').replace('{name}', example)}
-              suppressHydrationWarning
+              placeholder={example ? (text.usernamePlaceholder || '').replace('{name}', example) : ''}
               autoComplete="username"
               autoCapitalize="none"
               spellCheck={false}
@@ -104,8 +118,8 @@ export default function AuthPanel() {
               required
             />
             {isRegister ? (
-              <button type="button" className="mpa-eye mpa-dice" onClick={() => setUsername(randomNickname())} aria-label={text.randomNick} data-tooltip={text.randomNick}>
-                <Svg path={DICE_PATH} />
+              <button type="button" className={username ? 'mpa-eye mpa-dice' : 'mpa-eye'} onClick={fillNickname} aria-label={username ? text.randomNick : text.useNick} data-tooltip={username ? text.randomNick : text.useNick}>
+                <Svg path={username ? DICE_PATH : INSERT_PATH} />
               </button>
             ) : null}
           </Field>
