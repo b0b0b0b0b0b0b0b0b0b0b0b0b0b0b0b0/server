@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react'
 import GuardKitten from '@/components/mpa/Kitten'
 import { useCaptcha } from '@/components/mpa/useCaptcha'
 import { errorText, passwordStrength, useMpaText } from '@/components/mpa/text'
-import { ErrorBox, Field, Frame, PasswordField, QuickLogin, Side, Spinner, Strength, USER_ICON } from '@/components/mpa/ui'
+import { ErrorBox, Field, Frame, PasswordField, QuickLogin, Side, Spinner, Strength, Svg, USER_ICON } from '@/components/mpa/ui'
+import { randomNickname } from '@/components/mpa/nickname'
+
+const DICE_PATH = 'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01'
 
 function safeLocalNext() {
   const next = new URLSearchParams(window.location.search).get('next') || ''
@@ -18,6 +21,7 @@ export default function AuthPanel() {
   const [password, setPassword] = useState('')
   const [website, setWebsite] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [example] = useState(randomNickname)
   const [focused, setFocused] = useState(null)
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
@@ -85,19 +89,25 @@ export default function AuthPanel() {
         <form onSubmit={submit} className="mpa-form">
           <Field label={text.username} hint={isRegister ? text.usernameHint : null} icon={USER_ICON}>
             <input
-              className="mpa-input"
+              className={isRegister ? 'mpa-input mpa-input--toggle' : 'mpa-input'}
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               onFocus={() => setFocused('username')}
               onBlur={() => setFocused((current) => (current === 'username' ? null : current))}
-              placeholder={text.usernamePlaceholder}
+              placeholder={(text.usernamePlaceholder || '').replace('{name}', example)}
+              suppressHydrationWarning
               autoComplete="username"
               autoCapitalize="none"
               spellCheck={false}
               maxLength={24}
               required
             />
+            {isRegister ? (
+              <button type="button" className="mpa-eye mpa-dice" onClick={() => setUsername(randomNickname())} aria-label={text.randomNick} data-tooltip={text.randomNick}>
+                <Svg path={DICE_PATH} />
+              </button>
+            ) : null}
           </Field>
 
           <PasswordField

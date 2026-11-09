@@ -910,3 +910,15 @@ html:not(.dark) .mpa-page {
     animation: none;
   }
 }
+
+.mpa-dice .mpa-icon {
+  transition: transform 0.3s ease;
+}
+
+.mpa-dice:hover .mpa-icon {
+  transform: rotate(90deg);
+}
+
+.mpa-dice:active .mpa-icon {
+  transform: rotate(90deg) scale(0.85);
+}
