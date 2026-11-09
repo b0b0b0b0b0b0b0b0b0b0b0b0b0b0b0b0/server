@@ -273,7 +273,7 @@ export default function FooterKitten() {
     const unlockedCount = ACHIEVEMENTS.filter((item) => item.count <= count).length;
     const current = unlockedCount > 0 ? ACHIEVEMENTS[unlockedCount - 1] : null;
     return (<div className="fk">
-      <div className="fk-stage">
+      <div className="fk-stage pixel-tip" data-pixel-tip={t('pixel.footer')}>
         <button ref={ref} type="button" className={`fk-button${hop ? ' fk-button--hop' : ''}`} onClick={pet} onAnimationEnd={() => setHop(false)} aria-label={t('kitten.aria')}>
           <KittenFace mood={mood} look={look}/>
         </button>

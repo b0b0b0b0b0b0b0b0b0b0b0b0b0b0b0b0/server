@@ -190,3 +190,64 @@ html.oiia.oiia-chaos nav {
 html:not(.dark) .oiia-body {
   fill: #ffffff;
 }
+
+.pixel-tip[data-pixel-tip]:hover::after {
+  content: attr(data-pixel-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 6px 11px 7px;
+  border-radius: 10px;
+  background: rgb(52 56 65);
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0) 60%);
+  color: rgb(236 238 241);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px -6px rgb(0 0 0 / 0.55), 0 3px 8px rgb(0 0 0 / 0.28);
+  pointer-events: none;
+  animation: pixel-tip-in 0.17s cubic-bezier(0.2, 0.9, 0.3, 1.15);
+}
+
+.pixel-tip--left[data-pixel-tip]:hover::after {
+  left: 0;
+  transform: none;
+}
+
+.pixel-tip--right[data-pixel-tip]:hover::after {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+html:not(.dark) .pixel-tip[data-pixel-tip]:hover::after {
+  background: rgb(255 255 255);
+  color: rgb(33 37 41);
+  box-shadow: 0 10px 30px -8px rgb(0 0 0 / 0.22), 0 2px 6px rgb(0 0 0 / 0.08), 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+
+@keyframes pixel-tip-in {
+  from {
+    opacity: 0;
+    translate: 0 4px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (hover: none) {
+  .pixel-tip[data-pixel-tip]:hover::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-tip[data-pixel-tip]:hover::after {
+    animation: none;
+  }
+}

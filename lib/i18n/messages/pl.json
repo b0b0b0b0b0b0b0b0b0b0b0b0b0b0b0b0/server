@@ -31,35 +31,35 @@
     "accent": "Wszystko dla twojego serwera w jednym miejscu"
   },
   "kitten": {
-    "aria": "Pogłaszcz kotka",
-    "pet": "Pogłaszcz kotka",
+    "aria": "Pogłaszcz Piksela",
+    "pet": "Pogłaszcz Piksela",
     "petMore": "Mrrr! Pogłaszcz jeszcze",
     "waiting": "Bardzo na ciebie czeka",
     "petted": "Pogłaskano: {count}",
     "toNext": "jeszcze {count} do osiągnięcia",
     "unlocked": "Osiągnięcia: {count} z {total}",
-    "signIn": "Zaloguj się, żeby kotek cię zapamiętał",
-    "waking": "Kotek się budzi…",
+    "signIn": "Zaloguj się, żeby Piksel cię zapamiętał",
+    "waking": "Piksel się budzi…",
     "toastKicker": "Osiągnięcie odblokowane",
     "list": [
       {
         "title": "Pierwsze spotkanie",
-        "text": "Pogłaskałeś kotka! Zapamiętał cię"
+        "text": "Pogłaskałeś Piksela! Zapamiętał cię"
       },
       {
-        "title": "Kotek mruczy",
+        "title": "Piksel mruczy",
         "text": "Podoba mu się, głaszcz dalej"
       },
       {
         "title": "Ciepła łapka",
-        "text": "Kotek podał ci łapkę"
+        "text": "Piksel podał ci łapkę"
       },
       {
         "title": "Najlepszy przyjaciel",
-        "text": "Kotek mruczy na twój widok"
+        "text": "Piksel mruczy na twój widok"
       },
       {
-        "title": "Kotek w siódmym niebie",
+        "title": "Piksel w siódmym niebie",
         "text": "Jeszcze nikt go tak nie rozpieszczał"
       },
       {
@@ -68,59 +68,59 @@
       },
       {
         "title": "Władca mruczenia",
-        "text": "Kotek woła cię po imieniu"
+        "text": "Piksel woła cię po imieniu"
       },
       {
         "title": "Szczęśliwa łapka",
-        "text": "Kotek pomyślał życzenie o tobie"
+        "text": "Piksel pomyślał życzenie o tobie"
       },
       {
         "title": "Miękkie dłonie",
-        "text": "Kotek grzeje się o twoją rękę"
+        "text": "Piksel grzeje się o twoją rękę"
       },
       {
         "title": "Legenda modrinth.black",
-        "text": "Kotek opowiedział o tobie przyjaciołom"
+        "text": "Piksel opowiedział o tobie przyjaciołom"
       },
       {
         "title": "Mistrz drapania",
-        "text": "Wiesz, gdzie kotka podrapać"
+        "text": "Wiesz, gdzie Piksela podrapać"
       },
       {
         "title": "Maraton mruczenia",
-        "text": "Kotek mruczy bez przerwy"
+        "text": "Piksel mruczy bez przerwy"
       },
       {
-        "title": "Kotek-przytulak",
-        "text": "Kotek chce się przytulić"
+        "title": "Piksel-przytulak",
+        "text": "Piksel chce się przytulić"
       },
       {
         "title": "Koci jackpot",
-        "text": "Kotek miał ogromne szczęście"
+        "text": "Piksel miał ogromne szczęście"
       },
       {
         "title": "Kłębek szczęścia",
-        "text": "Kotek przyniósł ci swój kłębek"
+        "text": "Piksel przyniósł ci swój kłębek"
       },
       {
         "title": "Puszysta chmurka",
-        "text": "Kotek jest miękki jak chmurka"
+        "text": "Piksel jest miękki jak chmurka"
       },
       {
         "title": "Przyjaciel wszystkich kotków",
-        "text": "Kotek opowiedział o tobie wszystkim kotkom"
+        "text": "Piksel opowiedział o tobie wszystkim kotkom"
       },
       {
-        "title": "Kotek-strażnik",
-        "text": "Teraz kotek pilnuje twojego snu"
+        "title": "Piksel-strażnik",
+        "text": "Teraz Piksel pilnuje twojego snu"
       },
       {
         "title": "Gwiezdna łapka",
-        "text": "Kotek podarował ci gwiazdkę"
+        "text": "Piksel podarował ci gwiazdkę"
       },
       {
         "title": "Królewskie pieszczoty",
-        "text": "Kotek założył dla ciebie koronę"
+        "text": "Piksel założył dla ciebie koronę"
       },
       {
         "title": "Mruczący chór",
@@ -128,19 +128,19 @@
       },
       {
         "title": "Tęczowy ogonek",
-        "text": "Ogonek kotka zalśnił wszystkimi kolorami"
+        "text": "Ogonek Piksela zalśnił wszystkimi kolorami"
       },
       {
         "title": "Tajemnica kociego serca",
-        "text": "Kotek zdradził ci swój sekret"
+        "text": "Piksel zdradził ci swój sekret"
       },
       {
-        "title": "Kotek podróżnik",
-        "text": "Kotek chodzi za tobą po wszystkich stronach"
+        "title": "Piksel podróżnik",
+        "text": "Piksel chodzi za tobą po wszystkich stronach"
       },
       {
         "title": "Księżycowe mruczenie",
-        "text": "Kotek mruczy nawet przez sen"
+        "text": "Piksel mruczy nawet przez sen"
       },
       {
         "title": "Strażnik przytulności",
@@ -148,7 +148,7 @@
       },
       {
         "title": "Koci mędrzec",
-        "text": "Kotek uważa cię za mądrzejszego od siebie"
+        "text": "Piksel uważa cię za mądrzejszego od siebie"
       },
       {
         "title": "Wszechświat mruczenia",
@@ -160,24 +160,24 @@
       },
       {
         "title": "Wieczna miłość",
-        "text": "Kotek jest twój na zawsze"
+        "text": "Piksel jest twój na zawsze"
       }
     ],
     "grumpy": {
-      "aria": "Kotek nie chce, żeby go głaskać",
-      "title": "Kotek się obraził",
+      "aria": "Piksel nie chce, żeby go głaskać",
+      "title": "Piksel się obraził",
       "text": "Nie daje się głaskać, osiągnięć nie liczy",
       "sulks": [
         "Prych! Nie dotykaj",
-        "Kotek się odwrócił",
+        "Piksel się odwrócił",
         "Nie, nie, bez głaskania",
-        "Kotek udaje, że cię nie widzi",
+        "Piksel udaje, że cię nie widzi",
         "Machnął ogonem i poszedł"
       ]
     }
   },
   "account": {
-    "petKitten": "Pogłaszcz kotka",
+    "petKitten": "Pogłaszcz Piksela",
     "updates": "Aktualizacje",
     "favorites": "Ulubione",
     "collections": "Kolekcje",
@@ -233,12 +233,12 @@
     "off": "Wył.",
     "languageTitle": "Język",
     "languageStandard": "Dostępne języki",
-    "kittenSounds": "Dźwięki kotka",
+    "kittenSounds": "Dźwięki Piksela",
     "sharedNote": "To wspólne ustawienia: zmieniają się od razu tutaj, na modrinth.black i we wszystkich jego serwisach w tej przeglądarce.",
     "themeHint": "Wybierz preferowany motyw kolorów dla wszystkich stron ModrinthProxy na tym urządzeniu.",
     "soundsTitle": "Dźwięki",
     "soundsHint": "Też wspólne dla wszystkich stron.",
-    "kittenSoundsHint": "Ciche, miękkie dźwięki, gdy głaszczesz kotka. Nigdy nie grają same — tylko po kliknięciu.",
+    "kittenSoundsHint": "Ciche, miękkie dźwięki, gdy głaszczesz Piksela. Nigdy nie grają same — tylko po kliknięciu.",
     "languageWarn": "Język jest wspólny dla wszystkich stron: wybierz go tutaj, a włączy się na modrinth.black i we wszystkich jego serwisach."
   },
   "mpa": {
@@ -262,7 +262,7 @@
     "quickHint": "Hasło niepotrzebne. Jeśli nie masz jeszcze konta, utworzy się samo.",
     "telegram": "Kontynuuj z Telegram",
     "github": "Kontynuuj z GitHub",
-    "petKitten": "Pogłaszcz kotka",
+    "petKitten": "Pogłaszcz Piksela",
     "switchLogin": "Zaloguj się",
     "errors": {
       "invalid": "Błędny login lub hasło.",
@@ -325,5 +325,16 @@
     "stop": "Stop, stop, stop!",
     "warn": "Nie wklejaj niczego w to okno. To bardzo niebezpieczne!",
     "report": "Jeśli ktoś poprosił cię o wklejenie tu czegoś, natychmiast powiadom administrację strony!"
+  },
+  "pixel": {
+    "peek": "Cześć, jestem Piksel! Kliknij mnie",
+    "footer": "To jest Piksel — mieszka na samym dole strony",
+    "lost": "Piksel też szuka, ale tu pusto",
+    "found": "Piksel znalazł coś podobnego!",
+    "guard": "Piksel pilnuje wejścia. Nigdy nie podgląda haseł",
+    "header": "Piksel cieszy się, że cię widzi",
+    "sleepy": "Piksel drzemie. Pogłaszcz go, to się obudzi",
+    "extension": "Piksel mieszka też w rozszerzeniu",
+    "notFound": "Piksel też się zgubił, ale się nie smuci"
   }
 }
