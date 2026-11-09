@@ -318,6 +318,17 @@ export const ko = {
       },
     },
     plugins: {
+      track: {
+        title: "modrinth.black에서 업데이트 추적",
+        hint: "모든 서버의 Modrinth 플러그인이 자동으로 즐겨찾기에 추가되고, 업데이트는 계정의 «업데이트» 탭에 표시됩니다.",
+        none: "아직 Modrinth 플러그인이 없습니다",
+        syncing: "즐겨찾기에 추가 중…",
+        error: "실패했습니다 — 나중에 다시 시도합니다",
+        rate: "너무 잦습니다 — 몇 분 뒤 계속합니다",
+        added: "즐겨찾기에 추가됨: {n}",
+        ok: "추적 중인 플러그인: {n}",
+        open: "업데이트 열기",
+      },
       title: '플러그인 업데이트',
       description: '모든 플러그인 페이지를 확인하지 않고 플러그인 업데이트를 추적하세요.',
       homeDescription: 'Modrinth 및 Spigot — 한눈에 무엇이 구버전인지 확인하세요.',

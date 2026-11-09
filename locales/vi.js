@@ -318,6 +318,17 @@ export const vi = {
       },
     },
     plugins: {
+      track: {
+        title: "Theo dõi cập nhật trên modrinth.black",
+        hint: "Plugin Modrinth của mọi máy chủ sẽ tự vào mục yêu thích — bản cập nhật hiện ở thẻ «Cập nhật» trong tài khoản.",
+        none: "Chưa có plugin Modrinth",
+        syncing: "Đang thêm vào yêu thích…",
+        error: "Không thành công — sẽ thử lại sau",
+        rate: "Quá thường xuyên — tiếp tục sau vài phút",
+        added: "Đã thêm vào yêu thích: {n}",
+        ok: "Đang theo dõi {n} plugin",
+        open: "Mở cập nhật",
+      },
       title: 'Cập nhật plugin',
       description: 'Theo dõi cập nhật plugin mà không cần kiểm tra từng trang plugin.',
       homeDescription: 'Modrinth và Spigot — xem cái gì lỗi thời trong nháy mắt.',

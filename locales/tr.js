@@ -319,6 +319,17 @@ export const tr = {
       },
     },
     plugins: {
+      track: {
+        title: "modrinth.black’te güncellemeleri izle",
+        hint: "Tüm sunuculardaki Modrinth eklentileri kendiliğinden favorilere eklenir — güncellemeleri hesabının «Güncellemeler» sekmesinde görünür.",
+        none: "Henüz Modrinth eklentisi yok",
+        syncing: "Favorilere ekleniyor…",
+        error: "Olmadı — sonra tekrar denenecek",
+        rate: "Çok sık — birkaç dakika sonra devam",
+        added: "Favorilere eklendi: {n}",
+        ok: "{n} eklenti izleniyor",
+        open: "Güncellemeleri aç",
+      },
       title: 'Eklenti Güncellemeleri',
       description: 'Her eklenti sayfasını kontrol etmeden eklenti güncellemelerini takip edin.',
       homeDescription: 'Modrinth ve Spigot — hangilerinin güncel olmadığını bir bakışta görün.',

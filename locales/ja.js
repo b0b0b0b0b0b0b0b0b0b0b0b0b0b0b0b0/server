@@ -318,6 +318,17 @@ export const ja = {
       },
     },
     plugins: {
+      track: {
+        title: "modrinth.black で更新を追跡",
+        hint: "全サーバーの Modrinth プラグインが自動でお気に入りに追加され、更新はアカウントの「更新」タブに表示されます。",
+        none: "Modrinth のプラグインはまだありません",
+        syncing: "お気に入りに追加中…",
+        error: "うまくいきませんでした — 後で再試行します",
+        rate: "頻度が高すぎます — 数分後に再開します",
+        added: "お気に入りに追加: {n}",
+        ok: "追跡中のプラグイン: {n}",
+        open: "更新を開く",
+      },
       title: 'プラグイン更新',
       description: '各プラグインページを確認しなくても、更新を追跡できます。',
       homeDescription: 'Modrinth と Spigot — 古いプラグインを一覧で確認。',

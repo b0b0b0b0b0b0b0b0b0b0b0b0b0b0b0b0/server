@@ -318,6 +318,17 @@ export const nl = {
       },
     },
     plugins: {
+      track: {
+        title: "Updates volgen op modrinth.black",
+        hint: "Modrinth-plugins van alle servers gaan automatisch naar je favorieten — hun updates verschijnen op het tabblad Updates van je account.",
+        none: "Nog geen Modrinth-plugins",
+        syncing: "Toevoegen aan favorieten…",
+        error: "Mislukt — probeer het later opnieuw",
+        rate: "Te vaak — ga over een paar minuten verder",
+        added: "Toegevoegd aan favorieten: {n}",
+        ok: "{n} plugins gevolgd",
+        open: "Updates openen",
+      },
       title: 'Plugin-updates',
       description: 'Houd plugin-updates bij zonder elke pluginpagina handmatig te controleren.',
       homeDescription: 'Modrinth en Spigot — zie in één oogopslag wat verouderd is.',

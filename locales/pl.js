@@ -318,6 +318,17 @@ export const pl = {
       },
     },
     plugins: {
+      track: {
+        title: "Śledź aktualizacje na modrinth.black",
+        hint: "Pluginy z Modrinth ze wszystkich serwerów same trafią do ulubionych — ich aktualizacje pojawią się w zakładce „Aktualizacje” konta.",
+        none: "Na razie brak pluginów z Modrinth",
+        syncing: "Dodaję do ulubionych…",
+        error: "Nie udało się — spróbuję później",
+        rate: "Zbyt często — kontynuuję za kilka minut",
+        added: "Dodano do ulubionych: {n}",
+        ok: "Śledzone pluginy: {n}",
+        open: "Otwórz aktualizacje",
+      },
       title: 'Aktualizacje pluginów',
       description: 'Śledź aktualizacje pluginów bez sprawdzania każdej strony osobno.',
       homeDescription: 'Modrinth i Spigot — zobacz od razu, co jest nieaktualne.',

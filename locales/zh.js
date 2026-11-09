@@ -318,6 +318,17 @@ export const zh = {
       },
     },
     plugins: {
+      track: {
+        title: "在 modrinth.black 上跟踪更新",
+        hint: "所有服务器中的 Modrinth 插件会自动加入收藏，其更新会显示在账号的「更新」标签页。",
+        none: "暂无 Modrinth 插件",
+        syncing: "正在加入收藏…",
+        error: "失败了 — 稍后重试",
+        rate: "太频繁了 — 几分钟后继续",
+        added: "已加入收藏：{n}",
+        ok: "正在跟踪 {n} 个插件",
+        open: "打开更新",
+      },
       title: '插件更新',
       description: '无需逐个查看插件页面，即可跟踪插件更新。',
       homeDescription: 'Modrinth 和 Spigot — 一眼看出哪些已过时。',

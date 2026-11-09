@@ -20,6 +20,7 @@ import PluginCard from '@/app/components/plugins/PluginCard';
 import LumDropdown from '@/app/components/LumDropdown';
 import LumTooltip from '@/app/components/LumTooltip';
 import ServerSwitcher from '@/app/components/ServerSwitcher';
+import TrackUpdatesToggle from '@/app/components/plugins/TrackUpdatesToggle';
 import { useWorkspace } from '@/app/components/WorkspaceProvider';
 import { useMinecraftVersions } from '@/app/hooks/useMinecraftVersions';
 import {
@@ -487,6 +488,8 @@ export default function PluginsClient() {
             </LumTooltip>
           </div>
         </div>
+
+        <TrackUpdatesToggle />
 
         <div className="plugin-data-bar">
           {plugins.length > 0 && (

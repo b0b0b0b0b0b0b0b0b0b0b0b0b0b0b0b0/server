@@ -334,6 +334,17 @@ export const en = {
       },
     },
     plugins: {
+      track: {
+        title: "Track updates on modrinth.black",
+        hint: "Modrinth plugins from all servers go to your favorites automatically — their updates show up in the Updates tab of your account.",
+        none: "No Modrinth plugins yet",
+        syncing: "Adding to favorites…",
+        error: "That didn’t work — will retry later",
+        rate: "Too often — will continue in a couple of minutes",
+        added: "Added to favorites: {n}",
+        ok: "Tracking {n} plugins",
+        open: "Open updates",
+      },
       title: 'Plugin Updates',
       description: 'Keep track of plugin updates without checking every plugin page for updates.',
       homeDescription: 'Modrinth and Spigot — see what is outdated at a glance.',
