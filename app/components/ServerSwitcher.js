@@ -5,6 +5,7 @@ import { GripVertical, Plus, X } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
 import LumTooltip from '@/app/components/LumTooltip';
 import { useWorkspace } from '@/app/components/WorkspaceProvider';
+import AccountSync from '@/app/components/workspace/AccountSync';
 
 function nextServerName(serverList, template) {
   const names = new Set(serverList.map((server) => server.name));
@@ -245,6 +246,7 @@ export default function ServerSwitcher({ className = '' }) {
           </button>
         </LumTooltip>
       </div>
+      <AccountSync />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale } from '@/app/components/AppProviders';
 import { WorkspaceStore } from '@/lib/core/WorkspaceStore';
+import { useAccountSync } from '@/app/components/workspace/useAccountSync';
 
 const DEFAULT_SERVER_NAMES = {
   en: 'My Server',
@@ -71,6 +72,9 @@ export default function WorkspaceProvider({ children }) {
     workspace.save(window.localStorage);
   }, [workspace]);
 
+  const localizeStore = useCallback((store) => localizeDefaultServerNames(store, localeRef.current), []);
+  const account = useAccountSync(workspace, setWorkspace, localizeStore);
+
   const patch = useCallback((mutator) => {
     setWorkspace((current) => {
       if (!current) return current;
@@ -91,6 +95,7 @@ export default function WorkspaceProvider({ children }) {
         activeServer: null,
         serverList: [],
         pluginsFilter: 'all',
+        account,
       };
     }
 
@@ -102,8 +107,9 @@ export default function WorkspaceProvider({ children }) {
       activeServer: workspace.activeServer,
       serverList: workspace.serverList,
       pluginsFilter: workspace.pluginsFilter,
+      account,
     };
-  }, [workspace, patch]);
+  }, [workspace, patch, account]);
 
   return (
     <WorkspaceContext.Provider value={value}>
