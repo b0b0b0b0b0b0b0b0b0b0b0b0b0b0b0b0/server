@@ -1,27 +1,26 @@
 import { animals, colors, uniqueNamesGenerator } from 'unique-names-generator'
 
-const NOT_FOR_NAMES = new Set([
-  'black', 'white', 'brown', 'yellow', 'tan', 'beige', 'chocolate', 'coffee', 'peach',
-  'ape', 'baboon', 'monkey', 'gorilla', 'chimpanzee', 'orangutan', 'bonobo', 'mandrill', 'gibbon', 'primate', 'tarsier',
-  'booby', 'gayal', 'beaver', 'cougar', 'swallow', 'cockroach', 'bedbug', 'louse', 'leech', 'flea', 'tick', 'mite',
-  'hookworm', 'roundworm', 'worm', 'earthworm', 'earwig', 'planarian', 'slug', 'rat', 'pig', 'cow', 'cattle', 'bovid',
-  'mule', 'donkey', 'skunk', 'spider', 'tarantula', 'scorpion', 'piranha', 'vulture', 'hyena', 'jackal', 'mosquito',
-  'wasp', 'hornet', 'centipede', 'termite', 'locust', 'aphid', 'antlion', 'silverfish', 'lamprey', 'barnacle',
-  'mammal', 'amphibian', 'reptile', 'rodent', 'marsupial', 'cephalopod', 'canid', 'canidae', 'felidae', 'galliform',
-  'pinniped', 'xerinae', 'fowl', 'landfowl', 'gamefowl', 'wildfowl', 'junglefowl', 'guineafowl', 'mollusk', 'bug',
-  'constrictor', 'boa', 'asp', 'viper', 'anaconda', 'python', 'rattlesnake', 'cobra', 'snake', 'basilisk',
-  'rooster', 'chicken', 'sheep', 'goat', 'turkey', 'goose', 'ox', 'muskox', 'boar', 'hippopotamus', 'toad',
-  'crow', 'cuckoo', 'pigeon', 'dove', 'sloth', 'weasel', 'shrew', 'bass', 'grasshopper', 'peacock', 'peafowl',
+const SKIPPED_ANIMALS = new Set([
+  'amphibian', 'anaconda', 'antlion', 'ape', 'aphid', 'asp', 'baboon', 'barnacle', 'basilisk', 'bass', 'beaver',
+  'bedbug', 'boa', 'boar', 'bonobo', 'booby', 'bovid', 'bug', 'canid', 'canidae', 'cattle', 'centipede',
+  'cephalopod', 'chicken', 'chimpanzee', 'cobra', 'cockroach', 'constrictor', 'cougar', 'cow', 'crow', 'cuckoo',
+  'donkey', 'dove', 'earthworm', 'earwig', 'felidae', 'flea', 'fowl', 'galliform', 'gamefowl', 'gayal', 'gibbon',
+  'goat', 'goose', 'gorilla', 'grasshopper', 'guineafowl', 'hippopotamus', 'hookworm', 'hornet', 'hyena', 'jackal',
+  'junglefowl', 'lamprey', 'landfowl', 'leech', 'locust', 'louse', 'mammal', 'mandrill', 'marsupial', 'mite',
+  'mollusk', 'monkey', 'mosquito', 'mule', 'muskox', 'orangutan', 'ox', 'peacock', 'peafowl', 'pig', 'pigeon',
+  'pinniped', 'piranha', 'planarian', 'primate', 'python', 'rat', 'rattlesnake', 'reptile', 'rodent', 'rooster',
+  'roundworm', 'scorpion', 'sheep', 'shrew', 'silverfish', 'skunk', 'sloth', 'slug', 'snake', 'spider', 'swallow',
+  'tarantula', 'tarsier', 'termite', 'tick', 'toad', 'turkey', 'viper', 'vulture', 'wasp', 'weasel', 'wildfowl',
+  'worm', 'xerinae',
 ])
 
-const SAFE_COLORS = colors.filter((word) => !NOT_FOR_NAMES.has(word))
-const SAFE_ANIMALS = animals.filter((word) => !NOT_FOR_NAMES.has(word))
+const NAME_ANIMALS = animals.filter((word) => !SKIPPED_ANIMALS.has(word))
 const NICKNAME_RE = /^[A-Za-z0-9_]{3,24}$/
 
 export function randomNickname() {
   for (let attempt = 0; attempt < 30; attempt += 1) {
     const separator = Math.random() < 0.6 ? '' : '_'
-    const name = uniqueNamesGenerator({ dictionaries: [SAFE_COLORS, SAFE_ANIMALS], style: 'capital', separator, length: 2 })
+    const name = uniqueNamesGenerator({ dictionaries: [colors, NAME_ANIMALS], style: 'capital', separator, length: 2 })
     if (NICKNAME_RE.test(name)) return name
   }
   return 'Teal_Otter'
