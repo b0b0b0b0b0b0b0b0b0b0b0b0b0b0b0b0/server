@@ -5,6 +5,7 @@ import { SITE_PALETTES } from '@/lib/core/siteLook'
 import { LOCALES } from '@/lib/i18n/locales'
 import { useLocale, useT } from '@/components/i18n/I18nProvider'
 import { soundsMuted, setSoundsMuted, onSoundsMutedChange } from '@/app/components/kitten/softSounds'
+import { calmMode, setCalmMode, onCalmModeChange } from '@/app/components/kitten/calmMode'
 import { LOCALE_COOKIE, PALETTE_COOKIE, THEME_COOKIE, applyLook, readPalette, readTheme, writePref } from './sharedPrefs'
 
 const MAIN = 'https://modrinth.black'
@@ -125,7 +126,7 @@ function Sidebar({ signedIn, section }) {
   )
 }
 
-function AppearanceSection({ theme, palette, sounds, onTheme, onPalette, onSounds }) {
+function AppearanceSection({ theme, palette, sounds, calm, onTheme, onPalette, onSounds, onCalm }) {
   const t = useT()
   return (
     <>
@@ -220,6 +221,23 @@ function AppearanceSection({ theme, palette, sounds, onTheme, onPalette, onSound
             <span className="st-knob" />
           </button>
         </div>
+        <div className="st-row">
+          <label htmlFor="st-calm-switch" className="st-row-text">
+            <span className="st-row-title">{t('settings.calmMode')}</span>
+            <span className="st-row-hint">{t('settings.calmModeHint')}</span>
+          </label>
+          <button
+            id="st-calm-switch"
+            type="button"
+            role="switch"
+            aria-checked={calm}
+            onClick={onCalm}
+            className={`st-switch${calm ? ' st-switch--on' : ''}`}
+            data-tooltip={calm ? t('settings.on') : t('settings.off')}
+          >
+            <span className="st-knob" />
+          </button>
+        </div>
       </section>
     </>
   )
@@ -280,6 +298,7 @@ export default function SettingsPage({ section = 'appearance' }) {
   const [theme, setTheme] = useState('system')
   const [palette, setPalette] = useState('pink')
   const [sounds, setSounds] = useState(true)
+  const [calm, setCalm] = useState(false)
   const [locale, setLocale] = useState(siteLocale)
   const [signedIn, setSignedIn] = useState(null)
 
@@ -292,6 +311,7 @@ export default function SettingsPage({ section = 'appearance' }) {
       setTheme(readTheme())
       setPalette(readPalette(SITE_PALETTES))
       setSounds(!soundsMuted())
+      setCalm(calmMode())
     }
     const onVisible = () => {
       if (document.visibilityState === 'visible') sync()
@@ -303,10 +323,12 @@ export default function SettingsPage({ section = 'appearance' }) {
       .then((data) => setSignedIn(Boolean(data?.user)))
       .catch(() => setSignedIn(false))
     const offSounds = onSoundsMutedChange((muted) => setSounds(!muted))
+    const offCalm = onCalmModeChange(setCalm)
     window.addEventListener('focus', sync)
     document.addEventListener('visibilitychange', onVisible)
     return () => {
       offSounds()
+      offCalm()
       window.removeEventListener('focus', sync)
       document.removeEventListener('visibilitychange', onVisible)
     }
@@ -367,9 +389,11 @@ export default function SettingsPage({ section = 'appearance' }) {
                 theme={theme}
                 palette={palette}
                 sounds={sounds}
+                calm={calm}
                 onTheme={chooseTheme}
                 onPalette={choosePalette}
                 onSounds={() => setSoundsMuted(sounds)}
+                onCalm={() => setCalmMode(!calm)}
               />
             )}
           </div>

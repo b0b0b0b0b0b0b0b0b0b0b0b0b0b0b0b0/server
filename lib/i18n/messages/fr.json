@@ -240,6 +240,8 @@
     "soundsTitle": "Sons",
     "soundsHint": "Eux aussi sont communs à tous les sites.",
     "kittenSoundsHint": "Des sons doux et discrets quand vous caressez Pixel. Ils ne jouent jamais seuls — seulement après un clic.",
+    "calmMode": "Sans clignotements",
+    "calmModeHint": "Pour les personnes sensibles à la lumière : Pixel ne lancera pas de fête dansante avec des lumières clignotantes, même si tu le caresses beaucoup.",
     "languageWarn": "La langue est commune à tous les sites : choisissez-la ici et elle s'active sur modrinth.black et tous ses services."
   },
   "mpa": {

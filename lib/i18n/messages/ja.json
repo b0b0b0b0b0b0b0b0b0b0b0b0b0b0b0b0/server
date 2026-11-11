@@ -240,6 +240,8 @@
     "soundsTitle": "サウンド",
     "soundsHint": "こちらもすべてのサイトで共通です。",
     "kittenSoundsHint": "ピクセルをなでたときの小さくやさしい音。勝手には鳴らず、クリックしたときだけ鳴ります。",
+    "calmMode": "点滅なし",
+    "calmModeHint": "光に敏感な方へ：何回なでても、Pixel は点滅するライトのダンスパーティーを始めません。",
     "languageWarn": "言語はすべてのサイトで共通です。ここで選ぶと modrinth.black とすべてのサービスで切り替わります。"
   },
   "mpa": {

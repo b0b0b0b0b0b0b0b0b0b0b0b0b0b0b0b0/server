@@ -240,6 +240,8 @@
     "soundsTitle": "Sons",
     "soundsHint": "Também são compartilhados entre todos os sites.",
     "kittenSoundsHint": "Sons suaves e baixinhos quando você faz carinho no Pixel. Nunca tocam sozinhos — só depois de um clique.",
+    "calmMode": "Sem luzes piscando",
+    "calmModeHint": "Para quem é sensível à luz: o Pixel não começa a festa de dança com luzes piscando, por mais que você faça carinho.",
     "languageWarn": "O idioma é compartilhado entre todos os sites: escolha aqui e ele será ativado no modrinth.black e em todos os seus serviços."
   },
   "mpa": {

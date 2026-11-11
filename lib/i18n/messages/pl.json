@@ -240,6 +240,8 @@
     "soundsTitle": "Dźwięki",
     "soundsHint": "Też wspólne dla wszystkich stron.",
     "kittenSoundsHint": "Ciche, miękkie dźwięki, gdy głaszczesz Piksela. Nigdy nie grają same — tylko po kliknięciu.",
+    "calmMode": "Bez błysków",
+    "calmModeHint": "Dla osób wrażliwych na światło: Pixel nie zacznie imprezy tanecznej z migającymi światłami, choćbyś go długo głaskał.",
     "languageWarn": "Język jest wspólny dla wszystkich stron: wybierz go tutaj, a włączy się na modrinth.black i we wszystkich jego serwisach."
   },
   "mpa": {

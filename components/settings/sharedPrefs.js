@@ -1,6 +1,7 @@
 export const PALETTE_COOKIE = 'site-palette'
 export const THEME_COOKIE = 'site-theme'
 export const SOUNDS_COOKIE = 'site-kitten-sounds'
+export const CALM_COOKIE = 'site-kitten-calm'
 export const LOCALE_COOKIE = 'site-locale'
 
 const MAX_AGE = 60 * 60 * 24 * 365

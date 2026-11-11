@@ -240,6 +240,8 @@
     "soundsTitle": "Skaņas",
     "soundsHint": "Arī kopīgas visām vietnēm.",
     "kittenSoundsHint": "Klusas, maigas skaņas, kad glāsti Pikseli. Pašas neskan — tikai pēc klikšķa.",
+    "calmMode": "Bez zibšņiem",
+    "calmModeHint": "Gaismjutīgiem cilvēkiem: Pixel nesāks deju ballīti ar mirgojošām gaismām, lai cik daudz tu viņu glāstītu.",
     "languageWarn": "Valoda ir kopīga visām vietnēm: izvēlies to šeit, un tā ieslēgsies modrinth.black un visos tā pakalpojumos."
   },
   "mpa": {
