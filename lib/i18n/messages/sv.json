@@ -240,8 +240,6 @@
     "soundsTitle": "Ljud",
     "soundsHint": "Också gemensamma för alla sidor.",
     "kittenSoundsHint": "Tysta, mjuka ljud när du klappar Pixel. De spelas aldrig av sig själva — bara när du klickar.",
-    "calmMode": "Utan blinkande ljus",
-    "calmModeHint": "För ljuskänsliga: Pixel startar ingen dansfest med blinkande ljus, hur mycket du än klappar honom.",
     "languageWarn": "Språket är gemensamt för alla sidor: välj det här så slås det på på modrinth.black och alla dess tjänster."
   },
   "mpa": {

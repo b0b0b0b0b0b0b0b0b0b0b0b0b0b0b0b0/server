@@ -240,8 +240,6 @@
     "soundsTitle": "声音",
     "soundsHint": "同样对所有网站通用。",
     "kittenSoundsHint": "摸像素时轻柔的小声音。不会自己响起——只在点击时出现。",
-    "calmMode": "无闪光",
-    "calmModeHint": "适合对光敏感的人：无论怎么摸，Pixel 都不会开启带闪烁灯光的舞会。",
     "languageWarn": "语言对所有网站通用：在这里选择后，modrinth.black 及其所有服务都会切换。"
   },
   "mpa": {

@@ -240,8 +240,6 @@
     "soundsTitle": "Sounds",
     "soundsHint": "Also shared across all sites.",
     "kittenSoundsHint": "Quiet, soft sounds when you pet Pixel. They never play on their own — only when you click.",
-    "calmMode": "No flashing lights",
-    "calmModeHint": "For people sensitive to light: Pixel won’t start a dance party with flashing lights, no matter how much you pet him.",
     "languageWarn": "The language is shared across all sites: pick it here and it switches on modrinth.black and all its services."
   },
   "mpa": {
