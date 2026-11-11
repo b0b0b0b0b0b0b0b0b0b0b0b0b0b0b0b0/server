@@ -1397,7 +1397,7 @@
 }
 
 .plugin-track.is-on .plugin-track-icon {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .plugin-track-text {
@@ -1451,7 +1451,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-size: 0.8125rem;
   font-weight: 600;
 }

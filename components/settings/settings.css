@@ -132,7 +132,7 @@
 .st-nav-item--active,
 .st-nav-item--active:hover {
   background: rgb(var(--palette) / 0.15);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .st-nav-item svg {
@@ -237,7 +237,7 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .st-card {
@@ -808,12 +808,12 @@ html:not(.dark) .st-lang-ring {
 
 .top-nav-link.top-nav-link--icon:hover {
   background: rgb(var(--palette) / 0.08);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   box-shadow: none;
 }
 
 .top-nav-link.top-nav-link--icon.top-nav-link--active {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   background: rgb(31 41 55 / 0.4);
 }
 

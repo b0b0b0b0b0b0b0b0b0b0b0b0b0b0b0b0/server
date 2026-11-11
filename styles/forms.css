@@ -288,7 +288,7 @@
 
 .lum-dropdown.is-open .lum-dropdown-trigger {
   background: var(--bg-tertiary-hover);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .lum-dropdown-trigger-icon {
@@ -440,7 +440,7 @@
 }
 
 .lum-dropdown-item.is-active {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-weight: 600;
 }
 

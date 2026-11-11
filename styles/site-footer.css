@@ -57,7 +57,7 @@
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
   background: rgb(var(--palette) / 0.14);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -95,7 +95,7 @@
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  background: linear-gradient(120deg, rgb(var(--palette)), rgb(var(--palette-light)));
+  background: linear-gradient(120deg, rgb(var(--palette-text, var(--palette))), rgb(var(--palette-text-alt, var(--palette-light))));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,7 +121,7 @@
 
 .sf-accent {
   font-weight: 600;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .sf-heading {
@@ -170,7 +170,7 @@
 
 .sf-service--here,
 .sf-service--here:hover {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-weight: 700;
   background: transparent;
 }
@@ -274,7 +274,7 @@
 .sf-email:hover .sf-email-action,
 .sf-email--copied .sf-email-action,
 .sf-email--copied .sf-email-hint {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .sf-bottom {
@@ -304,7 +304,7 @@
   height: 2.4rem;
   border-radius: 50%;
   background: rgb(var(--palette) / 0.12);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .sf-disclaimer-icon svg {
@@ -406,7 +406,7 @@
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.5, 0.64, 1);
 }
@@ -416,7 +416,7 @@
 }
 
 .fk-login {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-weight: 600;
   text-decoration: none;
 }
@@ -489,7 +489,7 @@
   width: 18px;
   height: 18px;
   margin-left: -9px;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   pointer-events: none;
   opacity: 0;
   animation: fk-heart 1.2s ease-out forwards;
@@ -616,7 +616,7 @@
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .fk-toast-title {
@@ -687,7 +687,7 @@
 }
 
 .fk-say--rank {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .fk-button--grumpy,

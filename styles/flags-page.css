@@ -443,7 +443,7 @@
 }
 
 .mem-range-mark.is-near {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-weight: 800;
 }
 

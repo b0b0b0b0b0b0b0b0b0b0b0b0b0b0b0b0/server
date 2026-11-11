@@ -83,7 +83,7 @@
   box-shadow: var(--btn-glass);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .home-tools-head {
@@ -360,7 +360,7 @@
   border-radius: 999px;
   background: rgb(var(--palette) / 0.16);
   box-shadow: var(--nav-glass);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -387,7 +387,7 @@
   font-weight: 900;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  background: linear-gradient(120deg, var(--text-primary) 20%, rgb(var(--palette)) 70%, rgb(var(--palette-light)));
+  background: linear-gradient(120deg, var(--text-primary) 20%, rgb(var(--palette-text, var(--palette))) 70%, rgb(var(--palette-text-alt, var(--palette-light))));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -505,7 +505,7 @@
 
 .home-ping-chip:hover {
   background: var(--bg-tertiary-hover);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .home-ping-chip:active {
@@ -628,7 +628,7 @@
 
 .home-ping-features svg {
   flex-shrink: 0;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 @media (max-width: 860px) {

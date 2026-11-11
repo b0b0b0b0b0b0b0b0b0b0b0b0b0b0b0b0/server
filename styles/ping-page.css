@@ -13,7 +13,7 @@
 
 .ping-page .tool-page-title-icon--ping {
   background: rgb(var(--palette) / 0.14);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .ping-page .ping-section {
@@ -643,7 +643,7 @@
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   background: rgb(var(--palette) / 0.1);
   border: 1px solid rgb(var(--palette) / 0.35);
   border-radius: 4px;

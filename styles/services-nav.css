@@ -61,7 +61,7 @@
 }
 
 .nav-more-item--here .nav-more-title {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .nav-more {

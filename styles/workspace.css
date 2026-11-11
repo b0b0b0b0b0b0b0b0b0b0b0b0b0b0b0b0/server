@@ -42,7 +42,7 @@
 
 .server-switcher-tab.is-active {
   background: var(--bg-tertiary);
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
   font-weight: 700;
   box-shadow: var(--btn-glass) !important;
   cursor: text;
@@ -243,7 +243,7 @@
 
 .server-switcher-tab-wrap.is-dragging .server-switcher-grip {
   opacity: 1;
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .plugins-page .server-switcher-tab.is-active {
@@ -264,7 +264,7 @@
 }
 
 .ws-sync-cta {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .ws-sync-status {
@@ -546,7 +546,7 @@
 }
 
 .ws-mode.is-active .ws-mode-title {
-  color: rgb(var(--palette));
+  color: rgb(var(--palette-text, var(--palette)));
 }
 
 .ws-mode-text {
