@@ -812,6 +812,16 @@
   border-radius: 2px;
 }
 
+.ping-page .debug-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+}
+
+.ping-page .debug-link:hover {
+  color: rgb(var(--palette));
+}
+
 .ping-page .debug-label {
   color: var(--text-muted);
   min-width: 180px;

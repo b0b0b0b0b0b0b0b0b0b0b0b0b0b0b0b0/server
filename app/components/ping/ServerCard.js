@@ -205,11 +205,23 @@ export class ServerCard extends React.Component {
           </div>)}
       </div>);
     }
+    regionName(code) {
+        try {
+            const name = new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' }).of(code);
+            return name && name !== code ? `${name} (${code})` : code;
+        }
+        catch {
+            return code;
+        }
+    }
     renderDebugInfo() {
         const status = this.props.server.getStatus();
         if (!status)
             return null;
         const { debugExpanded } = this.state;
+        const network = status.network;
+        const rawIp = String(status.resolvedIP || '').replace(/^\[|\]$/g, '');
+        const lookupIp = /^[0-9a-f.:]+$/i.test(rawIp) && /\d/.test(rawIp) ? rawIp : '';
         return (<div className="debug-section">
         <button className="debug-toggle" onClick={this.toggleDebug} aria-expanded={debugExpanded}>
           <span className="debug-icon">▶</span>
@@ -226,8 +238,44 @@ export class ServerCard extends React.Component {
             </div>
             <div className="debug-row">
               <span className="debug-label">{pt('ipLabel')}</span>
-              <span className="debug-value">{status.resolvedIP || 'N/A'}</span>
+              <span className="debug-value">
+                {status.resolvedIP || 'N/A'}
+                {lookupIp && (<>
+                    {' · '}
+                    <a className="debug-link" href={`https://ipinfo.io/${lookupIp}`} target="_blank" rel="noopener noreferrer">{pt('viewHosting')}</a>
+                  </>)}
+              </span>
             </div>
+            {network?.name && (<div className="debug-row">
+                <span className="debug-label">{pt('hostingLabel')}</span>
+                <span className="debug-value">{network.name}</span>
+              </div>)}
+            {network?.protection && (<div className="debug-row">
+                <span className="debug-label">{pt('protectionLabel')}</span>
+                <span className="debug-value">{network.protection}</span>
+              </div>)}
+            {network?.asn && (<div className="debug-row">
+                <span className="debug-label">ASN:</span>
+                <span className="debug-value">
+                  <a className="debug-link" href={`https://bgp.he.net/AS${network.asn}`} target="_blank" rel="noopener noreferrer">AS{network.asn}</a>
+                </span>
+              </div>)}
+            {network?.prefix && (<div className="debug-row">
+                <span className="debug-label">{pt('subnetLabel')}</span>
+                <span className="debug-value">{network.prefix}</span>
+              </div>)}
+            {network?.country && (<div className="debug-row">
+                <span className="debug-label">{pt('netCountryLabel')}</span>
+                <span className="debug-value">{this.regionName(network.country)}</span>
+              </div>)}
+            {network?.registry && (<div className="debug-row">
+                <span className="debug-label">{pt('registryLabel')}</span>
+                <span className="debug-value">{network.registry}</span>
+              </div>)}
+            {network?.ptr && (<div className="debug-row">
+                <span className="debug-label">{pt('ptrLabel')}</span>
+                <span className="debug-value">{network.ptr}</span>
+              </div>)}
             <div className="debug-row">
               <span className="debug-label">{pt('portLabel')}</span>
               <span className="debug-value">{status.port || this.props.server.getPort()}</span>
