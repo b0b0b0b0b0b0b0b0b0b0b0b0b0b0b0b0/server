@@ -11,12 +11,12 @@ import { MinecraftServer } from '@/app/components/ping/MinecraftServer';
 import { MinecraftPlayer } from '@/app/components/ping/MinecraftPlayer';
 import { PortValidator } from '@/app/components/ping/PortValidator';
 import { setPingTranslator } from '@/app/components/ping/pingText';
+import { pingAddressPath, readPingAddress } from '@/lib/tools/ping/addressPath';
 
 function writeAddressToUrl(address) {
   const url = new URL(window.location.href);
-  if (address) url.searchParams.set('s', address);
-  else url.searchParams.delete('s');
-  window.history.replaceState({}, '', url.pathname + url.search);
+  url.searchParams.delete('s');
+  window.history.replaceState({}, '', pingAddressPath(address) + url.search);
 }
 
 export default function PingClient() {
@@ -89,7 +89,7 @@ export default function PingClient() {
   useEffect(() => {
     if (started.current) return;
     started.current = true;
-    const address = new URLSearchParams(window.location.search).get('s');
+    const address = readPingAddress(window.location.pathname, window.location.search);
     setReady(true);
     if (address) searchServer(address);
   }, [searchServer]);

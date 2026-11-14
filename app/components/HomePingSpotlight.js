@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Activity, Boxes, Search, Shirt, Users, ArrowRight } from 'lucide-react';
 import { useLocale } from '@/app/components/AppProviders';
+import { pingAddressPath } from '@/lib/tools/ping/addressPath';
 
 const EXAMPLES = ['mc.hypixel.net', '2b2t.org', 'play.cubecraft.net'];
 
@@ -14,7 +15,7 @@ export default function HomePingSpotlight() {
 
   const open = (value) => {
     const clean = value.trim();
-    router.push(clean ? `/tools/ping?s=${encodeURIComponent(clean)}` : '/tools/ping');
+    router.push(pingAddressPath(clean));
   };
 
   const submit = (event) => {

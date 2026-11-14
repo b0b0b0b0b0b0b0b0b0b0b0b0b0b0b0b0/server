@@ -3,7 +3,8 @@ import { pt } from './pingText';
 import React from 'react';
 import { isMeaningfulBedrockVersionName } from './bedrockPing';
 import { MotdFormatter } from './MotdFormatter';
-const sharePathUrl = (origin, address) => `${origin}/tools/ping?s=${encodeURIComponent(address)}`;
+import { pingAddressPath } from '@/lib/tools/ping/addressPath';
+const sharePathUrl = (origin, address) => `${origin}${pingAddressPath(address)}`;
 export class ServerCard extends React.Component {
     refreshTimer = null;
     constructor(props) {
