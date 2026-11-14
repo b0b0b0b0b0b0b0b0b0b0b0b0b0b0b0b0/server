@@ -13,6 +13,7 @@ export class ServerCard extends React.Component {
             debugExpanded: false,
             dnsExpanded: false,
             motdExpanded: false,
+            modsExpanded: false,
             copiedIndex: null,
             linkCopied: false,
             refreshCooldown: 0,
@@ -56,6 +57,9 @@ export class ServerCard extends React.Component {
     };
     toggleDns = () => {
         this.setState({ dnsExpanded: !this.state.dnsExpanded });
+    };
+    toggleMods = () => {
+        this.setState({ modsExpanded: !this.state.modsExpanded });
     };
     toggleMotd = () => {
         this.setState({ motdExpanded: !this.state.motdExpanded });
@@ -371,6 +375,66 @@ export class ServerCard extends React.Component {
           </div>)}
       </div>);
     }
+    getServerFacts(status) {
+        const rows = [];
+        if (status.software) {
+            rows.push([pt('software'), status.software]);
+        }
+        if (status.modpack?.name) {
+            rows.push([pt('modpackLabel'), [status.modpack.name, status.modpack.version].filter(Boolean).join(' ')]);
+        }
+        if (typeof status.chat?.signed === 'boolean') {
+            rows.push([pt('chatSigning'), status.chat.signed ? pt('chatSigningOn') : pt('chatSigningOff')]);
+        }
+        if (status.chat?.noReports) {
+            rows.push([pt('chatReports'), pt('chatReportsOff')]);
+        }
+        return rows;
+    }
+    renderServerFacts(rows) {
+        return (<div className="mc-detail-block mc-detail-full mc-bedrock-details">
+        <div className="mc-detail-label">{pt('serverFacts')}</div>
+        <div className="mc-bedrock-grid">
+          {rows.map(([key, value]) => (<div className="mc-bedrock-row" key={key}>
+              <span className="mc-bedrock-key">{key}</span>
+              <span className="mc-bedrock-val">{value}</span>
+            </div>))}
+        </div>
+      </div>);
+    }
+    renderMods() {
+        const mods = this.props.server.getStatus()?.mods;
+        if (!mods?.list || mods.list.length === 0)
+            return null;
+        const { modsExpanded } = this.state;
+        return (<div className="debug-section">
+        <button className="debug-toggle" onClick={this.toggleMods} aria-expanded={modsExpanded}>
+          <span className="debug-icon">▶</span>
+          {pt('modsTitle', { count: mods.list.length })}
+        </button>
+        {modsExpanded && (<div className="debug-content">
+            {mods.truncated && (<div className="motd-code-note">{pt('modsTruncated')}</div>)}
+            <div className="dns-table-wrapper">
+              <table className="dns-table dns-table--mods">
+                <thead>
+                  <tr>
+                    <th>{pt('modCol')}</th>
+                    <th>{pt('versionCol')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mods.list.map((mod) => (<tr key={mod.id}>
+                      <td>
+                        <a href={`https://modrinth.black/mods?q=${encodeURIComponent(mod.id)}`} target="_blank" rel="noopener noreferrer">{mod.id}</a>
+                      </td>
+                      <td>{mod.version || '—'}</td>
+                    </tr>))}
+                </tbody>
+              </table>
+            </div>
+          </div>)}
+      </div>);
+    }
     renderServerLink() {
         const link = this.getServerLink();
         return (<div className="server-link-copy">
@@ -446,9 +510,12 @@ export class ServerCard extends React.Component {
                     });
                     hasRealPlayers = realPlayers.length > 0;
                 }
-                if (!hasRealPlayers && !bedrockEdition && !bedrockPrimary)
+                const serverFacts = this.getServerFacts(status);
+                if (!hasRealPlayers && !bedrockEdition && !bedrockPrimary && serverFacts.length === 0)
                     return null;
                 return (<div className="mc-details">
+              {serverFacts.length > 0 && this.renderServerFacts(serverFacts)}
+
               {hasRealPlayers && status.players?.sample && (() => {
                         const realPlayers = status.players.sample
                             .filter(p => p.name && p.name.trim().length > 0)
@@ -491,6 +558,7 @@ export class ServerCard extends React.Component {
         </div>
 
         {isOnline && (<div className="server-debug-info">
+            {this.renderMods()}
             {this.renderMotdCodes()}
             {this.renderDebugInfo()}
             {this.renderDnsInfo()}

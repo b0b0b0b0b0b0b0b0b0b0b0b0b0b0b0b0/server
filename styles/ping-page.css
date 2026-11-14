@@ -895,6 +895,22 @@
   white-space: nowrap;
 }
 
+.ping-page .dns-table--mods th:nth-child(2),
+.ping-page .dns-table--mods td:nth-child(2) {
+  width: 40%;
+  white-space: normal;
+}
+
+.ping-page .dns-table--mods a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+}
+
+.ping-page .dns-table--mods a:hover {
+  color: rgb(var(--palette));
+}
+
 .ping-page .dns-table tbody tr {
   transition: all 0.2s ease;
 }
