@@ -100,9 +100,11 @@ function YarnBall() {
 }
 function LogoInPaw() {
     return (<g stroke="none">
-      <path d="M18.7 14.9 21.9 20.4H15.5Z" fill="currentColor"/>
-      <path d="M18.7 16.4 20.6 19.6H16.8Z" fill="white"/>
-      <path d="M19.3 17.4C18.9 17 18.1 17.1 18.1 17.7 18.1 18.4 19.4 18.3 19.4 19 19.4 19.5 18.6 19.6 18.1 19.2" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+      <g transform="rotate(-16 18.7 19.4)">
+        <path d="M18.7 14.9 21.9 20.4H15.5Z" fill="currentColor"/>
+        <path d="M18.7 16.4 20.6 19.6H16.8Z" fill="white"/>
+        <path d="M19.3 17.4C18.9 17 18.1 17.1 18.1 17.7 18.1 18.4 19.4 18.3 19.4 19 19.4 19.5 18.6 19.6 18.1 19.2" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+      </g>
       {[16.3, 21.1].map((cx) => (<g key={cx}>
           <ellipse cx={cx} cy="20.5" rx="1.05" ry="0.85" fill="currentColor"/>
           <circle cx={cx - 0.35} cy="20.2" r="0.22" fill="white" fillOpacity="0.55"/>
