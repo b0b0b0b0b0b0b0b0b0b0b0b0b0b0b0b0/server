@@ -220,9 +220,9 @@ export function PixelFace(props) {
 
 export function PixelNameTag(props) {
     const { level, size = 20, label = '', className = '', children } = props;
-    return (<span className={`pixel-name-tag ${className}`} style={level ? { position: 'relative', display: 'inline-flex', minWidth: 0, maxWidth: '100%', marginRight: Math.round(size * 0.3) } : { display: 'inline-flex', minWidth: 0, maxWidth: '100%' }}>
+    return (<span className={`pixel-name-tag ${className}`} style={level ? { position: 'relative', display: 'inline-flex', minWidth: 0, maxWidth: '100%', marginRight: Math.round(size * 0.45) } : { display: 'inline-flex', minWidth: 0, maxWidth: '100%' }}>
       {children}
-      {level ? (<span role="img" aria-label={label || undefined} title={label || undefined} className="fk-badge" style={{ position: 'absolute', top: -Math.round(size * 0.5), right: -Math.round(size * 0.4), width: size, height: size, display: 'inline-flex', color: 'rgb(var(--palette, 27 217 106))', transform: 'rotate(12deg)' }}>
+      {level ? (<span role="img" aria-label={label || undefined} title={label || undefined} className="fk-badge" style={{ position: 'absolute', top: -Math.round(size * 0.4), right: -Math.round(size * 0.55), width: size, height: size, display: 'inline-flex', color: 'rgb(var(--palette, 27 217 106))', transform: 'rotate(12deg)' }}>
           <PixelFace level={level} size={size}/>
         </span>) : null}
     </span>);
