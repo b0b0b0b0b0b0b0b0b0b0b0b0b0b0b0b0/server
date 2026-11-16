@@ -4,7 +4,7 @@ import { useMessages, useT } from '@/components/i18n/I18nProvider';
 import { soundsMuted } from '@/app/components/kitten/softSounds';
 import { useKittenShy } from '@/app/components/kitten/kittenShy';
 import { PixelFace } from '@/app/components/kitten/PixelOutfit';
-import PixelInspect from '@/app/components/kitten/PixelInspect';
+import PixelInspect, { useCoarsePointer, useInspectPress } from '@/app/components/kitten/PixelInspect';
 const PURR_URL = '/sounds/kitten-purr.mp3';
 const FLUSH_MS = 700;
 const MAX_BATCH = 5;
@@ -116,6 +116,8 @@ export default function FooterKitten() {
     const [loginHref, setLoginHref] = useState('/login');
     const [toast, setToast] = useState(null);
     const [inspecting, setInspecting] = useState(false);
+    const press = useInspectPress(() => setInspecting(true));
+    const coarse = useCoarsePointer();
     const moodTimer = useRef(undefined);
     const toastTimer = useRef(undefined);
     const flushTimer = useRef(undefined);
@@ -259,11 +261,8 @@ export default function FooterKitten() {
     const unlockedCount = ACHIEVEMENTS.filter((item) => item.count <= count).length;
     const current = unlockedCount > 0 ? ACHIEVEMENTS[unlockedCount - 1] : null;
     return (<div className="fk">
-      <div className="fk-stage pixel-tip" data-pixel-tip={`${t('pixel.footer')} · ${t('pixel.inspectTip')}`}>
-        <button ref={ref} type="button" className={`fk-button${hop ? ' fk-button--hop' : ''}`} onClick={pet} onContextMenu={(event) => {
-                event.preventDefault();
-                setInspecting(true);
-            }} onAnimationEnd={() => setHop(false)} aria-label={t('kitten.aria')}>
+      <div className="fk-stage pixel-tip" data-pixel-tip={`${t('pixel.footer')} · ${t(coarse ? 'pixel.inspectTipTouch' : 'pixel.inspectTip')}`}>
+        <button ref={ref} type="button" className={`fk-button pixel-press${hop ? ' fk-button--hop' : ''}`} onClick={pet} {...press} onAnimationEnd={() => setHop(false)} aria-label={t('kitten.aria')}>
           <PixelFace mood={shy ? 'look' : mood} look={look} paws={shy} level={signedIn ? unlockedCount : 0} />
         </button>
         {hearts.map((heart) => (<span key={heart.id} className="fk-heart" style={{
@@ -299,7 +298,7 @@ export default function FooterKitten() {
           level={signedIn ? unlockedCount : 0}
           title={current ? current.title : t('pixel.inspectTitle')}
           subtitle={current ? t('pixel.inspectLevel', { n: unlockedCount }) : ''}
-          hint={t('pixel.inspectHint')}
+          hint={t(coarse ? 'pixel.inspectHintTouch' : 'pixel.inspectHint')}
           closeLabel={t('pixel.inspectClose')}
           onClose={() => setInspecting(false)}
         />
