@@ -756,7 +756,33 @@
 
 /* pixel-outfits */
 .fk-cheek--love {
-  fill: rgb(244 114 182 / 0.45);
+  fill: var(--fk-blush, #f472b6);
+  fill-opacity: 0.85;
+}
+
+.fk-cheek.fk-cheek--blush {
+  fill: var(--fk-blush, #f472b6);
+  fill-opacity: 1;
+}
+
+.fk-tone-fill {
+  fill: color-mix(in srgb, currentColor 70%, white);
+}
+
+.fk-tone-fill-light {
+  fill: color-mix(in srgb, currentColor 40%, white);
+}
+
+.fk-tone-stroke {
+  stroke: color-mix(in srgb, currentColor 75%, white);
+}
+
+.fk-tone-stroke-light {
+  stroke: color-mix(in srgb, currentColor 45%, white);
+}
+
+.fk-tone-stroke-deep {
+  stroke: color-mix(in srgb, currentColor 65%, black);
 }
 
 .fk-sparkle {

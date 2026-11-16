@@ -1,5 +1,5 @@
 'use client';
-import { useId } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 export const KITTEN_WEAR = { blush: 5, logo: 10, yarn: 15, star: 19, crown: 20, tail: 22, hearts: 30, bell: 33, bow: 38, sparkles: 42, gold: 50, daisy: 60, glasses: 80, wings: 100, halo: 150, love: 175, aurora: 200 };
 function KittenCrown({ shine = false }) {
   return (
@@ -47,10 +47,10 @@ const FLOATING_HEARTS = [
 
 function Wings() {
     const lobes = ['M4.6 9.2C1.4 4.6-1.8 5.4-1 8.4-.5 10.2 2 10.6 4.4 10.4Z', 'M4.4 11.2C1.6 11.4-.2 13.4.9 14.8 1.9 16 3.9 14.2 4.8 12.4Z'];
-    return (<g className="fk-wings" stroke="#7dd3fc" strokeWidth="0.5" strokeLinejoin="round">
+    return (<g className="fk-wings fk-tone-stroke" stroke="#7dd3fc" strokeWidth="0.5" strokeLinejoin="round">
       {[false, true].map((mirror) => (<g key={String(mirror)} transform={mirror ? 'matrix(-1 0 0 1 24 0)' : undefined} className={`fk-wing fk-wing--${mirror ? 'right' : 'left'}`}>
-          {lobes.map((d) => <path key={d} d={d} fill="#7dd3fc" fillOpacity="0.5"/>)}
-          <path d="M3.6 9.6Q1.4 8.4.4 7.6M3.6 12.4Q2.2 13.2 1.6 14" stroke="#bae6fd" strokeWidth="0.35"/>
+          {lobes.map((d) => <path key={d} d={d} className="fk-tone-fill-light" fill="#7dd3fc" fillOpacity="0.5"/>)}
+          <path d="M3.6 9.6Q1.4 8.4.4 7.6M3.6 12.4Q2.2 13.2 1.6 14" className="fk-tone-stroke-light" stroke="#bae6fd" strokeWidth="0.35"/>
         </g>))}
     </g>);
 }
@@ -73,7 +73,7 @@ function Halo() {
 }
 function FloatingHeart({ x, y, delay }) {
     return (<g transform={`translate(${x} ${y})`}>
-      <path d={HEART_PATH} className="fk-float-heart" style={{ animationDelay: delay }} stroke="none" fill="#f472b6" transform="scale(0.09) translate(-12 -13)"/>
+      <path d={HEART_PATH} className="fk-float-heart fk-tone-fill-light" style={{ animationDelay: delay }} stroke="none" fill="#f472b6" transform="scale(0.09) translate(-12 -13)"/>
     </g>);
 }
 function Sparkle({ x, y, size, delay, className = 'fk-sparkle' }) {
@@ -93,8 +93,8 @@ function RainbowTail({ id }) {
 }
 function YarnBall() {
     return (<g strokeLinecap="round">
-      <path d="M5.2 22Q8.4 24.2 10.6 21.6" stroke="#f472b6" strokeWidth="0.55"/>
-      <circle cx="3.2" cy="20.4" r="2.5" fill="#f9a8d4" stroke="#db2777" strokeWidth="0.6"/>
+      <path d="M5.2 22Q8.4 24.2 10.6 21.6" className="fk-tone-stroke" stroke="#f472b6" strokeWidth="0.55"/>
+      <circle cx="3.2" cy="20.4" r="2.5" className="fk-tone-fill-light fk-tone-stroke-deep" fill="#f9a8d4" stroke="#db2777" strokeWidth="0.6"/>
       <path d="M1.2 19.4Q3.2 18.4 5 21.4M1.6 21.6Q3.4 19.2 5.6 19.6M2.6 18Q3.2 20.4 2.4 22.8" stroke="#fff" strokeOpacity="0.75" strokeWidth="0.45"/>
     </g>);
 }
@@ -116,18 +116,49 @@ function LogoInPaw() {
 }
 function Bell({ gold }) {
     return (<g>
-      <path d="M5.4 18.2Q12 22.8 18.6 18.2" stroke={gold ? '#f59e0b' : '#f43f5e'} strokeWidth="1.5"/>
+      <path d="M5.4 18.2Q12 22.8 18.6 18.2" className={gold ? undefined : 'fk-tone-stroke-light'} stroke={gold ? '#f59e0b' : '#f43f5e'} strokeWidth="1.5"/>
       <circle cx="12" cy="21.1" r="1.2" fill="#fbbf24" stroke="#d97706" strokeWidth="0.5"/>
       <path d="M11.4 21.4h1.2" stroke="#b45309" strokeWidth="0.4"/>
       <circle cx="11.6" cy="20.6" r="0.28" fill="#fff" stroke="none"/>
     </g>);
 }
 function Bow() {
-    return (<g strokeWidth="0.45" stroke="#db2777" strokeLinejoin="round" transform="rotate(-18 5.4 4.2)">
-      <path d="M5.4 4.2 3.2 2.9 3.3 5.6Z" fill="#f9a8d4"/>
-      <path d="M5.4 4.2 7.6 2.9 7.5 5.6Z" fill="#f9a8d4"/>
-      <circle cx="5.4" cy="4.2" r="0.65" fill="#f472b6"/>
+    return (<g className="fk-tone-stroke-deep" strokeWidth="0.45" stroke="#db2777" strokeLinejoin="round" transform="rotate(-18 5.4 4.2)">
+      <path d="M5.4 4.2 3.2 2.9 3.3 5.6Z" className="fk-tone-fill-light" fill="#f9a8d4"/>
+      <path d="M5.4 4.2 7.6 2.9 7.5 5.6Z" className="fk-tone-fill-light" fill="#f9a8d4"/>
+      <circle cx="5.4" cy="4.2" r="0.65" className="fk-tone-fill" fill="#f472b6"/>
     </g>);
+}
+function blushFor(color) {
+    const parts = String(color).match(/[\d.]+/g);
+    if (!parts || parts.length < 3)
+        return null;
+    const [r, g, b] = parts.slice(0, 3).map((value) => Number(value) / 255);
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    if (max - min < 0.08)
+        return '#ff7eb0';
+    let hue = max === r ? ((g - b) / (max - min)) % 6 : max === g ? (b - r) / (max - min) + 2 : (r - g) / (max - min) + 4;
+    hue = (hue * 60 + 360) % 360;
+    return hue >= 285 || hue < 30 ? '#ffb86b' : '#ff7eb0';
+}
+function usePaletteBlush(ref) {
+    const [blush, setBlush] = useState(null);
+    useEffect(() => {
+        const node = ref.current;
+        if (!node)
+            return undefined;
+        const read = () => setBlush(blushFor(getComputedStyle(node).color));
+        read();
+        const observer = new MutationObserver(read);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
+        window.addEventListener('focus', read);
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('focus', read);
+        };
+    }, [ref]);
+    return blush;
 }
 function EyeShine({ x, y, hearts }) {
     if (!hearts)
@@ -137,11 +168,13 @@ function EyeShine({ x, y, hearts }) {
 export function PixelFace(props) {
     const { mood = 'look', look = { x: 0, y: 0 }, paws = null, level = 0, size } = props;
     const tailId = `fk-tail-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
+    const svgRef = useRef(null);
+    const blush = usePaletteBlush(svgRef);
     const has = (item) => level >= KITTEN_WEAR[item] && !(EXCLUSIVE_WEAR.has(item) && level >= nextWearAfter(KITTEN_WEAR[item]));
     const gold = has('gold');
     const glow = has('aurora') ? ' fk-face--aurora' : gold ? ' fk-face--gold' : '';
     const cheek = mood === 'happy' ? ' fk-cheek--blush' : has('blush') ? ' fk-cheek--love' : '';
-    return (<svg className={`fk-face${glow}`} style={size ? { width: size, height: size } : undefined} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24" aria-hidden="true">
+    return (<svg ref={svgRef} className={`fk-face${glow}`} style={{ ...(size ? { width: size, height: size } : null), ...(blush ? { '--fk-blush': blush } : null) }} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24" aria-hidden="true">
       {has('wings') ? <Wings /> : null}
       {has('tail') ? <RainbowTail id={tailId}/> : null}
       {EARS.map((ear, index) => (<g key={ear.outer} className={`fk-ear fk-ear--${index ? 'right' : 'left'}`}>
