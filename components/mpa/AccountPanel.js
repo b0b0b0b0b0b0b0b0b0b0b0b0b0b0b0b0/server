@@ -1,5 +1,6 @@
 'use client'
 
+import { PixelNameTag } from '@/app/components/kitten/PixelOutfit'
 import { useEffect, useState } from 'react'
 import { KittenFace } from '@/components/mpa/Kitten'
 import { errorText, useMpaText } from '@/components/mpa/text'
@@ -111,7 +112,7 @@ export default function AccountPanel() {
       ) : (
         <span className="mpa-profile-initial">{user.username.slice(0, 1).toUpperCase()}</span>
       )}
-      <h2 className="mpa-side-title">{user.username}</h2>
+      <h2 className="mpa-side-title"><PixelNameTag level={user.pixelBadge} size={22}>{user.username}</PixelNameTag></h2>
       <p className="mpa-side-lead">{text.accountLead}</p>
     </div>
   )

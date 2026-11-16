@@ -1,4 +1,5 @@
 'use client';
+import { PixelNameTag } from '@/app/components/kitten/PixelOutfit';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { useT } from '@/components/i18n/I18nProvider';
 const MAIN = 'https://modrinth.black';
@@ -133,7 +134,7 @@ export default function AccountChip({ signInLabel }) {
             <a href="/account" role="menuitem" onClick={close} className="am-head">
               <Avatar user={user} size={32}/>
               <span className="am-head-text">
-                <span className="am-head-name">{user.username}</span>
+                <span className="am-head-name"><PixelNameTag level={user.pixelBadge} size={16}>{user.username}</PixelNameTag></span>
                 <span className="am-head-sub">{t('account.dashboard')}</span>
               </span>
             </a>
