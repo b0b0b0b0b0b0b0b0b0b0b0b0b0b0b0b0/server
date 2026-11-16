@@ -98,6 +98,8 @@ function YarnBall() {
       <path d="M1.2 19.4Q3.2 18.4 5 21.4M1.6 21.6Q3.4 19.2 5.6 19.6M2.6 18Q3.2 20.4 2.4 22.8" stroke="#fff" strokeOpacity="0.75" strokeWidth="0.45"/>
     </g>);
 }
+const EXCLUSIVE_WEAR = new Set(['logo']);
+const nextWearAfter = (stage) => Math.min(...Object.values(KITTEN_WEAR).filter((value) => value > stage), Infinity);
 function LogoInPaw() {
     return (<g stroke="none">
       <g transform="rotate(-16 18.7 19.4)">
@@ -135,7 +137,7 @@ function EyeShine({ x, y, hearts }) {
 export function PixelFace(props) {
     const { mood = 'look', look = { x: 0, y: 0 }, paws = null, level = 0, size } = props;
     const tailId = `fk-tail-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
-    const has = (item) => level >= KITTEN_WEAR[item];
+    const has = (item) => level >= KITTEN_WEAR[item] && !(EXCLUSIVE_WEAR.has(item) && level >= nextWearAfter(KITTEN_WEAR[item]));
     const gold = has('gold');
     const glow = has('aurora') ? ' fk-face--aurora' : gold ? ' fk-face--gold' : '';
     const cheek = mood === 'happy' ? ' fk-cheek--blush' : has('blush') ? ' fk-cheek--love' : '';
