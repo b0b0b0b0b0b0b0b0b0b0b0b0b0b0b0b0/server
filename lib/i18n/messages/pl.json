@@ -1038,6 +1038,12 @@
     "sleepy": "Piksel drzemie. Pogłaszcz go, to się obudzi",
     "extension": "Piksel mieszka też w rozszerzeniu",
     "notFound": "Piksel też się zgubił, ale się nie smuci",
-    "badge": "Odznaka Pixela: „{title}”"
+    "badge": "Odznaka Pixela: „{title}”",
+    "inspectHint": "Porusz myszką, żeby obrócić Pixela",
+    "inspectClose": "Zamknij",
+    "inspectFrom": "Osiągnięcie #{n} — „{title}”",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Poziom miłości {n}",
+    "inspectTip": "Prawy przycisk — obejrzyj z bliska"
   }
 }

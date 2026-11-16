@@ -1038,6 +1038,12 @@
     "sleepy": "Pixel fait la sieste. Caresse-le pour le réveiller",
     "extension": "Pixel vit aussi dans l’extension",
     "notFound": "Pixel s’est perdu aussi, mais il n’est pas triste",
-    "badge": "Badge Pixel : « {title} »"
+    "badge": "Badge Pixel : « {title} »",
+    "inspectHint": "Bouge la souris pour faire tourner Pixel",
+    "inspectClose": "Fermer",
+    "inspectFrom": "Succès n° {n} — « {title} »",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Niveau d’amour {n}",
+    "inspectTip": "Clic droit pour le voir de plus près"
   }
 }

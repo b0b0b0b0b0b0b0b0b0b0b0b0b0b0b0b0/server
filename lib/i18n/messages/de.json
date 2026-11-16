@@ -1038,6 +1038,12 @@
     "sleepy": "Pixel macht ein Nickerchen. Streichle ihn, dann wacht er auf",
     "extension": "Pixel wohnt auch in der Erweiterung",
     "notFound": "Pixel hat sich auch verlaufen, ist aber nicht traurig",
-    "badge": "Pixel-Abzeichen: „{title}“"
+    "badge": "Pixel-Abzeichen: „{title}“",
+    "inspectHint": "Bewege die Maus, um Pixel zu drehen",
+    "inspectClose": "Schließen",
+    "inspectFrom": "Erfolg #{n} – „{title}“",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Liebesstufe {n}",
+    "inspectTip": "Rechtsklick zum Ansehen aus der Nähe"
   }
 }

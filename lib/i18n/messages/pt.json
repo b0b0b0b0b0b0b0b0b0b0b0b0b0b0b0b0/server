@@ -1038,6 +1038,12 @@
     "sleepy": "O Pixel está cochilando. Faça carinho e ele acorda",
     "extension": "O Pixel também mora na extensão",
     "notFound": "O Pixel também se perdeu, mas não está triste",
-    "badge": "Selo do Pixel: «{title}»"
+    "badge": "Selo do Pixel: «{title}»",
+    "inspectHint": "Mexa o mouse para girar o Pixel",
+    "inspectClose": "Fechar",
+    "inspectFrom": "Conquista #{n} — «{title}»",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Nível de carinho {n}",
+    "inspectTip": "Botão direito para ver de perto"
   }
 }

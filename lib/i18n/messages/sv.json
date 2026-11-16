@@ -1038,6 +1038,12 @@
     "sleepy": "Pixel tar en tupplur. Klappa honom så vaknar han",
     "extension": "Pixel bor i tillägget också",
     "notFound": "Pixel har också gått vilse, men han är inte ledsen",
-    "badge": "Pixel-märke: ”{title}”"
+    "badge": "Pixel-märke: ”{title}”",
+    "inspectHint": "Rör musen för att vrida på Pixel",
+    "inspectClose": "Stäng",
+    "inspectFrom": "Prestation #{n} – ”{title}”",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Kärleksnivå {n}",
+    "inspectTip": "Högerklicka för att se närmare"
   }
 }

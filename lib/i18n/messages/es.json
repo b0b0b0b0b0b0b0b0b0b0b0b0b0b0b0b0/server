@@ -1038,6 +1038,12 @@
     "sleepy": "Pixel está durmiendo la siesta. Acarícialo y despertará",
     "extension": "Pixel también vive en la extensión",
     "notFound": "Pixel también se perdió, pero no está triste",
-    "badge": "Insignia de Pixel: «{title}»"
+    "badge": "Insignia de Pixel: «{title}»",
+    "inspectHint": "Mueve el ratón para girar a Pixel",
+    "inspectClose": "Cerrar",
+    "inspectFrom": "Logro #{n} — «{title}»",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Nivel de cariño {n}",
+    "inspectTip": "Clic derecho para verlo de cerca"
   }
 }

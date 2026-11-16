@@ -1038,6 +1038,12 @@
     "sleepy": "Pixel đang ngủ trưa. Vuốt ve là cậu ấy dậy ngay",
     "extension": "Pixel cũng sống trong tiện ích mở rộng",
     "notFound": "Pixel cũng lạc đường, nhưng không buồn đâu",
-    "badge": "Huy hiệu Pixel: «{title}»"
+    "badge": "Huy hiệu Pixel: «{title}»",
+    "inspectHint": "Di chuột để xoay Pixel",
+    "inspectClose": "Đóng",
+    "inspectFrom": "Thành tích #{n} — «{title}»",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Cấp độ yêu thương {n}",
+    "inspectTip": "Nhấp chuột phải để xem gần hơn"
   }
 }

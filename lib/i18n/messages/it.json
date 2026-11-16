@@ -1038,6 +1038,12 @@
     "sleepy": "Pixel sonnecchia. Accarezzalo e si sveglierà",
     "extension": "Pixel vive anche nell’estensione",
     "notFound": "Anche Pixel si è perso, ma non è triste",
-    "badge": "Badge di Pixel: «{title}»"
+    "badge": "Badge di Pixel: «{title}»",
+    "inspectHint": "Muovi il mouse per far girare Pixel",
+    "inspectClose": "Chiudi",
+    "inspectFrom": "Trofeo #{n} — «{title}»",
+    "inspectTitle": "Pixel",
+    "inspectLevel": "Livello d’affetto {n}",
+    "inspectTip": "Clic destro per guardarlo da vicino"
   }
 }
