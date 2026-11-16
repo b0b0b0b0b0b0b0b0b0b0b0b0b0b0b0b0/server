@@ -1,6 +1,6 @@
 'use client';
 import { useId } from 'react';
-export const KITTEN_WEAR = { blush: 5, yarn: 15, star: 19, crown: 20, tail: 22, hearts: 30, bell: 33, bow: 38, sparkles: 42, gold: 50, daisy: 60, glasses: 80, wings: 100, halo: 150, love: 175, aurora: 200 };
+export const KITTEN_WEAR = { blush: 5, logo: 10, yarn: 15, star: 19, crown: 20, tail: 22, hearts: 30, bell: 33, bow: 38, sparkles: 42, gold: 50, daisy: 60, glasses: 80, wings: 100, halo: 150, love: 175, aurora: 200 };
 function KittenCrown({ shine = false }) {
   return (
     <g transform="rotate(-14 12 2.5)" strokeWidth="0.7" strokeLinejoin="round" stroke="#d97706">
@@ -98,6 +98,18 @@ function YarnBall() {
       <path d="M1.2 19.4Q3.2 18.4 5 21.4M1.6 21.6Q3.4 19.2 5.6 19.6M2.6 18Q3.2 20.4 2.4 22.8" stroke="#fff" strokeOpacity="0.75" strokeWidth="0.45"/>
     </g>);
 }
+function LogoInPaw() {
+    return (<g stroke="none">
+      <path d="M18.7 14.9 21.9 20.4H15.5Z" fill="currentColor"/>
+      <path d="M18.7 16.4 20.6 19.6H16.8Z" fill="white"/>
+      <path d="M19.3 17.4C18.9 17 18.1 17.1 18.1 17.7 18.1 18.4 19.4 18.3 19.4 19 19.4 19.5 18.6 19.6 18.1 19.2" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+      {[16.3, 21.1].map((cx) => (<g key={cx}>
+          <ellipse cx={cx} cy="20.5" rx="1.05" ry="0.85" fill="currentColor"/>
+          <circle cx={cx - 0.35} cy="20.2" r="0.22" fill="white" fillOpacity="0.55"/>
+          <circle cx={cx + 0.35} cy="20.2" r="0.22" fill="white" fillOpacity="0.55"/>
+        </g>))}
+    </g>);
+}
 function Bell({ gold }) {
     return (<g>
       <path d="M5.4 18.2Q12 22.8 18.6 18.2" stroke={gold ? '#f59e0b' : '#f43f5e'} strokeWidth="1.5"/>
@@ -159,6 +171,7 @@ export function PixelFace(props) {
       {mood === 'happy' ? (<path d="M10.6 13.4q1.4 1.8 2.8 0"/>) : (<path d="M12 13.3q-.4 1.4-1.6 1.1M12 13.3q.4 1.4 1.6 1.1"/>)}
       <path d="M3.6 12.2 6.4 12.8M3.9 14.6l2.6-.7M20.4 12.2l-2.8.6M20.1 14.6l-2.6-.7" strokeWidth="1"/>
       {has('bell') ? <Bell gold={gold}/> : null}
+      {has('logo') ? <LogoInPaw /> : null}
       {has('halo') ? <Halo /> : null}
       {has('crown') ? <KittenCrown shine={gold}/> : null}
       {has('yarn') ? <YarnBall /> : null}
