@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, en plus sympa",
     "servicesShow": "Afficher les liens de services",
     "servicesHide": "Masquer les liens de services",
-    "news": "Actu"
+    "news": "Actu",
+    "discord": "Notre Discord"
   },
   "footer": {
     "siteVersion": "Version du site : {version}",
@@ -29,7 +30,8 @@
     "copied": "Copié !",
     "copyHint": "Cliquez pour copier",
     "tagline": "Outils pour serveurs Minecraft : flags de lancement, analyse du lag, plugins et dégradés.",
-    "accent": "Tout pour votre serveur au même endroit"
+    "accent": "Tout pour votre serveur au même endroit",
+    "discord": "Notre Discord"
   },
   "kitten": {
     "aria": "Caresser Pixel",

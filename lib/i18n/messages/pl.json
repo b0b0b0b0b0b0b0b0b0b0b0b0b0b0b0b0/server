@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, tylko milszy",
     "servicesShow": "Pokaż linki do usług",
     "servicesHide": "Ukryj linki do usług",
-    "news": "Aktualności"
+    "news": "Aktualności",
+    "discord": "Nasz Discord"
   },
   "footer": {
     "siteVersion": "Wersja strony: {version}",
@@ -29,7 +30,8 @@
     "copied": "Skopiowano!",
     "copyHint": "Kliknij, aby skopiować",
     "tagline": "Narzędzia dla serwerów Minecraft: flagi startowe, analiza lagów, wtyczki i gradienty.",
-    "accent": "Wszystko dla twojego serwera w jednym miejscu"
+    "accent": "Wszystko dla twojego serwera w jednym miejscu",
+    "discord": "Nasz Discord"
   },
   "kitten": {
     "aria": "Pogłaszcz Piksela",

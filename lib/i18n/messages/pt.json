@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, só que mais gentil",
     "servicesShow": "Mostrar links de serviços",
     "servicesHide": "Ocultar links de serviços",
-    "news": "Novidades"
+    "news": "Novidades",
+    "discord": "Nosso Discord"
   },
   "footer": {
     "siteVersion": "Versão do site: {version}",
@@ -29,7 +30,8 @@
     "copied": "Copiado!",
     "copyHint": "Clique para copiar",
     "tagline": "Ferramentas para servidores de Minecraft: flags de inicialização, análise de lag, plugins e degradês.",
-    "accent": "Tudo para o seu servidor num só lugar"
+    "accent": "Tudo para o seu servidor num só lugar",
+    "discord": "Nosso Discord"
   },
   "kitten": {
     "aria": "Fazer carinho no Pixel",

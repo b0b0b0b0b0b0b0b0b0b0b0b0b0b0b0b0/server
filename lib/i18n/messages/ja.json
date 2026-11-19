@@ -15,7 +15,8 @@
     "proxyTip": "もっとやさしい Modrinth",
     "servicesShow": "サービスリンクを表示",
     "servicesHide": "サービスリンクを隠す",
-    "news": "ニュース"
+    "news": "ニュース",
+    "discord": "公式 Discord"
   },
   "footer": {
     "siteVersion": "サイトバージョン: {version}",
@@ -29,7 +30,8 @@
     "copied": "コピーしました！",
     "copyHint": "クリックでコピー",
     "tagline": "Minecraft サーバー向けツール：起動フラグ、ラグ分析、プラグイン、グラデーション。",
-    "accent": "サーバーに必要なものがひとつの場所に"
+    "accent": "サーバーに必要なものがひとつの場所に",
+    "discord": "公式 Discord"
   },
   "kitten": {
     "aria": "ピクセルをなでる",

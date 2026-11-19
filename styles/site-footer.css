@@ -1061,3 +1061,8 @@
   --pi-accent-soft: rgb(var(--palette) / 0.18);
   --pi-card: var(--bg-secondary);
 }
+
+.sf-discord {
+  width: fit-content;
+  margin-bottom: 0.75rem;
+}

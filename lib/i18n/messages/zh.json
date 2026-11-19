@@ -15,7 +15,8 @@
     "proxyTip": "更友好的 Modrinth",
     "servicesShow": "显示服务链接",
     "servicesHide": "隐藏服务链接",
-    "news": "动态"
+    "news": "动态",
+    "discord": "我们的 Discord"
   },
   "footer": {
     "siteVersion": "站点版本：{version}",
@@ -29,7 +30,8 @@
     "copied": "已复制！",
     "copyHint": "点击复制",
     "tagline": "Minecraft 服务器工具：启动参数、卡顿分析、插件和渐变色。",
-    "accent": "服务器所需，一站搞定"
+    "accent": "服务器所需，一站搞定",
+    "discord": "我们的 Discord"
   },
   "kitten": {
     "aria": "摸摸像素",

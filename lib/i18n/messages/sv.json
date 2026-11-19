@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, fast vänligare",
     "servicesShow": "Visa tjänstlänkar",
     "servicesHide": "Dölj tjänstlänkar",
-    "news": "Nyheter"
+    "news": "Nyheter",
+    "discord": "Vår Discord"
   },
   "footer": {
     "siteVersion": "Webbplatsversion: {version}",
@@ -29,7 +30,8 @@
     "copied": "Kopierat!",
     "copyHint": "Klicka för att kopiera",
     "tagline": "Verktyg för Minecraft-servrar: startflaggor, laganalys, plugins och gradienter.",
-    "accent": "Allt för din server på ett ställe"
+    "accent": "Allt för din server på ett ställe",
+    "discord": "Vår Discord"
   },
   "kitten": {
     "aria": "Klappa Pixel",

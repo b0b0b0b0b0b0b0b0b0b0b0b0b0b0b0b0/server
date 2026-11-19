@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, nhưng thân thiện hơn",
     "servicesShow": "Hiện liên kết dịch vụ",
     "servicesHide": "Ẩn liên kết dịch vụ",
-    "news": "Tin tức"
+    "news": "Tin tức",
+    "discord": "Discord của chúng tôi"
   },
   "footer": {
     "siteVersion": "Phiên bản trang: {version}",
@@ -29,7 +30,8 @@
     "copied": "Đã sao chép!",
     "copyHint": "Nhấp để sao chép",
     "tagline": "Công cụ cho server Minecraft: cờ khởi động, phân tích lag, plugin và dải màu.",
-    "accent": "Mọi thứ cho server của bạn ở một nơi"
+    "accent": "Mọi thứ cho server của bạn ở một nơi",
+    "discord": "Discord của chúng tôi"
   },
   "kitten": {
     "aria": "Vuốt ve Pixel",

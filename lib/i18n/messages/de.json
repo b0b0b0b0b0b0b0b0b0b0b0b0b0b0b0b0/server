@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, nur netter",
     "servicesShow": "Service-Links zeigen",
     "servicesHide": "Service-Links ausblenden",
-    "news": "News"
+    "news": "News",
+    "discord": "Unser Discord"
   },
   "footer": {
     "siteVersion": "Site-Version: {version}",
@@ -29,7 +30,8 @@
     "copied": "Kopiert!",
     "copyHint": "Klicken zum Kopieren",
     "tagline": "Werkzeuge für Minecraft-Server: Startflags, Lag-Analyse, Plugins und Farbverläufe.",
-    "accent": "Alles für deinen Server an einem Ort"
+    "accent": "Alles für deinen Server an einem Ort",
+    "discord": "Unser Discord"
   },
   "kitten": {
     "aria": "Pixel streicheln",

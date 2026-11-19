@@ -15,7 +15,8 @@
     "proxyTip": "Modrinth, tikai laipnāks",
     "servicesShow": "Rādīt pakalpojumu saites",
     "servicesHide": "Slēpt pakalpojumu saites",
-    "news": "Jaunumi"
+    "news": "Jaunumi",
+    "discord": "Mūsu Discord"
   },
   "footer": {
     "siteVersion": "Vietnes versija: {version}",
@@ -29,7 +30,8 @@
     "copied": "Nokopēts!",
     "copyHint": "Noklikšķini, lai kopētu",
     "tagline": "Rīki Minecraft serveriem: palaišanas karogi, lagu analīze, spraudņi un gradienti.",
-    "accent": "Viss tavam serverim vienuviet"
+    "accent": "Viss tavam serverim vienuviet",
+    "discord": "Mūsu Discord"
   },
   "kitten": {
     "aria": "Paglaudīt Pikseli",
